@@ -1,0 +1,42 @@
+
+
+.windows, .windows300, .windows500{
+	background-color: #EFEFEF;
+	margin: 0 auto;
+}
+
+
+.windows h3, .windows300 h3, .windows500 h3 {
+	color: #FFF;
+	padding: 5px 5px 5px 5px;
+	background-color: #00557D;
+}
+
+
+.windows table, .windows300 table, .windows500 table {
+	padding: 10px;
+	margin: 0 auto;
+}
+
+.windows label, .windows300 label, .windows500 label {
+	font-size: 11px;
+	vertical-align: top;
+}
+
+.windows input, .windows300 input, .windows500 input {
+	font-size: 11px;
+	padding: 3px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+}
+
+
+.windows300 {
+	width: 300px;
+}
+
+
+.windows500 {
+	width: 500px;
+}
+

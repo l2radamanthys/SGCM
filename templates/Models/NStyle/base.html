@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
+
+<head>
+	
+	{% block meta_tags %}
+	{% endblock %}
+	
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<title>{{ page_title }}</title>
+	
+	
+	<link type="text/css" rel="stylesheet" media="all" href="style.css">
+	
+	{% block styles %}
+	{% endblock %}
+	
+	{% block javascritp %}
+	{% endblock %}
+	
+</head>
+
+<body>
+	<div class="header-cont">
+		<img src="images/baner-logo.png" >
+		
+		<label><img src="" />{{ user_name }}</label>
+		
+	</div>
+	
+	<div class="menu-cont">
+		<ul>
+			{{ user_menu }}
+		</ul>
+		<div style="clear: both;"></div>
+	</div>
+	
+	<div class="page-body">
+	
+		{% block contenido %}
+        {% endblock %}
+	
+	</div>
+	
+	
+</body>
+
+</html>

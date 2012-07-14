@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+	<br />
+	<div class="windows300">
+		<h3>Login</h3>
+		<form action="." method="POST">
+		<table>
+		<tr>
+			<td><label for="username">User name:</label></td>
+			<td><input type="text" name="username" value="" id="username"></td>
+		</tr>
+		<tr>
+			<td><label for="password">Password:</label></td>
+			<td><input type="password" name="password" value="" id="password"></td>
+		</tr>		
+		<tr>
+			<td colspan="2" style="text-align: center">
+				<input type="submit" value="Login" class="buttonCA">
+			</td>
+		</tr>
+	
+		</table>
+		</form>
+	</div>
+	
+	
+	{% if login_error %}
+		<>
+	{% endif %}
+	
+{% endblock %}
