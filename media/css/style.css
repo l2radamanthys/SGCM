@@ -27,10 +27,12 @@
 	margin-top: 10px;
 }
 
+
 .header-cont a:hover {
 	background-color: #E1E1E1;
 	color: #000;
 }
+
 
 .menu-cont {
 	background-color: #DBDBDB;
@@ -90,7 +92,10 @@
 }
 
 
-
+.page-body a {
+	text-decoration: None;
+	font-size: 12px;
+}
 
 
 .footer {

@@ -6,6 +6,7 @@ admin.autodiscover()
 
 from settings import MEDIA_ROOT
 import views as base_views
+import GestionTurnos.users_views as gt_users_views
 
 
 urlpatterns = patterns('',
@@ -21,9 +22,14 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     
-    
+    (r'^$', base_views.index),
     (r'^index/$', base_views.index),
     (r'^login/$', base_views.login),
+    (r'^logout/$', base_views.logout),
+
+    # Usuarios Registrar
+    (r'^usuarios/registrar/$', gt_users_views.register),
     
     
+
 )

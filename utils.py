@@ -16,12 +16,6 @@ def load_cont(path):
     return cont
 
 
-def make_css_tag(src, media='all'):
-    return '<link type="text/css" rel="stylesheet" media="%s" href="%s" />\n'  %(media, src)
-
-
-
-
 class ACont:
     """
         Simple Clase Contenedora para organizar informacion
@@ -33,15 +27,15 @@ class ACont:
         self.title = title
 
 
-
 def generate_base_keys(request):
     """
         Genera el dicionario con contenido basico.
     """
+
     dict = {
         'javascript': '',
         'style': '',
-        'user_info': ACont(),
+        'user_info': ACont(request.user.username, '/logout/', 'Cerrar Session de Usuario'),
     }
     
 

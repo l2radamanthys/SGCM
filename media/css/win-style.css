@@ -10,6 +10,7 @@
 	color: #FFF;
 	padding: 5px 5px 5px 5px;
 	background-color: #00557D;
+	margin-bottom:10px;
 }
 
 
@@ -23,13 +24,45 @@
 	vertical-align: top;
 }
 
+.windows table th, .windows300 table th, .windows500 table th {
+	font-size: 11px;
+	vertical-align: top;
+	font-weight: 100;
+	text-align: left;
+}
+
 .windows input, .windows300 input, .windows500 input {
+	font-size: 11px;
+	padding: 3px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+	border: 1px solid #BFBFBF;
+}
+
+.windows select, .windows300 select, .windows500 select {
+	font-size: 11px;
+	padding: 3px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+	border: 1px solid #BFBFBF;
+}
+
+
+.windows li, .windows300 li, .windows500 li {
+	display: inline;
 	font-size: 11px;
 	padding: 3px;
 	margin-bottom: 5px;
 	margin-left: 5px;
 }
 
+.windows li, .windows300 li, .windows500 li {
+	display: inline;
+	font-size: 11px;
+	padding: 3px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+}
 
 .windows300 {
 	width: 300px;
@@ -40,3 +73,16 @@
 	width: 500px;
 }
 
+
+
+.edt_c {
+	width: 100px;
+}
+
+.edt_m {
+	width: 200px;
+}
+
+.edt_g {
+	width: 250px;
+}

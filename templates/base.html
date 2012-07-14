@@ -11,11 +11,12 @@
 	<title>{{ page_title }}</title>
 	
 	<link type="text/css" rel="stylesheet" media="all" href="/media/css/style.css">
-	{% autoescape off %}
-	{{ style }}
 	
-	{{ javascript }}
-	{% endautoescape %}
+	{% block javascript %}
+	{% endblock %}
+	
+	{% block style %}
+	{% endblock %}
 	
 </head>
 
@@ -23,7 +24,7 @@
 	<div class="header-cont">
 		<img src="/media/images/baner-logo.png" >
 		
-		<a href='{{ user_info.url|default:"/login/" }}' title="{{ usr_info.url|default:"Login" }}">{{ user_info.name|default:"OFFLINE" }}</a>
+		<a href='{{ user_info.url|default:"/login/" }}' title='{{ usr_info.title|default:"Login" }}'>{{ user_info.name|default:"OFFLINE" }}</a>
 		
 	</div>
 	

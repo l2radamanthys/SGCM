@@ -142,7 +142,7 @@
     background-color: #00366C;
 	color: #FFF;
     font-family: Verdana;
-    font-size:11px;
+    font-size:11px !important;
     text-decoration:none;
 	text-align:left;
 	padding:5px 10px 5px 10px !important;
