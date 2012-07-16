@@ -11,6 +11,7 @@
 	<title>{{ page_title }}</title>
 	
 	<link type="text/css" rel="stylesheet" media="all" href="/media/css/style.css">
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/menu-style.css">
 	
 	{% block javascript %}
 	{% endblock %}
@@ -29,14 +30,16 @@
 	</div>
 	
 	<div class="menu-cont">
-		<ul>
+		<div class="menu">
+			<ul>
 			{% autoescape off %}
 			
 				{{ user_menu }}
 				
 			{% endautoescape %}
-		</ul>
+			</ul>
 		<div style="clear: both;"></div>
+		</div>
 	</div>
 	
 	<div class="page-body">

@@ -13,6 +13,7 @@ from utils import *
 from globals import *
 
 
+
 def index(request):
     mi_template = get_template('index.html')
     dict = generate_base_keys(request)
@@ -23,24 +24,26 @@ def index(request):
     return HttpResponse(html_cont)
 
 
-
 def login(request):
     mi_template = get_template('login.html')
     dict = generate_base_keys(request)
 
     dict['user_menu'] = load_cont('not-login-menu.txt')
 
-    username = request.POST.get('username', '')
-    password = request.POST.get('password', '')
-    user = auth.authenticate(username=username, password=password)
+    if request.method == 'POST':
+        username = request.POST.get('username', '')
+        password = request.POST.get('password', '')
+        user = auth.authenticate(username=username, password=password)
     
-    if (user is not None) and user.is_active:
-        auth.login(request, user)
-        return HttpResponseRedirect('/')
-    else:
-        dict['login_error'] = True
-        html_cont = mi_template.render(Context(dict))
-        return HttpResponse(html_cont)
+        if (user is not None) and user.is_active:
+            auth.login(request, user)
+            return HttpResponseRedirect('/')
+
+        else:
+            dict['login_error'] = True
+            
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
 
 
 def logout(request):
@@ -51,10 +54,32 @@ def logout(request):
         dict['user_info'] = ACont()
         auth.logout(request)
 
-
     else:
         dict['error'] = True
     
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+def restricted_access(request, area=None):
+    mi_template = get_template('restricted-access.html')
+    dict = generate_base_keys(request)
+
+
+    dict['area'] = area
 
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
+
+
+def change_password(request):
+    if request.user.is_authenticated():
+        mi_template = get_template('logout.html')
+        dict = generate_base_keys(request)
+        
+        html_cont = mi_template.render(Context(dict))
+        return HttpResponse(html_cont)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access/%s/" %path)

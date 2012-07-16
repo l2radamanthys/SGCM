@@ -49,7 +49,7 @@
 }
 
 
-.menu-cont li a {
+.menu-cont li a, .menu-cont li label {
 	display: block;
 	float: left;
 	padding: 5px 10px 5px 10px;
@@ -59,10 +59,18 @@
 	font-size: 11px;
 }
 
-
-.menu-cont li a:hover {
+.menu-cont li a:hover, .menu-cont li label:hover{
 	background-color:#C1E0FF;
 }
+
+.menu-cont li ul {
+	display: None;
+}
+
+.menu-cont li ul li {
+	display: block;
+}
+
 
 
 .page-body {
@@ -74,6 +82,7 @@
 .page-body h1, h2, h3 {
 	font-weight: 100;
 	color: #555555;
+	margin-bottom: 10px;
 }
 
 
@@ -84,6 +93,7 @@
 
 .page-body p {
 	font-size: 12px;
+	margin-bottom: 10px;
 }
 
 

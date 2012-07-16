@@ -12,15 +12,19 @@ class UserInformation(models.Model):
     nro_doc = models.CharField(max_length=12, default='')
     gender = models.CharField(max_length=1, default='-', choices=SEXO_CHOICE)
     phone = models.CharField(max_length=20, default='No Definido')
-    adress = models.CharField(max_length=120, default='No Definido')
+    address = models.CharField(max_length=120, default='No Definido')
 
     #solo para los medicos
     matricula = models.CharField(max_length=30)
 
-    paciente = models.ForeignKey(User, unique=True)
+    user = models.ForeignKey(User, unique=True)
+
+
+    def __unicode__(self):
+        return "%s - User Information" %self.user.username
 
     def doc(self):
-        pass
+        return "%s - %s" %(self.nro_doc, self.type_doc)
 
 
     class Meta:

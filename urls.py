@@ -26,6 +26,10 @@ urlpatterns = patterns('',
     (r'^index/$', base_views.index),
     (r'^login/$', base_views.login),
     (r'^logout/$', base_views.logout),
+    (r'^change-password/$', base_views.change_password),
+    (r'^restricted-access/$', base_views.restricted_access),
+    (r'^restricted-access/(.+)/$', base_views.restricted_access),
+
 
     # Usuarios Registrar
     (r'^usuarios/registrar/$', gt_users_views.register),

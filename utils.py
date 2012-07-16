@@ -26,6 +26,11 @@ class ACont:
         self.url = url
         self.title = title
 
+        if self.name == "":
+            name = "OFFLINE"
+            self.url = ""
+            self.title = ""
+
 
 def generate_base_keys(request):
     """
@@ -38,5 +43,6 @@ def generate_base_keys(request):
         'user_info': ACont(request.user.username, '/logout/', 'Cerrar Session de Usuario'),
     }
     
-
+    
+    
     return dict

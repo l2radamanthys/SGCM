@@ -113,6 +113,11 @@ TEMPLATE_DIRS = (
     MI_TEMPLATE_DIR,
 )
 
+#TEMPLATE_CONTEXT_PROCESSORS = (
+#    'django.core.context_processors.request',
+#)
+
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -124,8 +129,10 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
 
-
+    
     'SGCM.GestionTurnos',
+    'SGCM.MyFilters', #filtros personalizados
+    
 
 )
 
