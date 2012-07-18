@@ -10,36 +10,43 @@
 
 {% block contenido %}
 	<br />
+
+		{% if not_login %}
+			<div class="windows300">
+				<h3>Login</h3>
+				<form action="." method="POST">
+				<table>
+				<tr>
+					<td><label for="username">Usuario:</label></td>
+					<td><input type="text" name="username" value="" id="username"></td>
+				</tr>
+				<tr>
+					<td><label for="password">Contraseña:</label></td>
+					<td><input type="password" name="password" value="" id="password"></td>
+				</tr>		
+				<tr>
+					<td colspan="2" style="text-align: center">
+						<input type="submit" value="Login" class="buttonCA">
+					</td>
+				</tr>
+			
+				</table>
+				</form>
+			</div>
 	
-		<div class="windows300">
-			<h3>Login</h3>
-			<form action="." method="POST">
-			<table>
-			<tr>
-				<td><label for="username">Usuario:</label></td>
-				<td><input type="text" name="username" value="" id="username"></td>
-			</tr>
-			<tr>
-				<td><label for="password">Contraseña:</label></td>
-				<td><input type="password" name="password" value="" id="password"></td>
-			</tr>		
-			<tr>
-				<td colspan="2" style="text-align: center">
-					<input type="submit" value="Login" class="buttonCA">
-				</td>
-			</tr>
-		
-			</table>
-			</form>
-		</div>
 	
-	
-		{% if login_error %}
+			{% if login_error %}
+					<br />
+					<br />
+				<div class="alert">Alerta: Error Usuario y/o Contraseña Incorrectos</div>
+			{% endif %}
+			
+		{% else %}
+			<div class="alert">Alerta: Usted ya ha iniciado session con el usuario <strong>{{ username }}</strong></div>
+			
 			<br />
-			<br />
-			<div class="alert">Alerta: Error Usuario y/o Contraseña Incorrectos</div>
+			
+			<a href="/logout">Cerrar Session</a>
 		{% endif %}
-		
-		
 	
 {% endblock %}

@@ -26,10 +26,24 @@ class ACont:
         self.url = url
         self.title = title
 
-        if self.name == "":
-            name = "OFFLINE"
-            self.url = ""
-            self.title = ""
+
+def user_menu(request):
+    if request.user.is_authenticated():
+        group_name = request.user.groups.all()[0].name
+        if group_name == "Pacientes":
+            return load_cont(os.path.join('UsersMenu','pacientes.txt'))
+
+        else:
+            return load_cont(os.path.join('UsersMenu','admins.txt'))
+    else:
+        return load_cont(os.path.join('UsersMenu','not-login.txt'))
+
+
+def user_info(request):
+    if request.user.is_authenticated():
+        return ACont(request.user.username, '/logout/', 'Cerrar Session de Usuario')
+    else:
+        return ACont('OFFLINE', '/login/', 'Login')
 
 
 def generate_base_keys(request):
@@ -38,11 +52,9 @@ def generate_base_keys(request):
     """
 
     dict = {
-        'javascript': '',
-        'style': '',
-        'user_info': ACont(request.user.username, '/logout/', 'Cerrar Session de Usuario'),
+        'user_menu': user_menu(request),
+        'User': user_info(request),
     }
-    
     
     
     return dict

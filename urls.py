@@ -14,7 +14,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'SGCM.views.home', name='home'),
     # url(r'^SGCM/', include('SGCM.foo.urls')),
 
-	(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': MEDIA_ROOT, 'show_indexes': True }),
+    (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': MEDIA_ROOT, 'show_indexes': True }),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
@@ -33,7 +33,7 @@ urlpatterns = patterns('',
 
     # Usuarios Registrar
     (r'^usuarios/registrar/$', gt_users_views.register),
-    
+    (r'^usuarios/mis-datos/$', gt_users_views.my_info),
     
 
 )

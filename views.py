@@ -8,6 +8,7 @@ from django.template import Context
 from django.contrib import auth #para login
 from django.contrib.auth.models import User
 
+
 import my_forms
 from utils import *
 from globals import *
@@ -18,7 +19,7 @@ def index(request):
     mi_template = get_template('index.html')
     dict = generate_base_keys(request)
     #dict['user_name'] = 'OFFLINE'
-    dict['user_menu'] = load_cont('not-login-menu.txt')
+    #dict['user_menu'] = load_cont('not-login-menu.txt')
     
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
@@ -28,20 +29,25 @@ def login(request):
     mi_template = get_template('login.html')
     dict = generate_base_keys(request)
 
-    dict['user_menu'] = load_cont('not-login-menu.txt')
+    #dict['user_menu'] = load_cont('not-login-menu.txt')
 
-    if request.method == 'POST':
-        username = request.POST.get('username', '')
-        password = request.POST.get('password', '')
-        user = auth.authenticate(username=username, password=password)
-    
-        if (user is not None) and user.is_active:
-            auth.login(request, user)
-            return HttpResponseRedirect('/')
+    if not request.user.is_authenticated():
+        dict['not_login'] = True
 
-        else:
-            dict['login_error'] = True
-            
+        if request.method == 'POST':
+            username = request.POST.get('username', '')
+            password = request.POST.get('password', '')
+            user = auth.authenticate(username=username, password=password)
+
+            if (user is not None) and user.is_active:
+                auth.login(request, user)
+                return HttpResponseRedirect('/')
+
+            else:
+                dict['login_error'] = True
+    else:
+        dict['username'] = request.user.username
+
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
 
@@ -51,23 +57,24 @@ def logout(request):
     dict = generate_base_keys(request)
 
     if request.user.is_authenticated():
-        dict['user_info'] = ACont()
         auth.logout(request)
-
+        dict['user_info'] = ACont()
+    
     else:
         dict['error'] = True
+
     
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
 
 
-def restricted_access(request, area=None):
+def restricted_access(request, area="NULL"):
+    """
+        Para mostrar la vista de acceso restringido
+    """
     mi_template = get_template('restricted-access.html')
     dict = generate_base_keys(request)
-
-
     dict['area'] = area
-
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
 

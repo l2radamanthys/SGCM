@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+
+{% block style %}
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/win-style.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-botons-style.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+{% endblock %}
+
+
+
+{% block contenido %}
+	<br />
+	
+	<div class="windows" style="width:700px">
+	<h3>{{ sub_title }}</h3>
+	<table width="500px">
+	
+		<tr>
+			<td><label>Nombre de Usuario: </label></td>
+			<td><label>{{ user.username }}</label></td>
+		</tr>
+		
+		<tr>
+			<td><label>Nombre y Apellido: </label></td>
+			<td><label>{{ user.first_name }} {{ user.last_name }}</label></td>
+		</tr>
+		
+		<tr>
+			<td><label>Documento: </label></td>
+			<td><label>{{ user_info.doc }}</label></td>
+		</tr>
+			
+		<tr>
+			<td><label>Grupo: </label></td>
+			<td><label>{{ user.groups.all|first }}</label></td>
+		</tr>
+		
+		<tr>
+			<td><label>Sexo: </label></td>
+			<td><label>{{ user_info.gender }}</label></td>
+		</tr>
+		
+		<tr>
+			<td><label>Telefono: </label></td>
+			<td><label>{{ user_info.phone}}</label></td>
+		</tr>
+		
+		<tr>
+			<td><label>Email: </label></td>
+			<td><label>{{ user.email}}</label></td>
+		</tr>
+		
+		<tr>
+			<td colspan="2" style="text-align: right">
+				<br />
+				<br />
+				<a href="" class="buttonCA">Modificar mis Datos</a>
+			</td>
+		</tr>
+		
+	</table>
+	</div>	
+	
+	
+{% endblock %}

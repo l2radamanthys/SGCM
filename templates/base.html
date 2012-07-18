@@ -25,7 +25,7 @@
 	<div class="header-cont">
 		<img src="/media/images/baner-logo.png" >
 		
-		<a href='{{ user_info.url|default:"/login/" }}' title='{{ usr_info.title|default:"Login" }}'>{{ user_info.name|default:"OFFLINE" }}</a>
+		<a href='{{ User.url }}' title='{{ User.title }}'>{{ User.name }}</a>
 		
 	</div>
 	

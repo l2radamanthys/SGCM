@@ -1,62 +1,102 @@
 {% extends 'base.html' %}
 
-{#% load poll_extras.py %#}
 
 {% block style %}
 	<link type="text/css" rel="stylesheet" media="all" href="/media/css/win-style.css" />
 	<link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-botons-style.css" />
 	<link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
-	
 {% endblock %}
+
+
 
 {% block contenido %}
 	<br />
 	
-	{% if show_form %}
-		<div class="windows" style="width:700px">
-			<h3>Nuevo Usuario</h3>
-			<form action="." method="POST">
-			<table>
-					
-			{{ form.as_table }}
-					
-			<tr>
-				<td colspan="2" style="text-align: center">
-					<br />
-					<input type="submit" value="Registrar" class="buttonCA">
-				</td>
-			</tr>
-		
-			</table>
-			</form>
-		</div>
-		
-		
-		{% if form_errors %}
-			<div class="alert" >		
-			{% for field in form_e %}
-				{{ field.errors }}
-			{% endfor %}
-			</div>
-		{% endif %}
-			
-		{% if query %}
-			<div class="info">
-				<p><strong>Usuario registrado con exito</strong></p>
-				<p>El codigo de activacion, junto con los datos de usuario, le fue enviado a su cuenta de correo, 
-				por fabor verifique el miso para poder activarla.</p>
-			</div>
-				
+	{% if not_login %}
+		{% if form_commit %}
 			{% if form_errors %}
-				<div class="alert"></div>
+				
+				<div class="windows" style="width:700px">
+					<h3>Nuevo Usuario</h3>
+					<form action="." method="POST">
+					<table>
+							
+					{{ form.as_table }}
+							
+					<tr>
+						<td colspan="2" style="text-align: center">
+							<br />
+							<input type="submit" value="Registrar" class="buttonCA">
+						</td>
+					</tr>
+				
+					</table>
+					</form>
+				</div>
+			
+				<div class="alert" >		
+				{% for field in form_e %}
+					{{ field.errors }}
+				{% endfor %}
+				</div>
+
+				
+			{% else %}
+				{% if exist_user %}
+					<div class="windows" style="width:700px">
+						<h3>Nuevo Usuario</h3>
+						<form action="." method="POST">
+						<table>
+								
+						{{ form.as_table }}
+								
+						<tr>
+							<td colspan="2" style="text-align: center">
+								<br />
+								<input type="submit" value="Registrar" class="buttonCA">
+							</td>
+						</tr>
+					
+						</table>
+						</form>
+					</div>
+					
+					<div class="alert">{{ exist_user_error }}</div>
+					
+				{% else %}
+				
+					<div class="info">
+						<p><strong>Usuario "{{ username }}" registrado con exito</strong></p>
+						<p>El codigo de activacion, junto con los datos de usuario, le fue enviado a su cuenta de correo, 
+						por fabor verifique el miso para poder activarla.</p>
+					</div>
+					
+				{% endif %}
 			{% endif %}
+		{% else %}
+				<div class="windows" style="width:700px">
+					<h3>Nuevo Usuario</h3>
+					<form action="." method="POST">
+					<table>
+							
+					{{ form.as_table }}
+							
+					<tr>
+						<td colspan="2" style="text-align: center">
+							<br />
+							<input type="submit" value="Registrar" class="buttonCA">
+						</td>
+					</tr>
+				
+					</table>
+					</form>
+				</div>
 				
 		{% endif %}
-			
+	{% else %}
 	
-		{% else %}
-			<div class="error">Error: Ya eres usuario registrado</p>
-		{% endif %}
-
+		<div class="error">Error: Ya eres usuario registrado</p>
+	
+	{% endif %}
 	
 {% endblock %}
