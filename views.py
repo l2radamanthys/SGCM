@@ -8,7 +8,6 @@ from django.template import Context
 from django.contrib import auth #para login
 from django.contrib.auth.models import User
 
-
 import my_forms
 from utils import *
 from globals import *
@@ -81,9 +80,11 @@ def restricted_access(request, area="NULL"):
 
 def change_password(request):
     if request.user.is_authenticated():
-        mi_template = get_template('logout.html')
+        mi_template = get_template('change-password.html')
         dict = generate_base_keys(request)
-        
+
+        dict['form'] = my_forms.ChangePasswordForm(auto_id=False)
+
         html_cont = mi_template.render(Context(dict))
         return HttpResponse(html_cont)
 
