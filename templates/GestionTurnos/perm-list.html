@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+
+{% block style %}
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/win-style.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-botons-style.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
+	
+{% endblock %}
+
+
+
+{% block contenido %}
+
+<br /><br />
+
+<table style="font-size:12px" class="table">
+	<tr>
+		<th>Name</th>
+		<th>Content Type</th>
+		<th>Code Name</th>
+	</tr>
+	
+	{% for perm in perms %}
+		
+		<tr>
+			<td>{{ perm.name}}</td>
+			<td>{{ perm.content_type }}</td>
+			<td>{{ perm.codename }}</td>
+		</tr>
+		
+	
+	{% endfor %}
+
+</table>
+
+<br /><br />
+{% endblock %}

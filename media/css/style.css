@@ -112,7 +112,39 @@
 	background-color: #DBDBDB;
 }
 
+.calendar th {
+	background-color: #005782;
+	padding: 5px;
+	color: #FFF;
+	font-size: 10px;
+	/*width: 80px;*/
+	text-align: center;
+
+}
+
+.calendar td {
+	font-size: 12px;
+	text-align: center;	
+	
+}
+
+.normal-cell {
+	border: 1px solid #AAA;
+}
+
+.normal-cell a{
+	display: block;
+	padding: 20px 20px;
+	color: #004182;
+}
+
+.normal-cell a:hover{
+	background-color: #E6E6E6;
+}
 
 
-
+.null-cell {
+	background-color: #C1E0FF;
+	border: 1px solid #C1E0FF;
+}
 

@@ -7,7 +7,7 @@ admin.autodiscover()
 from settings import MEDIA_ROOT
 import views as base_views
 import GestionTurnos.users_views as gt_users_views
-
+import GestionTurnos.medics_views as gt_medics_views
 
 urlpatterns = patterns('',
     # Examples:
@@ -34,6 +34,14 @@ urlpatterns = patterns('',
     # Usuarios Registrar
     (r'^usuarios/registrar/$', gt_users_views.register),
     (r'^usuarios/mis-datos/$', gt_users_views.my_info),
-    
+
+    (r'^usuarios/calendar/$', gt_users_views.calendar),
+    (r'^usuarios/calendar/(\d{1,2})/(\d{4})/$', gt_users_views.calendar),
+
+    (r'^medicos/registrar/$', gt_medics_views.register),
+    (r'^medicos/listado/$', gt_medics_views.list),
+
+    (r'^perms/$', gt_medics_views.perms_list),
+    (r'^apps/$', gt_medics_views.apps_list),
 
 )

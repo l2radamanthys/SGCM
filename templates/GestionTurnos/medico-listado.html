@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+
+{% block style %}
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/win-style.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-botons-style.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
+{% endblock %}
+
+
+
+{% block contenido %}
+	<br />
+	
+	<h3>Listado de Medicos</h3>
+	
+	<table class="table" style="width: 600px">
+	{% if modify %}
+	
+		<tr>
+			<th>Usuario</th>
+			<th>Nombre</th>
+			<th>Opciones</th>
+		</tr>
+		
+		{% for medic in medics %}
+			<tr>
+				<td>{{ medic.username }}</td>
+				<td>{{ medic.first_name }} {{ medic.last_name }}</td>
+				<td>
+					<a href="">Mostrar</a>	
+					<a href="">Modificar</a>	
+					<a href="">Borrar</a>	
+				</td>
+			</tr>
+		{% endfor %}
+		
+	{% else %}
+	
+		<tr>
+			<th>Medico</th>
+			<th>Especialidad</th>
+		</tr>
+		
+		{% for medic in data %}
+			<tr>
+				<td>{{ medic.user.first_name }} {{ medic.user.last_name }}</td>
+				<td>{{ medic.speciality_name }}</td>
+			</tr>
+		{% endfor %}
+	{% endif %}
+	
+	</table>
+	
+{% endblock %}

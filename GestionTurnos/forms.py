@@ -83,3 +83,11 @@ class RegisterForm(forms.Form):
             
         return cleaned_data
     """
+
+
+class MedicRegisterForm(RegisterForm):
+    matricula = forms.CharField(
+        label="Matricula",
+        widget=forms.TextInput(attrs={'class':'edt_c'}),
+        required = False
+    )

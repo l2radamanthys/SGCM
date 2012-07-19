@@ -24,6 +24,7 @@ def index(request):
     return HttpResponse(html_cont)
 
 
+
 def login(request):
     mi_template = get_template('login.html')
     dict = generate_base_keys(request)
@@ -49,6 +50,7 @@ def login(request):
 
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
+
 
 
 def logout(request):
@@ -78,6 +80,7 @@ def restricted_access(request, area="NULL"):
     return HttpResponse(html_cont)
 
 
+
 def change_password(request):
     if request.user.is_authenticated():
         mi_template = get_template('change-password.html')
@@ -90,4 +93,4 @@ def change_password(request):
 
     else:
         path = request.META['PATH_INFO']
-        return HttpResponseRedirect("/restricted-access/%s/" %path)
+        return HttpResponseRedirect("/restricted-access%s" %path)

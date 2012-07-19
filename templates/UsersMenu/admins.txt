@@ -1,5 +1,15 @@
 <li><a href="/index/">Home</a></li>
-<li><a href="/medicos/listado/">Listado de Medicos</a></li>
+<li><label>Medicos</label>
+	<ul>
+		<li><a href="/medicos/registrar/">Agregar Medicos</a></li>
+		<li><a href="/medicos/listado/">Listado de Medicos</a></li>
+	</ul>
+
+<li><label>Pacientes</label>
+	<ul>
+	
+	</ul>
+</li>
 
 <li><label>Usuario</label>
 	<ul>
@@ -8,7 +18,6 @@
 		<li>&nbsp;</li>
 		<li><a href="/logout">Cerrar Session</a></li>
 	</ul>
-
 </li>
 
 

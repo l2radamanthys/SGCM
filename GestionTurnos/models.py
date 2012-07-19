@@ -77,3 +77,11 @@ class MedicalSpecialityFor(models.Model):
             #identificador      #descripcion
             ("show_medical_speciality_for",  "Mostrar Mi Informacion"),
         )
+
+
+    def speciality_name(self):
+        return '%s' %(self.speciality.name)
+
+
+    def __unicode__(self):
+        return '%s - %s' %(self.user.username, self.speciality.name)

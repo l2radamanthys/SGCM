@@ -8,5 +8,5 @@ from GestionTurnos import models
 
 #establesco las tablas que seran modificadas por el admin
 admin.site.register(models.UserInformation)
-
-
+admin.site.register(models.MedicalSpecialties)
+admin.site.register(models.MedicalSpecialityFor)

@@ -16,10 +16,24 @@ MI_TEMPLATE_DIR = os.path.join(PROJECT_PATH, 'templates')
 
 
 
+MONTHS = [
+    'Enero',
+    'Febrero',
+    'Marzo',
+    'Abril',
+    'Mayo',
+    'Junio',
+    'Julio',
+    'Agosto',
+    'Setiembre',
+    'Octubre',
+    'Noviembre',
+    'Diciembre'
+]
+
 
 
 #Choices varios
-
 SEXO_CHOICE = (
     ('M', 'Masculino'),
     ('F', 'Femenino'),
