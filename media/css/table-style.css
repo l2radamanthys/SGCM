@@ -1,49 +1,46 @@
 .table {
-	font-family: Verdana;
-	font-size: 87%;
-	border: 1px solid #000;
-	border-spacing: 0;
-	border-collapse: collapse;
-	width: 800px;
+    font-family: Verdana;
+    font-size: 87%;
+    border: 1px solid #373737;
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 800px;
 }
 
 .table caption {
-	font-weight: bold;
-	background-color: #0080C0;
-	color: #FFF;
-	padding: 8px;
-	text-align: center;
-	border: 1px solid #000;
-	border-bottom: 0px;
+    font-weight: bold;
+    background-color: #0080C0;
+    color: #FFF;
+    padding: 8px;
+    text-align: center;
+    border: 1px solid #000;
+    border-bottom: 0px;
 }
 
 .table th {
-	background-color: #0080C0;
-	color: #FFF;
-	text-align: center;
-	padding: 5px;
-	border: 1px solid #000;
+    background-color: #0080C0;
+    color: #FFF;
+    text-align: center;
+    padding: 3px;
+    border: 1px solid #000;
 }
 
 .table td{
-	/*background-color: #F7F5EA;*/
-	padding: 5px;
-	border: 1px solid #000;
-	
+    /*background-color: #F7F5EA;*/
+    padding: 5px;
+    border: 1px solid #000;
 }
 
 .table tr{
-	background-color: #F7F5EA;
+    background-color: #F7F5EA;
 }
 
-.table tr:hover{
-	background-color: #00FF40;
+.table tr:hover td{
+   color: #00557D !important;
 }
 
 .table-alter {
-	background-color: #FAF8B8 !important;
+    background-color: #D7EBFF !important;
 }
 
-.table-alter:hover {
-	background-color: #00FF40 !important;
-}
+

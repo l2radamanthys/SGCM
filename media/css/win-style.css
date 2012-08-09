@@ -1,88 +1,99 @@
 
 
 .windows, .windows300, .windows500{
-	background-color: #EFEFEF;
-	margin: 0 auto;
+    background-color: #EFEFEF;
+    margin: 0 auto;
 }
 
 
 .windows h3, .windows300 h3, .windows500 h3 {
-	color: #FFF;
-	padding: 5px 5px 5px 5px;
-	background-color: #00557D;
-	margin-bottom:10px;
+    color: #FFF;
+    padding: 5px 5px 5px 5px;
+    background-color: #00557D;
+    margin-bottom:10px;
 }
 
 
 .windows table, .windows300 table, .windows500 table {
-	padding: 10px;
-	margin: 0 auto;
+    padding: 10px;
+    margin: 0 auto;
 }
 
 .windows label, .windows300 label, .windows500 label {
-	font-size: 11px;
-	vertical-align: top;
+    font-size: 11px;
+    vertical-align: top;
 }
 
 .windows table th, .windows300 table th, .windows500 table th {
-	font-size: 11px;
-	vertical-align: top;
-	font-weight: 100;
-	text-align: left;
+    font-size: 11px;
+    vertical-align: top;
+    font-weight: 100;
+    text-align: left;
 }
 
 .windows input, .windows300 input, .windows500 input {
-	font-size: 11px;
-	padding: 3px;
-	margin-bottom: 5px;
-	margin-left: 5px;
-	border: 1px solid #BFBFBF;
+    font-size: 11px;
+    padding: 3px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    border: 1px solid #BFBFBF;
 }
 
 .windows select, .windows300 select, .windows500 select {
-	font-size: 11px;
-	padding: 3px;
-	margin-bottom: 5px;
-	margin-left: 5px;
-	border: 1px solid #BFBFBF;
+    font-size: 11px;
+    padding: 3px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    border: 1px solid #BFBFBF;
 }
 
 
 .windows li, .windows300 li, .windows500 li {
-	display: inline;
-	font-size: 11px;
-	padding: 3px;
-	margin-bottom: 5px;
-	margin-left: 5px;
+    display: inline;
+    font-size: 11px;
+    padding: 3px;
+    margin-bottom: 5px;
+    margin-left: 5px;
 }
 
 .windows li, .windows300 li, .windows500 li {
-	display: inline;
-	font-size: 11px;
-	padding: 3px;
-	margin-bottom: 5px;
-	margin-left: 5px;
+    display: inline;
+    font-size: 11px;
+    padding: 3px;
+    margin-bottom: 5px;
+    margin-left: 5px;
 }
 
 .windows300 {
-	width: 300px;
+    width: 300px;
 }
 
 
 .windows500 {
-	width: 500px;
+    width: 500px;
 }
 
 
 
 .edt_c {
-	width: 100px;
+    width: 100px;
 }
 
 .edt_m {
-	width: 200px;
+    width: 200px;
 }
 
 .edt_g {
-	width: 250px;
+    width: 250px;
+}
+
+
+.label_desc {
+    font-weight: bold;
+}
+
+
+.label_cont {
+    color: #151515;
+    font-size: 14px !important;
 }

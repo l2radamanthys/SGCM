@@ -1,13 +1,18 @@
+
 from django.conf.urls.defaults import patterns, include, url
+from django.conf.urls.defaults import *
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
+
 admin.autodiscover()
 
 from settings import MEDIA_ROOT
 import views as base_views
+import debug_views
 import GestionTurnos.users_views as gt_users_views
 import GestionTurnos.medics_views as gt_medics_views
+
 
 urlpatterns = patterns('',
     # Examples:
@@ -30,18 +35,25 @@ urlpatterns = patterns('',
     (r'^restricted-access/$', base_views.restricted_access),
     (r'^restricted-access/(.+)/$', base_views.restricted_access),
 
+    ## - Gestion de Turnos Views - ##
 
-    # Usuarios Registrar
     (r'^usuarios/registrar/$', gt_users_views.register),
     (r'^usuarios/mis-datos/$', gt_users_views.my_info),
-
-    (r'^usuarios/calendar/$', gt_users_views.calendar),
-    (r'^usuarios/calendar/(\d{1,2})/(\d{4})/$', gt_users_views.calendar),
 
     (r'^medicos/registrar/$', gt_medics_views.register),
     (r'^medicos/listado/$', gt_medics_views.list),
 
-    (r'^perms/$', gt_medics_views.perms_list),
-    (r'^apps/$', gt_medics_views.apps_list),
+    (r'^medicos/mostrar/datos/(\d{1,2})/$', gt_medics_views.show_info),
+    (r'^medicos/mostrar/especilidades/(\d{1,2})/$', gt_medics_views.show_medic_specialities),
+    (r'^medicos/agregar/especilidades/(\d{1,2})/$', gt_medics_views.add_medic_speciality),
+    (r'^medicos/quitar/especilidades/(\d{1,2})/$', gt_medics_views.del_medic_speciality),
+    (r'^medicos/mostrar/horarios-atencion/(\d{1,2})/$', gt_medics_views.show_medic_business_hours),
+    ## - Historia Clinica Views - ##
 
+
+    #debug views
+    (r'^perms/$', debug_views.perms_list),
+    (r'^apps/$', debug_views.apps_list),
+    (r'^usuarios/calendar/$', debug_views.calendar),
+    (r'^usuarios/calendar/(\d{1,2})/(\d{4})/$', debug_views.calendar),
 )

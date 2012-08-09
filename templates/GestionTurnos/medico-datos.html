@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+
+{% block style %}
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/win-style.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-botons-style.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/tabs-style.css" />
+{% endblock %}
+
+
+
+{% block contenido %}
+    <br />
+
+    <ul class="tabs">
+        <li class="active"><a href="">Datos Personales</a></li>
+        <li><a href="/medicos/mostrar/especilidades/{{ user.id }}">Especialidades</a></li>
+        <li><a href="/medicos/mostrar/horarios-atencion/{{ user.id }}">Horario Atencion</a></li>
+    </ul>
+    <div style="clear: both;"></div>
+    <br />
+
+    <div class="windows" style="width:700px">
+    <h3>{{ sub_title }}</h3>
+    <table width="500px">
+
+        <tr>
+            <td><label class="label_desc">Nombre de Usuario: </label></td>
+            <td><label class="label_cont">{{ user.username }}</label></td>
+        </tr>
+
+        <tr>
+            <td><label class="label_desc">Nombre y Apellido: </label></td>
+            <td><label class="label_cont">{{ user.get_full_name }}</label></td>
+        </tr>
+
+        <tr>
+            <td><label class="label_desc">Documento: </label></td>
+            <td><label class="label_cont">{{ user_info.doc }}</label></td>
+        </tr>
+
+        <tr>
+            <td><label class="label_desc">Matricula: </label></td>
+            <td><label class="label_cont">{{ user.matricula }}</label></td>
+        </tr>
+
+        <tr>
+            <td><label class="label_desc">Grupo: </label></td>
+            <td><label class="label_cont">{{ user.groups.all|first }}</label></td>
+        </tr>
+
+        <tr>
+            <td><label class="label_desc">Sexo: </label></td>
+            <td><label class="label_cont">{{ user_info.gender }}</label></td>
+        </tr>
+
+        <tr>
+            <td><label class="label_desc">Telefono: </label></td>
+            <td><label class="label_cont">{{ user_info.phone}}</label></td>
+        </tr>
+
+        <tr>
+            <td><label class="label_desc">Email: </label></td>
+            <td><label class="label_cont">{{ user.email}}</label></td>
+        </tr>
+
+        {% if modify %}
+        <tr>
+            <td colspan="2" style="text-align: right">
+                <br />
+                <br />
+                <a href="" class="buttonCA">Modificar Datos</a>
+            </td>
+        </tr>
+        {% endif %}
+
+    </table>
+    </div>
+
+
+{% endblock %}

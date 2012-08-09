@@ -78,11 +78,12 @@ class RegisterForm(forms.Form):
 
         if _password != _re_password:
 
-            self._errors["re_password"] = "Error las contraseñas no coinciden" #self.error_class(["Error las contraseñas no coinciden"])
+            self._errors["re_password"] = "Error las contraseï¿½as no coinciden" #self.error_class(["Error las contraseï¿½as no coinciden"])
             #del cleaned_data["re_password"]
             
         return cleaned_data
     """
+
 
 
 class MedicRegisterForm(RegisterForm):
@@ -91,3 +92,8 @@ class MedicRegisterForm(RegisterForm):
         widget=forms.TextInput(attrs={'class':'edt_c'}),
         required = False
     )
+
+
+
+class MedicSpecialityAdd(forms.Form):
+    specialty = forms.ChoiceField(label="Tipo de Documento", choices="")

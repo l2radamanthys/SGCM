@@ -31,6 +31,8 @@ MONTHS = [
     'Diciembre'
 ]
 
+GET = 0
+POST = 1
 
 
 #Choices varios
@@ -55,4 +57,15 @@ SOLICITUD_ESTADO_CHOICE = (
     ('P','Pendiente'),
     ('A','Aceptado'),
     ('C','Cancelado'),
+)
+
+
+DATE_CHOICE = (
+    ('Lu', 'Lunes'),
+    ('Ma', 'Martes'),
+    ('Mi', 'Miercoles'),
+    ('Ju', 'Jueves'),
+    ('Vi', 'Viernes'),
+    ('Sa', 'Sabado'),
+    ('Do', 'Domingo'),
 )

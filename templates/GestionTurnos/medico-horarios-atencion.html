@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+
+{% block style %}
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/win-style.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-botons-style.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/tabs-style.css" />
+{% endblock %}
+
+
+
+{% block contenido %}
+    <br />
+
+    <ul class="tabs">
+        <li><a href="/medicos/mostrar/datos/{{ user.id }}">Datos Personales</a></li>
+        <li><a href="/medicos/mostrar/especilidades/{{ user.id }}">Especialidades</a></li>
+        <li class="active"><a href="">Horario Atencion</a></li>
+    </ul>
+    <div style="clear: both;"></div>
+    <br />
+
+    <div class="windows" style="width:600px">
+        <h3>Horarios de Atencion</h3>
+    </div>
+
+
+{% endblock %}

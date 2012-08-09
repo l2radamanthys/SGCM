@@ -1,0 +1,32 @@
+Vistas Creadas Hasta La Fecha
+
+[Completas]
+
+/login/                                 Iniciar Session
+/logout/                                Cerrar Session
+/restricted-access/                     Cartel No Tenes Permiso
+/usuarios/registrar/                    Registro de Usuarios Pacientes
+/usuarios/mis-datos/                    Mostrar Datos de Usuario Logueado
+
+/medicos/registrar/                     Registrar Medico
+/medicos/listado/                       Listaod de Medicos
+/medicos/mostrar/datos/                 Muestra Info Basica Medico
+
+[Incompletas]
+
+/change-password/                       Cambiar Contraseña Usuario
+/medicos/mostrar/especialidades/        Muestra Especialidades de Medico
+
+
+
+[Falta Hacer]
+/medicos/mostrar/horario-atencion/
+
+/medicos/especialidades/listado/
+/medicos/especialidades/buscar/
+/medicos/especialidades/mostrar/
+
+/medicos/modificar/datos/
+/medicos/modificar/especialidades/
+/medicos/modificar/horario-atencion/
+

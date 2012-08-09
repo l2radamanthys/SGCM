@@ -4,18 +4,23 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+import datetime
+
 from globals import *
 
 
 
 class UserInformation(models.Model):
+    """
+        Informacion adicional de usuario
+    """
     type_doc = models.CharField(max_length=6, default='---', choices=TYPE_DOC_CHOICE)
     nro_doc = models.CharField(max_length=12, default='')
     gender = models.CharField(max_length=1, default='-', choices=SEXO_CHOICE)
     phone = models.CharField(max_length=20, default='No Definido')
     address = models.CharField(max_length=120, default='No Definido')
-    matricula = models.CharField(max_length=30) #solo para los medicos
-
+    #solo para los medicos
+    matricula = models.CharField(max_length=30) 
     user = models.ForeignKey(User, unique=True)
 
 
@@ -41,6 +46,9 @@ class UserInformation(models.Model):
 
 
 class MedicalSpecialties(models.Model):
+    """
+        Especialidades Medicas
+    """
     name = models.CharField(max_length=60)
     description = models.TextField()
 
@@ -65,8 +73,10 @@ class MedicalSpecialityFor(models.Model):
         Tendria que haber sido un many to many en UserInfo pero no queria sobrecargarlo
         ya que solo se usa en los medicos por lo que lo defini directamente.
     """
-    user = models.ForeignKey(User) #tiene que hacer referencia a un medico
-    speciality = models.ForeignKey(MedicalSpecialties) #tiene
+    #tiene que hacer referencia a un medico
+    user = models.ForeignKey(User)
+    #tiene q referenciar una especialidad
+    speciality = models.ForeignKey(MedicalSpecialties) 
 
 
     class Meta:
@@ -83,5 +93,45 @@ class MedicalSpecialityFor(models.Model):
         return '%s' %(self.speciality.name)
 
 
+    def medic_name(self):
+        return '%s' %(self.user.username)
+
+
     def __unicode__(self):
         return '%s - %s' %(self.user.username, self.speciality.name)
+
+
+
+#no implementado
+class BusinessHours(models.Model):
+    """
+        Horarios de Atencion
+    """
+    user = models.ForeignKey(User) #tiene que hacer referencia a un medico
+    date = models.CharField('Dia', max_length=2, default='--', choices=DATE_CHOICE)
+    start_time = models.TimeField()
+    end_time = models.TimeField()
+    turn_duration =  models.IntegerField('Duracion Turno en Minutos', default=20)
+
+
+    class Meta:
+        db_table = "BusinessHours"
+        permissions = (
+            #identificador      #descripcion
+            ("show_Business_Hours",  "Mostrar Horario Atencion"),
+        )
+
+
+    def calculate_interval_minutes(self):
+        """
+            Calcula la cantidad de minutos entre los 2 intervalos
+        """
+        pass
+
+
+    def number_of_turns(self):
+        """
+            Retorna el numero de turnos que se pueden asignar en dicho horario
+            de atencion
+        """
+        pass

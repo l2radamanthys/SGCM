@@ -69,6 +69,7 @@ def logout(request):
     return HttpResponse(html_cont)
 
 
+
 def restricted_access(request, area="NULL"):
     """
         Para mostrar la vista de acceso restringido
@@ -87,6 +88,17 @@ def change_password(request):
         dict = generate_base_keys(request)
 
         dict['form'] = my_forms.ChangePasswordForm(auto_id=False)
+
+        if request.method == 'POST':
+            dict['query'] = True
+            form = my_forms.ChangePasswordForm(request.POST, auto_id=False)
+            if form.is_valid():
+                if request.user.check_password(form.cleaned_data['old_password']):
+                    request.user.set_password(form.cleaned_data['password'])
+
+            else:
+                dict['form_e'] = form
+
 
         html_cont = mi_template.render(Context(dict))
         return HttpResponse(html_cont)

@@ -12,6 +12,8 @@ from django.contrib.auth.models import Group as DjangoGroup
 from django.contrib.auth.models import Group, Permission
 from django.contrib.contenttypes.models import ContentType
 
+
+
 from GestionTurnos.models import *
 import GestionTurnos.forms as my_forms
 from utils import *
@@ -89,41 +91,126 @@ def list(request):
 
     if request.user.has_perm('change_medic'):
         dict['modify'] = True
-        dict['medics'] = User.objects.filter(groups__name='Medicos')
+
+    dict['medics'] = User.objects.filter(groups__name='Medicos')
+
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def show_info(request, id=None):
+    """
+        Muestra los Datos Basicos del Medico
+    """
+    mi_template = get_template('GestionTurnos/medico-datos.html')
+    dict = generate_base_keys(request)
+
+    if request.user.has_perm('change_medic'):
+        dict['modify'] = True
+        
+    dict['sub_title'] = "Informacion del Profecional"
+    dict['user'] = User.objects.get(id = int(id))
+    dict['user_info'] = UserInformation.objects.get(user__id = int(id))
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def show_medic_specialities(request, id):
+    mi_template = get_template('GestionTurnos/medico-especialidades.html')
+    dict = generate_base_keys(request)
+
+    if request.user.has_perm('change_medic'):
+        dict['modify'] = True
+
+    dict['sub_title'] = "Especialidades del Profesional"
+    dict['user'] = User.objects.get(id = int(id))
+    dict['specialities'] = MedicalSpecialityFor.objects.filter(user__id = int(id))
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def add_medic_speciality(request, id):
+    """
+        Agregar una Especialidad medica, al medico
+    """
+    mi_template = get_template('GestionTurnos/medico-especialidades-agregar.html')
+    dict = generate_base_keys(request)
+
+    if request.user.has_perm('change_medic'):
+        id = int(id)
+        user_ = User.objects.get(id=id)
+        
+        if request.method == 'POST':
+            esp = MedicalSpecialties.objects.get(id=int(get_value(request, 'especialidad')))
+            med_esp = MedicalSpecialityFor(
+                user = user_,
+                speciality = esp
+            )
+            med_esp.save()
+            dict['med_speciality_add']  = esp
+            
+        dict['user'] = user_
+        dict['sub_title'] = "Agregar Especialidad Medica"
+        dict['especialities'] = MedicalSpecialties.objects.exclude(id__in=MedicalSpecialityFor.objects.filter(user__id=id).values('speciality__id')).order_by('name')
+        dict['med_especialities'] = MedicalSpecialityFor.objects.filter(user__id=id)
+        
+    else: 
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def del_medic_speciality(request, id):
+    """
+        Quitar una especialidad asignada a un medico
+    """
+    mi_template = get_template('GestionTurnos/medico-especialidades-quitar.html')
+    dict = generate_base_keys(request)
+
+    if request.user.has_perm('change_medic'):
+        if request.method == 'POST':
+            dict['query'] = True
+            try:
+                med_esp = MedicalSpecialityFor.objects.get(id=id)
+                dict['query_msj'] = med_esp.speciality.name
+                med_esp.delete()
+
+            except MedicalSpecialityFor.DoesNotExist:
+                pass
+
+        else:
+            id = int(id)
+            dict['esp_med'] = MedicalSpecialityFor.objects.get(id=id)
+
     else:
-        dict['data'] = MedicalSpecialityFor.objects.all()
-
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
 
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
 
 
 
-
-def perms_list(request):
-    mi_template = get_template('GestionTurnos/perm-list.html')
+def show_medic_business_hours(request, id):
+    """
+        Muestra los horarios de Atencion del Medico
+    """
+    mi_template = get_template('GestionTurnos/medico-horarios-atencion.html')
     dict = generate_base_keys(request)
 
-    #from django.contrib.auth.models import Permission
-
-    dict['perms'] = Permission.objects.all()
-
-
-    html_cont = mi_template.render(Context(dict))
-    return HttpResponse(html_cont)
-
-
-def apps_list(request):
-    mi_template = get_template('GestionTurnos/apps-list.html')
-    dict = generate_base_keys(request)
-
-    #from django.contrib.auth.models import Permission
-
-    dict['apps'] = ContentType.objects.all()
-
+    id = int(id)
+    user_ = User.objects.get(id=id)
+    dict['user'] = user_
 
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
-
-
-
