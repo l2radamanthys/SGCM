@@ -15,17 +15,23 @@ from globals import *
 
 
 def index(request):
+    """
+        Pagina de inicio
+
+        por el momento solo tiene contenido estatico que falta rellenar
+    """
     mi_template = get_template('index.html')
     dict = generate_base_keys(request)
-    #dict['user_name'] = 'OFFLINE'
-    #dict['user_menu'] = load_cont('not-login-menu.txt')
-    
+
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
 
 
 
 def login(request):
+    """
+        Vista de Inicio de session de usuarios
+    """
     mi_template = get_template('login.html')
     dict = generate_base_keys(request)
 
@@ -54,6 +60,9 @@ def login(request):
 
 
 def logout(request):
+    """
+        Vista para cerrar session
+    """
     mi_template = get_template('logout.html')
     dict = generate_base_keys(request)
 
@@ -83,6 +92,9 @@ def restricted_access(request, area="NULL"):
 
 
 def change_password(request):
+    """
+        Vista para cambiar la contraseña del usuario
+    """
     if request.user.is_authenticated():
         mi_template = get_template('change-password.html')
         dict = generate_base_keys(request)

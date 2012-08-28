@@ -48,7 +48,7 @@ def register(request):
                     user.first_name = form.cleaned_data['first_name']
                     user.last_name =form.cleaned_data['last_name']
                     user.is_staff = False #no es admin
-                    user.is_active = True #esta activo
+                    user.is_active = True #esta activo despues cambio, para hacer algun modo de activacion
 
                     group = DjangoGroup.objects.get(name='Pacientes')
                     user.groups.add(group)
@@ -105,3 +105,26 @@ def my_info(request):
 
 
 
+
+def patients_list(request):
+    """
+        Vista que Muestra el listado de pacientes
+    """
+    mi_template = get_template('GestionTurnos/usuario-datos.html')
+    dict = generate_base_keys(request)
+
+    if True: #cambiar por el permiso correspondiente mas adelante
+        pass
+    
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def patient_info(request):
+    pass

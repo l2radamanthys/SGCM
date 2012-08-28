@@ -108,9 +108,9 @@ class BusinessHours(models.Model):
         Horarios de Atencion
     """
     user = models.ForeignKey(User) #tiene que hacer referencia a un medico
-    date = models.CharField('Dia', max_length=2, default='--', choices=DATE_CHOICE)
-    start_time = models.TimeField()
-    end_time = models.TimeField()
+    date = models.IntegerField('Dia', default=1, choices=DATE_CHOICE)
+    start_time = models.TimeField('Hora de Inicio Turno')
+    end_time = models.TimeField('Hora de Fin Turno')
     turn_duration =  models.IntegerField('Duracion Turno en Minutos', default=20)
 
 
@@ -134,4 +134,9 @@ class BusinessHours(models.Model):
             Retorna el numero de turnos que se pueden asignar en dicho horario
             de atencion
         """
-        pass
+        start = datetime.timedelta(hours=start_time.hour, minutes=self.start_time.minute)
+        end = datetime.datetime(hours=self.end_time.hours, minutes=self.end_time.minute)
+        dif = end - start
+        min = dif.seconds / 60  #calcula el numero de minutos
+        n_turns = min / self.turn_duration #calcula el numero de turnos por rendondeo
+        return n_turns

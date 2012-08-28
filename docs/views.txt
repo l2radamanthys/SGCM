@@ -11,16 +11,17 @@ Vistas Creadas Hasta La Fecha
 /medicos/registrar/                     Registrar Medico
 /medicos/listado/                       Listaod de Medicos
 /medicos/mostrar/datos/                 Muestra Info Basica Medico
+/medicos/mostrar/especialidades/        Muestra Especialidades de Medico
+
 
 [Incompletas]
 
 /change-password/                       Cambiar Contraseña Usuario
-/medicos/mostrar/especialidades/        Muestra Especialidades de Medico
-
+/medicos/mostrar/horario-atencion/
 
 
 [Falta Hacer]
-/medicos/mostrar/horario-atencion/
+
 
 /medicos/especialidades/listado/
 /medicos/especialidades/buscar/

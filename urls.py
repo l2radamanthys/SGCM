@@ -26,12 +26,15 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-    
+
+
+    ## - Basic Views - ##
+
     (r'^$', base_views.index),
     (r'^index/$', base_views.index),
     (r'^login/$', base_views.login),
     (r'^logout/$', base_views.logout),
-    (r'^change-password/$', base_views.change_password),
+    (r'^change-password/$', base_views.change_password), #por algun motivo no me esta cambiando las contrasenia revisar
     (r'^restricted-access/$', base_views.restricted_access),
     (r'^restricted-access/(.+)/$', base_views.restricted_access),
 
@@ -42,12 +45,12 @@ urlpatterns = patterns('',
 
     (r'^medicos/registrar/$', gt_medics_views.register),
     (r'^medicos/listado/$', gt_medics_views.list),
-
     (r'^medicos/mostrar/datos/(\d{1,2})/$', gt_medics_views.show_info),
     (r'^medicos/mostrar/especilidades/(\d{1,2})/$', gt_medics_views.show_medic_specialities),
     (r'^medicos/agregar/especilidades/(\d{1,2})/$', gt_medics_views.add_medic_speciality),
     (r'^medicos/quitar/especilidades/(\d{1,2})/$', gt_medics_views.del_medic_speciality),
     (r'^medicos/mostrar/horarios-atencion/(\d{1,2})/$', gt_medics_views.show_medic_business_hours),
+
     ## - Historia Clinica Views - ##
 
 

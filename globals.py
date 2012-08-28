@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-    Listado de constantes q se usaran en el Sistema
+    Listado de constantes globales que se usaran en el Sistema
 """
 
 import os
@@ -10,10 +10,11 @@ import os
 
 #ruta del proyecto
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
+#archivos estatiticos
 _MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media')
 _STATIC_ROOT = os.path.join(PROJECT_PATH, 'media/static')
+#path del directorio de plantillas
 MI_TEMPLATE_DIR = os.path.join(PROJECT_PATH, 'templates')
-
 
 
 MONTHS = [
@@ -61,11 +62,11 @@ SOLICITUD_ESTADO_CHOICE = (
 
 
 DATE_CHOICE = (
-    ('Lu', 'Lunes'),
-    ('Ma', 'Martes'),
-    ('Mi', 'Miercoles'),
-    ('Ju', 'Jueves'),
-    ('Vi', 'Viernes'),
-    ('Sa', 'Sabado'),
-    ('Do', 'Domingo'),
+    (1, 'Lunes'),
+    (2, 'Martes'),
+    (3, 'Miercoles'),
+    (4, 'Jueves'),
+    (5, 'Viernes'),
+    (6, 'Sabado'),
+    (7, 'Domingo'),
 )

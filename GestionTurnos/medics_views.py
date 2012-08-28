@@ -22,6 +22,13 @@ from globals import *
 
 
 def register(request):
+    """
+     Vista, para registrar un Medico
+
+    Accesso:
+    --------
+        - Administradores (Total)
+    """
     mi_template = get_template('GestionTurnos/medico-nuevo.html')
     dict = generate_base_keys(request)
 
@@ -84,7 +91,16 @@ def register(request):
 
 def list(request):
     """
-        Lista todos los medicos
+        Lista todos los Medicos
+
+    Accesso:
+    --------
+        - Administradores
+            - Visualizacion Datos
+            - Menu Modificacion
+
+        - Medicos | Pacientes | Otros
+            - Visualizacion Datos
     """
     mi_template = get_template('GestionTurnos/medico-listado.html')
     dict = generate_base_keys(request)
@@ -93,7 +109,6 @@ def list(request):
         dict['modify'] = True
 
     dict['medics'] = User.objects.filter(groups__name='Medicos')
-
 
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
@@ -198,6 +213,14 @@ def del_medic_speciality(request, id):
 
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
+
+
+
+def add_medic_business_hours(request, id):
+    """
+        Agrega Horario de Atencion
+    """
+    pass
 
 
 

@@ -24,6 +24,12 @@
 
     <div class="windows" style="width:600px">
         <h3>Horarios de Atencion</h3>
+
+        {% if modify %}
+        <div style="text-align: right; padding-right: 250px">
+            <a href="/medicos/agregar/horario-atencion/{{ user.id }}" class="buttonCA">Agregar Horario Atencion</a>
+        </div>
+        {% endif %}
     </div>
 
 

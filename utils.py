@@ -39,6 +39,9 @@ def user_menu(request):
         if group_name == "Pacientes":
             return load_cont(os.path.join('UsersMenu','pacientes.txt'))
 
+        elif group_name == "Medicos":
+            return load_cont(os.path.join('UsersMenu','admins.txt'))
+
         else:
             return load_cont(os.path.join('UsersMenu','admins.txt'))
     else:

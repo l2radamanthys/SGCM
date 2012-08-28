@@ -8,6 +8,9 @@ from globals import *
 
 
 class RegisterForm(forms.Form):
+    """
+        Formulario de registro de usuarios paciente y/o administrativos
+    """
     username = forms.CharField(
         label="Nombre de Usuario (*)",
         widget=forms.TextInput(attrs={'class':'edt_c'}),
@@ -87,6 +90,9 @@ class RegisterForm(forms.Form):
 
 
 class MedicRegisterForm(RegisterForm):
+    """
+        Formulario de Registro de usuarios medicos
+    """
     matricula = forms.CharField(
         label="Matricula",
         widget=forms.TextInput(attrs={'class':'edt_c'}),
@@ -95,5 +101,24 @@ class MedicRegisterForm(RegisterForm):
 
 
 
-class MedicSpecialityAdd(forms.Form):
-    specialty = forms.ChoiceField(label="Tipo de Documento", choices="")
+class BusinessHoursForm(forms.Form):
+    """
+        Formulario para registrar Horario de atencion
+    """
+    date = forms.ChoiceField(label="Dia", choices=DATE_CHOICE)
+    start_time = forms.CharField(
+        label="Inicio a las(HH:MM)",
+        widget=forms.TextInput(attrs={'class':'edt_c'}),
+        required = True
+    )
+    end_time = forms.CharField(
+        label="Hora de Fin en HH:MM",
+        widget=forms.TextInput(attrs={'class':'edt_c'}),
+        required = True
+    )
+    turn_duration = forms.CharField(
+        label="Termina a las (HH:MM)",
+        widget=forms.TextInput(attrs={'class':'edt_c'}),
+        required = True
+    )
+    

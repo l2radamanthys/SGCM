@@ -1,0 +1,7 @@
+la verdad costo bastante acostumbrarme a usar un sistemas de usuarios, la primera ves que lo mire pense
+que no iba a servirme el sistema de permisos de django (no lo entendia) y pense escribir uno propio, por desgracia desconocia
+como crear dicho sistema y como era de esperarse a la larga el sistema de permisos que idee termino colapsando
+ya que el sistema lo supero, por lo que tube que volver a hacerlo casi desde cero a todo el seminario tratando de reciclar
+la mayor cantidad de codigo posible, lo bueno que a estas alturas logree entender como funciona el sistemas
+de permisos de django y lo que antes era un dolor de cabeza ahora lo veo como mi salvacion en cuanto
+a gestionar permisos.
