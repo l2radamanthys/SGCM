@@ -216,14 +216,6 @@ def del_medic_speciality(request, id):
 
 
 
-def add_medic_business_hours(request, id):
-    """
-        Agrega Horario de Atencion
-    """
-    pass
-
-
-
 def show_medic_business_hours(request, id):
     """
         Muestra los horarios de Atencion del Medico
@@ -234,6 +226,57 @@ def show_medic_business_hours(request, id):
     id = int(id)
     user_ = User.objects.get(id=id)
     dict['user'] = user_
+    dict['business_hours'] = BusinessHours.objects.filter(user=user_)
+
+    if request.user.has_perm('change_medic'):
+        dict['modify'] = True
+    
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def add_medic_business_hours(request, id):
+    """
+        Agrega un Horario de Atencion a la Agenda del Medico
+
+    Accesso:
+    --------
+        - Administradores
+        - Medicos
+    """
+    mi_template = get_template('GestionTurnos/medico-horarios-atencion-nuevo.html')
+    dict = generate_base_keys(request)
+
+    user_ = User.objects.get(id=id)
+    dict['user'] = user_
+
+    if request.user.has_perm('change_medic'):
+
+
+
+        if request.method == 'POST':
+            dict['query'] = True
+            form = my_forms.BusinessHoursForm(request.POST, auto_id=False)
+            if form.is_valid():
+                business_hour = BusinessHours(
+                    user = user_,
+                    date = form.cleaned_data['date'],
+                    start_time = time_split(form.cleaned_data['start_time']),
+                    end_time = time_split(form.cleaned_data['end_time']),
+                    turn_duration = int(form.cleaned_data['turn_duration']),
+                )
+                business_hour.save()
+
+            else:
+                dict['form_error'] = form
+        dict['form'] = my_forms.BusinessHoursForm()
+        dict['business_hours'] = BusinessHours.objects.filter(user=user_)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
 
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)

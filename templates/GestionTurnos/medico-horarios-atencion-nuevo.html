@@ -23,6 +23,43 @@
     <br />
 
     <div class="windows" style="width:600px">
+        <h3>Nuevo Horarios de Atencion</h3>
+
+    <form action="." method="POST">
+    <table>
+        {{ form.as_table }}
+                
+        <tr>
+            <td colspan="2" style="text-align: center">
+            <br />
+            <input type="submit" value="Agregar" class="buttonCA">
+            </td>
+        </tr>
+    </table>
+    </form>
+    </div>
+    {% if query %}
+        {% if form_error %}
+              
+            <div class="alert" >
+            {% for field in form_error %}
+                {{ field.errors }}
+            {% endfor %}
+            </div>
+                
+        {% else %}
+            <div class="info">
+			<p><strong>Horario Atencion Agregado...</p>
+			</div>
+     
+        {% endif %}
+    {% endif %}
+    
+
+    <br />
+    <br />
+
+    <div class="windows" style="width:600px">
         <h3>Horarios de Atencion</h3>
         
         <table class="table" style="width: 500px; margin: 0 auto;font-weight: 100; font-size: 12px">
@@ -43,14 +80,8 @@
         {% endfor %}
         </table>
         <br />
-        
-        {% if modify %}
-        <div style="text-align: right; padding-right: 250px">
-            <a href="/medicos/agregar/horario-atencion/{{ user.id }}" class="buttonCA">Agregar Horario Atencion</a>
-            <br /><br />
-        </div>
-        {% endif %}
     </div>
-
-
+    
+    
+    <br />
 {% endblock %}

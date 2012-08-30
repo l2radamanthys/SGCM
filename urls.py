@@ -50,9 +50,8 @@ urlpatterns = patterns('',
     (r'^medicos/agregar/especilidades/(\d{1,2})/$', gt_medics_views.add_medic_speciality),
     (r'^medicos/quitar/especilidades/(\d{1,2})/$', gt_medics_views.del_medic_speciality),
     (r'^medicos/mostrar/horarios-atencion/(\d{1,2})/$', gt_medics_views.show_medic_business_hours),
-
+    (r'^medicos/agregar/horario-atencion/(\d{1,2})/$', gt_medics_views.add_medic_business_hours),
     ## - Historia Clinica Views - ##
-
 
     #debug views
     (r'^perms/$', debug_views.perms_list),

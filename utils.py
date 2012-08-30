@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 
 import os
+import datetime
+
 from globals import MI_TEMPLATE_DIR, GET, POST
 
 
@@ -97,3 +99,12 @@ def get_value(request=None, key='', default='', blank='', method=POST):
     else:
         return get_GET_value(request, key, default, blank)
 
+
+
+def time_split(cad="00:00:00"):
+    """
+        comvierte la cadena de texto en un objecto time
+    """
+    list = [int(n) for n in cad.split(":")]
+    hora = datetime.time(list[0], list[1])
+    return hora

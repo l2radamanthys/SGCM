@@ -107,18 +107,21 @@ class BusinessHoursForm(forms.Form):
     """
     date = forms.ChoiceField(label="Dia", choices=DATE_CHOICE)
     start_time = forms.CharField(
-        label="Inicio a las(HH:MM)",
-        widget=forms.TextInput(attrs={'class':'edt_c'}),
+        label="Turno Inicia a las (HH:MM)",
+        widget=forms.TextInput(attrs={'class':'edt_c', 'value':'8:00'}),
         required = True
     )
     end_time = forms.CharField(
-        label="Hora de Fin en HH:MM",
-        widget=forms.TextInput(attrs={'class':'edt_c'}),
+        label="Turno Termina a las HH:MM",
+        widget=forms.TextInput(attrs={'class':'edt_c', 'value':'10:00'}),
         required = True
     )
     turn_duration = forms.CharField(
-        label="Termina a las (HH:MM)",
-        widget=forms.TextInput(attrs={'class':'edt_c'}),
+        label="Duracion en Minutos",
+        widget=forms.TextInput(attrs={'class':'edt_c', 'value':'20'}),
         required = True
     )
-    
+
+
+    #def clean_start_time(self):
+    #    pass

@@ -126,7 +126,12 @@ class BusinessHours(models.Model):
         """
             Calcula la cantidad de minutos entre los 2 intervalos
         """
+        #implementado directamente abajo :S
         pass
+
+
+    def str_day(self):
+        return DATE_CHOICE[self.date-1][1]
 
 
     def number_of_turns(self):
