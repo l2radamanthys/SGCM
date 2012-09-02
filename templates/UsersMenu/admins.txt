@@ -2,32 +2,32 @@
 
 <li><label>Administrativo</label>
     <ul>
-        <li><a href="">Agregar Administrativo</a></li>
-        <li><a href="">Listado de Administrativos</a></li>
+        <li><a href="/admins/registrar/">Agregar Administrativo</a></li>
+        <li><a href="/admins/listado/">Listado de Administrativos</a></li>
     </ul>
 </li>
 
 <li><label>Medicos</label>
     <ul>
         <li><a href="/medicos/registrar/">Agregar Medicos</a></li>
-        <li><a href="">Buscar Medico</a></li>
+        <li><a href="/medicos/buscar/">Buscar Medico</a></li>
         <li><a href="/medicos/listado/">Listado de Medicos</a></li>
     </ul>
 
 <li><label>Pacientes</label>
     <ul>
 
-        <li><a href="">Agregar Paciente</a></li>
-        <li><a href="">Buscar Paciente</a></li>
-        <li><a href="">Listado de Pacientes</a></li>
+        <li><a href="/pacientes/registrar/">Agregar Paciente</a></li>
+        <li><a href="/pacientes/Buscar/">Buscar Paciente</a></li>
+        <li><a href="/pacientes/listado/">Listado de Pacientes</a></li>
     </ul>
 </li>
 
 <li><label>Historia Clinica</label>
     <ul>
-        <li><a href="">Agregar Historia Clinica</a></li>
-        <li><a href="">Buscar Historia Clinica</a></li>
-        <li><a href="">Exportar Historia Clinica</a></li>
+        <li><a href="/historias-clinica/agregar/">Agregar Historia Clinica</a></li>
+        <li><a href="/historias-clinica/buscar/">Buscar Historia Clinica</a></li>
+        <!-- li><a href="">Exportar Historia Clinica</a></li -->
     </ul>
 </li>
 
@@ -40,6 +40,7 @@
 
 <li><label>Usuario</label>
     <ul>
+        <li><a href="/usuarios/inbox/">Inbox</a></li>
         <li><a href="/usuarios/mis-datos/">Mostrar Mis Datos</a></li>
         <li><a href="/change-password">Cambiar Contraseña</a></li>
         <li>&nbsp;</li>

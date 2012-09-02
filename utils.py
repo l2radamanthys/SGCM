@@ -24,7 +24,6 @@ class ACont:
     """
         Simple Clase Contenedora para organizar informacion
     """
-
     def __init__(self, name='', url='', title=''):
         self.name = name
         self.url = url
@@ -38,12 +37,13 @@ def user_menu(request):
     """
     if request.user.is_authenticated():
         group_name = request.user.groups.all()[0].name
+        #usuarios
         if group_name == "Pacientes":
             return load_cont(os.path.join('UsersMenu','pacientes.txt'))
-
+        #medicos
         elif group_name == "Medicos":
             return load_cont(os.path.join('UsersMenu','admins.txt'))
-
+        #administradores
         else:
             return load_cont(os.path.join('UsersMenu','admins.txt'))
     else:
@@ -63,13 +63,11 @@ def generate_base_keys(request):
     """
         Genera el dicionario con contenido basico.
     """
-
     dict = {
         'user_menu': user_menu(request),
         'User': user_info(request),
     }
-    
-    
+
     return dict
 
 

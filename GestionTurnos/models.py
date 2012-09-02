@@ -102,7 +102,6 @@ class MedicalSpecialityFor(models.Model):
 
 
 
-#no implementado
 class BusinessHours(models.Model):
     """
         Horarios de Atencion
@@ -145,3 +144,22 @@ class BusinessHours(models.Model):
         min = dif.seconds / 60  #calcula el numero de minutos
         n_turns = min / self.turn_duration #calcula el numero de turnos por rendondeo
         return n_turns
+
+
+
+class InboxMsj(models.Model):
+    """
+        Clase Para Manejar mensajes entre usuarios
+    """
+    from_user = models.ForeignKey(User, related_name='from')
+    to_user = models.ForeignKey(User, related_name='to')
+    date = models.DateTimeField(auto_now_add=True)
+    issue = models.CharField(max_length=125, default='')
+    content = models.TextField()
+    read = models.BooleanField(default=False)
+
+
+    class Meta:
+        db_table = "InboxMessages"
+        verbose_name = "InboxMessage"
+        verbose_name_plural = "InboxMessages"

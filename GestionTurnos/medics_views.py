@@ -12,8 +12,6 @@ from django.contrib.auth.models import Group as DjangoGroup
 from django.contrib.auth.models import Group, Permission
 from django.contrib.contenttypes.models import ContentType
 
-
-
 from GestionTurnos.models import *
 import GestionTurnos.forms as my_forms
 from utils import *
@@ -71,7 +69,7 @@ def register(request):
                         matricula = form.cleaned_data['matricula'],
                     )
 
-                    dict['username'] = username
+                    dict['name'] = user.get_full_name()
             else:
                 dict['form_errors'] = True
                 dict['form'] = my_forms.RegisterForm(auto_id=False)
@@ -109,6 +107,22 @@ def list(request):
         dict['modify'] = True
 
     dict['medics'] = User.objects.filter(groups__name='Medicos')
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def search(request):
+    """
+    """
+    mi_template = get_template('GestionTurnos/medico-buscar.html')
+    dict = generate_base_keys(request)
+
+    if request.user.has_perm('change_medic'):
+        dict['modify'] = True
+
+    dict['search_result'] = User.objects.filter(groups__name='Medicos')
 
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
@@ -178,7 +192,6 @@ def add_medic_speciality(request, id):
     else: 
         path = request.META['PATH_INFO']
         return HttpResponseRedirect("/restricted-access%s" %path)
-
 
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
@@ -280,3 +293,5 @@ def add_medic_business_hours(request, id):
 
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
+
+

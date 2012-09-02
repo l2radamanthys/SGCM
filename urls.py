@@ -12,6 +12,7 @@ import views as base_views
 import debug_views
 import GestionTurnos.users_views as gt_users_views
 import GestionTurnos.medics_views as gt_medics_views
+import GestionTurnos.inbox_views as gt_inbox_views
 
 
 urlpatterns = patterns('',
@@ -39,11 +40,16 @@ urlpatterns = patterns('',
     (r'^restricted-access/(.+)/$', base_views.restricted_access),
 
     ## - Gestion de Turnos Views - ##
-
     (r'^usuarios/registrar/$', gt_users_views.register),
     (r'^usuarios/mis-datos/$', gt_users_views.my_info),
 
+    #inbox
+    (r'^usuarios/inbox/$', gt_inbox_views.received),
+    (r'^usuarios/inbox/(\d{1,2})/$', gt_inbox_views.read),
+
+
     (r'^medicos/registrar/$', gt_medics_views.register),
+    (r'^medicos/buscar/$', gt_medics_views.search),
     (r'^medicos/listado/$', gt_medics_views.list),
     (r'^medicos/mostrar/datos/(\d{1,2})/$', gt_medics_views.show_info),
     (r'^medicos/mostrar/especilidades/(\d{1,2})/$', gt_medics_views.show_medic_specialities),

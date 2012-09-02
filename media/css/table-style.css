@@ -27,7 +27,8 @@
 
 .table td{
     /*background-color: #F7F5EA;*/
-    padding: 5px;
+    font-size: 12px;
+    padding: 3px 5px;
     border: 1px solid #000;
 }
 
@@ -36,11 +37,34 @@
 }
 
 .table tr:hover td{
-   color: #00557D !important;
+   background-color: #D7EBFF !important;
 }
+
+
+/*
 
 .table-alter {
     background-color: #D7EBFF !important;
 }
+*/
 
+.inbox {
+	width: 100%;
+}
+
+.inbox td {
+	padding: 3px;
+}
+
+.inbox a {
+    color: #333;
+}
+
+.inbox .read {
+    background-color: #DDD;
+}
+
+.inbox .no-read {
+    background-color: #F7F5EA;
+}
 
