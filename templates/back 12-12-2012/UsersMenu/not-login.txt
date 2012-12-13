@@ -1,0 +1,4 @@
+<li><a href="/index/">Home</a></li>
+<li><a href="/medicos/listado/">Listado de Medicos</a></li>
+<li><a href="/usuarios/registrar">Registrarse</a></li>
+

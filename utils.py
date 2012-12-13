@@ -19,18 +19,6 @@ def load_cont(path):
     return cont
 
 
-
-class ACont:
-    """
-        Simple Clase Contenedora para organizar informacion
-    """
-    def __init__(self, name='', url='', title=''):
-        self.name = name
-        self.url = url
-        self.title = title
-
-
-
 def user_menu(request):
     """
         carga el menu de acuerdo al tipo de usuario
@@ -39,23 +27,23 @@ def user_menu(request):
         group_name = request.user.groups.all()[0].name
         #usuarios
         if group_name == "Pacientes":
-            return load_cont(os.path.join('UsersMenu','pacientes.txt'))
+            return load_cont(os.path.join('Menu','pacient.txt'))
         #medicos
         elif group_name == "Medicos":
-            return load_cont(os.path.join('UsersMenu','admins.txt'))
+            return load_cont(os.path.join('Menu','medic.txt'))
         #administradores
         else:
-            return load_cont(os.path.join('UsersMenu','admins.txt'))
+            return load_cont(os.path.join('Menu','medic.txt'))
     else:
-        return load_cont(os.path.join('UsersMenu','not-login.txt'))
+        return load_cont(os.path.join('Menu','not-login.txt'))
 
 
 
 def user_info(request):
     if request.user.is_authenticated():
-        return ACont(request.user.username, '/logout/', 'Cerrar Session de Usuario')
+        return request.user.username
     else:
-        return ACont('OFFLINE', '/login/', 'Login')
+        return "Usuario no Conectado"
 
 
 
@@ -65,7 +53,7 @@ def generate_base_keys(request):
     """
     dict = {
         'user_menu': user_menu(request),
-        'User': user_info(request),
+        'login_username': user_info(request),
     }
 
     return dict

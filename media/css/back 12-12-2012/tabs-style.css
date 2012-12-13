@@ -1,0 +1,41 @@
+ul.tabs {
+    margin: 0 auto;
+    padding: 0;
+    float: left;
+    list-style: none;
+    height: 22px; /*--Define el ancho de las tabs--*/
+    border-bottom: 1px solid #999;
+    border-left: 1px solid #999;
+    width: 100%;
+}
+
+ul.tabs li {
+    float: left;
+    margin: 0;
+    padding: 0;
+    height: 21px; /*--Sustrae 1px de la altura de la lista desordenada--*/
+    line-height: 21px; /*--Alineamiento vertical del texto dentro de la tabla--*/
+    border: 1px solid #999;
+    border-left: none;
+    margin-bottom: -1px; /*--Desplaza los item de la lista abajo 1px--*/
+
+    background: #e0e0e0;
+}
+
+ul.tabs li a {
+    text-decoration: none;
+    color: #000;
+    display: block;
+    font-family: Tahoma;
+    font-size: 11px;
+    padding: 0 10px;
+}
+
+ul.tabs li a:hover {
+    background: #C6ECFF;
+}
+
+html ul.tabs li.active, html ul.tabs li.active a:hover  { /*--Estate seguro de que a la tab activa no se le aplicarán estas propiedades hover--*/
+    background: #fff;
+    #border-bottom: 1px solid #fff; /*--Esto hace que la tab activa esté conectada con respecto a su contenido--*/
+}

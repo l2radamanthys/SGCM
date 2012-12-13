@@ -1,0 +1,23 @@
+<li><a href="/">Home</a></li>
+<li><a href="">Pacientes</a>
+    <ul>
+        <li><a href="/pacientes/buscar/">Buscar</a></li>
+        <li><a href="/pacientes/registrar/">Nuevo</a></li>
+    </ul>
+</li>
+<li><a href="">Mensajes</a>
+    <ul>
+        <li><a href="/">No Leidos</a></li>
+        <li><a href="/">Recibidos</a></li>
+        <li><a href="/">Enviados</a></li>
+    </ul>
+</li>
+
+<li><a href="">Opciones</a>
+    <ul>
+        <li><a href="/pacientes/buscar/">Mis Datos</a></li>
+        <li><a href="/pacientes/registrar/">Cambiar Contraseña</a></li>
+        <li><a href="">&nbsp;</a></li>
+        <li><a href="/logout">Cerrar Session</a></li>
+    </ul>
+</li>

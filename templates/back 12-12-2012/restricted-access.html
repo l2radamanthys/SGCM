@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block style %}
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-botons-style.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+	
+{% endblock %}
+
+{% block contenido %}
+	
+	<br /><br />
+
+	<div style="margin: 0 auto; width: 660px; border: 1px solid #6B6B6B; padding: 20px;">
+		<img src="/media/images/locked.png" style="float: left">
+		<h2>Error<h2> 
+		<p>Estas intentando acceder a un area en no Posees los permisos suficientes para acceder a esta misma:</p>
+		<p><strong>{{ area }}</strong></p>
+		<div style="clear: both"></div>
+	</div>
+	
+	<br />
+	<br />
+	
+	<a href="/">Ir a la Pagina de Inicio</a>	
+	
+	
+
+	
+{% endblock %}

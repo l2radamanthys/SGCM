@@ -1,0 +1,46 @@
+.fancy-form-white {
+	font-family: Verdana, Geneva, Arial;
+	font-size: 12px;
+	
+	
+	border: 1px solid #A2A2A2;
+	padding: 10px;
+	width: 660px;
+	
+	-webkit-border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 20px 20px 20px 20px;
+	border-radius: 10px 10px 10px 10px;
+	
+	box-shadow: inset 0px 0px 10px #D3D3D3;
+
+}
+
+.fancy-form-white .title {
+    color: #006CD9;
+    padding-left: 20px;
+}
+
+.fancy-form-white fieldset {
+	border: 0px;
+	float: left;
+	
+}
+
+.fancy-form-white label {
+	display: block;
+}
+
+.fancy-form-white .lineal-lbl {
+	display: inline !important;
+}
+
+.fancy-form-white input[type="text"],.fancy-form-white input[type="password"], 
+.fancy-form-white select, .fancy-form-white textarea {
+	border: 1px solid #9F9F9F;
+	padding: 3px;
+	color: #2D2D2D;
+}
+
+.fancy-form-white select {
+    padding: 2px;
+}

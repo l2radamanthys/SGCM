@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+
+{% block style %}
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/win-style.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-botons-style.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
+{% endblock %}
+
+
+
+{% block contenido %}
+    <br />
+
+
+    <div class="windows" style="width:600px">
+        <h3>Listado de Medicos</h3>
+    </div>
+
+    <table class="table" style="width: 600px; margin: 0 auto;font-size: 12px;">
+    {% if modify %}
+
+        <tr>
+            <th>Usuario</th>
+            <th>Nombre, Apellido</th>
+            <th>Opciones</th>
+        </tr>
+
+
+
+        {% for medic in medics %}
+            <tr {% cycle 'class="table-alter"' 'class=""' %}>
+                <td style="text-align: center;">{{ medic.username }}</td>
+                <td style="text-align: left;">{{ medic.first_name }} {{ medic.last_name }}</td>
+                <td style="text-align: center;">
+                    <a href="/medicos/mostrar/datos/{{ medic.id }}" title="Mostrar"><img src="/media/images/page_find.gif" /></a>
+                    <a href="/medicos/modificar/" title="Modificar"><img src="/media/images/page_edit.gif" /></a>
+                    <a href="/medicos/borrar/" title="Borrar"><img src="/media/images/page_delete.gif" /></a>
+                </td>
+            </tr>
+        {% endfor %}
+
+    {% else %}
+
+        <tr>
+            <th>Nombre del Medico</th>
+            <th>Mostrar</th>
+        </tr>
+
+        {% for medic in medics %}
+            <tr>
+                <td>{{ medic.first_name }} {{ medic.last_name }}</td>
+                <td style="text-align: center;">
+                    <a href="/medicos/mostrar/datos/{{ medic.id }}" title="Mostrar"><img src="/media/images/page_find.gif" /></a>
+                </td>
+            </tr>
+        {% endfor %}
+    {% endif %}
+
+    </table>
+
+{% endblock %}

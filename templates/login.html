@@ -1,35 +1,31 @@
 {% extends 'base.html' %}
 
 {% block style %}
-	<link type="text/css" rel="stylesheet" media="all" href="/media/css/win-style.css" />
-	<link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-botons-style.css" />
-	<link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
-
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
 {% endblock %}
 
 
 {% block contenido %}
-	<br />
+	<br /><br /><br />
 
 		{% if not_login %}
-			<div class="windows300">
-				<h3>Login</h3>
+			<div class="fancy-form-white" style="width: 350px; margin: 0 auto;">
+				<h3 class="title">Inciar Session</h3><br />
 				<form action="." method="POST">
-				<table>
+				<table style="margin: 0 auto;">
 				<tr>
 					<td><label for="username">Usuario:</label></td>
 					<td><input type="text" name="username" value="" id="username"></td>
+                    <td rowspan="2">
+                    <input type="submit" value="Login" class="grad-button-blue" style="height: 50px;">
+                    </td>
 				</tr>
 				<tr>
 					<td><label for="password">Contraseña:</label></td>
 					<td><input type="password" name="password" value="" id="password"></td>
-				</tr>		
-				<tr>
-					<td colspan="2" style="text-align: center">
-						<input type="submit" value="Login" class="buttonCA">
-					</td>
-				</tr>
-			
+				</tr>				
 				</table>
 				</form>
 			</div>

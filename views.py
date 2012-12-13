@@ -68,7 +68,7 @@ def logout(request):
 
     if request.user.is_authenticated():
         auth.logout(request)
-        dict['user_info'] = ACont()
+        dict['user_info'] = "Usuario no Conectado"
     
     else:
         dict['error'] = True

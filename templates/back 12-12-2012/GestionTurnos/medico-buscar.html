@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+
+{% block style %}
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/win-style.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-botons-style.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
+{% endblock %}
+
+
+
+{% block contenido %}
+	<br />
+    <div class="windows" style="width:400px">
+        <h3>Buscar Medico</h3>
+        <br />
+        <div style="text-align: center;">
+            <form action="" method="POST">
+            <input type="text" name="search" class="edt_m">
+            <input type="Submit" value="Buscar" class="buttonCA">
+            </form>
+        </div>
+        
+        <br />
+	</div>
+	
+    <br />
+    
+    <table class="table" style="width: 500px; margin: 0 auto;font-weight: 100; font-size: 12px">
+        <tr>
+            {% if modify %}
+                <th style="text-align: center;font-weight: bold;">Usuario</th>
+                <th style="text-align: center;font-weight: bold;">Nombre, Apellido</th>
+                <th style="text-align: center;font-weight: bold;">Opciones</th>
+            {% else %}
+                <th style="text-align: center;font-weight: bold;">Nombre, Apellido</th>
+            {% endif %}
+        </tr>
+        
+    {% for medic in search_result %}
+        <tr {% cycle 'class="table-alter"' 'class=""' %}>
+           {% if modify %}    
+                <td style="text-align: center;">{{ medic.username }}</td>
+                <td style="text-align: left;">{{ medic.get_full_name }}</td>
+                <td style="text-align: center;">
+                    <a href="/medicos/mostrar/datos/{{ medic.id }}" title="Mostrar"><img src="/media/images/page_find.gif" /></a>
+                    <a href="/medicos/modificar/" title="Modificar"><img src="/media/images/page_edit.gif" /></a>
+                    <a href="/medicos/borrar/" title="Borrar"><img src="/media/images/page_delete.gif" /></a>
+                </td>
+           {% else %}
+           <td style="text-align: left;"><a href="/medicos/mostrar/datos/{{ medic.id }}" title="Mostrar">{{ medic.first_name }} {{ medic.last_name }}</a></td>
+           {% endif %}
+        </tr>
+ 
+    {% endfor %}
+    </table>
+    
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+
+{% block style %}
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
+	
+{% endblock %}
+
+
+{% block contenido %}
+
+    
+    
+    <div class="fancy-form-white" style="text-align: center; width: 780px; margin: 0 auto;">
+        
+        <h3>Buscar Paciente</h3><br />
+    
+        <form action="" method="POST">
+            <select name="field">
+                <option value="">Usuario</option>
+                <option value="">Nombre</option>
+                <option value="">Apellido</option>
+            </select>
+            <input type="text" name="search" style="width:250px;"> <input type="Submit" value="Buscar" class="grad-button-blue"> 
+        </form>
+    </div>
+    <br />
+    
+    <table class="tbl-round-light" style="width:800px; margin: 0 auto;">
+        <tr>
+            <th>Usuario</th>
+            <th>Apellido y Nombre</th>
+        </tr>
+    {% for patient in search_result %}
+        <tr>
+            <td><a href="/pacientes/show-info/{{ patient.username }}/">{{ patient.username }}</a></td>
+            <td><a href="/pacientes/show-info/{{ patient.username }}/">{{ patient.last_name }}, {{ patient.first_name }}</a></td>
+        </tr>
+        <tr>
+            <td>{{ patient.username }}</td>
+            <td>{{ patient.last_name }}, {{ patient.first_name }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+
+{% endblock %}

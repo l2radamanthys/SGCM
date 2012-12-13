@@ -1,70 +1,46 @@
-.table {
-    font-family: Verdana;
-    font-size: 87%;
-    border: 1px solid #373737;
-    border-spacing: 0;
-    border-collapse: collapse;
-    width: 800px;
-}
 
-.table caption {
-    font-weight: bold;
-    background-color: #0080C0;
-    color: #FFF;
-    padding: 8px;
-    text-align: center;
-    border: 1px solid #000;
-    border-bottom: 0px;
-}
 
-.table th {
-    background-color: #0080C0;
-    color: #FFF;
-    text-align: center;
-    padding: 3px;
-    border: 1px solid #000;
-}
-
-.table td{
-    /*background-color: #F7F5EA;*/
+.tbl-round-light {
+    border-collapse: collapse; /* IE7 and lower */
+    border-spacing: 0; 
     font-size: 12px;
-    padding: 3px 5px;
-    border: 1px solid #000;
-}
-
-.table tr{
-    background-color: #F7F5EA;
-}
-
-.table tr:hover td{
-   background-color: #D7EBFF !important;
 }
 
 
-/*
-
-.table-alter {
-    background-color: #D7EBFF !important;
-}
-*/
-
-.inbox {
-	width: 100%;
+.tbl-round-light {
+    border: solid #ccc 1px;   
 }
 
-.inbox td {
-	padding: 3px;
+.tbl-round-light tr:hover {
+    background: #fbf8e9;
+    -o-transition: all 0.1s ease-in-out;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -ms-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;     
+}    
+    
+.tbl-round-light td, .tbl-round-light th {
+    border-left: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    padding: 7px;
+    text-align: left;    
 }
 
-.inbox a {
-    color: #333;
+.tbl-round-light th {
+    background-color: #E4E4E4;
+    -webkit-box-shadow: 0 1px 0 rgba(255,255,255,.8) inset; 
+    -moz-box-shadow:0 1px 0 rgba(255,255,255,.8) inset;  
+    box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;        
+    border-top: none;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5); 
 }
 
-.inbox .read {
-    background-color: #DDD;
+.tbl-round-light td:first-child, .tbl-round-light th:first-child {
+    border-left: none;
 }
 
-.inbox .no-read {
-    background-color: #F7F5EA;
+.tbl-round-light a {
+    text-decoration: None;
+    color: #006291;
 }
-
