@@ -60,3 +60,54 @@ def show_info(request, pac_id):
 
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
+
+
+
+def edit_basic_info(request, pac_id):
+    """
+	Vista para la modificacion de los datos basicos del Paciente
+    """
+    mi_template = get_template('Patients/edit-basic-info.html')
+    dict = generate_base_keys(request)
+
+    #user = User.objects.get(groups__name='Pacientes', username=pac_id)
+
+
+
+    if True: #asignar permiso correspondiente mas adelante
+
+
+	if request.method == 'POST':
+	    dict['show_form'] = False
+	    dict['custon_message'] = "Form enviado"
+
+	else:
+	    dict['show_form'] = True
+	    pac = User.objects.get(groups__name='Pacientes', username=pac_id)
+	    pac_inf = UserInformation.objects.get(user__username=pac_id)
+
+	    form_data = { #contenido precargado que tendra el formulario
+		'email' : pac.email,
+		'first_name' : pac.first_name,
+		'last_name' : pac.last_name,
+		'type_doc' : pac_inf.type_doc,
+		'nro_doc' : pac_inf.nro_doc,
+		'gender' : pac_inf.gender,
+		'address' : pac_inf.address,
+		'phone' : pac_inf.phone,
+	    }
+
+	    dict['form'] = my_forms.RegisterForm(form_data, auto_id=False)
+
+
+
+	
+	pass
+
+
+
+    else:
+	pass
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)

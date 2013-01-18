@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block style %}
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+{% endblock %}
+
+
+{% block contenido %}
+    <br />
+    {% if show_form %}
+        {% include "Patients/basic-data-form.html" %}
+    {% endif %}
+    
+    {% autoescape off %}
+        {{ custon_message }}
+    {% endautoescape %}
+    
+{% endblock %}

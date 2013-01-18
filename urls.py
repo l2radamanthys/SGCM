@@ -46,8 +46,8 @@ urlpatterns = patterns('',
 
     (r'^pacientes/buscar/$', gt_patients_views.search), 
     (r'^pacientes/show-info/(.+)/$', gt_patients_views.show_info),
-    #(r'^pacientes/registrar/$', gt_users_views.register),
-
+    (r'^pacientes/registrar/$', gt_users_views.register),
+    (r'^pacientes/modificar-datos-basicos/(.+)/$', gt_patients_views.edit_basic_info),
 
 
     #(r'^usuarios/mis-datos/$', gt_users_views.show_my_info),

@@ -16,39 +16,45 @@ from GestionTurnos.models import *
 import GestionTurnos.forms as my_forms
 from utils import *
 from globals import *
+import HTMLTags as Tags
 
 
 
 def register(request):
     """
-        Metodo para registrar un nuevo usuario, paciente
+    Vista para registrar un nuevo usuario, paciente
     """
-    mi_template = get_template('GestionTurnos/usuario-nuevo.html')
+    mi_template = get_template('Patients/register.html')
     dict = generate_base_keys(request)
 
-    if not request.user.is_authenticated():
-        dict['not_login'] = True
+    is_medic = True
+    if not request.user.is_authenticated() or is_medic:
+	dict['show_form'] = True
+	dict['show_errors'] = False
+	dict['form'] = my_forms.RegisterForm(auto_id=False)
 
-        #ctrl si hicieron post
-        if request.method == 'POST':
-            dict['form_commit'] = True
-            form = my_forms.RegisterForm(request.POST, auto_id=False)
-
+	if request.method == 'POST':
+	    form = my_forms.RegisterForm(request.POST, auto_id=False)
             if form.is_valid():
                 username = form.cleaned_data['username']
                 password = form.cleaned_data['password']
                 email = form.cleaned_data['email']
 
-                #para comprobar si el usuario ya existe
+		#comprobacion si el usuario ya existe
                 try :
                     user = User.objects.get(username=username)
-                    
+		    # error el nombre de usuario existe
+		    dict['show_errors'] = True 
+		    dict['custon_errors'] = Tags.html_message("Error el usuario %s ya existe.." %Tags.strong(username))
+		    dict['form'] = form
+
                 except User.DoesNotExist :
                     user = User.objects.create_user(username=username, email=email, password=password)
                     user.first_name = form.cleaned_data['first_name']
                     user.last_name =form.cleaned_data['last_name']
                     user.is_staff = False #no es admin
                     user.is_active = True #esta activo despues cambio, para hacer algun modo de activacion
+		    user.save()
 
                     group = DjangoGroup.objects.get(name='Pacientes')
                     user.groups.add(group)
@@ -62,21 +68,18 @@ def register(request):
                         address = form.cleaned_data['address'],
                         matricula = 0
                     )
+		    dict['show_form'] = False
+		    dict['custon_message'] = Tags.html_message("Paciente Registrado %s Correctamente.."  %(form.cleaned_data['first_name']), type="ok")
 
-                    dict['username'] = username
+	    else:
+		dict['show_errors'] = True
+		dict['form'] = form
 
-                else:
-                    dict['exist_user'] = True
-                    dict['form'] = form
-                    dict['exist_user_error'] = 'Error: El Usuario "%s" ya se encuentra registrado' %username
-                 
-            else:
-                dict['form_errors'] = True
-                dict['form'] = my_forms.RegisterForm(auto_id=False)
-                dict['form_e'] = form
-                
-        else:
-            dict['form'] = my_forms.RegisterForm(auto_id=False)
+	else: #si no se envio el formulario
+	    dict['form'] = my_forms.RegisterForm(auto_id=False)
+
+    else: #sale por aca si el usuario no tiene permiso
+	pass
 
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)

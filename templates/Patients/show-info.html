@@ -2,6 +2,7 @@
 
 {% block style %}
 	<link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
 {% endblock %}    
     
 {% block contenido %}
@@ -51,6 +52,13 @@
         <td><input type="text" value="{{ pac.email }}" style="width:200px;" readonly></td>
     </tr>
 </table>
+<br />
+</div>
+
+<br />
+
+<div style="text-align: right; width: 600px; margin: 0 auto;">
+<a href="/pacientes/modificar-datos-basicos/{{ pac.username }}/" class="grad-button-blue">Modificar Datos Basicos</a>
 </div>
 
 {% endblock %}
