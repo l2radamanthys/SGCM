@@ -70,21 +70,36 @@ def edit_basic_info(request, pac_id):
     mi_template = get_template('Patients/edit-basic-info.html')
     dict = generate_base_keys(request)
 
-    #user = User.objects.get(groups__name='Pacientes', username=pac_id)
-
-
-
     if True: #asignar permiso correspondiente mas adelante
-
+	pac = User.objects.get(groups__name='Pacientes', username=pac_id)
+	pac_inf = UserInformation.objects.get(user__username=pac_id)
 
 	if request.method == 'POST':
 	    dict['show_form'] = False
 	    dict['custon_message'] = "Form enviado"
 
+	    form = my_forms.BasicInfoForm(request.POST)
+	    if form.is_valid():
+		pac.first_name = form.cleaned_data['first_name']
+		pac.last_name = form.cleaned_data['last_name']
+		pac_inf.type_doc = form.cleaned_data['type_doc']
+		pac_inf.nro_doc = form.cleaned_data['nro_doc']
+		pac_inf.gender = form.cleaned_data['gender']
+		pac_inf.address = form.cleaned_data['address']
+		pac_inf.phone = form.cleaned_data['phone']
+		pac.save()
+		pac_inf.save()
+
+		dict['update_ok'] = True
+		dict['pac_username'] = pac.username
+
+	    else:
+		 dict['custon_message'] = "Error"
+		 dict['show_errors'] = True
+		 dict['form'] = form = my_forms.BasicInfoForm(request.POST)
+
 	else:
 	    dict['show_form'] = True
-	    pac = User.objects.get(groups__name='Pacientes', username=pac_id)
-	    pac_inf = UserInformation.objects.get(user__username=pac_id)
 
 	    form_data = { #contenido precargado que tendra el formulario
 		'email' : pac.email,
@@ -98,16 +113,12 @@ def edit_basic_info(request, pac_id):
 	    }
 
 	    dict['form'] = my_forms.RegisterForm(form_data, auto_id=False)
+	    
 
 
-
-	
-	pass
-
-
-
-    else:
-	pass
+    else: #redireccionar sitio error
+	path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
 
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)

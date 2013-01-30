@@ -12,7 +12,7 @@ import views as base_views
 import debug_views
 import GestionTurnos.users_views as gt_users_views
 import GestionTurnos.medics_views as gt_medics_views
-import GestionTurnos.inbox_views as gt_inbox_views
+import GestionTurnos.messages_views as gt_messages_views
 
 import GestionTurnos.patients_views as gt_patients_views
 
@@ -38,8 +38,8 @@ urlpatterns = patterns('',
     (r'^login/$', base_views.login),
     (r'^logout/$', base_views.logout),
     #(r'^change-password/$', base_views.change_password), #por algun motivo no me esta cambiando las contrasenia revisar
-    #(r'^restricted-access/$', base_views.restricted_access),
-    #(r'^restricted-access/(.+)/$', base_views.restricted_access),
+    (r'^restricted-access/$', base_views.restricted_access),
+    (r'^restricted-access/(.+)/$', base_views.restricted_access),
 
     ## - Gestion de Turnos Views - ##
 
@@ -56,6 +56,13 @@ urlpatterns = patterns('',
     #(r'^usuarios/inbox/$', gt_inbox_views.received),
     #(r'^usuarios/inbox/(\d{1,2})/$', gt_inbox_views.read),
 
+    #(r'^usuarios/mensajes/$', gt_inbox_views.received),
+
+    (r'^usuarios/mensajes/enviar$', gt_messages_views.send_message),
+
+
+
+
 
     #(r'^medicos/registrar/$', gt_medics_views.register),
     #(r'^medicos/buscar/$', gt_medics_views.search),
@@ -64,8 +71,10 @@ urlpatterns = patterns('',
     #(r'^medicos/mostrar/especilidades/(\d{1,2})/$', gt_medics_views.show_medic_specialities),
     #(r'^medicos/agregar/especilidades/(\d{1,2})/$', gt_medics_views.add_medic_speciality),
     #(r'^medicos/quitar/especilidades/(\d{1,2})/$', gt_medics_views.del_medic_speciality),
+    (r'^medicos/mostrar/mis-horarios-atencion/$', gt_medics_views.show_my_business_hours),
     #(r'^medicos/mostrar/horarios-atencion/(\d{1,2})/$', gt_medics_views.show_medic_business_hours),
     #(r'^medicos/agregar/horario-atencion/(\d{1,2})/$', gt_medics_views.add_medic_business_hours),
+    (r'^medicos/agregar/mi-horario-atencion/$', gt_medics_views.add_my_business_hours),
     ## - Historia Clinica Views - ##
 
     #debug views

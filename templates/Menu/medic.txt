@@ -5,6 +5,12 @@
         <li><a href="/pacientes/registrar/">Nuevo</a></li>
     </ul>
 </li>
+<li><a href="">Turnos</a>
+    <ul>
+        <li><a href="/medicos/mostrar/mis-horarios-atencion/">Dias Atencion</a></li>
+        <li><a href="">Dias No Laborales</a></li>
+    </ul>
+</li>
 <li><a href="">Mensajes</a>
     <ul>
         <li><a href="/">No Leidos</a></li>

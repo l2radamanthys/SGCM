@@ -1,9 +1,7 @@
 {% extends 'base.html' %}
 
 {% block style %}
-	<link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-botons-style.css" />
-	<link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
-	
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
 {% endblock %}
 
 {% block contenido %}
@@ -12,18 +10,16 @@
 
 	<div style="margin: 0 auto; width: 660px; border: 1px solid #6B6B6B; padding: 20px;">
 		<img src="/media/images/locked.png" style="float: left">
-		<h2>Error<h2> 
-		<p>Estas intentando acceder a un area en no Posees los permisos suficientes para acceder a esta misma:</p>
-		<p><strong>{{ area }}</strong></p>
+		<h2 style="color: #003D59">Error</h2> 
+        <br />
+		<p style="font-size: 14px;">Estas intentando acceder a un area en no Posees los permisos suficientes para acceder a esta misma:</p>
+        <br />
+		<p style="color: #A63600"><strong>{{ area }}</strong></p>
 		<div style="clear: both"></div>
 	</div>
-	
-	<br />
-	<br />
-	
-	<a href="/">Ir a la Pagina de Inicio</a>	
-	
-	
 
-	
+	<br />
+	<div style="margin: 0 auto; width: 660px; padding: 20px;">
+        <a href="/" class="grad-button-blue">Ir a la Pagina de Inicio</a>	
+    </div>
 {% endblock %}

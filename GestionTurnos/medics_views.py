@@ -229,11 +229,68 @@ def del_medic_speciality(request, id):
 
 
 
+
+def show_my_business_hours(request):
+    """
+	Muestra mis dias y horario de atencion
+    """
+
+    if True: #por ahora no controlo permisos
+	mi_template = get_template('Medics/GestionTurnos/mis-horarios-atencion.html')
+	dict = generate_base_keys(request)
+
+
+	dict['business_hours'] = BusinessHours.objects.filter(user__username=request.user.username)
+
+	html_cont = mi_template.render(Context(dict))
+	return HttpResponse(html_cont)
+
+    else:
+	path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+
+
+def add_my_business_hours(request):
+    """
+	Agregar un Horario Atencion a mi usuario Medico
+    """
+    if True: #por ahora no controlo permisos
+	mi_template = get_template('Medics/GestionTurnos/nuevo-horario-atencion.html')
+	dict = generate_base_keys(request)
+	dict['show_form'] = True
+
+	if request.method == 'POST':
+	    pass
+	    form = my_forms.BusinessHoursForm(request.POST, auto_id=False)
+            if form.is_valid():
+		dict['show_form'] = False
+		pass
+
+	    else:
+		dict['form'] = form
+		dict['show_errors'] = True
+
+
+
+	else:
+	    dict['form'] = my_forms.BusinessHoursForm()
+
+
+	html_cont = mi_template.render(Context(dict))
+	return HttpResponse(html_cont)
+
+    else:
+	path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+
+
 def show_medic_business_hours(request, id):
     """
         Muestra los horarios de Atencion del Medico
     """
-    mi_template = get_template('GestionTurnos/medico-horarios-atencion.html')
+    mi_template = get_template('GestionTurnos/Medics/medico-horarios-atencion.html')
     dict = generate_base_keys(request)
 
     id = int(id)

@@ -29,7 +29,7 @@ class RegisterForm(forms.Form):
     )
     email = forms.EmailField(
         label="Email (*)",
-        #widget=forms.TextInput(attrs={'class':'edt_m'}),
+        widget=forms.TextInput(attrs={'class':'edt_m'}),
         error_messages={'required': 'El Campo "Email" es obligatorio'}
     )
     first_name = forms.CharField(
@@ -101,6 +101,47 @@ class MedicRegisterForm(RegisterForm):
 
 
 
+class BasicInfoForm(forms.Form):
+    """
+	Formulario para modificacion de datos Basicos
+    """
+    email = forms.EmailField(
+        label="Email (*)",
+        widget=forms.TextInput(attrs={'class':'edt_m'}),
+        error_messages={'required': 'El Campo "Email" es obligatorio'}
+    )
+    first_name = forms.CharField(
+        label="Nombre",
+        widget=forms.TextInput(attrs={'class':'edt_m'}),
+        required = False
+    )
+    last_name = forms.CharField(
+        label="Apellido",
+        widget=forms.TextInput(attrs={'class':'edt_m'}),
+        required = False
+    )
+
+    type_doc = forms.ChoiceField(label="Tipo de Documento", choices=TYPE_DOC_CHOICE)
+    nro_doc = forms.CharField(
+        label="Nro de Documento",
+        widget=forms.TextInput(attrs={'class':'edt_c'}),
+        required = False
+    )
+    gender = forms.ChoiceField(label='Genero', choices=SEXO_CHOICE)
+    address = forms.CharField(
+        label='Direccion',
+        widget=forms.TextInput(attrs={'class':'edt_g'}),
+        required = False
+    )
+    phone = forms.CharField(
+        label="Telefono",
+        widget=forms.TextInput(attrs={'class':'edt_c'}),
+        required = False
+    )
+
+
+
+
 class BusinessHoursForm(forms.Form):
     """
         Formulario para registrar Horario de atencion
@@ -108,20 +149,20 @@ class BusinessHoursForm(forms.Form):
     date = forms.ChoiceField(label="Dia", choices=DATE_CHOICE)
     start_time = forms.CharField(
         label="Turno Inicia a las (HH:MM)",
-        widget=forms.TextInput(attrs={'class':'edt_c', 'value':'8:00'}),
+        widget=forms.TextInput(attrs={'class':'edt_c', 'style':'text-align: center', 'value':'8:00'}),
         required = True
     )
     end_time = forms.CharField(
         label="Turno Termina a las HH:MM",
-        widget=forms.TextInput(attrs={'class':'edt_c', 'value':'10:00'}),
+        widget=forms.TextInput(attrs={'class':'edt_c', 'style':'text-align: center', 'value':'10:00'}),
         required = True
     )
     turn_duration = forms.CharField(
         label="Duracion en Minutos",
-        widget=forms.TextInput(attrs={'class':'edt_c', 'value':'20'}),
+        widget=forms.TextInput(attrs={'class':'edt_c', 'style':'text-align: center', 'value':'20'}),
         required = True
     )
 
 
-    #def clean_start_time(self):
-    #    pass
+    def clean_start_time(self):
+        pass

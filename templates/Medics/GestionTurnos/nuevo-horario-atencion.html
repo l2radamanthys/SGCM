@@ -9,8 +9,11 @@
 
 {% block contenido %}
     <br />
+    <h2>Agregar Horarios de Atencion</h2>
+    <br />
+   
     {% if show_form %}
-        {% include "Patients/basic-data-form.html" %}
+        {% include "Medics/GestionTurnos/nuevo-horario-atencion-form.html" %}
     {% endif %}
     
     {% if show_errors %}
@@ -18,20 +21,11 @@
         {% for field in form %}
             {{ field.errors }}
         {% endfor %}
+
+        {{ custon_errors }}
         </div> 
     {% endif %}
-    
-    {% if update_ok %}    
-        <div class="alert" >
-        <p>Datos Actualizados Correctamente...</p>
-        </div>
-       
-        <br />
-        <br />
-        <div style="text-align:center">
-            <a href="/pacientes/show-info/{{ pac_username }}/" class="grad-button-blue">Volver</a>
-        </div>
-    {% endif %}
-    
+   
+    {{ custon_message }}
+   
 {% endblock %}
-

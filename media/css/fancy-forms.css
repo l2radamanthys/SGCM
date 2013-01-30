@@ -34,8 +34,10 @@
 	display: inline !important;
 }
 
-.fancy-form-white input[type="text"],.fancy-form-white input[type="password"], 
-.fancy-form-white select, .fancy-form-white textarea {
+.fancy-form-white input[type="text"], 
+.fancy-form-white input[type="password"], 
+.fancy-form-white select, 
+.fancy-form-white textarea {
 	border: 1px solid #9F9F9F;
 	padding: 3px;
 	color: #2D2D2D;
@@ -44,3 +46,17 @@
 .fancy-form-white select {
     padding: 2px;
 }
+
+
+.edt_c {
+    width: 85px;
+}
+
+.edt_m {
+    width: 200px;
+}
+
+.edt_g {
+    width: 350px;
+}
+
