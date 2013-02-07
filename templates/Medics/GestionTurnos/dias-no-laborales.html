@@ -13,7 +13,20 @@
 <h2>Mis Dias Atencion Cancelados</h2>
 
 <br />
+<div style="width: 500px; margin: 0 auto;">
+    <div style="float: left; width: 250px; text-align: center;">
+    <a href="/medicos/mostrar/dias-no-laborales/{{ prev_month }}/{{ year }}/" style="text-decoration: None;"><img src="/media/images/minus-icon.png">&nbsp;</a>
+    {{ name_month }}
+    <a href="/medicos/mostrar/dias-no-laborales/{{ next_month }}/{{ year }}/" style="text-decoration: None;">&nbsp;<img src="/media/images/plus-icon.png" /></a>
+    </div>
+    <div style="width: 250px; margin-left:250px; text-align: center;">
+    <a href="/medicos/mostrar/dias-no-laborales/{{ month }}/{{ prev_year }}/" style="text-decoration: None;"><img src="/media/images/minus-icon.png">&nbsp;</a>
+    {{ year }}
+    <a href="/medicos/mostrar/dias-no-laborales/{{ month }}/{{ next_year }}/" style="text-decoration: None;">&nbsp;<img src="/media/images/plus-icon.png" /></a>
+    </div>
+</div>
 
+<br />
 <table class="calendar" style="margin: 0 auto;">
 	<tr>
 		<th>Lunes</th>
@@ -29,7 +42,7 @@
 		<tr>
 		{% for day in week %}
 			{% if day.day %}
-                {% if day.type %}
+                {% if day.type == 1 %}
                     <td><a class="calendar-blank" href="">{{ day.day }}</a></td>
                 {% else %}
                     <td class="calendar-null">{{ day.day }}</td>

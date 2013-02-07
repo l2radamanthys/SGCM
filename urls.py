@@ -61,9 +61,6 @@ urlpatterns = patterns('',
     (r'^usuarios/mensajes/enviar$', gt_messages_views.send_message),
 
 
-
-
-
     #(r'^medicos/registrar/$', gt_medics_views.register),
     #(r'^medicos/buscar/$', gt_medics_views.search),
     #(r'^medicos/listado/$', gt_medics_views.list),
@@ -74,9 +71,13 @@ urlpatterns = patterns('',
     (r'^medicos/mostrar/mis-horarios-atencion/$', gt_medics_views.show_my_business_hours),
     #(r'^medicos/mostrar/horarios-atencion/(\d{1,2})/$', gt_medics_views.show_medic_business_hours),
     #(r'^medicos/agregar/horario-atencion/(\d{1,2})/$', gt_medics_views.add_medic_business_hours),
+
     (r'^medicos/agregar/mi-horario-atencion/$', gt_medics_views.add_my_business_hours),
     (r'^medicos/borrar/mi-horarios-atencion/(\d{1,2})/$', gt_medics_views.del_my_business_hours),
     (r'^medicos/mostrar/dias-no-laborales/$', gt_medics_views.show_nonworking_days),
+    (r'^medicos/mostrar/dias-no-laborales/(\d{1,2})/(\d{4})/$', gt_medics_views.show_nonworking_days),
+    (r'^medicos/agregar/dia-no-laboral/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_medics_views.add_nonworking_day),
+    (r'^medicos/borrar/dia-no-laboral/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_medics_views.del_nonworking_day),
     ## - Historia Clinica Views - ##
 
     #debug views

@@ -402,19 +402,56 @@ def add_medic_business_hours(request, id):
 
 
 
-def show_nonworking_days(request):
+def show_nonworking_days(request, month=None, year=None):
     """
     """
     mi_template = get_template('Medics/GestionTurnos/dias-no-laborales.html')
     dict = generate_base_keys(request)
 
     if True:
+
+	if month != None and year != None:
+	    month = int(month) % 13
+	    year = int(year)
+
+	else:
+	    year = datetime.date.today().year
+	    month = datetime.date.today().month
+
+	#hoy
 	t_year = datetime.date.today().year
 	t_month = datetime.date.today().month
 
-	cal = calendar.Calendar()
-	wekends = cal.monthdayscalendar(t_year, t_month)
+	dict['month'] = month
+	dict['name_month'] = MONTHS[month-1]
+	dict['year'] = year
 
+	cal = calendar.Calendar()
+	wekends = cal.monthdayscalendar(year, month)
+
+	if month == 1:
+	    dict['prev_month'] = 12
+	    dict['next_month'] = 2
+	    dict['prev_year'] = year - 1
+	    dict['next_year'] = year
+
+	elif month == 12:
+	    dict['prev_month'] = 11
+	    dict['next_month'] = 1
+	    dict['prev_year'] = year
+	    dict['next_year'] = year + 1
+
+	else:
+	    dict['prev_month'] = month - 1
+	    dict['next_month'] = month + 1
+	    dict['prev_year'] = year - 1
+	    dict['next_year'] = year + 1
+
+	if dict['prev_month'] < t_month and dict['prev_year'] == t_year or dict['prev_year'] < t_year:
+	    dict['prev_month'] = t_month
+	    dict['prev_year'] = t_year
+
+	#formateo del mes
 	semanas = []
 	for week in wekends:
 	    sem = []
@@ -425,6 +462,42 @@ def show_nonworking_days(request):
 	    semanas.append(sem)
 	   
 	dict['wekends'] = semanas
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def add_nonworking_day(request, day, month, year):
+    """
+    """
+    mi_template = get_template('Medics/GestionTurnos/dias-no-laborales.html')
+    dict = generate_base_keys(request)
+
+    if True:
+	    pass
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def del_nonworking_day(request, day, month, year):
+    """
+    """
+    mi_template = get_template('Medics/GestionTurnos/dias-no-laborales.html')
+    dict = generate_base_keys(request)
+
+    if True:
+	    pass
 
     else:
         path = request.META['PATH_INFO']

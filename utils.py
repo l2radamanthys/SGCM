@@ -8,9 +8,22 @@ from globals import MI_TEMPLATE_DIR, GET, POST
 
 
 class CalendarDay:
-    def __init__(self, day, type, otro=None):
+    """
+    Clase contenedora para mostrar los elementos de un calendario
+
+    parametros
+	@day: la fecha
+	@type:
+	    0- No Turno
+	    1- Turno Disponible
+	    2- Sin Turno
+	    3- Cancelado
+	    
+    """
+    def __init__(self, day, type=0, argv=None):
 	self.day = day
 	self.type = type
+	self.argv = argv
 
 
 
@@ -23,6 +36,7 @@ def load_cont(path):
     for line in data:
         cont += line
     return cont
+
 
 
 def user_menu(request):
@@ -39,7 +53,7 @@ def user_menu(request):
             return load_cont(os.path.join('Menu','medic.txt'))
         #administradores
         else:
-            return load_cont(os.path.join('Menu','medic.txt'))
+            return load_cont(os.path.join('Menu','admin.txt'))
     else:
         return load_cont(os.path.join('Menu','not-login.txt'))
 
