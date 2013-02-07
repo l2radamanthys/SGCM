@@ -21,11 +21,10 @@
         {% for field in form %}
             {{ field.errors }}
         {% endfor %}
-
-        {{ custon_errors }}
+        
+        {% autoescape off %}
+            {{ custon_errors }}
+        {% endautoescape %}
         </div> 
     {% endif %}
-   
-    {{ custon_message }}
-   
 {% endblock %}

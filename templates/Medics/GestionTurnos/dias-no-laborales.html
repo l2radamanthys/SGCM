@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+
+{% block style %}
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/calendar-style.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+{% endblock %}
+
+
+{% block contenido %}
+<br />
+<h2>Mis Dias Atencion Cancelados</h2>
+
+<br />
+
+<table class="calendar" style="margin: 0 auto;">
+	<tr>
+		<th>Lunes</th>
+		<th>Martes</th>
+		<th>Miercoles</th>
+		<th>Jueves</th>
+		<th>Viernes</th>
+		<th>Sabado</th>
+		<th>Domingo</th>
+	</tr>
+
+	{% for week in wekends %}
+		<tr>
+		{% for day in week %}
+			{% if day.day %}
+                {% if day.type %}
+                    <td><a class="calendar-blank" href="">{{ day.day }}</a></td>
+                {% else %}
+                    <td class="calendar-null">{{ day.day }}</td>
+                {% endif %}
+            {% else %}
+				<td class="calendar-no-day"></td>
+			{% endif %}
+		{% endfor %}
+		</tr>
+	{% endfor %}
+</table>
+<br />
+<h3>Informacion </h3><br />
+<p> <span class="calendar-null"> &nbsp;&nbsp;&nbsp;</span>&nbsp; Dias Donde no se Asigna Turno</p><br />
+<p> <span class="calendar-over"> &nbsp;&nbsp;&nbsp;</span>&nbsp; Turnos Completos </p><br />
+<p> <span class="calendar-cancel"> &nbsp;&nbsp;&nbsp;</span>&nbsp; Dias Cancelados </p><br />
+
+        
+{% endblock %}

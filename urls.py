@@ -75,6 +75,8 @@ urlpatterns = patterns('',
     #(r'^medicos/mostrar/horarios-atencion/(\d{1,2})/$', gt_medics_views.show_medic_business_hours),
     #(r'^medicos/agregar/horario-atencion/(\d{1,2})/$', gt_medics_views.add_medic_business_hours),
     (r'^medicos/agregar/mi-horario-atencion/$', gt_medics_views.add_my_business_hours),
+    (r'^medicos/borrar/mi-horarios-atencion/(\d{1,2})/$', gt_medics_views.del_my_business_hours),
+    (r'^medicos/mostrar/dias-no-laborales/$', gt_medics_views.show_nonworking_days),
     ## - Historia Clinica Views - ##
 
     #debug views

@@ -32,6 +32,17 @@ MONTHS = [
     'Diciembre'
 ]
 
+DAYS = [
+    'Lunes',
+    'Martes',
+    'Miercoles',
+    'Jueves',
+    'Viernes',
+    'Sabado',
+    'Domingo'
+]
+
+
 GET = 0
 POST = 1
 

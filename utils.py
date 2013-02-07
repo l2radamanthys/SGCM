@@ -7,6 +7,12 @@ import datetime
 from globals import MI_TEMPLATE_DIR, GET, POST
 
 
+class CalendarDay:
+    def __init__(self, day, type, otro=None):
+	self.day = day
+	self.type = type
+
+
 
 def load_cont(path):
     """
@@ -76,11 +82,23 @@ def get_POST_value(request, key='', default='', blank=''):
 
 
 
-def get_value(request=None, key='', default='', blank='', method=POST):
+def get_value(request, key='', default='', blank='', method=POST):
     """
         Obtiene valor de object request por los metodos POST/GET
     """
     if method == POST:
+        return get_POST_value(request, key, default, blank)
+    else:
+        return get_GET_value(request, key, default, blank)
+
+
+
+def _get_value(request, key='', default='', blank=''):
+    """
+        Obtiene valor de object request de la info que se envio al
+	formulario
+    """
+    if request.method == 'POST':
         return get_POST_value(request, key, default, blank)
     else:
         return get_GET_value(request, key, default, blank)

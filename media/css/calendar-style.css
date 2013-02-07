@@ -1,0 +1,53 @@
+
+.calendar {
+    border-collapse: collapse; /* IE7 and lower */
+    border-spacing: 0; 
+    font-size: 12px;
+ 
+}
+.calendar th {
+    background-color: #DDD; 
+    border: solid #ccc 1px;
+    height: 20px;
+}
+
+
+.calendar a, .calendar p {
+    border: 0px !important;
+    text-decoration: None;
+    color:  #005782;
+    font-size: 16px;
+}
+
+
+.calendar td {
+    border: solid #ccc 1px;
+    text-align: center;
+    width: 70px;
+    height: 70px; 
+}
+
+.calendar-blank {
+    border: solid #ccc 1px;
+}
+
+.calendar-no-day {
+    border: solid #ccc 1px;
+    background-color: #EEE;
+}
+
+
+.calendar-null {
+    background-color: #FFE2C6;
+    border: solid #ccc 1px;
+}
+
+.calendar-cancel {
+    background-color: #BBB;
+    border: solid #ccc 1px;
+}
+
+.calendar-over {
+    background-color: #0080FF;
+    border: solid #ccc 1px;
+}

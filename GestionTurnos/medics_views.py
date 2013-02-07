@@ -12,6 +12,9 @@ from django.contrib.auth.models import Group as DjangoGroup
 from django.contrib.auth.models import Group, Permission
 from django.contrib.contenttypes.models import ContentType
 
+import calendar
+import datetime
+
 from GestionTurnos.models import *
 import GestionTurnos.forms as my_forms
 from utils import *
@@ -261,21 +264,69 @@ def add_my_business_hours(request):
 	dict['show_form'] = True
 
 	if request.method == 'POST':
-	    pass
+	    
 	    form = my_forms.BusinessHoursForm(request.POST, auto_id=False)
+	    
             if form.is_valid():
-		dict['show_form'] = False
-		pass
+		_date = int(form.cleaned_data['date'])
+		query = BusinessHours.objects.filter(user=request.user, date=_date)
+		if len(query) == 0:
+		    dict['show_form'] = False
+		    business_hour = BusinessHours(
+			user = request.user,
+			date = _date,
+			start_time = time_split(form.cleaned_data['start_time']), #
+			#start_time = time_split(_get_value(request, 'start_time')),
+			end_time = time_split(form.cleaned_data['end_time']),
+			turn_duration = int(form.cleaned_data['turn_duration']),
+		    )
+		    business_hour.save()
+		    return HttpResponseRedirect("/medicos/mostrar/mis-horarios-atencion/")
+
+		else:
+		    dict['form'] = form
+		    dict['show_errors'] = True
+		    dict['custon_errors'] = '<p>Error: El dia <strong> %s </strong> ya posee un horario de atencion Asignado</p>' %DAYS[_date-1]
 
 	    else:
 		dict['form'] = form
 		dict['show_errors'] = True
 
-
-
 	else:
-	    dict['form'] = my_forms.BusinessHoursForm()
+	    dict['form'] = my_forms.BusinessHoursForm(auto_id=False)
 
+
+	html_cont = mi_template.render(Context(dict))
+	return HttpResponse(html_cont)
+
+    else:
+	path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+
+
+def del_my_business_hours(request, bh_id):
+    """
+	Elimina un horario de atencion del medico
+    """
+    if True: #por ahora no controlo permisos
+	mi_template = get_template('Medics/GestionTurnos/borrar-horario-atencion.html')
+	dict = generate_base_keys(request)
+
+	bh = BusinessHours.objects.get(id=int(bh_id))
+
+	if request.method == 'POST':
+	    dict['query'] = True
+	    bh.delete()
+	    
+	else:
+	    dict['bh_date'] = DAYS[bh.date-1]
+	    dict['bh_inicio'] = bh.start_time
+	    dict['bh_fin'] = bh.end_time
+	    dict['bh_duracion'] = bh.turn_duration
+	    pass
+
+	#dict['business_hours'] = BusinessHours.objects.filter(user__username=request.user.username)
 
 	html_cont = mi_template.render(Context(dict))
 	return HttpResponse(html_cont)
@@ -324,8 +375,6 @@ def add_medic_business_hours(request, id):
 
     if request.user.has_perm('change_medic'):
 
-
-
         if request.method == 'POST':
             dict['query'] = True
             form = my_forms.BusinessHoursForm(request.POST, auto_id=False)
@@ -352,3 +401,34 @@ def add_medic_business_hours(request, id):
     return HttpResponse(html_cont)
 
 
+
+def show_nonworking_days(request):
+    """
+    """
+    mi_template = get_template('Medics/GestionTurnos/dias-no-laborales.html')
+    dict = generate_base_keys(request)
+
+    if True:
+	t_year = datetime.date.today().year
+	t_month = datetime.date.today().month
+
+	cal = calendar.Calendar()
+	wekends = cal.monthdayscalendar(t_year, t_month)
+
+	semanas = []
+	for week in wekends:
+	    sem = []
+	    for day in week:
+		sem.append(CalendarDay(day,1))
+	    sem[5].type = 0
+	    sem[6].type = 0
+	    semanas.append(sem)
+	   
+	dict['wekends'] = semanas
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)

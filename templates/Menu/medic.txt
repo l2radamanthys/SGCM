@@ -7,8 +7,9 @@
 </li>
 <li><a href="">Turnos</a>
     <ul>
-        <li><a href="/medicos/mostrar/mis-horarios-atencion/">Dias Atencion</a></li>
-        <li><a href="">Dias No Laborales</a></li>
+        <li><a href="/medicos/mostrar/mis-horarios-atencion/">Turnos Solicitados</a></li>
+        <li><a href="/medicos/mostrar/mis-horarios-atencion/">Horario Atencion</a></li>
+        <li><a href="/medicos/mostrar/dias-no-laborales/">Dias No Laborales</a></li>
     </ul>
 </li>
 <li><a href="">Mensajes</a>

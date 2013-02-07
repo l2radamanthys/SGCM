@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block style %}
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+{% endblock %}
+
+
+{% block contenido %}
+    <br />
+    <h2>Borrar Horario de Atencion</h2>
+    <br />
+    
+    
+    <br />
+    {% if query %}
+        <div class="success">
+            <p>Se ha borrado correctamente el horario de atencion...</p>
+        </div>
+        <br /><br />
+        <div style="text-align: center">
+            <a href="/medicos/mostrar/mis-horarios-atencion/" class="grad-button-blue">Volver</a>
+        </div>
+    {% else %}    
+        <div class="fancy-form-white" style="width: 450px; margin: 0 auto; text-align: center">
+        
+        <p style="text-align: left; width: 280px; margin: 0 auto;"><strong>Dia:</strong> {{ bh_date }} - <strong>Duracion</strong>  {{ bh_duracion }} minutos<br />
+        <strong>Inicio</strong> {{ bh_inicio }} - <strong>Fin</strong> {{ bh_fin }}
+        </p>
+        <br />
+        
+        <form action="" method="POST">
+            <input type="hidden" name="query" value="1">
+            <input type="Submit" class="grad-button-blue"  value="Borrar" />
+            <a href="/medicos/mostrar/mis-horarios-atencion/" class="grad-button-blue">Volver</a>
+        </form>
+        <br />
+        </div>
+    {% endif %}
+    
+    
+    
+   
+{% endblock %}

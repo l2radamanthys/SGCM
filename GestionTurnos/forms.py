@@ -153,7 +153,7 @@ class BusinessHoursForm(forms.Form):
         required = True
     )
     end_time = forms.CharField(
-        label="Turno Termina a las HH:MM",
+        label="Turno Termina a las (HH:MM)",
         widget=forms.TextInput(attrs={'class':'edt_c', 'style':'text-align: center', 'value':'10:00'}),
         required = True
     )
@@ -164,5 +164,5 @@ class BusinessHoursForm(forms.Form):
     )
 
 
-    def clean_start_time(self):
-        pass
+    #def clean_start_time(self):
+    #    pass

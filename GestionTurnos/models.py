@@ -110,7 +110,7 @@ class BusinessHours(models.Model):
     date = models.IntegerField('Dia', default=1, choices=DATE_CHOICE)
     start_time = models.TimeField('Hora de Inicio Turno')
     end_time = models.TimeField('Hora de Fin Turno')
-    turn_duration =  models.IntegerField('Duracion Turno en Minutos', default=20)
+    turn_duration = models.IntegerField('Duracion Turno en Minutos', default=20)
 
 
     class Meta:
