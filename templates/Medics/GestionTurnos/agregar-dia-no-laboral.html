@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+
+{% block style %}
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+{% endblock %}
+
+
+{% block contenido %}
+<br />
+<h2>Agregar Dia No Laboral</h3>
+
+<br />
+<div class="fancy-form-white" style="width: 550px; margin: 0 auto;">
+    <form action="" method="POST">
+    <table style="width:500px; margin: 0 auto;">
+        <tr>
+            <td>Fecha:</td>
+            <td><strong>{{ day }} / {{ month }} / {{ year }}</strong></td>
+        </tr>
+        <tr>
+            <td>Motivo:</td>
+            <td><br /><textarea rows="5" cols="60">Ingrese el motivo de la agregacion del dia no laboral.</textarea>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center">
+            <br />
+            <input type="submit" class="grad-button-blue" value="Agregar"  />
+            <a href="/medicos/mostrar/dias-no-laborales/{{ month }}/{{ year }}/" class="grad-button-blue">Volver</a>
+            </td>
+        </tr>  
+    </table>
+    </form>
+ </div>
+ 
+{% endblock %}

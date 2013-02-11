@@ -374,7 +374,6 @@ def add_medic_business_hours(request, id):
     dict['user'] = user_
 
     if request.user.has_perm('change_medic'):
-
         if request.method == 'POST':
             dict['query'] = True
             form = my_forms.BusinessHoursForm(request.POST, auto_id=False)
@@ -451,14 +450,26 @@ def show_nonworking_days(request, month=None, year=None):
 	    dict['prev_month'] = t_month
 	    dict['prev_year'] = t_year
 
+
+	#dias que se atiende
+	bh = BusinessHours.objects.filter(user=request.user)
+	wd = []
+	for day in bh:
+	    wd.append(day.date - 1)
+
+
 	#formateo del mes
 	semanas = []
 	for week in wekends:
 	    sem = []
+	    i = 0
 	    for day in week:
-		sem.append(CalendarDay(day,1))
-	    sem[5].type = 0
-	    sem[6].type = 0
+		if i in wd:
+		    sem.append(CalendarDay(day,1))#dias libress
+		else:
+		    sem.append(CalendarDay(day,0)) #dias q no se atiende
+		i += 1
+	    
 	    semanas.append(sem)
 	   
 	dict['wekends'] = semanas
@@ -475,11 +486,14 @@ def show_nonworking_days(request, month=None, year=None):
 def add_nonworking_day(request, day, month, year):
     """
     """
-    mi_template = get_template('Medics/GestionTurnos/dias-no-laborales.html')
+    mi_template = get_template('Medics/GestionTurnos/agregar-dia-no-laboral.html')
     dict = generate_base_keys(request)
 
     if True:
-	    pass
+	dict['day'] = day
+	dict['month'] = month
+	dict['year'] = year
+
 
     else:
         path = request.META['PATH_INFO']

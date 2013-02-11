@@ -151,8 +151,8 @@ class InboxMsj(models.Model):
     """
         Clase Para Manejar mensajes entre usuarios
     """
-    from_user = models.ForeignKey(User, related_name='from')
-    to_user = models.ForeignKey(User, related_name='to')
+    from_user = models.ForeignKey(User, related_name='from_user')
+    to_user = models.ForeignKey(User, related_name='to_user')
     date = models.DateTimeField(auto_now_add=True)
     issue = models.CharField(max_length=125, default='')
     content = models.TextField()
@@ -163,3 +163,13 @@ class InboxMsj(models.Model):
         db_table = "InboxMessages"
         verbose_name = "InboxMessage"
         verbose_name_plural = "InboxMessages"
+
+
+
+class NonWorkingDay(models.Model):
+    """
+	Dia no laborales
+    """
+    date = models.DateField()  #fecha
+    issue = models.TextField() #asunto
+    user = models.ForeignKey(User, related_name='from')
