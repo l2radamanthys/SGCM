@@ -1,0 +1,43 @@
+<div class="fancy-form-white" style="width: 550px; margin: 0 auto;">
+    <form action="" method="POST">
+    <table style="width:500px; margin: 0 auto;">
+        <tr>
+            <td>Medico:</td>
+            <td><strong>{{ med.last_name }}, {{ med.first_name }} </strong></td>
+        </tr>
+        
+        <tr>
+            <td>Paciente:</td>
+            <td><strong>{{ pac.last_name }}, {{ pac.first_name }} </strong></td>
+        </tr>
+        
+        <tr>
+            <td>Motivo:</td>
+            <td><br /><textarea rows="5" cols="60" name="issue"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>Examen Fisico:</td>
+            <td><br /><textarea rows="5" cols="60" name="physical_exam"></textarea>
+            </td>
+        </tr>
+         <tr>
+            <td>Diagnostico:</td>
+            <td><br /><textarea rows="5" cols="60" name="diagnostic"></textarea>
+            </td>
+        </tr>       
+        <tr>
+            <td>Observaciones:</td>
+            <td><br /><textarea rows="5" cols="60" name="observations"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center">
+            <br />
+            <input type="submit" class="grad-button-blue" value="Agregar"  />
+            <a href="/pacientes/mostrar/consultas-medicas/{{ pac.username }}/" class="grad-button-blue">Volver</a>
+            </td>
+        </tr>  
+    </table>
+    </form>
+ </div>

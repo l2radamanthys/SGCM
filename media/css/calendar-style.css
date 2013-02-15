@@ -3,8 +3,9 @@
     border-collapse: collapse; /* IE7 and lower */
     border-spacing: 0; 
     font-size: 12px;
- 
 }
+
+
 .calendar th {
     background-color: #DDD; 
     border: solid #ccc 1px;
@@ -27,9 +28,11 @@
     height: 70px; 
 }
 
+
 .calendar-blank {
     border: solid #ccc 1px;
 }
+
 
 .calendar-no-day {
     border: solid #ccc 1px;
@@ -42,10 +45,12 @@
     border: solid #ccc 1px;
 }
 
+
 .calendar-cancel {
     background-color: #BBB;
     border: solid #ccc 1px;
 }
+
 
 .calendar-over {
     background-color: #0080FF;

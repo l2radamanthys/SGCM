@@ -14,111 +14,68 @@ from GestionTurnos.models import *
 import GestionTurnos.forms as my_forms
 from utils import *
 from globals import *
+import HTMLTags as Tags
 
 
-
-def search(request):
+def patient_register(request):
     """
-	Vista para buscar Paciente por similitud y mostrar el listado de
-	posibles resultados
+    Vista para registrar un nuevo usuario, paciente
     """
-    mi_template = get_template('Patients/search.html')
+    mi_template = get_template('Patients/GestionTurnos/register.html')
     dict = generate_base_keys(request)
 
-    if True: #asignar permiso correspondiente mas adelante
-	#falta implementar la busqueda en si, por ahora solo listado
-	dict['search_result'] = User.objects.filter(groups__name='Pacientes')
-        
-    #usuario no posee permisos
-    else:
-	path = request.META['PATH_INFO']
-        return HttpResponseRedirect("/restricted-access%s" %path)
-
-
-    html_cont = mi_template.render(Context(dict))
-    return HttpResponse(html_cont)
-
-
-
-def show_info(request, pac_id):
-    """
-	Muestra la informacion del paciente especificada en pac_id
-    """
-    mi_template = get_template('Patients/show-info.html')
-    dict = generate_base_keys(request)
-
-    if True: #asignar permiso correspondiente mas adelante
-
-	dict['pac'] = User.objects.get(groups__name='Pacientes', username=pac_id)
-	dict['pac_inf'] = UserInformation.objects.get(user__username=pac_id)
-	pass
-    
-    else:
-	path = request.META['PATH_INFO']
-        return HttpResponseRedirect("/restricted-access%s" %path)
-
-
-    html_cont = mi_template.render(Context(dict))
-    return HttpResponse(html_cont)
-
-
-
-def edit_basic_info(request, pac_id):
-    """
-	Vista para la modificacion de los datos basicos del Paciente
-    """
-    mi_template = get_template('Patients/edit-basic-info.html')
-    dict = generate_base_keys(request)
-
-    if True: #asignar permiso correspondiente mas adelante
-	pac = User.objects.get(groups__name='Pacientes', username=pac_id)
-	pac_inf = UserInformation.objects.get(user__username=pac_id)
+    if not request.user.is_authenticated():
+	dict['show_form'] = True
+	dict['show_errors'] = False
+	dict['form'] = my_forms.RegisterForm(auto_id=False)
 
 	if request.method == 'POST':
-	    dict['show_form'] = False
-	    dict['custon_message'] = "Form enviado"
+	    form = my_forms.RegisterForm(request.POST, auto_id=False)
+            if form.is_valid():
+                username = form.cleaned_data['username']
+                password = form.cleaned_data['password']
+                email = form.cleaned_data['email']
 
-	    form = my_forms.BasicInfoForm(request.POST)
-	    if form.is_valid():
-		pac.first_name = form.cleaned_data['first_name']
-		pac.last_name = form.cleaned_data['last_name']
-		pac_inf.type_doc = form.cleaned_data['type_doc']
-		pac_inf.nro_doc = form.cleaned_data['nro_doc']
-		pac_inf.gender = form.cleaned_data['gender']
-		pac_inf.address = form.cleaned_data['address']
-		pac_inf.phone = form.cleaned_data['phone']
-		pac.save()
-		pac_inf.save()
+		#comprobacion si el usuario ya existe
+                try :
+                    user = User.objects.get(username=username)
+		    # error el nombre de usuario existe
+		    dict['show_errors'] = True
+		    dict['custon_errors'] = Tags.html_message("Error el usuario %s ya existe.." %Tags.strong(username))
+		    dict['form'] = form
 
-		dict['update_ok'] = True
-		dict['pac_username'] = pac.username
+                except User.DoesNotExist :
+                    user = User.objects.create_user(username=username, email=email, password=password)
+                    user.first_name = form.cleaned_data['first_name']
+                    user.last_name =form.cleaned_data['last_name']
+                    user.is_staff = False #no es admin
+                    user.is_active = True #esta activo despues cambio, para hacer algun modo de activacion
+		    user.save()
+
+                    group = DjangoGroup.objects.get(name='Pacientes')
+                    user.groups.add(group)
+
+                    UserInformation.objects.create(
+                        user=user,
+                        type_doc = form.cleaned_data['type_doc'],
+                        nro_doc = form.cleaned_data['nro_doc'],
+                        gender = form.cleaned_data['gender'],
+                        phone = form.cleaned_data['phone'],
+                        address = form.cleaned_data['address'],
+                        matricula = 0
+                    )
+		    dict['show_form'] = False
+		    dict['custon_message'] = Tags.html_message("Paciente Registrado %s Correctamente.."  %(form.cleaned_data['first_name']), type="ok")
 
 	    else:
-		 dict['custon_message'] = "Error"
-		 dict['show_errors'] = True
-		 dict['form'] = form = my_forms.BasicInfoForm(request.POST)
+		dict['show_errors'] = True
+		dict['form'] = form
 
-	else:
-	    dict['show_form'] = True
+	else: #si no se envio el formulario
+	    dict['form'] = my_forms.RegisterForm(auto_id=False)
 
-	    form_data = { #contenido precargado que tendra el formulario
-		'email' : pac.email,
-		'first_name' : pac.first_name,
-		'last_name' : pac.last_name,
-		'type_doc' : pac_inf.type_doc,
-		'nro_doc' : pac_inf.nro_doc,
-		'gender' : pac_inf.gender,
-		'address' : pac_inf.address,
-		'phone' : pac_inf.phone,
-	    }
-
-	    dict['form'] = my_forms.RegisterForm(form_data, auto_id=False)
-	    
-
-
-    else: #redireccionar sitio error
-	path = request.META['PATH_INFO']
-        return HttpResponseRedirect("/restricted-access%s" %path)
+    else: #sale por aca si el usuario no tiene permiso
+	pass
 
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)

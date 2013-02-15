@@ -43,3 +43,17 @@
     padding-top: 5px;
     width: 900px;
 }
+
+.left-cont {
+    float: left;
+    width: 180px;
+    border: 1px solid #DDD;
+}
+
+.center-cont {
+    margin-left: 190px;
+    width: 700px;
+    min-height: 500px;
+    border: 1px solid #DDD;
+}
+

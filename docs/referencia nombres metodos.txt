@@ -1,0 +1,9 @@
+
+
+ para las vistas se especificara el tipo de usuario y funcion osea
+ 
+ my_TIPO_USR_ACCION #usuario actual
+ 
+ medic_ACCION #cuando se muestren datos medicos etc 
+ 
+ 

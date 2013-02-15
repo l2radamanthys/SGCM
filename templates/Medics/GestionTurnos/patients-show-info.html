@@ -1,31 +1,19 @@
-{% extends 'base.html' %}
-
-{% block style %}
-	<link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
-    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
-{% endblock %}    
+{% extends 'Medics/GestionTurnos/patient-view.html' %}
     
-{% block contenido %}
-    
-<br />    
-<div >
-    <h3  style="float: left; padding-top:10px;" >{{ pac.last_name  }}, {{ pac.first_name }} - Datos Paciente</h3>
-    
-    <ul class="sub-menu-h"  style="float: right;">
-        <li><a href="">Datos Basicos</a></li>
-        <li><a href="">Estudios Clinicos</a></li>
-        <li><a href="">Consultas</a></li>
-        <li><a href="">Prescripciones</a></li>
-    </ul>
-    
-    <div style="clear: both"></div>
+{% block view-cont %}
+<div  style="padding-left:10px;" >
+    <h3> Datos Paciente </h3>
+    <p style="font-size:14px;">{{ pac.last_name  }}, {{ pac.first_name }} </p>
 </div>
-
+    
 <br /><br />
 
-<div class="fancy-form-white" style="text-align: left; width: 600px; margin: 0 auto;">    
-<h3 class="title">Datos Basicos del Paciente</h3>
+<div style="text-align: right; width: 600px; margin: 0 auto;">
+    <a href="/pacientes/modificar-datos-basicos/{{ pac.username }}/" class="grad-button-blue">Modificar Datos Basicos</a>
+</div>
+
 <br />
+<div class="fancy-form-white" style="text-align: left; width: 600px; margin: 0 auto;">    
 <table>
     <tr>
         <td><label style="padding-right: 30px;">Apellido y Nombre:</label></td>
@@ -53,12 +41,6 @@
     </tr>
 </table>
 <br />
-</div>
-
-<br />
-
-<div style="text-align: right; width: 600px; margin: 0 auto;">
-<a href="/pacientes/modificar-datos-basicos/{{ pac.username }}/" class="grad-button-blue">Modificar Datos Basicos</a>
 </div>
 
 {% endblock %}

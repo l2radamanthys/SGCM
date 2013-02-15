@@ -173,3 +173,17 @@ class NonWorkingDay(models.Model):
     date = models.DateField()  #fecha
     issue = models.TextField() #asunto
     user = models.ForeignKey(User, related_name='from')
+
+
+
+class MedicalConsultation(models.Model):
+    """
+	Consulta Medica
+    """
+    medic = models.ForeignKey(User, related_name='medic_user')
+    patient = models.ForeignKey(User, related_name='patient_user')
+    date = models.DateTimeField(auto_now_add=True)
+    issue = models.TextField(default='') #motivo
+    diagnostic = models.TextField(default='') #diagnostico
+    physical_exam = models.TextField(default='') #examen fisico
+    observations = models.TextField(default='') #observaciones

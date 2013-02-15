@@ -59,12 +59,23 @@ def user_menu(request):
 
 
 
-def user_info(request):
+def user_info(request, name=False):
+
     if request.user.is_authenticated():
-        return request.user.username
+	if name:
+	    return "%s, %s" %(request.user.last_name, request.user.first_name)
+	else:
+	    return request.user.username
     else:
         return "Usuario no Conectado"
 
+
+
+def get_role(request):
+    if request.user.is_authenticated():
+	return request.user.groups.all()[0].name
+    else:
+	return ""
 
 
 def generate_base_keys(request):
@@ -74,6 +85,8 @@ def generate_base_keys(request):
     dict = {
         'user_menu': user_menu(request),
         'login_username': user_info(request),
+	'login_user' : user_info(request, True),
+	'login_user_role': get_role(request)
     }
 
     return dict

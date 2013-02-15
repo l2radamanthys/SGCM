@@ -131,6 +131,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
 
+    'django_extensions',
     
     'SGCM.GestionTurnos',
     'SGCM.MyFilters', #filtros personalizados

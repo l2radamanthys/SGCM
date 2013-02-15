@@ -40,44 +40,28 @@ urlpatterns = patterns('',
     #(r'^change-password/$', base_views.change_password), #por algun motivo no me esta cambiando las contrasenia revisar
     (r'^restricted-access/$', base_views.restricted_access),
     (r'^restricted-access/(.+)/$', base_views.restricted_access),
+    (r'^nuevo-paciente/$', gt_patients_views.patient_register),
 
     ## - Gestion de Turnos Views - ##
 
-
-    (r'^pacientes/buscar/$', gt_patients_views.search), 
-    (r'^pacientes/show-info/(.+)/$', gt_patients_views.show_info),
-    (r'^pacientes/registrar/$', gt_users_views.register),
-    (r'^pacientes/modificar-datos-basicos/(.+)/$', gt_patients_views.edit_basic_info),
-
-
-    #(r'^usuarios/mis-datos/$', gt_users_views.show_my_info),
-
-    #inbox
-    #(r'^usuarios/inbox/$', gt_inbox_views.received),
-    #(r'^usuarios/inbox/(\d{1,2})/$', gt_inbox_views.read),
-
-    #(r'^usuarios/mensajes/$', gt_inbox_views.received),
-
-    (r'^usuarios/mensajes/enviar$', gt_messages_views.send_message),
+    (r'^pacientes/buscar/$', gt_medics_views.patients_search),
+    (r'^pacientes/registrar/$', gt_medics_views.patient_register),
+    (r'^pacientes/show-info/(.+)/$', gt_medics_views.patient_show_info),
+    (r'^pacientes/modificar-datos-basicos/(.+)/$', gt_medics_views.patient_edit_basic_info),
+    (r'^pacientes/mostrar/consultas-medicas/(.+)/$', gt_medics_views.patient_show_medical_consultation),
+    (r'^medicos/agregar/consulta-medica/(.+)/$', gt_medics_views.my_add_medical_consultation),
+    #(r'^medicos/mostrar/consulta-medica/(\d{1,2})/$', gt_medics_views.my_show_medical_consultation),
+    (r'^medicos/modificar/consulta-medica/(\d{1,2})/$', gt_medics_views.my_edit_medical_consultation),
+    
 
 
-    #(r'^medicos/registrar/$', gt_medics_views.register),
-    #(r'^medicos/buscar/$', gt_medics_views.search),
-    #(r'^medicos/listado/$', gt_medics_views.list),
-    #(r'^medicos/mostrar/datos/(\d{1,2})/$', gt_medics_views.show_my_info),
-    #(r'^medicos/mostrar/especilidades/(\d{1,2})/$', gt_medics_views.show_medic_specialities),
-    #(r'^medicos/agregar/especilidades/(\d{1,2})/$', gt_medics_views.add_medic_speciality),
-    #(r'^medicos/quitar/especilidades/(\d{1,2})/$', gt_medics_views.del_medic_speciality),
-    (r'^medicos/mostrar/mis-horarios-atencion/$', gt_medics_views.show_my_business_hours),
-    #(r'^medicos/mostrar/horarios-atencion/(\d{1,2})/$', gt_medics_views.show_medic_business_hours),
-    #(r'^medicos/agregar/horario-atencion/(\d{1,2})/$', gt_medics_views.add_medic_business_hours),
-
-    (r'^medicos/agregar/mi-horario-atencion/$', gt_medics_views.add_my_business_hours),
-    (r'^medicos/borrar/mi-horarios-atencion/(\d{1,2})/$', gt_medics_views.del_my_business_hours),
-    (r'^medicos/mostrar/dias-no-laborales/$', gt_medics_views.show_nonworking_days),
-    (r'^medicos/mostrar/dias-no-laborales/(\d{1,2})/(\d{4})/$', gt_medics_views.show_nonworking_days),
-    (r'^medicos/agregar/dia-no-laboral/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_medics_views.add_nonworking_day),
-    (r'^medicos/borrar/dia-no-laboral/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_medics_views.del_nonworking_day),
+    (r'^medicos/mostrar/mis-horarios-atencion/$', gt_medics_views.my_medic_show_business_hours),
+    (r'^medicos/agregar/mi-horario-atencion/$', gt_medics_views.my_medic_add_business_hours),
+    (r'^medicos/borrar/mi-horarios-atencion/(\d{1,2})/$', gt_medics_views.my_medic_del_business_hours),
+    (r'^medicos/mostrar/dias-no-laborales/$', gt_medics_views.my_medic_show_nonworking_days),
+    (r'^medicos/mostrar/dias-no-laborales/(\d{1,2})/(\d{4})/$', gt_medics_views.my_medic_show_nonworking_days),
+    (r'^medicos/agregar/dia-no-laboral/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_medics_views.my_medic_add_nonworking_day),
+    (r'^medicos/borrar/dia-no-laboral/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_medics_views.my_medic_del_nonworking_day),
     ## - Historia Clinica Views - ##
 
     #debug views

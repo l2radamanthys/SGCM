@@ -1,0 +1,5 @@
+#!/bin/sh
+
+python manage.py graph_models -a -o docs/project-class-diagram.png
+python manage.py graph_models auth -a -o docs/auth-class-diagram.png
+python manage.py graph_models GestionTurnos docs/gestionturnos-class-diagram.png

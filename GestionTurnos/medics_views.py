@@ -19,22 +19,219 @@ from GestionTurnos.models import *
 import GestionTurnos.forms as my_forms
 from utils import *
 from globals import *
+import HTMLTags as Tags
 
 
-
-def register(request):
+def patients_search(request):
     """
-     Vista, para registrar un Medico
+	Vista para buscar Paciente por similitud y mostrar el listado de
+	posibles resultados
+    """
+    mi_template = get_template('Medics/GestionTurnos/patients-search.html')
+    dict = generate_base_keys(request)
+
+    if True: #asignar permiso correspondiente mas adelante
+	#falta implementar la busqueda en si, por ahora solo listado
+	dict['search_result'] = User.objects.filter(groups__name='Pacientes')
+
+    #usuario no posee permisos
+    else:
+	path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def patient_show_info(request, pac_id):
+    """
+	Muestra la informacion del paciente especificada en pac_id
+    """
+    mi_template = get_template('Medics/GestionTurnos/patients-show-info.html')
+    dict = generate_base_keys(request)
+    dict['pac_username'] = pac_id
+
+    if True: #asignar permiso correspondiente mas adelante
+
+	dict['pac'] = User.objects.get(groups__name='Pacientes', username=pac_id)
+	dict['pac_inf'] = UserInformation.objects.get(user__username=pac_id)
+	pass
+
+    else:
+	path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def patient_edit_basic_info(request, pac_id):
+    """
+	Vista para la modificacion de los datos basicos del Paciente
+    """
+    mi_template = get_template('Patients/GestionTurnos/edit-basic-info.html')
+    dict = generate_base_keys(request)
+
+    if True: #asignar permiso correspondiente mas adelante
+	pac = User.objects.get(groups__name='Pacientes', username=pac_id)
+	pac_inf = UserInformation.objects.get(user__username=pac_id)
+
+	if request.method == 'POST':
+	    dict['show_form'] = False
+	    dict['custon_message'] = "Form enviado"
+
+	    form = my_forms.BasicInfoForm(request.POST)
+	    if form.is_valid():
+		pac.first_name = form.cleaned_data['first_name']
+		pac.last_name = form.cleaned_data['last_name']
+		pac_inf.type_doc = form.cleaned_data['type_doc']
+		pac_inf.nro_doc = form.cleaned_data['nro_doc']
+		pac_inf.gender = form.cleaned_data['gender']
+		pac_inf.address = form.cleaned_data['address']
+		pac_inf.phone = form.cleaned_data['phone']
+		pac.save()
+		pac_inf.save()
+
+		dict['update_ok'] = True
+		dict['pac_username'] = pac.username
+
+	    else:
+		 dict['custon_message'] = "Error"
+		 dict['show_errors'] = True
+		 dict['form'] = form = my_forms.BasicInfoForm(request.POST)
+
+	else:
+	    dict['show_form'] = True
+	    dict['pac_username'] = pac.username
+
+	    form_data = { #contenido precargado que tendra el formulario
+		'email' : pac.email,
+		'first_name' : pac.first_name,
+		'last_name' : pac.last_name,
+		'type_doc' : pac_inf.type_doc,
+		'nro_doc' : pac_inf.nro_doc,
+		'gender' : pac_inf.gender,
+		'address' : pac_inf.address,
+		'phone' : pac_inf.phone,
+	    }
+
+	    dict['form'] = my_forms.RegisterForm(form_data, auto_id=False)
+
+
+
+    else: #redireccionar sitio error
+	path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+def patient_show_medical_consultation(request, pac_id):
+    """
+	Muestra las consultas medicas de un paciente en particular
+    """
+    mi_template = get_template('Medics/GestionTurnos/patient-show-medical-consultation.html')
+    dict = generate_base_keys(request)
+    dict['pac_username'] = pac_id
+
+    is_medic = True
+    if is_medic:
+	dict['pac'] = User.objects.get(groups__name='Pacientes', username=pac_id)
+	dict ['medicals_consultations'] = MedicalConsultation.objects.filter(patient__username=pac_id)
+	html_cont = mi_template.render(Context(dict))
+	return HttpResponse(html_cont)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+
+
+def patient_register(request):
+    """
+    Vista para registrar un nuevo usuario, paciente
+    """
+    mi_template = get_template('Patients/GestionTurnos/register.html')
+    dict = generate_base_keys(request)
+
+    is_medic = True
+    if is_medic:
+	dict['show_form'] = True
+	dict['show_errors'] = False
+	dict['form'] = my_forms.RegisterForm(auto_id=False)
+
+	if request.method == 'POST':
+	    form = my_forms.RegisterForm(request.POST, auto_id=False)
+            if form.is_valid():
+                username = form.cleaned_data['username']
+                password = form.cleaned_data['password']
+                email = form.cleaned_data['email']
+
+		#comprobacion si el usuario ya existe
+                try :
+                    user = User.objects.get(username=username)
+		    # error el nombre de usuario existe
+		    dict['show_errors'] = True
+		    dict['custon_errors'] = Tags.html_message("Error el usuario %s ya existe.." %Tags.strong(username))
+		    dict['form'] = form
+
+                except User.DoesNotExist :
+                    user = User.objects.create_user(username=username, email=email, password=password)
+                    user.first_name = form.cleaned_data['first_name']
+                    user.last_name =form.cleaned_data['last_name']
+                    user.is_staff = False #no es admin
+                    user.is_active = True #esta activo despues cambio, para hacer algun modo de activacion
+		    user.save()
+
+                    group = DjangoGroup.objects.get(name='Pacientes')
+                    user.groups.add(group)
+
+                    UserInformation.objects.create(
+                        user=user,
+                        type_doc = form.cleaned_data['type_doc'],
+                        nro_doc = form.cleaned_data['nro_doc'],
+                        gender = form.cleaned_data['gender'],
+                        phone = form.cleaned_data['phone'],
+                        address = form.cleaned_data['address'],
+                        matricula = 0
+                    )
+		    dict['show_form'] = False
+		    dict['custon_message'] = Tags.html_message("Paciente Registrado %s Correctamente.."  %(form.cleaned_data['first_name']), type="ok")
+
+	    else:
+		dict['show_errors'] = True
+		dict['form'] = form
+
+	else: #si no se envio el formulario
+	    dict['form'] = my_forms.RegisterForm(auto_id=False)
+
+    else: #sale por aca si el usuario no tiene permiso
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def medic_register(request):
+    """
+     Vista, para registrar un Paciente
 
     Accesso:
     --------
         - Administradores (Total)
+	- Medicos
     """
     mi_template = get_template('GestionTurnos/medico-nuevo.html')
     dict = generate_base_keys(request)
 
-
-    if request.user.has_perm('add_medic'):
+    if is_admin:
         if request.method == 'POST':
             dict['form_commit'] = True
 
@@ -90,18 +287,9 @@ def register(request):
 
 
 
-def list(request):
+def medics_list(request):
     """
-        Lista todos los Medicos
-
-    Accesso:
-    --------
-        - Administradores
-            - Visualizacion Datos
-            - Menu Modificacion
-
-        - Medicos | Pacientes | Otros
-            - Visualizacion Datos
+	
     """
     mi_template = get_template('GestionTurnos/medico-listado.html')
     dict = generate_base_keys(request)
@@ -115,43 +303,7 @@ def list(request):
     return HttpResponse(html_cont)
 
 
-
-def search(request):
-    """
-    """
-    mi_template = get_template('GestionTurnos/medico-buscar.html')
-    dict = generate_base_keys(request)
-
-    if request.user.has_perm('change_medic'):
-        dict['modify'] = True
-
-    dict['search_result'] = User.objects.filter(groups__name='Medicos')
-
-    html_cont = mi_template.render(Context(dict))
-    return HttpResponse(html_cont)
-
-
-
-def show_info(request, id=None):
-    """
-        Muestra los Datos Basicos del Medico
-    """
-    mi_template = get_template('GestionTurnos/medico-datos.html')
-    dict = generate_base_keys(request)
-
-    if request.user.has_perm('change_medic'):
-        dict['modify'] = True
-        
-    dict['sub_title'] = "Informacion del Profecional"
-    dict['user'] = User.objects.get(id = int(id))
-    dict['user_info'] = UserInformation.objects.get(user__id = int(id))
-
-    html_cont = mi_template.render(Context(dict))
-    return HttpResponse(html_cont)
-
-
-
-def show_medic_specialities(request, id):
+def medic_show_specialities(request, id):
     mi_template = get_template('GestionTurnos/medico-especialidades.html')
     dict = generate_base_keys(request)
 
@@ -167,7 +319,7 @@ def show_medic_specialities(request, id):
 
 
 
-def add_medic_speciality(request, id):
+def medic_add_speciality(request, id):
     """
         Agregar una Especialidad medica, al medico
     """
@@ -233,7 +385,7 @@ def del_medic_speciality(request, id):
 
 
 
-def show_my_business_hours(request):
+def my_medic_show_business_hours(request):
     """
 	Muestra mis dias y horario de atencion
     """
@@ -254,7 +406,7 @@ def show_my_business_hours(request):
 
 
 
-def add_my_business_hours(request):
+def my_medic_add_business_hours(request):
     """
 	Agregar un Horario Atencion a mi usuario Medico
     """
@@ -305,7 +457,7 @@ def add_my_business_hours(request):
 
 
 
-def del_my_business_hours(request, bh_id):
+def my_medic_del_business_hours(request, bh_id):
     """
 	Elimina un horario de atencion del medico
     """
@@ -337,9 +489,9 @@ def del_my_business_hours(request, bh_id):
 
 
 
-def show_medic_business_hours(request, id):
+def medic_show_business_hours(request, id):
     """
-        Muestra los horarios de Atencion del Medico
+        Muestra los horarios de Atencion de un medico en particular
     """
     mi_template = get_template('GestionTurnos/Medics/medico-horarios-atencion.html')
     dict = generate_base_keys(request)
@@ -357,15 +509,13 @@ def show_medic_business_hours(request, id):
     return HttpResponse(html_cont)
 
 
-
-def add_medic_business_hours(request, id):
+def medic_add_business_hours(request, id):
     """
         Agrega un Horario de Atencion a la Agenda del Medico
 
     Accesso:
     --------
         - Administradores
-        - Medicos
     """
     mi_template = get_template('GestionTurnos/medico-horarios-atencion-nuevo.html')
     dict = generate_base_keys(request)
@@ -401,14 +551,13 @@ def add_medic_business_hours(request, id):
 
 
 
-def show_nonworking_days(request, month=None, year=None):
+def my_medic_show_nonworking_days(request, month=None, year=None):
     """
     """
     mi_template = get_template('Medics/GestionTurnos/dias-no-laborales.html')
     dict = generate_base_keys(request)
 
     if True:
-
 	if month != None and year != None:
 	    month = int(month) % 13
 	    year = int(year)
@@ -458,20 +607,34 @@ def show_nonworking_days(request, month=None, year=None):
 	    wd.append(day.date - 1)
 
 
+	#dias no laborales
+	nwd = NonWorkingDay.objects.filter(date__month=month, date__year=year)
+	_nwd = []
+	for obj in nwd:
+	    _nwd.append(obj.date.day)
+
+	#dias con turnos asignados
+	_dta = []
+	#completar
+
 	#formateo del mes
 	semanas = []
 	for week in wekends:
 	    sem = []
 	    i = 0
 	    for day in week:
-		if i in wd:
-		    sem.append(CalendarDay(day,1))#dias libress
+		if day in _nwd: #es un dia no laboral?
+		    sem.append(CalendarDay(day,2))
 		else:
-		    sem.append(CalendarDay(day,0)) #dias q no se atiende
+		    if i in wd:#dias donde se atiende
+			if day in _dta:
+			    sem.append(CalendarDay(day,3)) #hay turnos asignados no se puede cancelar
+			else:
+			    sem.append(CalendarDay(day,1)) #hay turnos libres
+		    else:
+			sem.append(CalendarDay(day,0)) #dias q no se atiende
 		i += 1
-	    
-	    semanas.append(sem)
-	   
+	    semanas.append(sem)   
 	dict['wekends'] = semanas
 
     else:
@@ -483,16 +646,79 @@ def show_nonworking_days(request, month=None, year=None):
 
 
 
-def add_nonworking_day(request, day, month, year):
+def my_medic_add_nonworking_day(request, day, month, year):
     """
     """
     mi_template = get_template('Medics/GestionTurnos/agregar-dia-no-laboral.html')
     dict = generate_base_keys(request)
 
     if True:
-	dict['day'] = day
-	dict['month'] = month
-	dict['year'] = year
+	if request.method == 'POST':
+	    nwd = NonWorkingDay(
+		date = datetime.date(int(year), int(month), int(day)),
+		issue = get_value(request, 'issue'),
+		user = request.user
+	    )
+	    nwd.save()
+	    return HttpResponseRedirect("/medicos/mostrar/dias-no-laborales/%s/%s/" %(month, year))
+
+	else:
+	    dict['show_form'] = True
+	    dict['day'] = day
+	    dict['month'] = month
+	    dict['year'] = year
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def my_medic_del_nonworking_day(request, day, month, year):
+    """
+    """
+    mi_template = get_template('Medics/GestionTurnos/cancelar-dia-no-laboral.html')
+    dict = generate_base_keys(request)
+
+    if True:
+	    pass
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def my_add_medical_consultation(request, pac_id):
+    """
+	Agregar consulta Medica de un paciente
+    """
+    mi_template = get_template('Medics/GestionTurnos/agregar-consulta-medica.html')
+    dict = generate_base_keys(request)
+
+    if True:
+	pac = User.objects.get(username=pac_id)
+	if request.method == 'POST':
+	    cm = MedicalConsultation(
+		medic = request.user,
+		patient = pac,
+		issue = get_value(request, 'issue'),
+		diagnostic = get_value(request, 'diagnostic'),
+		physical_exam = get_value(request, 'physical_exam'),
+		observations = get_value(request, 'observations')
+	    )
+	    cm.save()
+
+	else:
+	    dict['show_form'] = True
+	    dict['med'] = request.user
+	    dict['pac'] = pac
 
 
     else:
@@ -504,14 +730,25 @@ def add_nonworking_day(request, day, month, year):
 
 
 
-def del_nonworking_day(request, day, month, year):
-    """
-    """
-    mi_template = get_template('Medics/GestionTurnos/dias-no-laborales.html')
+def my_edit_medical_consultation(request, cm_id):
+    mi_template = get_template('Medics/GestionTurnos/modificar-consulta-medica.html')
     dict = generate_base_keys(request)
 
     if True:
-	    pass
+	cm = MedicalConsultation.objects.get(id=cm_id)
+	dict['cm'] = cm
+	if request.method == 'POST':
+	    cm.issue = get_value(request, 'issue')
+	    cm.diagnostic = get_value(request, 'diagnostic')
+	    cm.physical_exam = get_value(request, 'physical_exam')
+	    cm.observations = get_value(request, 'observations')
+	    cm.save()
+	    dict['custon_messages'] = Tags.html_message('Cambios Guardados..', 'success')
+
+	else:
+	    dict['med'] = cm.medic
+	    dict['pac'] = cm.patient
+
 
     else:
         path = request.META['PATH_INFO']

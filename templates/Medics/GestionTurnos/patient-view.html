@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block style %}
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/sub-menu-style.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+{% endblock %}    
+    
+{% block contenido %}
+
+<div class="left-cont">
+<div class="left-sub-menu">
+    <h4>Informe General</h4>
+    <ul>
+        <li><a href="/pacientes/show-info/{{ pac_username }}/">Datos Personales</a></li>
+    </ul>
+    <br />
+   
+    <h4>Historias Clinicas</h4>
+    <ul>
+        <li><a href="">Antecedentes Perinatales</a></li>
+        <li><a href="">Estudios Clinicos</a></li>
+        <li><a href="">Imagenes</a></li>
+        <li><a href="">Archivos</a></li>
+    </ul>
+    <br />
+    
+    <h4>Consultas Medicas</h4>
+    <ul>
+        <li><a href="/pacientes/mostrar/consultas-medicas/{{ pac_username }}/">Consultas Activas</a></li>
+        <li><a href="/pacientes/mostrar/recetas-medicas/{{ pac_username }}/">Recetas Medicas</a></li>
+    </ul>
+    <br />
+</div>
+</div>
+
+<div class="center-cont">
+    {% block view-cont %}
+    {% endblock %}
+</div>
+{% endblock %}

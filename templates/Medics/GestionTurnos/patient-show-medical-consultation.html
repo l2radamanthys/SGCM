@@ -1,0 +1,39 @@
+{% extends 'Medics/GestionTurnos/patient-view.html' %}
+    
+{% block view-cont %}
+<div  style="padding-left:10px;" >
+    <h3> Consultas Medicas </h3>
+    <p style="font-size:14px;">{{ pac.last_name  }}, {{ pac.first_name }} </p>
+</div>
+
+<br /><br />
+
+<div style="text-align: right; width: 600px; margin: 0 auto;">
+    <a href="/medicos/agregar/consulta-medica/{{ pac.username }}/" class="grad-button-blue">Añadir Consulta Medica</a>
+</div>
+
+<br />
+
+    <table class="tbl-round-light" style="width:600px; margin: 0 auto;">
+        <tr>
+            <th style="width:150px">Fecha</th>
+            <th>Medico</th>
+            <th style="width:50px">Eliminar</th>
+        </tr>
+        {% for cm in medicals_consultations %}
+        <tr>
+            {% if login_username == cm.medic.username %}
+                <td><a href="/medicos/modificar/consulta-medica/{{ cm.id }}/">{{ cm.date }}</a></td>
+                <td><a href="/medicos/modificar/consulta-medica/{{ cm.id }}/">{{ cm.medic.last_name }}, {{ cm.medic.first_name }}</a></td>
+                <td style="text-align: center;"><a href="/medicos/borrar/consulta-medica/{{ cm.id }}/"><img src="/media/images/page_delete.gif" /></a></td>
+            {% else %}
+                <td><a href="/medicos/mostrar/consulta-medica/{{ cm.id }}/">{{ cm.date }}</a></td>
+                <td><a href="/medicos/mostrar/consulta-medica/{{ cm.id }}/">{{ cm.medic.last_name }}, {{ cm.medic.first_name }}</a></td>
+                <td></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+        
+    </table>
+
+{% endblock %}

@@ -43,11 +43,11 @@
 		{% for day in week %}
 			{% if day.day %}
                 {% if day.type == 1 %}
-                    <td><a class="calendar-blank" href="/medicos/agregar/dia-no-laboral/{{ day.day }}/{{ month }}/{{ year }}/">{{ day.day }}</a></td>
+                    <td class="calendar-blank"><a href="/medicos/agregar/dia-no-laboral/{{ day.day }}/{{ month }}/{{ year }}/">{{ day.day }}</a></td>
                 {% else %}{% if day.type == 2 %}
-                    <td class="calendar-null">{{ day.day }}</td>
+                    <td class="calendar-cancel"><a  href="/medicos/borrar/dia-no-laboral/{{ day.day }}/{{ month }}/{{ year }}/">{{ day.day }}</a></td>
                 {% else %}{% if day.type == 3 %}
-                    tip3
+                    <td class="calendar-over">{{ day.day }}</td>
                 {% else %} 
                    <td class="calendar-null">{{ day.day }}</td>
                     
