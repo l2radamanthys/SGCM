@@ -4,6 +4,12 @@
 	<link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
 	<link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
     <link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/DatePicker-style.css" />
+{% endblock %}
+
+
+{% block javascript %}
+    <script type="text/javascript" src="/media/js/DatePicker.js"></script>
 {% endblock %}
 
 {% block contenido %}
@@ -13,13 +19,21 @@
     {{ custon_message }}
 {% endautoescape %}
 
+{{ query }} {# resultado o salida #}
 
 {% if show_form %}
     {% include "Patients/GestionTurnos/register-form.html" %}
+
+
+    <!--Init DatePicker.js Code Definition -->
+    <script type="text/javascript">
+        DatePicker.SetUpElement("birth_date");
+    </script>
+    <!--End DatePicker.js Code Definition -->
 {% endif %}
 
 {% if show_errors %}
-    {% if form_error %}
+    {% if form_errors %}
         <div class="alert" >		
         {% for field in form %}
             {{ field.errors }}
@@ -30,7 +44,10 @@
     {% autoescape off %}
         {{ custon_errors }}
     {% endautoescape %}
-    
 {% endif %}
+
+
+
+
 
 {% endblock %}

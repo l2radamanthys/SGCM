@@ -11,11 +11,11 @@ class RegisterForm(forms.Form):
     """
         Formulario de registro de usuarios paciente y/o administrativos
     """
+    #login information
     username = forms.CharField(
         label="Nombre de Usuario (*)",
         widget=forms.TextInput(attrs={'class':'edt_c'}),
         error_messages={'required': 'El Campo "Nombre de Usuario" es obligatorio'},
-        
     )
     password = forms.CharField(
         label="Contrasenia (*)",
@@ -32,17 +32,25 @@ class RegisterForm(forms.Form):
         widget=forms.TextInput(attrs={'class':'edt_m'}),
         error_messages={'required': 'El Campo "Email" es obligatorio'}
     )
+
+    #user information 
     first_name = forms.CharField(
-        label="Nombre", 
+        label="Nombre",
         widget=forms.TextInput(attrs={'class':'edt_m'}),
         required = False
     )
     last_name = forms.CharField(
-        label="Apellido", 
+        label="Apellido",
         widget=forms.TextInput(attrs={'class':'edt_m'}),
         required = False
     )
-
+    birth_date =forms.DateField(
+        label="Fecha de Nacimiento",
+        widget=forms.DateInput(attrs={'class':'edt_c', 'id':'birth_date', 'value':'DD/MM/AAAA'}),
+        input_formats= ['%d/%m/%Y'],
+        error_messages={'required': 'El Campo "Fecha de Nacimiento" es obligatorio'}
+    )
+    
     type_doc = forms.ChoiceField(label="Tipo de Documento", choices=TYPE_DOC_CHOICE)
     nro_doc = forms.CharField(
         label="Nro de Documento",
@@ -55,9 +63,19 @@ class RegisterForm(forms.Form):
         widget=forms.TextInput(attrs={'class':'edt_g'}),
         required = False
     )
+    city = forms.CharField(
+        label='Ciudad',
+        widget=forms.TextInput(attrs={'class':'edt_m'}),
+        required = False
+    )
+    state = forms.ChoiceField(label='Provincia', choices=ARG_STATES_CHOICE)
     phone = forms.CharField(
         label="Telefono",
         widget=forms.TextInput(attrs={'class':'edt_c'}),
+        required = False
+    )
+    photo = forms.ImageField(
+        label="Foto", 
         required = False
     )
 
@@ -68,24 +86,22 @@ class RegisterForm(forms.Form):
         """
         re_password = self.cleaned_data.get('re_password', '')
         password = self.cleaned_data.get('password', '')
-        
+
         if password != re_password:
             raise forms.ValidationError("Error las contrasenias no coinciden")
 
 
-    """
-    def clean(self):
-        cleaned_data = super(RegisterForm, self).clean()
-        _password = cleaned_data.get("password")
-        _re_password = cleaned_data.get("re_password")
+    #def clean(self):
+        #cleaned_data = super(RegisterForm, self).clean()
+        #_password = cleaned_data.get("password")
+        #_re_password = cleaned_data.get("re_password")
 
-        if _password != _re_password:
+        #if _password != _re_password:
 
-            self._errors["re_password"] = "Error las contrase�as no coinciden" #self.error_class(["Error las contrase�as no coinciden"])
-            #del cleaned_data["re_password"]
-            
-        return cleaned_data
-    """
+            #self._errors["re_password"] = "Error las contrasenias no coinciden" #self.error_class(["Error las contrasenias no coinciden"])
+            ##del cleaned_data["re_password"]
+
+        #return cleaned_data
 
 
 

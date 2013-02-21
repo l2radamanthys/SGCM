@@ -41,6 +41,7 @@ urlpatterns = patterns('',
     (r'^restricted-access/$', base_views.restricted_access),
     (r'^restricted-access/(.+)/$', base_views.restricted_access),
     (r'^nuevo-paciente/$', gt_patients_views.patient_register),
+    (r'^mis-datos/$', base_views.my_info),
 
     ## - Gestion de Turnos Views - ##
 

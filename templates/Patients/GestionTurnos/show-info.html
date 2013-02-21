@@ -41,12 +41,24 @@
         <td><input type="text" value="{{ pac_inf.type_doc }} {{ pac_inf.nro_doc }}" style="width:120px;" readonly></td>
     </tr>
     <tr>
+        <td><label>Fecha de Nacimiento:</label></td>
+        <td><input type="text" value="{{ pac_inf.birth_date }}" style="width:100px;" readonly></td>
+    </tr>
+    <tr>
         <td><label>Sexo:</label></td>
         <td><input type="text" value="{{ pac_inf.get_gender_display }}" style="width:100px;" readonly></td>
     </tr>
     <tr>
         <td><label>Direccion:</label></td>
         <td><input type="text" value="{{ pac_inf.address }}" style="width:400px;" readonly></td>
+    </tr>
+    <tr>
+        <td> <label>Ciudad:</label></td>
+        <td> <input type="text" value="{{ pac_inf.city }}" style="width:400px;" readonly/></td>
+    </tr>
+    <tr>
+        <td> <label>Provincia:</label></td>
+        <td> <input type="text" value="{{ pac_inf.state }}" style="width:400px;" readonly/></td>
     </tr>
     <tr>
         <td><label>Telefono:</label></td>

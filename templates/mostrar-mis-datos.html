@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block style %}
+{% endblock %}
+
+
+{% block contenido %}
+    <br />
+    <h2>Mis Datos</h2>
+
+    <table style="margin: 10px; width: 500px">
+        <tr>
+            <td colspan="2"><h3>Datos de Cuenta</h3></td>
+        </tr>
+        <tr>
+            <td> <strong>Email:</strong></td>
+            <td> {{ user.email }}</td>
+        </tr>
+        <tr>
+            <td> <strong>Usuario:</strong></td>
+            <td> {{ user.username }}</td>
+        </tr>
+        <tr>
+            <td> <strong>Tipo Usuario</strong></td>
+            <td> {{ login_user_role }}</td> {# extraido de la general #}
+        </tr>
+
+        <tr>
+            <td colspan="2"><br /><h3>Datos Personales</h3></td>
+        </tr>
+        <tr>
+            <td> <strong>Apellido y Nombre: </strong></td>
+            <td> {{ user.last_name }}, {{ user.first_name }}</td>
+        </tr>
+        <tr>
+            <td> <strong>Documento:</strong></td>
+            <td> {{ user_data.type_doc }} {{ user_data.nro_doc }}</td>
+        </tr>
+        <tr>
+            <td> <strong>Direccion:</strong></td>
+            <td> {{ user_data.address }}</td>
+        </tr>
+        <tr>
+            <td> <strong>Ciudad:</strong></td>
+            <td> {{ user_data.city }}</td>
+        </tr>
+        <tr>
+            <td> <strong>Provincia: </strong></td>
+            <td> {{ user_data.state }}</td>
+        </tr>
+    </table>
+
+
+{% endblock %}

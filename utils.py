@@ -18,12 +18,12 @@ class CalendarDay:
 	    1- Turno Disponible
 	    2- Sin Turno
 	    3- Cancelado
-	    
+
     """
     def __init__(self, day, type=0, argv=None):
-	self.day = day
-	self.type = type
-	self.argv = argv
+        self.day = day
+        self.type = type
+        self.argv = argv
 
 
 
@@ -39,33 +39,32 @@ def load_cont(path):
 
 
 
-def user_menu(request):
+def get_user_menu(request):
     """
         carga el menu de acuerdo al tipo de usuario
     """
     if request.user.is_authenticated():
         group_name = request.user.groups.all()[0].name
         #usuarios
-        if group_name == "Pacientes":
-            return load_cont(os.path.join('Menu','pacient.txt'))
+        if group_name == "Paciente":
+            return load_cont(os.path.join('Menu', 'pacient.html'))
         #medicos
-        elif group_name == "Medicos":
-            return load_cont(os.path.join('Menu','medic.txt'))
+        elif group_name == "Medico":
+            return load_cont(os.path.join('Menu', 'medic.html'))
         #administradores
         else:
-            return load_cont(os.path.join('Menu','admin.txt'))
+            return load_cont(os.path.join('Menu', 'medic.html'))
     else:
-        return load_cont(os.path.join('Menu','not-login.txt'))
+        return load_cont(os.path.join('Menu', 'not-login.html'))
 
 
 
-def user_info(request, name=False):
-
+def get_user_info(request, name=False):
     if request.user.is_authenticated():
-	if name:
-	    return "%s, %s" %(request.user.last_name, request.user.first_name)
-	else:
-	    return request.user.username
+        if name:
+            return "%s, %s" %(request.user.last_name, request.user.first_name)
+        else:
+            return request.user.username
     else:
         return "Usuario no Conectado"
 
@@ -73,9 +72,9 @@ def user_info(request, name=False):
 
 def get_role(request):
     if request.user.is_authenticated():
-	return request.user.groups.all()[0].name
+        return "(%s)" %request.user.groups.all()[0].name
     else:
-	return ""
+        return ""
 
 
 def generate_base_keys(request):
@@ -83,12 +82,11 @@ def generate_base_keys(request):
         Genera el dicionario con contenido basico.
     """
     dict = {
-        'user_menu': user_menu(request),
-        'login_username': user_info(request),
-	'login_user' : user_info(request, True),
-	'login_user_role': get_role(request)
+        'user_menu': get_user_menu(request),
+        'login_username': get_user_info(request),
+        'login_user': get_user_info(request, True),
+        'login_user_role': get_role(request),
     }
-
     return dict
 
 
@@ -102,11 +100,12 @@ def get_GET_value(request, key='', default='', blank=''):
 
 
 def get_POST_value(request, key='', default='', blank=''):
-     value = request.POST.get(key, default)
-     if value == '':
+    """
+    """
+    value = request.POST.get(key, default)
+    if value == '':
         value = blank
-     return value
-
+    return value  
 
 
 def get_value(request, key='', default='', blank='', method=POST):
@@ -123,7 +122,7 @@ def get_value(request, key='', default='', blank='', method=POST):
 def _get_value(request, key='', default='', blank=''):
     """
         Obtiene valor de object request de la info que se envio al
-	formulario
+        formulario
     """
     if request.method == 'POST':
         return get_POST_value(request, key, default, blank)
@@ -136,6 +135,6 @@ def time_split(cad="00:00:00"):
     """
         comvierte la cadena de texto en un objecto time
     """
-    list = [int(n) for n in cad.split(":")]
-    hora = datetime.time(list[0], list[1])
+    lista = [int(n) for n in cad.split(":")]
+    hora = datetime.time(lista[0], lista[1])
     return hora

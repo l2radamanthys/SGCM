@@ -1,0 +1,63 @@
+#datepicker {
+    background-color: #F5F5F5;
+    font-family: Verdana;
+    font-size: 11px;
+}
+
+/* Caption */
+#datepicker caption {
+    font-size: 12px;
+    background-color: #004F75;
+    color: #FFF;
+}
+
+#datepicker a {
+    color: #0080C0;
+    text-decoration: None;
+}
+
+/* Saturday and Sunday */
+#datepicker a.day6, #datepicker a.day0 {
+    color: #454545;
+}
+            
+#datepicker caption a.previous {
+    color: #FFFFFF;
+    float: left;
+    font-weight: bold;
+    padding-left: 4px;
+}
+            
+#datepicker caption a.next {
+    color: #FFFFFF;
+    float: right;
+    font-weight: bold;
+    padding-right: 4px;
+}
+
+#datepicker .footer {
+    padding-top: 3px;
+    border-top: 1px solid #AAA;
+    height: 1.2em;
+}
+
+#datepicker .footer div {
+    width: 6em;
+    text-align: center;
+    float: left;
+}
+
+#datepicker .footer a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.datepicker_button {
+    background-color: #005680;
+    font-size: 10px;
+    color: #FFFFFF;
+    border: 0px;
+    padding: 5px;
+    margin-left: 5px;
+}

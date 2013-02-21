@@ -61,14 +61,14 @@ TYPE_DOC_CHOICE = (
     ('L.E.', 'Libreta de Enrrolamiento'),
     ('L.C.', 'Libreta Civica'),
     ('C.I.', 'Cedula de Identificacion'),
-    ('--', 'No Definido'),
+    ('--', 'Otro'),
 )
 
 
 SOLICITUD_ESTADO_CHOICE = (
-    ('P','Pendiente'),
-    ('A','Aceptado'),
-    ('C','Cancelado'),
+    ('P', 'Pendiente'),
+    ('A', 'Aceptado'),
+    ('C', 'Cancelado'),
 )
 
 
@@ -80,4 +80,32 @@ DATE_CHOICE = (
     (5, 'Viernes'),
     (6, 'Sabado'),
     (7, 'Domingo'),
+)
+
+
+ARG_STATES_CHOICE = (
+    ("Buenos Aires", "Buenos Aires"),
+    ("Catamarca", "Catamarca"),
+    ("Chaco", "Chaco"),
+    ("Chubut", "Chubut"),
+    ("C.A.B.A.", "C.A.B.A."),
+    ("Córdoba", "Córdoba"),
+    ("Corrientes", "Corrientes"),
+    ("Entre Ríos", "Entre Ríos"),
+    ("Formosa", "Formosa"),
+    ("Jujuy", "Jujuy"),
+    ("La Pampa", "La Pampa"),
+    ("La Rioja", "La Rioja"),
+    ("Mendoza", "Mendoza"),
+    ("Misiones", "Misiones"),
+    ("Neuquén", "Neuquén"),
+    ("Río Negro", "Río Negro"),
+    ("Salta", "Salta"),
+    ("San Juan", "San Juan"),
+    ("San Luis", "San Luis"),
+    ("Santa Cruz", "Santa Cruz"),
+    ("Santa Fe", "Santa Fe"),
+    ("Santiago del Estero", "Santiago del Estero"),
+    ("Tierra del Fuego", "Tierra del Fuego"),
+    ("Tucumán", "Tucumán"),
 )

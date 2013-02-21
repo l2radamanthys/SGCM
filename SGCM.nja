@@ -1,7 +1,26 @@
 {
+  "mainFile": "D:/Proyectos/Sem/SGCM/manage.py", 
   "venv": "", 
-  "project-type": "Import from sources", 
+  "relatedProjects": [], 
   "name": "SGCM", 
   "license": "GNU General Public License v3", 
+  "url": "", 
+  "pythonPath": "python", 
+  "preExecScript": "", 
+  "programParams": "runserver, 8080", 
+  "PYTHONPATH": "", 
+  "supported-extensions": [
+    ".py", 
+    ".html", 
+    ".jpg", 
+    ".png", 
+    ".ui", 
+    ".css", 
+    ".json", 
+    ".js", 
+    ".ini"
+  ], 
+  "project-type": "Import from sources", 
+  "postExecScript": "", 
   "description": ""
 }

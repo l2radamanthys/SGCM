@@ -4,6 +4,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+#replaced by easy_thumbs, django-thumbs only found in Dj 1.1 o low
+#from libs.thumbs import ImageWithThumbsField as ImgThumbsField 
+
 import datetime
 
 from globals import *
@@ -14,14 +17,20 @@ class UserInformation(models.Model):
     """
         Informacion adicional de usuario
     """
+    user = models.ForeignKey(User, unique=True) #Fk 
+    
     type_doc = models.CharField(max_length=6, default='---', choices=TYPE_DOC_CHOICE)
     nro_doc = models.CharField(max_length=12, default='')
     gender = models.CharField(max_length=1, default='-', choices=SEXO_CHOICE)
     phone = models.CharField(max_length=20, default='No Definido')
     address = models.CharField(max_length=120, default='No Definido')
+    city = models.CharField(max_length=120, default='No Definido')
+    state = models.CharField(max_length=120, default='No Definido')
+    birth_date = models.DateField()
+    photo = models.ImageField(upload_to='upload/images', default='upload/images/no-avatar.png')
+    
     #solo para los medicos
-    matricula = models.CharField(max_length=30) 
-    user = models.ForeignKey(User, unique=True)
+    matricula = models.CharField(max_length=30, default='No Medic')
 
 
     class Meta:
@@ -76,7 +85,7 @@ class MedicalSpecialityFor(models.Model):
     #tiene que hacer referencia a un medico
     user = models.ForeignKey(User)
     #tiene q referenciar una especialidad
-    speciality = models.ForeignKey(MedicalSpecialties) 
+    speciality = models.ForeignKey(MedicalSpecialties)
 
 
     class Meta:
@@ -147,7 +156,7 @@ class BusinessHours(models.Model):
 
 
 
-class InboxMsj(models.Model):
+class Message(models.Model):
     """
         Clase Para Manejar mensajes entre usuarios
     """
@@ -160,7 +169,7 @@ class InboxMsj(models.Model):
 
 
     class Meta:
-        db_table = "InboxMessages"
+        db_table = "Messages"
         verbose_name = "InboxMessage"
         verbose_name_plural = "InboxMessages"
 
@@ -173,6 +182,9 @@ class NonWorkingDay(models.Model):
     date = models.DateField()  #fecha
     issue = models.TextField() #asunto
     user = models.ForeignKey(User, related_name='from')
+
+    class Meta:
+        db_table = "NonWorkingDays"
 
 
 
@@ -187,3 +199,6 @@ class MedicalConsultation(models.Model):
     diagnostic = models.TextField(default='') #diagnostico
     physical_exam = models.TextField(default='') #examen fisico
     observations = models.TextField(default='') #observaciones
+    
+    class Meta:
+        db_table = "MedicalConsultation"

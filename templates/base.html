@@ -1,6 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//ES" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="es" lang="es">
 
 <head>
     {% block meta_tags %}
@@ -8,7 +7,7 @@
 
     <title>{{ page_title }}</title>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
-	
+
     <link type="text/css" rel="stylesheet" media="all" href="/media/css/style.css" />
     <link type="text/css" rel="stylesheet" media="all" href="/media/css/menu-style.css" />
     {% block style %}
@@ -21,22 +20,22 @@
 <body>
     <div class="header">
         <div class="header-cont">
-            <p id="username-login">{{ login_user }} - ({{ login_user_role }})</p>
+            <p id="username-login">{{ login_user }} - {{ login_user_role }}</p>
 
             <h1>S.G.C.M.</h1>
             <p>Sistema de Gestion de Consultorio Medico</p>
 
             <ul class="menu">
                 {% autoescape off %}
-                    {{ user_menu }}	
+                    {{ user_menu }}
                 {% endautoescape %}
             </ul>
         </div>
     </div>
     <div class="page-body">
-		{% block contenido %}
+        {% block contenido %}
         {% endblock %}
-	</div>
+    </div>
 </body>
 
 </html>

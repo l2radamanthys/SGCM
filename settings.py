@@ -16,7 +16,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'postgresql_psycopg2', 		# Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'SGCMDB',                      	# Or path to database file if using sqlite3.
+        'NAME': 'SGCM_DB',                      	# Or path to database file if using sqlite3.
         'USER': 'wyrven',                      	# Not used with sqlite3.
         'PASSWORD': 'inmortal',                 # Not used with sqlite3.
         'HOST': '127.0.0.1',                    # Set to empty string for localhost. Not used with sqlite3.
@@ -101,7 +101,7 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    #'django.middleware.csrf.CsrfViewMiddleware', #me rompe las bolas demaciado
+    #'django.middleware.csrf.CsrfViewMiddleware', #me rompe las bolas demaciado como para usarlo
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 )
@@ -131,12 +131,13 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
 
-    'django_extensions',
+    'django_extensions', #no hay forma de hacerlo funcar en win a pygraphivs
+    'SGCM.libs.django_yuml',
+    'easy_thumbnails',  #generar thumbnails de las imagenes
     
     'SGCM.GestionTurnos',
-    'SGCM.MyFilters', #filtros personalizados
-    
-
+    #'SGCM.HistoriaClinica',
+    'SGCM.MyFilters', #filtros personalizados NO FOUND
 )
 
 CACHE_BACKEND = 'dummy:///'
@@ -163,4 +164,3 @@ LOGGING = {
         },
     }
 }
-

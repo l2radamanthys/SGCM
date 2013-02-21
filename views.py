@@ -8,6 +8,8 @@ from django.template import Context
 from django.contrib import auth #para login
 from django.contrib.auth.models import User
 
+from GestionTurnos.models import *
+
 import my_forms
 from utils import *
 from globals import *
@@ -115,6 +117,27 @@ def change_password(request):
         html_cont = mi_template.render(Context(dict))
         return HttpResponse(html_cont)
 
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+
+
+def my_info(request):
+    """
+        Vista para mostrar los datos personales del usuario que
+        actualmente se encuentra logueado
+    """
+    mi_template = get_template('mostrar-mis-datos.html')
+    dict = generate_base_keys(request)
+
+    if request.user.is_authenticated():
+        dict['user'] = request.user
+        dict['user_data'] = UserInformation.objects.get(user__username=request.user.username)        
+        html_cont = mi_template.render(Context(dict))
+        return HttpResponse(html_cont)
+
+        
     else:
         path = request.META['PATH_INFO']
         return HttpResponseRedirect("/restricted-access%s" %path)
