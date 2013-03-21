@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
+{% endblock %}
+
+
+{% block contenido %}
+<br />
+<h3>Eliminar Consulta Medica</h3>
+<br />
+
+
+
+<br />
+
+<div class="fancy-form-white" style="width: 500px; margin: 0 auto;">
+    <h3>Datos Consulta Medica</h3>
+    <br />
+    <p> <strong>Fecha:</strong> {{ cm.date }}</p><br />
+    <p> <strong>Medico:</strong> {{ cm.medic.first_name }} {{ cm.medic.last_name }} </p><br />
+    <p> <strong>Asunto:</strong> {{ cm.issue }}</p><br />
+    <p> <strong>Examen Fisico:</strong> {{ cm.physical_exam }}</p><br />
+    <p> <strong>Diagnostico:</strong> {{ cm.diagnostic }}</p><br />
+    <p> <strong>Observacion:</strong> {{ cm.observations }}</p><br />
+</div>
+
+<br />
+
+<div class="alert" style="text-align: center;margin: 0 auto;">
+    <h3>¿Desea Borrar la siguiente consulta?</h3>
+    <br />
+    <form action="" method="POST">
+        <input type="submit" class="grad-button-blue" value="Borrar" />
+        <a href="/pacientes/mostrar/consultas-medicas/{{ cm.patient.username }}/" class="grad-button-blue" title="">Cancelar</a>
+    </form>
+</div>
+
+{% endblock %}

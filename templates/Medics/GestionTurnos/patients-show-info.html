@@ -1,27 +1,33 @@
 {% extends 'Medics/GestionTurnos/patient-view.html' %}
 
 {% load thumbnail %}
-    
+
 {% block view-cont %}
 <div  style="padding-left:10px;" >
     <h3> Datos Paciente </h3>
     <p style="font-size:14px;">{{ pac.last_name  }}, {{ pac.first_name }} </p>
 </div>
-    
+
 <br /><br />
 
 <div style="text-align: right; width: 600px; margin: 0 auto;">
     <a href="/pacientes/modificar-datos-basicos/{{ pac.username }}/" class="grad-button-blue">Modificar Datos Basicos</a>
+    <a href="/pacientes/borrar/{{ pac.username }}/" title="Eliminar" class="grad-button-blue">Borrar</a>
 </div>
 
 <br />
-<div class="fancy-form-white" style="text-align: left; width: 650px; margin: 0 auto;">    
+<div class="fancy-form-white" style="text-align: left; width: 650px; margin: 0 auto;">
 <table>
     <tr>
-        <td><label style="padding-right: 30px;">Apellido y Nombre:</label></td>
+        <td style="width:150px;"><label>Apellido y Nombre:</label></td>
         <td><input type="text" name="" value="{{ pac.last_name  }}, {{ pac.first_name }}" style="width:300px;" readonly></td>
-        <td rowspan="4">
-            <img src="{% thumbnail pac_inf.photo 120x120 %}"  />
+        <td rowspan="4" style="padding-left: 30px">
+            {# si no posee imagen personalizada muestra una por defecto #}
+            {% if pac_inf.photo %}
+                <img src="{% thumbnail pac_inf.photo 120x120 %}" alt="no photo" />
+            {% else %}
+                <img src="/media/upload/images/no-avatar.png" />
+            {% endif %}
         </td>
     </tr>
     <tr>
@@ -37,33 +43,34 @@
         <td><label>Sexo:</label></td>
         <td><input type="text" value="{{ pac_inf.get_gender_display }}" style="width:100px;" readonly></td>
     </tr>
+</table>
+<table>
     <tr>
-        <td><label>Direccion:</label></td>
+        <td style="width:150px;"><label>Direccion:</label></td>
         <td><input type="text" value="{{ pac_inf.address }}" style="width:400px;" readonly></td>
-        <td></td>
     </tr>
     <tr>
         <td> <label>Ciudad:</label></td>
-        <td> <input type="text" value="{{ pac_inf.city }}" style="width:400px;" readonly/></td>
-        <td></td>
+        <td> <input type="text" value="{{ pac_inf.city }}" style="width:200px;" readonly/></td>
+
     </tr>
     <tr>
         <td> <label>Provincia:</label></td>
-        <td> <input type="text" value="{{ pac_inf.state }}" style="width:400px;" readonly/></td>
-        <td></td>
+        <td> <input type="text" value="{{ pac_inf.state }}" style="width:200px;" readonly/></td>
+
     </tr>
     <tr>
         <td><label>Telefono:</label></td>
         <td><input type="text" value="{{ pac_inf.phone }}" style="width:100px;"readonly></td>
-        <td></td>
+
     </tr>
     <tr>
         <td><label>Email:</label></td>
         <td><input type="text" value="{{ pac.email }}" style="width:200px;" readonly></td>
-        <td></td>
     </tr>
 </table>
 <br />
 </div>
 
+<br />
 {% endblock %}

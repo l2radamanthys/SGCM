@@ -1,14 +1,21 @@
 {% extends 'base.html' %}
 
+{% load thumbnail %}
+
 {% block style %}
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
 {% endblock %}
 
 
 {% block contenido %}
     <br />
     <h2>Mis Datos</h2>
+    <br />
+    <div style="text-align: right; width:800px">
+        <a href="" title="Modificar Datos" class="grad-button-blue">Modificar Datos</a>
+    </div>
 
-    <table style="margin: 10px; width: 500px">
+    <table style="margin: 0 auto; width: 700px">
         <tr>
             <td colspan="2"><h3>Datos de Cuenta</h3></td>
         </tr>
@@ -48,7 +55,10 @@
             <td> <strong>Provincia: </strong></td>
             <td> {{ user_data.state }}</td>
         </tr>
+        <tr>
+            <td><strong>Foto:</strong></td>
+            <td><br /><img src="{% thumbnail user_data.photo 350x350 %}"></td>
+        </tr>
     </table>
-
 
 {% endblock %}

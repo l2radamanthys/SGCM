@@ -10,11 +10,13 @@ admin.autodiscover()
 from settings import MEDIA_ROOT
 import views as base_views
 import debug_views
+#gestion de turnos
 import GestionTurnos.users_views as gt_users_views
 import GestionTurnos.medics_views as gt_medics_views
 import GestionTurnos.messages_views as gt_messages_views
-
 import GestionTurnos.patients_views as gt_patients_views
+#historia clinica
+import HistoriaClinica.medics_views as hc_medics_views
 
 
 urlpatterns = patterns('',
@@ -53,7 +55,7 @@ urlpatterns = patterns('',
     (r'^medicos/agregar/consulta-medica/(.+)/$', gt_medics_views.my_add_medical_consultation),
     #(r'^medicos/mostrar/consulta-medica/(\d{1,2})/$', gt_medics_views.my_show_medical_consultation),
     (r'^medicos/modificar/consulta-medica/(\d{1,2})/$', gt_medics_views.my_edit_medical_consultation),
-    
+    (r'^medicos/borrar/consulta-medica/(\d{1,2})/$', gt_medics_views.my_delete_medical_consultation),
 
 
     (r'^medicos/mostrar/mis-horarios-atencion/$', gt_medics_views.my_medic_show_business_hours),
@@ -63,9 +65,12 @@ urlpatterns = patterns('',
     (r'^medicos/mostrar/dias-no-laborales/(\d{1,2})/(\d{4})/$', gt_medics_views.my_medic_show_nonworking_days),
     (r'^medicos/agregar/dia-no-laboral/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_medics_views.my_medic_add_nonworking_day),
     (r'^medicos/borrar/dia-no-laboral/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_medics_views.my_medic_del_nonworking_day),
-    ## - Historia Clinica Views - ##
 
-    #debug views
+    ## - Historia Clinica Views - ##
+    (r'^pacientes/mostrar/imagenes/(.+)/$', hc_medics_views.medic_show_patients_images), #muestra el listado de imagenes
+
+
+    #debug views, this views only desing for testing
     (r'^perms/$', debug_views.perms_list),
     (r'^apps/$', debug_views.apps_list),
     (r'^usuarios/calendar/$', debug_views.calendar),

@@ -13,6 +13,15 @@
 <br />
     {% if show_form %}
         {% include "Medics/GestionTurnos/agregar-consulta-medica-form.html" %}
+    {% else %}
+
+        <div class="success">Consulta Agregada Exitosamente </div>
+        <br />
+        <br />
+        <div style="text-align: center">
+            <a href="/pacientes/mostrar/consultas-medicas/{{ pac.username }}/" class="grad-button-blue">Continuar</a>
+        </div>
+        
     {% endif %}
     
     {% if show_errors %}
@@ -26,5 +35,7 @@
         {% endautoescape %}
         </div> 
     {% endif %}
+
+    
  
 {% endblock %}

@@ -15,12 +15,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'postgresql_psycopg2', 		# Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'SGCM_DB',                      	# Or path to database file if using sqlite3.
-        'USER': 'wyrven',                      	# Not used with sqlite3.
-        'PASSWORD': 'inmortal',                 # Not used with sqlite3.
-        'HOST': '127.0.0.1',                    # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      		# Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'postgresql_psycopg2',           # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'SGCM_DB',                         # Or path to database file if using sqlite3.
+        'USER': 'wyrven',                          # Not used with sqlite3.
+        'PASSWORD': 'inmortal',                    # Not used with sqlite3.
+        'HOST': '127.0.0.1',                       # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                                  # Set to empty string for default. Not used with sqlite3.
     }
 }
 
@@ -134,7 +134,7 @@ INSTALLED_APPS = (
     'django_extensions', #no hay forma de hacerlo funcar en win a pygraphivs
     'SGCM.libs.django_yuml',
     'easy_thumbnails',  #generar thumbnails de las imagenes
-    
+
     'SGCM.GestionTurnos',
     #'SGCM.HistoriaClinica',
     'SGCM.MyFilters', #filtros personalizados NO FOUND

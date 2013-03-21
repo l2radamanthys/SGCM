@@ -59,7 +59,7 @@ def patient_show_info(request, pac_id):
     else:
         path = request.META['PATH_INFO']
         return HttpResponseRedirect("/restricted-access%s" %path)
-        
+
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
 
@@ -73,13 +73,14 @@ def patient_edit_basic_info(request, pac_id):
     dict = generate_base_keys(request)
 
     if True: #asignar permiso correspondiente mas adelante
-        pac = User.objects.get(groups__name='Pacientes', username=pac_id)
-        pac_inf = UserInformation.objects.get(user__username=pac_id)
+        pac = User.objects.get(groups__name='Paciente', username=pac_id)
+        pac_inf = UserInformation.objects.get(user=pac)
+        dict['pac_inf'] = pac_inf
 
         if request.method == 'POST':
             dict['show_form'] = False
             dict['custon_message'] = "Form enviado"
-            form = my_forms.BasicInfoForm(request.POST)
+            form = my_forms.BasicInfoForm(request.POST, request.FILES)
             if form.is_valid():
                 pac.first_name = form.cleaned_data['first_name']
                 pac.last_name = form.cleaned_data['last_name']
@@ -88,20 +89,21 @@ def patient_edit_basic_info(request, pac_id):
                 pac_inf.gender = form.cleaned_data['gender']
                 pac_inf.address = form.cleaned_data['address']
                 pac_inf.phone = form.cleaned_data['phone']
+                pac_inf.photo = form.cleaned_data['photo']
                 pac.save()
                 pac_inf.save()
                 dict['update_ok'] = True
                 dict['pac_username'] = pac.username
-    
+
             else:
                  dict['custon_message'] = "Error"
                  dict['show_errors'] = True
                  dict['form'] = form = my_forms.BasicInfoForm(request.POST)
-    
+
         else:
             dict['show_form'] = True
             dict['pac_username'] = pac.username
-    
+
             form_data = { #contenido precargado que tendra el formulario
                 'email' : pac.email,
                 'first_name' : pac.first_name,
@@ -129,12 +131,12 @@ def patient_show_medical_consultation(request, pac_id):
     """
     mi_template = get_template('Medics/GestionTurnos/patient-show-medical-consultation.html')
     dict = generate_base_keys(request)
-    
+
     dict['pac_username'] = pac_id
 
     is_medic = True
     if is_medic:
-        dict['pac'] = User.objects.get(groups__name='Pacientes', username=pac_id)
+        dict['pac'] = User.objects.get(groups__name='Paciente', username=pac_id)
         dict ['medicals_consultations'] = MedicalConsultation.objects.filter(patient__username=pac_id)
         html_cont = mi_template.render(Context(dict))
         return HttpResponse(html_cont)
@@ -161,23 +163,23 @@ def patient_register(request):
 
         if request.method == 'POST':
             dict['query'] = "POST"  #debug only
-            form = my_forms.RegisterForm(request.POST, auto_id=False)           
+            form = my_forms.RegisterForm(request.POST, request.FILES, auto_id=False)
             if form.is_valid():
                 dict['query'] += " | FORM OK"  #debug only
                 _username = form.cleaned_data['username']
                 _password = form.cleaned_data['password']
                 _email = form.cleaned_data['email']
-    
+
                 #comprobacion si el usuario ya existe
-                try: 
+                try:
                     # error el nombre de usuario existe
                     user = User.objects.get(username=_username)
                     dict['show_errors'] = True
                     dict['custon_errors'] = Tags.html_message("Error el usuario %s ya existe.." %Tags.strong(_username))
                     dict['form'] = form
                     dict['query'] += " | USER ERROR"  #debug only
-    
-                except User.DoesNotExist:                    
+
+                except User.DoesNotExist:
                     user = User.objects.create_user(username=_username, email=_email, password=_password)
                     user.first_name = form.cleaned_data['first_name']
                     user.last_name =form.cleaned_data['last_name']
@@ -187,7 +189,7 @@ def patient_register(request):
 
                     group = DjangoGroup.objects.get(name='Paciente')
                     user.groups.add(group)
-    
+
                     UserInformation.objects.create(
                             user=user,
                             type_doc = form.cleaned_data['type_doc'],
@@ -199,17 +201,17 @@ def patient_register(request):
                             city = form.cleaned_data['city'],
                             state = form.cleaned_data['state'],
                             photo = form.cleaned_data["photo"], #causa error que no pude resolver cuando intento agregar foto al crearlo
-                            matricula = "No Medic" 
+                            matricula = "No Medic"
                     )
                     dict['show_form'] = False
-                    dict['custon_message'] = Tags.html_message("Paciente Registrado %s Correctamente.."  %(form.cleaned_data['first_name']), type="ok")
-    
+                    dict['custon_message'] = Tags.html_message("Paciente <strong>%s</strong> Registrado Correctamente.."  %(form.cleaned_data['first_name']+form.cleaned_data['last_name']), type="ok")
+
             else:
                 dict['query'] += " | FORM ERROR"  #debug only
                 dict['show_errors'] = True
                 dict['form_errors'] = True
                 dict['form'] = form
-    
+
         else: #si no se envio el formulario
             dict['query'] = "NO COMMIT"  #debug only
             dict['form'] = my_forms.RegisterForm(auto_id=False)
@@ -401,10 +403,10 @@ def my_medic_show_business_hours(request):
         mi_template = get_template('Medics/GestionTurnos/mis-horarios-atencion.html')
         dict = generate_base_keys(request)
         dict['business_hours'] = BusinessHours.objects.filter(user__username=request.user.username)
-        
+
         html_cont = mi_template.render(Context(dict))
         return HttpResponse(html_cont)
-        
+
     else:
         path = request.META['PATH_INFO']
         return HttpResponseRedirect("/restricted-access%s" %path)
@@ -466,7 +468,7 @@ def my_medic_del_business_hours(request, bh_id):
     if True: #por ahora no controlo permisos
         mi_template = get_template('Medics/GestionTurnos/borrar-horario-atencion.html')
         dict = generate_base_keys(request)
-        
+
         bh = BusinessHours.objects.get(id=int(bh_id))
         if request.method == 'POST':
             dict['query'] = True
@@ -558,7 +560,7 @@ def my_medic_show_nonworking_days(request, month=None, year=None):
         if month != None and year != None:
             month = int(month) % 13
             year = int(year)
-    
+
         else:
             year = datetime.date.today().year
             month = datetime.date.today().month
@@ -566,32 +568,32 @@ def my_medic_show_nonworking_days(request, month=None, year=None):
         #hoy
         t_year = datetime.date.today().year
         t_month = datetime.date.today().month
-    
+
         dict['month'] = month
         dict['name_month'] = MONTHS[month-1]
         dict['year'] = year
-    
+
         cal = calendar.Calendar()
         wekends = cal.monthdayscalendar(year, month)
-    
+
         if month == 1:
             dict['prev_month'] = 12
             dict['next_month'] = 2
             dict['prev_year'] = year - 1
             dict['next_year'] = year
-    
+
         elif month == 12:
             dict['prev_month'] = 11
             dict['next_month'] = 1
             dict['prev_year'] = year
             dict['next_year'] = year + 1
-    
+
         else:
             dict['prev_month'] = month - 1
             dict['next_month'] = month + 1
             dict['prev_year'] = year - 1
             dict['next_year'] = year + 1
-    
+
         if dict['prev_month'] < t_month and dict['prev_year'] == t_year or dict['prev_year'] < t_year:
             dict['prev_month'] = t_month
             dict['prev_year'] = t_year
@@ -609,11 +611,11 @@ def my_medic_show_nonworking_days(request, month=None, year=None):
         _nwd = []
         for obj in nwd:
             _nwd.append(obj.date.day)
-    
+
         #dias con turnos asignados
         _dta = []
         #completar
-    
+
         #formateo del mes
         semanas = []
         for week in wekends:
@@ -633,7 +635,7 @@ def my_medic_show_nonworking_days(request, month=None, year=None):
                 i += 1
             semanas.append(sem)
         dict['wekends'] = semanas
-        
+
         html_cont = mi_template.render(Context(dict))
         return HttpResponse(html_cont)
 
@@ -660,7 +662,7 @@ def my_medic_add_nonworking_day(request, day, month, year):
             )
             nwd.save()
             return HttpResponseRedirect("/medicos/mostrar/dias-no-laborales/%s/%s/" %(month, year))
-    
+
         else:
             dict['show_form'] = True
             dict['day'] = day
@@ -685,7 +687,7 @@ def my_medic_del_nonworking_day(request, day, month, year):
 
     if True:
         pass
-        
+
         html_cont = mi_template.render(Context(dict))
         return HttpResponse(html_cont)
 
@@ -714,12 +716,13 @@ def my_add_medical_consultation(request, pac_id):
                     observations = get_value(request, 'observations')
             )
             cm.save()
-    
+            dict['pac'] = pac
+
         else:
             dict['show_form'] = True
             dict['med'] = request.user
             dict['pac'] = pac
-            
+
         html_cont = mi_template.render(Context(dict))
         return HttpResponse(html_cont)
 
@@ -746,11 +749,11 @@ def my_edit_medical_consultation(request, cm_id):
             cm.observations = get_value(request, 'observations')
             cm.save()
             dict['custon_messages'] = Tags.html_message('Cambios Guardados..', 'success')
-    
+
         else:
             dict['med'] = cm.medic
             dict['pac'] = cm.patient
-            
+
         html_cont = mi_template.render(Context(dict))
         return HttpResponse(html_cont)
 
@@ -758,3 +761,28 @@ def my_edit_medical_consultation(request, cm_id):
         path = request.META['PATH_INFO']
         return HttpResponseRedirect("/restricted-access%s" %path)
 
+
+
+def my_delete_medical_consultation(request, cm_id):
+    """
+        Eliminar una consulta medica
+    """
+    mi_template = get_template('Medics/GestionTurnos/borrar-consulta-medica.html')
+    dict = generate_base_keys(request)
+
+    if True: #requiere permiso del medico
+        cm = MedicalConsultation.objects.get(id=cm_id)
+        if request.method == 'POST':
+            cm.delete()
+
+            return HttpResponseRedirect("/pacientes/mostrar/consultas-medicas/%s/" %cm.patient.username)
+
+        else:
+            dict['cm'] = cm
+
+            html_cont = mi_template.render(Context(dict))
+            return HttpResponse(html_cont)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)

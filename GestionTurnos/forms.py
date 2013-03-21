@@ -33,7 +33,7 @@ class RegisterForm(forms.Form):
         error_messages={'required': 'El Campo "Email" es obligatorio'}
     )
 
-    #user information 
+    #user information
     first_name = forms.CharField(
         label="Nombre",
         widget=forms.TextInput(attrs={'class':'edt_m'}),
@@ -50,7 +50,7 @@ class RegisterForm(forms.Form):
         input_formats= ['%d/%m/%Y'],
         error_messages={'required': 'El Campo "Fecha de Nacimiento" es obligatorio'}
     )
-    
+
     type_doc = forms.ChoiceField(label="Tipo de Documento", choices=TYPE_DOC_CHOICE)
     nro_doc = forms.CharField(
         label="Nro de Documento",
@@ -75,7 +75,7 @@ class RegisterForm(forms.Form):
         required = False
     )
     photo = forms.ImageField(
-        label="Foto", 
+        label="Foto",
         required = False
     )
 
@@ -152,6 +152,10 @@ class BasicInfoForm(forms.Form):
     phone = forms.CharField(
         label="Telefono",
         widget=forms.TextInput(attrs={'class':'edt_c'}),
+        required = False
+    )
+    photo = forms.ImageField(
+        label="Foto",
         required = False
     )
 

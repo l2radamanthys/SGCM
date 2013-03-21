@@ -7,6 +7,7 @@ import datetime
 from globals import MI_TEMPLATE_DIR, GET, POST
 
 
+
 class CalendarDay:
     """
     Clase contenedora para mostrar los elementos de un calendario
@@ -20,9 +21,9 @@ class CalendarDay:
 	    3- Cancelado
 
     """
-    def __init__(self, day, type=0, argv=None):
+    def __init__(self, day, _type=0, argv=None):
         self.day = day
-        self.type = type
+        self.type = _type
         self.argv = argv
 
 
@@ -77,6 +78,7 @@ def get_role(request):
         return ""
 
 
+
 def generate_base_keys(request):
     """
         Genera el dicionario con contenido basico.
@@ -105,7 +107,8 @@ def get_POST_value(request, key='', default='', blank=''):
     value = request.POST.get(key, default)
     if value == '':
         value = blank
-    return value  
+    return value
+
 
 
 def get_value(request, key='', default='', blank='', method=POST):
@@ -119,6 +122,7 @@ def get_value(request, key='', default='', blank='', method=POST):
 
 
 
+
 def _get_value(request, key='', default='', blank=''):
     """
         Obtiene valor de object request de la info que se envio al
@@ -128,6 +132,7 @@ def _get_value(request, key='', default='', blank=''):
         return get_POST_value(request, key, default, blank)
     else:
         return get_GET_value(request, key, default, blank)
+
 
 
 

@@ -4,18 +4,18 @@
 <br />
 
 <div class="fancy-form-white" style="width: 650px; margin: 0 auto;">
-    <form action="." method="POST">
+    <form action="." method="POST" enctype="multipart/form-data">
     <table style="margin: 0 auto; width:600px;">
     <tr>
         <td><label>{{ form.username.label }} :</label></td>
         <td>{{ form.username }}</td>
     </tr>
-    
+
     <tr>
         <td><label>{{ form.password.label }} :</label></td>
         <td>{{ form.password }}</td>
     </tr>
-    
+
     <tr>
         <td><label>{{ form.re_password.label }} :</label></td>
         <td>{{ form.re_password }}</td>
@@ -29,12 +29,12 @@
     <tr>
         <td colspan="2">&nbsp;</td>
     </tr>
-    
+
     <tr>
         <td><label>{{ form.first_name.label }} :</label></td>
         <td>{{ form.first_name }}</td>
     </tr>
-        
+
     <tr>
         <td><label>{{ form.last_name.label }} :</label></td>
         <td>{{ form.last_name }}</td>
@@ -44,64 +44,64 @@
         <td> <label> {{ form.birth_date.label }}</label></td>
         <td> {{ form.birth_date }}</td>
     </tr>
-    
+
     <tr>
         <td><label>{{ form.type_doc.label }} :</label></td>
         <td>{{ form.type_doc }}</td>
     </tr>
-    
+
     <tr>
         <td><label>{{ form.nro_doc.label }} :</label></td>
         <td>{{ form.nro_doc }}</td>
     </tr>
-    
+
     {% if is_medic %}
     <tr>
         <td><label>{{ form.nro_doc.label }} :</label></td>
         <td>{{ form.nro_doc }}</td>
     </tr>
     {% endif %}
-    
+
     <tr>
         <td><label>{{ form.gender.label }} :</label></td>
         <td>{{ form.gender }}</td>
-    </tr>    
+    </tr>
 
-    <tr> 
+    <tr>
         <td colspan="2">&nbsp;</td>
     </tr>
-    
+
     <tr>
         <td><label>{{ form.address.label }} :</label></td>
         <td>{{ form.address }}</td>
-    </tr>    
+    </tr>
 
     <tr>
         <td><label>{{ form.city.label }} :</label></td>
         <td>{{ form.city }}</td>
-    </tr> 
+    </tr>
 
     <tr>
         <td><label>{{ form.state.label }} :</label></td>
         <td>{{ form.state }}</td>
-    </tr> 
+    </tr>
 
     <tr>
         <td><label>{{ form.phone.label }} :</label></td>
         <td>{{ form.phone }}</td>
-    </tr>    
+    </tr>
 
     <tr>
         <td><label>{{ form.photo.label }} :</label></td>
         <td>{{ form.photo }}</td>
-    </tr>  
+    </tr>
 
     <tr>
         <td colspan="2" style="text-align: center">
             <br />
             <input type="submit" class="grad-button-blue" value="Registrar"  />
         </td>
-    </tr>    
+    </tr>
     </table>
     </form>
 </div>
