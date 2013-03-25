@@ -7,18 +7,18 @@ from django import forms
 
 class ChangePasswordForm(forms.Form):
     old_password = forms.CharField(
-        label="Contrasenia Anterior (*)",
+        label="Contrasenia Anterior (*):",
         widget=forms.PasswordInput(attrs={'class':'edt_c'}),
         error_messages={'required': 'El Campo "Contrasenia Anterior" es obligatorio'}
     )
 
     password = forms.CharField(
-        label="Nueva Contrasenia (*)",
+        label="Nueva Contrasenia (*):",
         widget=forms.PasswordInput(attrs={'class':'edt_c'}),
         error_messages={'required': 'El Campo "Nueva Contrasenia" es obligatorio'}
     )
     re_password = forms.CharField(
-        label="Repita Contrasenia (*)",
+        label="Repita Contrasenia (*):",
         widget=forms.PasswordInput(attrs={'class':'edt_c'}), #msj error redefinido abajo
         required = False
     )

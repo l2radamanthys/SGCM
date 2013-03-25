@@ -8,3 +8,10 @@ def html_message(text, type="alert"):
 
 def strong(text):
     return "<strong>%s</strong>" %text
+
+
+def custom_tag(name="p", atrr="", content="", end_tag=True):
+    if end_tag:
+        return "<%s %s>%s<%s/>" %(name, atrr, content, name)
+    else:
+        return "<%s %s />" %(name, atrr)

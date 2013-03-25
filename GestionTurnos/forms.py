@@ -186,3 +186,21 @@ class BusinessHoursForm(forms.Form):
 
     #def clean_start_time(self):
     #    pass
+
+class MessageSendForm(forms.Form):
+    to_user = forms.CharField(
+        label="Destinatario:",
+        widget=forms.TextInput(attrs={'class':'edt_g',}),
+        required = True
+    )
+    issue = forms.CharField(
+        label="Asunto:",
+        widget=forms.TextInput(attrs={'class':'edt_g',}),
+        required = True
+    )
+    content = forms.CharField(
+        label="Contenido:",
+        widget= forms.Textarea(attrs={'cols':'60'}),
+        required = True
+    )
+

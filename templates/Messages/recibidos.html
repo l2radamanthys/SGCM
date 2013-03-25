@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="/media/css/fancy-forms.css" />
+    <link rel="stylesheet" type="text/css" href="/media/css/messages.css">
+    <link rel="stylesheet" type="text/css" href="/media/css/gradient-buttons.css">
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css">
+{% endblock %}
+
+{% block contenido %}
+<br />
+
+<h2>Mensajes Recibidos</h2>
+<br />
+
+<table class="tbl-round-light" style="width: 700px;">
+<tr>
+    <th style="width: 200px;">De:</th>
+    <th colspan="2">Asunto</th>
+</tr>
+
+{% if not_empty %}
+    {% for msj in messages %}
+        {% if msj.read %}
+            <tr>
+                <td> {{ msj.from_user.first_name }}, {{ msj.from_user.last_name }}</td>
+                <td> {{ msj.issue }}</td>
+                <td style="width:110px; text-align: center;">
+                    <a href="/mensajes/mostrar/{{ msj.id }}/" title="">Mostrar</a> |
+                    <a href="/mensajes/borrar/{{ msj.id }}/" title="">Eliminar</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr style="background-color: #E6F2FF">
+                <td> {{ msj.from_user.first_name }}, {{ msj.from_user.last_name }}</td>
+                <td> {{ msj.issue }}</td>
+                <td style="width:110px; text-align: center;">
+                <a href="/mensajes/mostrar/{{ msj.id }}/" title="">Mostrar</a> |
+                <a href="/mensajes/borrar/{{ msj.id }}/" title="">Eliminar</a>
+            </td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+    </table>
+{% else %}
+    </table>
+    <div class="info">
+        <p>No tienes ningun mensaje en tu bandeja de entrada.</p>
+    </div>
+{% endif %}
+
+
+
+{% endblock %}

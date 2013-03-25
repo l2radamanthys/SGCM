@@ -15,14 +15,45 @@ from django.contrib.contenttypes.models import ContentType
 from utils import *
 from globals import *
 from GestionTurnos.models import *
-
+from GestionTurnos.forms import MessageSendForm
 
 
 def send_message(request):
-    mi_template = get_template('GestionTurnos/Messages/enviar.html')
+    """
+        Vista Para enviar un Mensaje
+    """
+    mi_template = get_template('Messages/redactar.html')
     dict = generate_base_keys(request)
-    if request.user.is_authenticated():
-	pass
+
+    if True: #solo los medicos y administradores podran acceder a esta vista
+        dict['show_form'] = True
+        if request.method == 'POST':
+            form = MessageSendForm(request.POST, auto_id=False)
+            if form.is_valid():
+                to_username = form.cleaned_data['to_user']
+                try:
+                    _to_user = User.objects.get(username=to_username)
+                    #usuario existe y se registra el envio del mensaje
+                    Message.objects.create(
+                        from_user = request.user,
+                        to_user = _to_user,
+                        issue = form.cleaned_data['issue'],
+                        content = form.cleaned_data['content'],
+                    )
+                    dict['show_form'] = False
+
+                except User.DoesNotExist:
+                    #el usuario destinatario no existe por lo que lanzo una exepcion
+                    #personalizada que en realidad es un mensaje de error
+                    dict['custom_error'] = Tags.custom_tag(content='Error Destinatario inexistente..!')
+                    dict['show_error'] = True
+                    dict['form'] = form
+
+            else:
+                dict['show_error'] = True
+                dict['form'] = form
+        else:
+            dict['form'] = MessageSendForm(auto_id=False)
 
 
     else:
@@ -33,22 +64,19 @@ def send_message(request):
     return HttpResponse(html_cont)
 
 
-def received_unread(request):
-    pass
-
 
 def received(request):
     """
         Muestra todos los mensajes recividos del usuario
     """
-    mi_template = get_template('GestionTurnos/inbox/mensajes-recibidos.html')
+    mi_template = get_template('Messages/recibidos.html')
     dict = generate_base_keys(request)
     if request.user.is_authenticated():
+        messages = Message.objects.filter(to_user=request.user)
+        if len(messages) > 0:
+            dict['messages'] = messages
+            dict['not_empty'] = True
 
-        msjs = InboxMsj.objects.filter(to_user=request.user)
-        if len(msjs) > 0:
-            dict['msj_inbox'] = InboxMsj.objects.filter(to_user=request.user)
-            dict['no_empty'] = True
 
     else:
         path = request.META['PATH_INFO']
@@ -67,7 +95,7 @@ def read(request, msj_id):
     dict = generate_base_keys(request)
     if request.user.is_authenticated():
         dict['message'] = InboxMsj.objects.filter(to_user=request.user).get(id=int(msj_id))
-        
+
 
     else:
         path = request.META['PATH_INFO']

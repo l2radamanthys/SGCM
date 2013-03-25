@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
 
+{% block style %}
+    <link rel="stylesheet" type="text/css" href="/media/css/messages.css">
+{% endblock %}
+
 
 {% block contenido %}
 
 <br />
-	<br />	
-	<br />		
-	
+    <br />
+    <br />
 	{% if error %}
 	
 		<div class="alert">Alerta: No puedes cerrar session por que no te encuentras logueado...</div>

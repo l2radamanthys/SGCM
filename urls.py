@@ -39,7 +39,7 @@ urlpatterns = patterns('',
     (r'^index/$', base_views.index),
     (r'^login/$', base_views.login),
     (r'^logout/$', base_views.logout),
-    #(r'^change-password/$', base_views.change_password), #por algun motivo no me esta cambiando las contrasenia revisar
+    (r'^change-password/$', base_views.change_password),
     (r'^restricted-access/$', base_views.restricted_access),
     (r'^restricted-access/(.+)/$', base_views.restricted_access),
     (r'^nuevo-paciente/$', gt_patients_views.patient_register),
@@ -57,7 +57,6 @@ urlpatterns = patterns('',
     (r'^medicos/modificar/consulta-medica/(\d{1,2})/$', gt_medics_views.my_edit_medical_consultation),
     (r'^medicos/borrar/consulta-medica/(\d{1,2})/$', gt_medics_views.my_delete_medical_consultation),
 
-
     (r'^medicos/mostrar/mis-horarios-atencion/$', gt_medics_views.my_medic_show_business_hours),
     (r'^medicos/agregar/mi-horario-atencion/$', gt_medics_views.my_medic_add_business_hours),
     (r'^medicos/borrar/mi-horarios-atencion/(\d{1,2})/$', gt_medics_views.my_medic_del_business_hours),
@@ -65,6 +64,12 @@ urlpatterns = patterns('',
     (r'^medicos/mostrar/dias-no-laborales/(\d{1,2})/(\d{4})/$', gt_medics_views.my_medic_show_nonworking_days),
     (r'^medicos/agregar/dia-no-laboral/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_medics_views.my_medic_add_nonworking_day),
     (r'^medicos/borrar/dia-no-laboral/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_medics_views.my_medic_del_nonworking_day),
+
+
+    #mensajes internos
+    (r'^mensajes/redactar', gt_messages_views.send_message),
+    (r'^mensajes/recibidos', gt_messages_views.received),
+
 
     ## - Historia Clinica Views - ##
     (r'^pacientes/mostrar/imagenes/(.+)/$', hc_medics_views.medic_show_patients_images), #muestra el listado de imagenes
@@ -75,6 +80,7 @@ urlpatterns = patterns('',
     (r'^apps/$', debug_views.apps_list),
     (r'^usuarios/calendar/$', debug_views.calendar),
     (r'^usuarios/calendar/(\d{1,2})/(\d{4})/$', debug_views.calendar),
+
 
 
 )

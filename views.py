@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 
 from GestionTurnos.models import *
 
+import HTMLTags as Tags
 import my_forms
 from utils import *
 from globals import *
@@ -70,12 +71,13 @@ def logout(request):
 
     if request.user.is_authenticated():
         auth.logout(request)
+        dict = generate_base_keys(request)
         dict['user_info'] = "Usuario no Conectado"
-    
+
     else:
         dict['error'] = True
 
-    
+
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
 
@@ -102,17 +104,26 @@ def change_password(request):
         dict = generate_base_keys(request)
 
         dict['form'] = my_forms.ChangePasswordForm(auto_id=False)
+        dict['show_form'] = True
+        dict['show_error'] = False
 
         if request.method == 'POST':
-            dict['query'] = True
             form = my_forms.ChangePasswordForm(request.POST, auto_id=False)
             if form.is_valid():
+
                 if request.user.check_password(form.cleaned_data['old_password']):
+                    #todo correcto se cambio la contrasenia
+                    #user = User.ob
                     request.user.set_password(form.cleaned_data['password'])
-
+                    request.user.save()
+                    dict['show_form'] = False
+                else:
+                    #la contrasenia anterior no coincide
+                    dict['show_error'] = True
+                    dict['custom_error'] = Tags.custom_tag(content='Error Contrasenia invalida')
             else:
-                dict['form_e'] = form
-
+                dict['form'] = form
+                dict['show_error'] = True
 
         html_cont = mi_template.render(Context(dict))
         return HttpResponse(html_cont)
@@ -133,11 +144,10 @@ def my_info(request):
 
     if request.user.is_authenticated():
         dict['user'] = request.user
-        dict['user_data'] = UserInformation.objects.get(user__username=request.user.username)        
+        dict['user_data'] = UserInformation.objects.get(user__username=request.user.username)
         html_cont = mi_template.render(Context(dict))
         return HttpResponse(html_cont)
 
-        
     else:
         path = request.META['PATH_INFO']
         return HttpResponseRedirect("/restricted-access%s" %path)
