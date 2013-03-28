@@ -43,6 +43,8 @@ urlpatterns = patterns('',
     (r'^restricted-access/$', base_views.restricted_access),
     (r'^restricted-access/(.+)/$', base_views.restricted_access),
     (r'^nuevo-paciente/$', gt_patients_views.patient_register),
+    (r'^activar-usuario/(.+)/(.+)/$', gt_patients_views.patient_activate),
+    (r'^activar-usuario/$', gt_patients_views.patient_activate),
     (r'^mis-datos/$', base_views.my_info),
 
     ## - Gestion de Turnos Views - ##
@@ -72,7 +74,12 @@ urlpatterns = patterns('',
 
 
     ## - Historia Clinica Views - ##
-    (r'^pacientes/mostrar/imagenes/(.+)/$', hc_medics_views.medic_show_patients_images), #muestra el listado de imagenes
+
+    #imagenes
+    (r'^pacientes/mostrar/imagenes/(.+)/$', hc_medics_views.medic_show_patients_images),
+
+    #antecedentes perinatales
+    (r'^pacientes/mostrar/antecedentes-perinatales/(.+)/$', hc_medics_views.patient_view_perinatal_antecedents),
 
 
     #debug views, this views only desing for testing

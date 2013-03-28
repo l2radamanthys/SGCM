@@ -1,0 +1,56 @@
+{% extends 'Medics/GestionTurnos/patient-view.html' %}
+
+{% block view-cont %}
+<div  style="padding-left:10px;" >
+    <h3>Antecedentes Perinatales</h3>
+    <p style="font-size:14px;">{{ pac.last_name  }}, {{ pac.first_name }} </p>
+</div>
+
+<div style="text-align:right; margin:20px;">
+    <a href="/pacientes/modificar/antecedentes-perinatales/{{ pac_username }}/" class="grad-button-blue">Modificar</a>
+</div>
+
+<table style="width: 650px; margin: 0 auto; font-size: 13px;" class="simple-tbl">
+    <tr>
+        <td class="tbl-label" style="width:200px"> Embarazo Numero: </td>
+        <td style="text-align: center; width:120px"> {{ antp.pregnancy_number }}</td>
+
+        <td class="tbl-label" style="width:200px"> Duracion del Embarazo:</td>
+        <td style="text-align: center">{{ antp.pregnancy_duration }} Semanas</td>
+    </tr>
+
+    <tr>
+        <td class="tbl-label">Controles durante embarazo:</td>
+        <td style="text-align: center"> {{ antp.controls }}</td>
+
+        <td class="tbl-label">Parto Normal:</td>
+        <td style="text-align: center"> {{ antp.normal_birth }}</td>
+    </tr>
+
+    <tr>
+        <td class="tbl-label">Peso al nacer:</td>
+        <td style="text-align: center"> {{ antp.weight }} kg.</td>
+
+        <td class="tbl-label">Talla al nacer:</td>
+        <td style="text-align: center"> {{ antp.size }} cm.</td>
+    </tr>
+
+    <tr>
+        <td class="tbl-label">Presento Patologias al Nacer:</td>
+        <td style="text-align: center"> {{ antp.pathologies }}</td>
+
+        <td class="tbl-label">Requirio Atencion Medica:</td>
+        <td style="text-align: center"> {{ antp.medical_care }}</td>
+    </tr>
+
+    <tr>
+        <td colspan="4" class="tbl-label">Observaciones:</td>
+    </tr>
+    <tr>
+        <td colspan="4" style="padding: 5px 10px;"> {{ antp.coments }}</td>
+    </tr>
+
+</table>
+
+
+{% endblock %}

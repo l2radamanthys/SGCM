@@ -136,7 +136,7 @@ INSTALLED_APPS = (
     'easy_thumbnails',  #generar thumbnails de las imagenes
 
     'SGCM.GestionTurnos',
-    #'SGCM.HistoriaClinica',
+    'SGCM.HistoriaClinica',
     'SGCM.MyFilters', #filtros personalizados NO FOUND
 )
 
@@ -164,3 +164,11 @@ LOGGING = {
         },
     }
 }
+
+
+#configuracion de la cuenta de email de GMAIl
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'smtp.sgcm@gmail.com'
+EMAIL_HOST_PASSWORD = 'sgcm2013'
+EMAIL_PORT = '587'
+EMAIL_USE_TLS = True

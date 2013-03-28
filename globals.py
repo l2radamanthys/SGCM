@@ -16,6 +16,10 @@ _STATIC_ROOT = os.path.join(PROJECT_PATH, 'media/static')
 #path del directorio de plantillas
 MI_TEMPLATE_DIR = os.path.join(PROJECT_PATH, 'templates')
 
+#url del sitio web
+SITE_URL = '127.0.0.1'
+
+
 
 MONTHS = [
     'Enero',
@@ -108,4 +112,10 @@ ARG_STATES_CHOICE = (
     ("Santiago del Estero", "Santiago del Estero"),
     ("Tierra del Fuego", "Tierra del Fuego"),
     ("Tucumán", "Tucumán"),
+)
+
+TRUE_FALSE_CHOICE = (
+    ('S', 'Si'),
+    ('N', 'No'),
+    ('-', '--'),
 )

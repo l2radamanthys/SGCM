@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/DatePicker-style.css" />
+{% endblock %}
+
+
+
+
+{% block contenido %}
+
+{% if show_form %}
+<br />
+<h3 class="title">Activar Usuario </h3>
+<br />
+<div class="fancy-form-white" style="width: 350px; margin: 0 auto;" >
+    <br />
+    <form action="." method="POST">
+
+    <table style="margin: 0 auto;">
+        <tr>
+            <td> <label>Usuario:</label></td>
+            <td> <input type="text" name="username" value="{{ username }}" /></td>
+        </tr>
+        <tr>
+            <td> <label>Codigo Activacion:</label></td>
+            <td> <input type="text" name="key" value="{{ activation_key }}" /></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center">
+            <br />
+            <input type="submit" value="Activar Usuario" class="grad-button-blue" />
+            </td>
+        </tr>
+
+    </table>
+    </form>
+</div>
+{% endif %}
+
+<br />
+
+    {{ custom_message }}
+
+{% endblock %}

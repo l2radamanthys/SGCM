@@ -5,6 +5,7 @@
 
 .left-sub-menu h4 {
     font-family: Arial;
+    font-weight: 100;
     text-align: center;
     background-color: #2E2E2E;
     color: #FFF;
@@ -17,9 +18,19 @@
     padding-left: 5px;
 }
 
+.left-sub-menu li {}
 
 .left-sub-menu a {
+    
     text-decoration: None;
     font-size: 12px;
+    padding: 2px 5px;
     color: #004B97;
+    display: block;
+    border: 1px solid #C0C0C0;
+    margin: 2px;
+}
+
+.left-sub-menu a:hover {
+    background-color:#E1E1E1;
 }

@@ -57,3 +57,19 @@
     border: 1px solid #DDD;
 }
 
+
+.tbl-label {
+    color: #3C3C3C;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 8px 3px;
+}
+
+.simple-tbl {
+    border-collapse:collapse;
+}
+
+.simple-tbl, .simple-tbl th, .simple-tbl td {
+    border: 1px solid #ADADAD;
+}
+

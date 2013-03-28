@@ -6,6 +6,10 @@
     <link type="text/css" rel="stylesheet" media="all" href="/media/css/sub-menu-style.css" />
     <link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
     <link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+
+    {% block ext_style %}
+    {% endblock %}
+    
 {% endblock %}
 
 {% block contenido %}
@@ -18,21 +22,31 @@
     </ul>
     <br />
 
-    <h4>Historias Clinicas</h4>
-    <ul>
-        <li><a href="">Antecedentes Perinatales</a></li>
-        <li><a href="">Estudios Clinicos</a></li>
-        <li><a href="/pacientes/mostrar/imagenes/{{ pac_username }}/">Imagenes</a></li>
-        <li><a href="">Archivos</a></li>
-    </ul>
-    <br />
-
     <h4>Consultas Medicas</h4>
     <ul>
         <li><a href="/pacientes/mostrar/consultas-medicas/{{ pac_username }}/">Consultas Activas</a></li>
         <li><a href="/pacientes/mostrar/recetas-medicas/{{ pac_username }}/">Recetas Medicas</a></li>
     </ul>
     <br />
+
+    <h4>Historias Clinicas</h4>
+    <ul>
+        <li><a href="/pacientes/mostrar/antecedentes-perinatales/{{ pac_username }}/">Antecedentes Perinatales</a></li>
+        <li><a href="/pacientes/mostrar/habitos-toxicos/{{ pac_username }}/" title="">Habitos Toxicos</a></li>
+        <li><a href="" title="">Examen Fisico</a></li>
+        <li><a href="" title="">Cabeza</a></li>
+        <li><a href="" title="">Cuello</a></li>
+        <li><a href="" title="">Piel Faneas y Tejido Subcutaneo</a></li>
+        <li><a href="" title="">Abdomen Pelviz</a></li>
+        <li><a href="" title="">Sistema Osteo Articular</a></li>
+        <li><a href="" title="">Sistema Neuro Muscular</a></li>
+        <li><a href="" title="">Torax Aparato Respiratorio</a></li>
+        <li><a href="" title="">Aparato Cardiovascular</a></li>
+        <li><a href="/pacientes/mostrar/imagenes/{{ pac_username }}/">Imagenes</a></li>
+        <li><a href="">Archivos</a></li>
+    </ul>
+    <br />
+
 </div>
 </div>
 

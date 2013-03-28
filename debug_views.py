@@ -105,3 +105,7 @@ def apps_list(request):
 
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
+
+
+def test_mail(request):
+    pass

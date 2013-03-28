@@ -5,7 +5,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 #replaced by easy_thumbs, django-thumbs only found in Dj 1.1 o low
-#from libs.thumbs import ImageWithThumbsField as ImgThumbsField 
+#from libs.thumbs import ImageWithThumbsField as ImgThumbsField
 
 import datetime
 
@@ -17,8 +17,8 @@ class UserInformation(models.Model):
     """
         Informacion adicional de usuario
     """
-    user = models.ForeignKey(User, unique=True) #Fk 
-    
+    user = models.ForeignKey(User, unique=True) #Fk
+
     type_doc = models.CharField(max_length=6, default='---', choices=TYPE_DOC_CHOICE)
     nro_doc = models.CharField(max_length=12, default='')
     gender = models.CharField(max_length=1, default='-', choices=SEXO_CHOICE)
@@ -28,7 +28,7 @@ class UserInformation(models.Model):
     state = models.CharField(max_length=120, default='No Definido')
     birth_date = models.DateField()
     photo = models.ImageField(upload_to='upload/images', default='upload/images/no-avatar.png')
-    
+
     #solo para los medicos
     matricula = models.CharField(max_length=30, default='No Medic')
 
@@ -199,6 +199,6 @@ class MedicalConsultation(models.Model):
     diagnostic = models.TextField(default='') #diagnostico
     physical_exam = models.TextField(default='') #examen fisico
     observations = models.TextField(default='') #observaciones
-    
+
     class Meta:
         db_table = "MedicalConsultation"
