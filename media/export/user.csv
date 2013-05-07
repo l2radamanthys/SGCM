@@ -1,0 +1,7 @@
+id;username;first_name;last_name;email;password;is_staff;is_active;is_superuser;last_login;date_joined;
+2;user;Victor Fernando;Vargas;user@usernet.com;sha1$4a707$e0f179af125cb6a96ee6b3dbb05c431867c625f9;False;True;False;2013-04-29 01:19:52;2013-04-27 02:17:57;
+3;medic;Ricardo Daniel;Quiroga;L2Radamanthys@gmail.com;sha1$5846c$f63b1ddea8615fb764a6373c2348d472679e0770;False;True;False;2013-04-28 19:28:10;2013-04-28 19:09:58;
+4;alecruz;Alejandro;Cruz;alecruz@gmail.com;sha1$03852$f50256fac280fcf234034bf81879b970d237c9a2;False;True;False;2013-04-28 19:32:10;2013-04-28 19:32:10;
+5;britsgaby;Gabriela;Cruz;gabubrits@hotmail.com;sha1$5dbe0$77b83cc59f8e60d857aef739f410544f70c42532;False;True;False;2013-04-28 19:44:57;2013-04-28 19:44:57;
+6;arielue;Ariel Marcelo;Diaz;ariel.diaz@yahoo.com;sha1$db2ab$c731f38ef4d2a5e571f703b9ac03cb0ae82274d1;False;True;False;2013-04-28 19:52:54;2013-04-28 19:52:54;
+7;fernandofel;Fernado;Diaz;fernandofel@hotmail.com;sha1$b26ef$e453fc36cb817e56fa3da9132427370eb7fc6079;False;True;False;2013-04-29 01:06:02;2013-04-29 01:06:02;

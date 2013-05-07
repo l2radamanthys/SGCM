@@ -1,0 +1,7 @@
+id;user_id;type_doc;nro_doc;gender;phone;address;city;state;birth_date;photo;matricula
+2;2;D.N.I.;34678325;M;3637785;grupo 480 bloque N segundo piso;Salta Capital;Salta;19/03/1988;;No Medic
+3;3;D.N.I.;32793572;M;3875764272;Barrio Castañares 200 viviendas;Salta Capital;Salta;28/04/2013;upload/images/IMG_20130426_145007.jpg;ZGMF01
+4;4;D.N.I.;34567234;M;;San Martin esquina belgrano;Cordoba;Córdoba;20/05/1989;;No Medic
+5;5;D.N.I.;336879238;F;;Barrio los  Ceibos;Salta Capital;Salta;04/06/1992;;No Medic
+6;6;D.N.I.;30569274;M;3874235680;Oran 1976;Salta Capital;Salta;20/08/1983;;No Medic
+7;7;D.N.I.;27913832;M;3875432796;;Salta Capital;Salta;21/01/1978;upload/images/no-avatar_2.png;No Medic

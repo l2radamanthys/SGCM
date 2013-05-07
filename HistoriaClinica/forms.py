@@ -8,9 +8,9 @@ from HistoriaClinica.models import *
 from globals import *
 
 
-class AntecedentesPerinatalesForm(forms.Form):
-
-
+class AntecedentesPerinatalesForm(forms.ModelForm):
+    """
+    """
     class Meta:
         model = AntecedentesPerinatales
         fields = (
@@ -24,3 +24,10 @@ class AntecedentesPerinatalesForm(forms.Form):
             'medical_care',
             'coments',
         )
+        widgets = {
+            'pregnancy_number': forms.TextInput({'class':'edt_c'}),
+            'pregnancy_duration': forms.TextInput({'class':'edt_c'}),
+            'weight': forms.TextInput({'class':'edt_c'}),
+            'size': forms.TextInput({'class':'edt_c'}),
+            'coments': forms.Textarea(attrs={'cols':'52', 'rows':'5'}),
+        }

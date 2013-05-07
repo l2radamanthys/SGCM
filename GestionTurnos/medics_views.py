@@ -31,8 +31,17 @@ def patients_search(request):
     dict = generate_base_keys(request)
 
     if True: #asignar permiso correspondiente mas adelante
-        #falta implementar la busqueda en si, por ahora solo listado
-        dict['search_result'] = User.objects.filter(groups__name='Paciente')
+        field = get_value(request, 'field')
+        argv = get_value(request, 'search')
+
+        if field == 'u':
+            dict['search_result'] = User.objects.filter(groups__name='Paciente', username__contains=argv)
+        elif field == 'n':
+            dict['search_result'] = User.objects.filter(groups__name='Paciente', first_name__contains=argv)
+        elif field == 'a':
+            dict['search_result'] = User.objects.filter(groups__name='Paciente', last_name__contains=argv)
+        else:
+            dict['search_result'] = User.objects.filter(groups__name='Paciente')
 
     #usuario no posee permisos
     else:
@@ -151,7 +160,8 @@ def patient_register(request):
     """
     Vista para registrar un nuevo usuario, paciente
     """
-    mi_template = get_template('Patients/GestionTurnos/register.html')
+    #mi_template = get_template('Patients/GestionTurnos/register.html')
+    mi_template = get_template('Medics/GestionTurnos/registrar-paciente.html')
     dict = generate_base_keys(request)
 
     is_medic = True

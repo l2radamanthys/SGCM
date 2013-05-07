@@ -61,3 +61,18 @@ class AntecedentesPerinatales(models.Model):
 
     class Meta:
         db_table = "AntecedentesPerinatales"
+
+
+
+class ToxicHabits(models.Model):
+    """
+        Habitos toxicos del paciente
+    """
+    snuff = models.TextField('Tabaco')
+    alcohol = models.TextField('Alcohol')
+    drugs = models.TextField('Drogas')
+    infusions = models.TextField('Infuciones')
+    observations = models.TextField('Observaciones')
+
+    class Meta:
+        db_table = "HabitosToxicos"

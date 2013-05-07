@@ -91,10 +91,10 @@ def read(request, msj_id):
     """
         Muestra un Mensaje en Particular
     """
-    mi_template = get_template('GestionTurnos/inbox/mensajes-mostrar.html')
+    mi_template = get_template('Messages/mostrar.html')
     dict = generate_base_keys(request)
     if request.user.is_authenticated():
-        dict['message'] = InboxMsj.objects.filter(to_user=request.user).get(id=int(msj_id))
+        dict['message'] = Message.objects.get(to_user=request.user, id=int(msj_id))
 
 
     else:

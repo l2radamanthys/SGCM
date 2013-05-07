@@ -8,19 +8,42 @@
 
 
 {% block contenido %}
+    <style type="text/css">
+
+    #custom-tbl {
+        margin: 0 auto;
+        width: 600px;
+        background-color: #F2F2F2;
+        font-size: 12px;
+    }
+
+    #custom-tbl td {
+        padding: 3px 0px;
+    }
+
+    #custom-tbl h3 {
+        color: #333;
+        background-color: #E4E4E4;
+        padding: 5px 15px;
+        font-size: 16px;
+    }
+
+    </style>
+
+
     <br />
     <h2>Mis Datos</h2>
     <br />
-    <div style="text-align: right; width:800px">
+    <div style="text-align: right; width:600px;margin: 0 auto;">
         <a href="" title="Modificar Datos" class="grad-button-blue">Modificar Datos</a>
     </div>
-
-    <table style="margin: 0 auto; width: 700px">
+    <br />
+    <table  id="custom-tbl">
         <tr>
             <td colspan="2"><h3>Datos de Cuenta</h3></td>
         </tr>
         <tr>
-            <td> <strong>Email:</strong></td>
+            <td style="width:150px;"><strong>Email:</strong></td>
             <td> {{ user.email }}</td>
         </tr>
         <tr>
@@ -58,6 +81,9 @@
         <tr>
             <td><strong>Foto:</strong></td>
             <td><br /><img src="{% thumbnail user_data.photo 350x350 %}"></td>
+        </tr>
+        <tr>
+            <td colspan="2"><br /><h3></h3></td>
         </tr>
     </table>
 

@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 
 
 from HistoriaClinica.models import *
-#import GestionTurnos.forms as my_forms
+import HistoriaClinica.forms as my_forms
 from utils import *
 from globals import *
 
@@ -103,3 +103,32 @@ def patient_view_perinatal_antecedents(request, pac_username):
 
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
+
+
+
+def patient_edit_perinatal_antecedents(request, pac_username):
+    """
+
+    """
+    mi_template = get_template('Medics/HistoriaClinica/modificar-antecedentes-perinatales.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        dict['pac_username'] = pac_username
+        pac = User.objects.get(groups__name='Paciente', username=pac_username)
+        dict['pac'] = pac
+
+        form = my_forms.AntecedentesPerinatalesForm()
+        dict['form'] = form
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def patient_view_toxic_habits(request, pac_username):
+    pass

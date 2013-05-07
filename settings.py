@@ -132,7 +132,6 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
 
     'django_extensions', #no hay forma de hacerlo funcar en win a pygraphivs
-    'SGCM.libs.django_yuml',
     'easy_thumbnails',  #generar thumbnails de las imagenes
 
     'SGCM.GestionTurnos',

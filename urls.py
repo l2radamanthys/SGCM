@@ -67,10 +67,12 @@ urlpatterns = patterns('',
     (r'^medicos/agregar/dia-no-laboral/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_medics_views.my_medic_add_nonworking_day),
     (r'^medicos/borrar/dia-no-laboral/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_medics_views.my_medic_del_nonworking_day),
 
+    (r'^medicos/mostrar/listado/$', gt_patients_views.show_medics_list),
 
     #mensajes internos
     (r'^mensajes/redactar', gt_messages_views.send_message),
     (r'^mensajes/recibidos', gt_messages_views.received),
+    (r'^mensajes/mostrar/(\d{1,2})/', gt_messages_views.read),
 
 
     ## - Historia Clinica Views - ##
@@ -80,7 +82,7 @@ urlpatterns = patterns('',
 
     #antecedentes perinatales
     (r'^pacientes/mostrar/antecedentes-perinatales/(.+)/$', hc_medics_views.patient_view_perinatal_antecedents),
-
+    (r'^pacientes/modificar/antecedentes-perinatales/(.+)/$',hc_medics_views.patient_edit_perinatal_antecedents),
 
     #debug views, this views only desing for testing
     (r'^perms/$', debug_views.perms_list),

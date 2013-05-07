@@ -8,42 +8,42 @@
 
 
 {% block contenido %}
-	<br /><br /><br />
+    <br /><br /><br />
 
-		{% if not_login %}
-			<div class="fancy-form-white" style="width: 350px; margin: 0 auto;">
-				<h3 class="title">Inciar Session</h3><br />
-				<form action="." method="POST">
-				<table style="margin: 0 auto; width: 330px;" >
-				<tr>
-					<td><label for="username">Usuario:</label></td>
-					<td><input type="text" name="username" value="" id="username"></td>
+        {% if not_login %}
+            <div class="fancy-form-white" style="width: 350px; margin: 0 auto;">
+                <h3 class="title">Inciar Session</h3><br />
+                <form action="." method="POST">
+                <table style="margin: 0 auto; width: 330px;" >
+                <tr>
+                    <td><label for="username">Usuario:</label></td>
+                    <td><input type="text" name="username" value="" tabindex="1" id="username"></td>
                     <td rowspan="2">
-                    <input type="submit" value="Login" class="grad-button-blue" style="height: 50px;">
+                    <input type="submit" value="Login" tabindex="3" class="grad-button-blue" style="height: 50px;">
                     </td>
-				</tr>
-				<tr>
-					<td><label for="password">Contraseña:</label></td>
-					<td><input type="password" name="password" value="" id="password"></td>
-				</tr>				
-				</table>
-				</form>
+                </tr>
+                <tr>
+                    <td><label for="password">Contraseña:</label></td>
+                    <td><input type="password" name="password" value="" tabindex="2" id="password"></td>
+                </tr>
+                </table>
+                </form>
                 <br />
-			</div>
-	
-	
-			{% if login_error %}
-					<br />
-					<br />
-				<div class="alert">Alerta: Error Usuario y/o Contraseña Incorrectos</div>
-			{% endif %}
-			
-		{% else %}
-			<div class="alert">Alerta: Usted ya ha iniciado session con el usuario <strong>{{ username }}</strong></div>
-			
-			<br />
-			
-			<a href="/logout">Cerrar Session</a>
-		{% endif %}
-	
+            </div>
+
+
+            {% if login_error %}
+                    <br />
+                    <br />
+                <div class="alert">Alerta: Error Usuario y/o Contraseña Incorrectos</div>
+            {% endif %}
+
+        {% else %}
+            <div class="alert">Alerta: Usted ya ha iniciado session con el usuario <strong>{{ username }}</strong></div>
+
+            <br />
+
+            <a href="/logout">Cerrar Session</a>
+        {% endif %}
+
 {% endblock %}

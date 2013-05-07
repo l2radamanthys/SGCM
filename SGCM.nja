@@ -7,7 +7,7 @@
   "url": "", 
   "pythonPath": "python", 
   "preExecScript": "", 
-  "programParams": "runserver, 8080", 
+  "programParams": "runserver, 80", 
   "PYTHONPATH": "", 
   "supported-extensions": [
     ".py", 

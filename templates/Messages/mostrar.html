@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+
+{% block style %}
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/tabs-style.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
+{% endblock %}
+
+
+{% block contenido %}
+
+<br />
+<h2>Mensajes Recibidos</h2>
+
+<!-- ul class="tabs">
+   <li><a href="/usuarios/inbox/redactar/">Nuevo Mensaje</a></li>
+   <li><a href="/usuarios/inbox/no-leidos/">Mensajes No Leidos</a></li>
+   <li><a href="/usuarios/inbox/">Mensajes Recibidos</a></li>
+   <li><a href="/usuarios/inbox/enviados/">Mensajes Enviados</a></li>
+</ul -->
+
+
+{% if message %}
+    <br />
+    <div style="font-size:12px;background: #EEE; padding: 10px;width:840px;">
+        <p><strong>De:</strong> {{ message.to_user.get_full_name }} <a href="">@{{ message.to_user }}</a></p>
+        <p><strong>Asunto:</strong> {{ message.issue }}</p>
+        <br />
+        <pre style="background: #FFF;padding: 10px; width:800px;">
+{{ message.content }}
+        </pre>
+    </div>
+{% else %}
+    <br /><br />
+    <h3>Error el mensaje Solicitado no existe</h3>
+{% endif %}
+
+{% endblock %}

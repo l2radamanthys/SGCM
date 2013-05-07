@@ -1,0 +1,7 @@
+
+*.ini
+*.pyc
+*.pyw
+
+#
+Thumbs.db

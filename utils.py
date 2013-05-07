@@ -48,7 +48,7 @@ def get_user_menu(request):
         group_name = request.user.groups.all()[0].name
         #usuarios
         if group_name == "Paciente":
-            return load_cont(os.path.join('Menu', 'pacient.html'))
+            return load_cont(os.path.join('Menu', 'patient.html'))
         #medicos
         elif group_name == "Medico":
             return load_cont(os.path.join('Menu', 'medic.html'))
