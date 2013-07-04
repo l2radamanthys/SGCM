@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block style %}
+{% endblock %}
+
+{% load thumbnail %}
+
+{% block contenido %}
+
+<style type="text/css">
+
+.block:hover {
+    background-color: #DDF4FF;
+}
+    
+</style>
+
+
+{% for med in medics  %}
+    <a href="/medicos/mostrar/{{ med.user.id }}/" title="" style="color: #3C3C3C">
+    <div class="block" style="border: 1px solid #C7C7C7; margin: 0 auto; width: 700px; padding: 10px; margin-top: -1px;" >
+        <div style="float:left; width: 100px; height: 100px;">
+            {% if med.photo %}
+                <img src="{% thumbnail med.photo 100x100 %}" />
+            {% else %}
+                    <img src="/media/upload/images/no-avatar120x120.jpg" />
+            {% endif %}
+        </div>
+        <div style="margin-left: 120px; height: 100px;">
+            <table style="font-size: 12px">
+                <tr>
+                    <td style="width: 140px;"><strong>Apellido y Nombre:</strong></td>
+                    <td>{{ med.user.last_name }}, {{ med.user.first_name }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Telefono:</td>
+                    <td>{{ med.phone }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Email:</strong></td>
+                    <td>{{ med.user.email }}</td>
+                </tr>
+                <tr>
+                    <td><strong>Matricula:</strong></td>
+                    <td>{{ med.matricula }}</td>
+                </tr>
+            </table>
+        </div>
+        <div style=clear="both";></div>
+    </div>
+    </a>
+    
+{% endfor %}
+{% endblock %}

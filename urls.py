@@ -11,7 +11,7 @@ from settings import MEDIA_ROOT
 import views as base_views
 import debug_views
 #gestion de turnos
-import GestionTurnos.users_views as gt_users_views
+import GestionTurnos.patients_views as gt_users_views
 import GestionTurnos.medics_views as gt_medics_views
 import GestionTurnos.messages_views as gt_messages_views
 import GestionTurnos.patients_views as gt_patients_views
@@ -67,7 +67,10 @@ urlpatterns = patterns('',
     (r'^medicos/agregar/dia-no-laboral/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_medics_views.my_medic_add_nonworking_day),
     (r'^medicos/borrar/dia-no-laboral/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_medics_views.my_medic_del_nonworking_day),
 
-    (r'^medicos/mostrar/listado/$', gt_patients_views.show_medics_list),
+
+    (r'^medicos/listado/$', gt_patients_views.patient_show_medics_list),
+    (r'^medicos/mostrar/(\d{1,2})/$', gt_patients_views.patient_show_medic_info),
+
 
     #mensajes internos
     (r'^mensajes/redactar', gt_messages_views.send_message),
@@ -83,6 +86,12 @@ urlpatterns = patterns('',
     #antecedentes perinatales
     (r'^pacientes/mostrar/antecedentes-perinatales/(.+)/$', hc_medics_views.patient_view_perinatal_antecedents),
     (r'^pacientes/modificar/antecedentes-perinatales/(.+)/$',hc_medics_views.patient_edit_perinatal_antecedents),
+
+    #habitos toxicos
+    (r'^pacientes/mostrar/habitos-toxicos/(.+)/$', hc_medics_views.patient_view_toxic_habits),
+
+    #examenes fisicos
+    (r'^pacientes/listado/examen-fisico/(.+)/$', hc_medics_views.patient_view_phisic_exam_list),
 
     #debug views, this views only desing for testing
     (r'^perms/$', debug_views.perms_list),

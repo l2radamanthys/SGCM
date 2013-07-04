@@ -165,7 +165,7 @@ def patient_activate(request, patient_username=None, activaction_key=None):
 
 
 
-def show_medics_list(request):
+def patient_show_medics_list(request):
     """
     Muestra el listado de Medicos
     """
@@ -173,7 +173,7 @@ def show_medics_list(request):
     dict = generate_base_keys(request)
 
     if True:
-        dict['medics'] = User.objects.filter(groups__name='Medico')
+        dict['medics'] = UserInformation.objects.filter(user__groups__name='Medico')
         html_cont = mi_template.render(Context(dict))
         return HttpResponse(html_cont)
 
@@ -185,20 +185,25 @@ def show_medics_list(request):
 
 
 
-def show_medic_info(request, med_username):
+def patient_show_medic_info(request, med_id):
     """
     Muestra informacion acerca del medico
     """
-    mi_template = get_template('Patients/GestionTurnos/medics-list.html')
+    mi_template = get_template('Patients/GestionTurnos/medic-view.html')
     dict = generate_base_keys(request)
 
     if True:
-        dict['medic'] = UserInformation.objects.get(user__username=med_username)
+        dict['medic'] = UserInformation.objects.get(user__id=med_id)
         dict['expecialities'] = ''
         dict['bussines_hour'] = ''
+        html_cont = mi_template.render(Context(dict))
+        return HttpResponse(html_cont)
 
     else:
         #si hay un usuario logueado intentanto acceder sera enviado a una
         #pagina de error
         path = request.META['PATH_INFO']
         return HttpResponseRedirect("/restricted-access%s" %path)
+
+
+

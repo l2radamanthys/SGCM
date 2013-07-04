@@ -134,9 +134,11 @@ INSTALLED_APPS = (
     'django_extensions', #no hay forma de hacerlo funcar en win a pygraphivs
     'easy_thumbnails',  #generar thumbnails de las imagenes
 
-    'SGCM.GestionTurnos',
-    'SGCM.HistoriaClinica',
-    'SGCM.MyFilters', #filtros personalizados NO FOUND
+    #'SGCM.GestionTurnos',
+    'GestionTurnos',
+    #'SGCM.HistoriaClinica',
+    'HistoriaClinica',
+    #'SGCM.MyFilters', #filtros personalizados NO FOUND
 )
 
 CACHE_BACKEND = 'dummy:///'

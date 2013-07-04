@@ -78,7 +78,7 @@ def patient_edit_basic_info(request, pac_id):
     """
     Vista para la modificacion de los datos basicos del Paciente
     """
-    mi_template = get_template('Patients/GestionTurnos/edit-basic-info.html')
+    mi_template = get_template('Medics/GestionTurnos/patient-edit-basic-info.html')
     dict = generate_base_keys(request)
 
     if True: #asignar permiso correspondiente mas adelante
@@ -97,6 +97,8 @@ def patient_edit_basic_info(request, pac_id):
                 pac_inf.nro_doc = form.cleaned_data['nro_doc']
                 pac_inf.gender = form.cleaned_data['gender']
                 pac_inf.address = form.cleaned_data['address']
+                pac_inf.city = form.cleaned_data['city']
+                pac_inf.state = form.cleaned_data['state']
                 pac_inf.phone = form.cleaned_data['phone']
                 pac_inf.photo = form.cleaned_data['photo']
                 pac.save()
@@ -120,6 +122,8 @@ def patient_edit_basic_info(request, pac_id):
                 'type_doc' : pac_inf.type_doc,
                 'nro_doc' : pac_inf.nro_doc,
                 'gender' : pac_inf.gender,
+                'city' : pac_inf.city,
+                'state' : pac_inf.state,
                 'address' : pac_inf.address,
                 'phone' : pac_inf.phone,
             }

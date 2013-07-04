@@ -149,6 +149,15 @@ class BasicInfoForm(forms.Form):
         widget=forms.TextInput(attrs={'class':'edt_g'}),
         required = False
     )
+
+    city = forms.CharField(
+        label='Ciudad',
+        widget=forms.TextInput(attrs={'class':'edt_m'}),
+        required = False
+    )
+    state = forms.ChoiceField(label='Provincia', choices=ARG_STATES_CHOICE)
+
+
     phone = forms.CharField(
         label="Telefono",
         widget=forms.TextInput(attrs={'class':'edt_c'}),

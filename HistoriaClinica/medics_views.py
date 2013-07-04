@@ -94,6 +94,7 @@ def patient_view_perinatal_antecedents(request, pac_username):
                 medical_care = '-',
                 coments = "Antecedentes Perinatales no Definidos"
             )
+            antp.save()
         dict['antp'] = antp
 
     #usuario no posee permisos
@@ -120,6 +121,7 @@ def patient_edit_perinatal_antecedents(request, pac_username):
 
         form = my_forms.AntecedentesPerinatalesForm()
         dict['form'] = form
+        #incompleto
 
     else:
         path = request.META['PATH_INFO']
@@ -131,4 +133,38 @@ def patient_edit_perinatal_antecedents(request, pac_username):
 
 
 def patient_view_toxic_habits(request, pac_username):
-    pass
+    mi_template = get_template('Medics/HistoriaClinica/mostrar-habitos-toxicos.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        dict['pac_username'] = pac_username
+        pac = User.objects.get(groups__name='Paciente', username=pac_username)
+        dict['pac'] = pac
+
+        #incompleto
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+def patient_view_phisic_exam_list(request, pac_username):
+    mi_template = get_template('Medics/HistoriaClinica/listado-examen-fisico.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        dict['pac_username'] = pac_username
+        pac = User.objects.get(groups__name='Paciente', username=pac_username)
+        dict['pac'] = pac
+
+        #incompleto
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)

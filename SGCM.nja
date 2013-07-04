@@ -1,5 +1,6 @@
 {
   "mainFile": "D:/Proyectos/Sem/SGCM/manage.py", 
+  "use-tabs": false, 
   "venv": "", 
   "relatedProjects": [], 
   "name": "SGCM", 
@@ -7,7 +8,9 @@
   "url": "", 
   "pythonPath": "python", 
   "preExecScript": "", 
+  "additional_builtins": [], 
   "programParams": "runserver, 80", 
+  "indentation": 4, 
   "PYTHONPATH": "", 
   "supported-extensions": [
     ".py", 

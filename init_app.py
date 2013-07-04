@@ -10,9 +10,13 @@
     Este Script Ejecuta Inserciones Basicas en Las Tablas por lo que
     es recomendable Ejecutarlo solo una ves.. posteriores ejecuciones pueden
     crear conflictos en la Base de Datos
-    $ shell -c "include init_app"
-
 """
+import os, sys
+
+proyect_path = os.path.abspath(os.path.dirname(__file__))
+sys.path.append(proyect_path)
+os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+
 
 from settings import *
 from django.conf.urls.defaults import *

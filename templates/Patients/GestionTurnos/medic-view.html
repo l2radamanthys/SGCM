@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block style %}
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/sub-menu-style.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+
+    {% block ext_style %}
+    {% endblock %}
+
+{% endblock %}
+
+{% block contenido %}
+
+<div class="left-cont">
+<div class="left-sub-menu">
+    <ul>
+        <li><a href="" title="">Informacion Basica</a></li>
+        <li><a href="" title="">Especialidades</a></li>
+        <li><a href="" title="">Horarios Atencion</a></li>
+        <li><a href="" title="">Solicitar Turno</a></li>
+        <li><a href="" title="">Realizar Consulta Online</a></li>
+    </ul>
+    <br />
+
+</div>
+</div>
+
+<div class="center-cont">
+    {% block view-cont %}
+    {% endblock %}
+</div>
+{% endblock %}

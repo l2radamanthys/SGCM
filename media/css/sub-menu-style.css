@@ -1,14 +1,17 @@
 
 .left-sub-menu {
-
+    background-color: #F5F5F5;
+    border: 2px solid #E3E3E3;
+    
 }
 
 .left-sub-menu h4 {
+    text-transform: uppercase;
+    font-weight: bold;
     font-family: Arial;
-    font-weight: 100;
+    font-size: 12px !important;
     text-align: center;
-    background-color: #2E2E2E;
-    color: #FFF;
+    color: #969696;
     padding: 1px;
 }
 
@@ -18,19 +21,21 @@
     padding-left: 5px;
 }
 
-.left-sub-menu li {}
+.left-sub-menu li {
+    margin: 0;
+    padding: 0;
+}
 
 .left-sub-menu a {
-    
     text-decoration: None;
     font-size: 12px;
     padding: 2px 5px;
-    color: #004B97;
+    color: #177CAC;
     display: block;
-    border: 1px solid #C0C0C0;
     margin: 2px;
 }
 
 .left-sub-menu a:hover {
-    background-color:#E1E1E1;
+    background-color: #E9E9E9;
+    color: #00559D;
 }
