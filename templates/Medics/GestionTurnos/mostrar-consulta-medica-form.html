@@ -1,0 +1,42 @@
+<div class="fancy-form-white" style="width: 550px; margin: 0 auto;">
+    <form action="" method="POST">
+    <table style="width:500px; margin: 0 auto;">
+        <tr>
+            <td>Medico:</td>
+            <td><strong>{{ cm.medic.last_name }}, {{ cm.medic.first_name }} </strong></td>
+        </tr>
+        
+        <tr>
+            <td>Paciente:</td>
+            <td><strong>{{ cm.patient.last_name }}, {{ cm.patient.first_name }} </strong></td>
+        </tr>
+        
+        <tr>
+            <td>Motivo:</td>
+            <td><br /><textarea rows="5" cols="60" name="issue" readonly>{{ cm.issue }}</textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>Examen Fisico:</td>
+            <td><br /><textarea rows="5" cols="60" name="physical_exam" readonly>{{ cm.physical_exam }}</textarea>
+            </td>
+        </tr>
+         <tr>
+            <td>Diagnostico:</td>
+            <td><br /><textarea rows="5" cols="60" name="diagnostic" readonly>{{ cm.diagnostic }}</textarea>
+            </td>
+        </tr>       
+        <tr>
+            <td>Observaciones:</td>
+            <td><br /><textarea rows="5" cols="60" name="observations" readonly>{{ cm.observations }}</textarea>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center">
+            <br />
+            <a href="/pacientes/mostrar/consultas-medicas/{{ cm.patient.username }}/" class="grad-button-blue">Volver</a>
+            </td>
+        </tr>  
+    </table>
+    </form>
+ </div>

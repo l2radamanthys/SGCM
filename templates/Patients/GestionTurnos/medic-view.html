@@ -18,10 +18,10 @@
 <div class="left-sub-menu">
     <ul>
         <li><a href="" title="">Informacion Basica</a></li>
-        <li><a href="" title="">Especialidades</a></li>
-        <li><a href="" title="">Horarios Atencion</a></li>
-        <li><a href="" title="">Solicitar Turno</a></li>
-        <li><a href="" title="">Realizar Consulta Online</a></li>
+        {% if login_user %} 
+            <li><a href="" title="">Solicitar Turno</a></li>
+            <li><a href="" title="">Realizar Consulta Online</a></li>
+        {% endif %}
     </ul>
     <br />
 

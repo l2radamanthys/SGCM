@@ -55,7 +55,7 @@ urlpatterns = patterns('',
     (r'^pacientes/modificar-datos-basicos/(.+)/$', gt_medics_views.patient_edit_basic_info),
     (r'^pacientes/mostrar/consultas-medicas/(.+)/$', gt_medics_views.patient_show_medical_consultation),
     (r'^medicos/agregar/consulta-medica/(.+)/$', gt_medics_views.my_add_medical_consultation),
-    #(r'^medicos/mostrar/consulta-medica/(\d{1,2})/$', gt_medics_views.my_show_medical_consultation),
+    (r'^medicos/mostrar/consulta-medica/(\d{1,2})/$', gt_medics_views.my_show_medical_consultation),
     (r'^medicos/modificar/consulta-medica/(\d{1,2})/$', gt_medics_views.my_edit_medical_consultation),
     (r'^medicos/borrar/consulta-medica/(\d{1,2})/$', gt_medics_views.my_delete_medical_consultation),
 
@@ -70,7 +70,10 @@ urlpatterns = patterns('',
 
     (r'^medicos/listado/$', gt_patients_views.patient_show_medics_list),
     (r'^medicos/mostrar/(\d{1,2})/$', gt_patients_views.patient_show_medic_info),
+    (r'^medicos/turnos/selecionar-dia/(\d{1,2})/$', gt_patients_views.patient_new_turn_day_select), #selecion fecha para solicitar turno
+    (r'^medicos/turnos/selecionar-dia/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_patients_views.patient_new_turn_day_select), #selecion fecha para solicitar turno
 
+    (r'^medicos/turnos/agregar/(\d{1,2})/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_patients_views.patient_new_turn),
 
     #mensajes internos
     (r'^mensajes/redactar', gt_messages_views.send_message),

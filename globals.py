@@ -87,6 +87,13 @@ DATE_CHOICE = (
 )
 
 
+DAY_OF_ATTENTION_STATUS_CHOICE = (
+    (0, 'Vacio'),
+    (1, 'Disponible'),
+    (2, 'Completo'),
+)
+
+
 ARG_STATES_CHOICE = (
     ("Buenos Aires", "Buenos Aires"),
     ("Catamarca", "Catamarca"),

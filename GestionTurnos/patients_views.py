@@ -14,6 +14,8 @@ from django.utils.html import strip_tags
 
 
 import urllib
+import calendar
+import datetime
 
 from GestionTurnos.models import *
 import GestionTurnos.forms as my_forms
@@ -189,7 +191,7 @@ def patient_show_medic_info(request, med_id):
     """
     Muestra informacion acerca del medico
     """
-    mi_template = get_template('Patients/GestionTurnos/medic-view.html')
+    mi_template = get_template('Patients/GestionTurnos/show-medic-info.html')
     dict = generate_base_keys(request)
 
     if True:
@@ -207,3 +209,115 @@ def patient_show_medic_info(request, med_id):
 
 
 
+def patient_new_turn_day_select(request, med_id, month=None, year=None):
+    """
+        vista para selecionar un nuevo turno paciente
+    """
+    mi_template = get_template('Patients/GestionTurnos/new-turn-date-select.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        if month != None and year != None:
+            month = int(month) % 13
+            year = int(year)
+
+        else:
+            year = datetime.date.today().year
+            month = datetime.date.today().month
+
+        #hoy
+        t_year = datetime.date.today().year
+        t_month = datetime.date.today().month
+
+        dict['month'] = month
+        dict['name_month'] = MONTHS[month-1]
+        dict['year'] = year
+
+        cal = calendar.Calendar()
+        wekends = cal.monthdayscalendar(year, month)
+
+        if month == 1:
+            dict['prev_month'] = 12
+            dict['next_month'] = 2
+            dict['prev_year'] = year - 1
+            dict['next_year'] = year
+
+        elif month == 12:
+            dict['prev_month'] = 11
+            dict['next_month'] = 1
+            dict['prev_year'] = year
+            dict['next_year'] = year + 1
+
+        else:
+            dict['prev_month'] = month - 1
+            dict['next_month'] = month + 1
+            dict['prev_year'] = year - 1
+            dict['next_year'] = year + 1
+
+        if dict['prev_month'] < t_month and dict['prev_year'] == t_year or dict['prev_year'] < t_year:
+            dict['prev_month'] = t_month
+            dict['prev_year'] = t_year
+
+
+        medic = User.objects.get(id=med_id)
+        dict['medic'] = medic
+        #dias que se atiende
+        bh = BusinessHours.objects.filter(user=medic)
+        wd = []
+        for day in bh:
+            wd.append(day.date - 1)
+
+        #dias no laborales
+        nwd = NonWorkingDay.objects.filter(user=medic, date__month=month, date__year=year)
+        _nwd = []
+        for obj in nwd:
+            _nwd.append(obj.date.day)
+
+        #dias con turnos asignados
+        _dta = []
+        dof = DayOfAttention.objects.filter(business_hour__user=medic, date__month=month, date__year=year)
+        for day in dof:
+            if day.status == 2: #marcado como completo
+                _dta.append(day.date - 1)
+
+
+        #formateo del mes
+        semanas = []
+        for week in wekends:
+            sem = []
+            i = 0
+            for day in week:
+                if day in _nwd: #es un dia no laboral?
+                    sem.append(CalendarDay(day,2))
+                else:
+                    if i in wd:#dias donde se atiende
+                        if day in _dta:
+                            sem.append(CalendarDay(day,3)) #estan completos completos
+                        else:
+                            sem.append(CalendarDay(day,1)) #hay turnos libres
+                    else:
+                        sem.append(CalendarDay(day,0)) #dias q no se atiende
+                i += 1
+            semanas.append(sem)
+        dict['wekends'] = semanas
+
+        html_cont = mi_template.render(Context(dict))
+        return HttpResponse(html_cont)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+
+def patient_new_turn(request, med_id, day, month, year):
+    mi_template = get_template('Patients/GestionTurnos/new-turn.html')
+    dict = generate_base_keys(request)
+
+    if True:
+
+        html_cont = mi_template.render(Context(dict))
+        return HttpResponse(html_cont)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)

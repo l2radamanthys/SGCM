@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+{% endblock %}
+
+
+{% block contenido %}
+<br />
+<h3>Agregar Consulta Medica</h3>
+<br />
+    {% include "Medics/GestionTurnos/mostrar-consulta-medica-form.html" %}
+
+<br /><br />
+    {% autoescape off %}
+        {{ custon_messages }}
+    {% endautoescape %}
+ 
+{% endblock %}

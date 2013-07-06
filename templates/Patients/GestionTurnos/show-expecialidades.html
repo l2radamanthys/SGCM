@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block style %}
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+{% endblock %}    
+    
+{% block contenido %}
+    
+<br />    
+<div >
+    <h3  style="float: left; padding-top:10px;" >{{ pac.last_name  }}, {{ pac.first_name }} - Datos Paciente</h3>
+    
+    <ul class="sub-menu-h"  style="float: right;">
+        <li><a href="">Datos Basicos</a></li>
+        <li><a href="">Estudios Clinicos</a></li>
+        <li><a href="">Consultas</a></li>
+        <li><a href="">Prescripciones</a></li>
+    </ul>
+    
+    <div style="clear: both"></div>
+</div>
+
+<br /><br />
+<div style="text-align: right; width: 600px; margin: 0 auto;">
+<a href="/pacientes/modificar-datos-basicos/{{ pac.username }}/" class="grad-button-blue">Modificar Datos Basicos</a>
+</div>
+
+<br />
+
+<div class="fancy-form-white" style="text-align: left; width: 600px; margin: 0 auto;">    
+<h3 class="title">Datos Basicos del Paciente</h3>
+<br />
+<table>
+    <tr>
+        <td><label style="padding-right: 30px;">Apellido y Nombre:</label></td>
+        <td><input type="text" name="" value="{{ pac.last_name  }}, {{ pac.first_name }}" style="width:300px;" readonly></td>
+    </tr>
+    <tr>
+        <td><label>Documento:</label></td>
+        <td><input type="text" value="{{ pac_inf.type_doc }} {{ pac_inf.nro_doc }}" style="width:120px;" readonly></td>
+    </tr>
+    <tr>
+        <td><label>Fecha de Nacimiento:</label></td>
+        <td><input type="text" value="{{ pac_inf.birth_date }}" style="width:100px;" readonly></td>
+    </tr>
+    <tr>
+        <td><label>Sexo:</label></td>
+        <td><input type="text" value="{{ pac_inf.get_gender_display }}" style="width:100px;" readonly></td>
+    </tr>
+    <tr>
+        <td><label>Direccion:</label></td>
+        <td><input type="text" value="{{ pac_inf.address }}" style="width:400px;" readonly></td>
+    </tr>
+    <tr>
+        <td> <label>Ciudad:</label></td>
+        <td> <input type="text" value="{{ pac_inf.city }}" style="width:400px;" readonly/></td>
+    </tr>
+    <tr>
+        <td> <label>Provincia:</label></td>
+        <td> <input type="text" value="{{ pac_inf.state }}" style="width:400px;" readonly/></td>
+    </tr>
+    <tr>
+        <td><label>Telefono:</label></td>
+        <td><input type="text" value="{{ pac_inf.phone }}" style="width:100px;"readonly></td>
+    </tr>
+    <tr>
+        <td><label>Email:</label></td>
+        <td><input type="text" value="{{ pac.email }}" style="width:200px;" readonly></td>
+    </tr>
+</table>
+<br />
+</div>
+
+
+
+
+{% endblock %}

@@ -121,7 +121,6 @@ class BusinessHours(models.Model):
     end_time = models.TimeField('Hora de Fin Turno')
     turn_duration = models.IntegerField('Duracion Turno en Minutos', default=20)
 
-
     class Meta:
         db_table = "BusinessHours"
         permissions = (
@@ -153,6 +152,20 @@ class BusinessHours(models.Model):
         min = dif.seconds / 60  #calcula el numero de minutos
         n_turns = min / self.turn_duration #calcula el numero de turnos por rendondeo
         return n_turns
+
+
+class DayOfAttention(models.Model):
+    """
+        Dias de Atencion
+    """
+    business_hour = models.ForeignKey(BusinessHours)
+    date = models.DateField('Fecha')
+    status = models.IntegerField('Estado', default=0, choices=DAY_OF_ATTENTION_STATUS_CHOICE)
+    number_of_turns =  models.IntegerField('Numero de Turnos Asignados', default=0)
+
+    class Meta:
+        db_table = "DaysOfAttention"
+
 
 
 

@@ -619,16 +619,19 @@ def my_medic_show_nonworking_days(request, month=None, year=None):
         for day in bh:
             wd.append(day.date - 1)
 
-
         #dias no laborales
-        nwd = NonWorkingDay.objects.filter(date__month=month, date__year=year)
+        nwd = NonWorkingDay.objects.filter(user=request.user, date__month=month, date__year=year)
         _nwd = []
         for obj in nwd:
             _nwd.append(obj.date.day)
 
         #dias con turnos asignados
         _dta = []
-        #completar
+        dof = DayOfAttention.objects.filter(business_hour__user=request.user, date__month=month, date__year=year)
+        for day in dof:
+            if day.number_of_turns > 0:
+                _dta.append(day.date - 1)
+
 
         #formateo del mes
         semanas = []
@@ -751,6 +754,37 @@ def my_edit_medical_consultation(request, cm_id):
         Modifica la informacion de los datos de una consulta medica
     """
     mi_template = get_template('Medics/GestionTurnos/modificar-consulta-medica.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        cm = MedicalConsultation.objects.get(id=cm_id)
+        dict['cm'] = cm
+        if request.method == 'POST':
+            cm.issue = get_value(request, 'issue')
+            cm.diagnostic = get_value(request, 'diagnostic')
+            cm.physical_exam = get_value(request, 'physical_exam')
+            cm.observations = get_value(request, 'observations')
+            cm.save()
+            dict['custon_messages'] = Tags.html_message('Cambios Guardados..', 'success')
+
+        else:
+            dict['med'] = cm.medic
+            dict['pac'] = cm.patient
+
+        html_cont = mi_template.render(Context(dict))
+        return HttpResponse(html_cont)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+
+
+def my_show_medical_consultation(request, cm_id):
+    """
+        Muestra informacion de los datos de una consulta medica
+    """
+    mi_template = get_template('Medics/GestionTurnos/mostrar-consulta-medica.html')
     dict = generate_base_keys(request)
 
     if True:
