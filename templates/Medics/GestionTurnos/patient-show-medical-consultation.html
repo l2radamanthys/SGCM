@@ -2,13 +2,14 @@
 
 {% block view-cont %}
 <div  style="padding-left:10px;" >
-    <h3> Consultas Medicas </h3>
-    <p style="font-size:14px;">{{ pac.last_name  }}, {{ pac.first_name }} </p>
+    <h2> Consultas Medicas </h2>
+    <p style="font-size:14px;margin-left:10px">{{ pac.last_name  }}, {{ pac.first_name }} </p>
 </div>
 
 <br /><br />
 
 <div style="text-align: right; width: 600px; margin: 0 auto;">
+        <a href="/pacientes/buscar/" class="grad-button-blue">Atras</a>
     <a href="/medicos/agregar/consulta-medica/{{ pac.username }}/" class="grad-button-blue">Añadir Consulta Medica</a>
 </div>
 

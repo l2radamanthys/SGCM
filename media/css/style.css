@@ -4,6 +4,7 @@
     padding: 0;
 }
 
+
 .header {
     background-image: url('../images/1336.png');
 }
@@ -20,7 +21,7 @@
     font-family: tahoma, Verdana;
     color: #FFFFFF;
     font-weight: 100;
-    text-shadow: 2px 2px 10px #000;
+    text-shadow: 0px 0px 1px #D8D8D8;
 }
 
 .header-cont p {
@@ -71,5 +72,44 @@
 
 .simple-tbl, .simple-tbl th, .simple-tbl td {
     border: 1px solid #ADADAD;
+}
+
+
+
+/*
+campos de texto
+*/
+input, textarea {
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border : 1px solid #A3A3A3;
+    padding: 2px 5px;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px #888;
+    box-shadow: 0 0 5px #888
+}
+
+input:focus{
+}
+
+select {
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border : 1px solid #A3A3A3;
+    padding: 1px 1px;
+    -moz-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px #888;
+    box-shadow: 0 0 5px #888
+}
+
+/*titulos*/
+
+h2, h3{
+    color: #161616;
+    text-shadow: 0px 0px 1px #3C3C3C;
+    font-weight: 100;
+}
+h2 {
+    margin-left: 10px;
 }
 

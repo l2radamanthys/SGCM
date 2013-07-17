@@ -12,29 +12,23 @@
 
 {% block contenido %}
     <br /> 
-    <h1>Listado de Medicos</h1>
+    <h2>Listado de Medicos</h2>
     <br />
-    <br /> 
-
     {% for med in medics  %}
         <a href="/medicos/mostrar/{{ med.user.id }}/" title="" style="color: #3C3C3C">
         <div class="block" style="border: 1px solid #C7C7C7; margin: 0 auto;  padding: 5px; margin-top: -1px; height: 52px;" >
         <table border="0" style="font-size: 12px; width: 500px; ">
             <tr>
-                <td colspan="1" rowspan="2"  style="width: 60px;">
+                <td style="width: 60px; height:50px;">
                     {% if med.photo %}
                         <img src="{% thumbnail med.photo 50x50 %}" />
                     {% else %}
                             <img src="/media/upload/images/no-avatar50x50.jpg" />
                     {% endif %}
                 </td>
-                <td style="width:150px"><strong>Apellido y Nombre:</strong></td>
                 <td>{{ med.user.last_name }}, {{ med.user.first_name }}</td>
             </tr>
-            <tr>
-                <td><strong>Matricula:</strong></td>
-                <td>{{ med.matricula }}</td>
-            </tr>
+
         </table>
         </div>
         </a>

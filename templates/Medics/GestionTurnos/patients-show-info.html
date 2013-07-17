@@ -4,14 +4,15 @@
 
 {% block view-cont %}
 <div  style="padding-left:10px;" >
-    <h3> Datos Paciente </h3>
-    <p style="font-size:14px;">{{ pac.last_name  }}, {{ pac.first_name }} </p>
+    <h2> Datos Paciente </h2>
+    <p style="font-size:14px; margin-left: 10px;">{{ pac.last_name  }}, {{ pac.first_name }} </p>
 </div>
 
 <br /><br />
 
-<div style="text-align: right; width: 600px; margin: 0 auto;">
-    <a href="/pacientes/modificar-datos-basicos/{{ pac.username }}/" class="grad-button-blue">Modificar Datos Basicos</a>
+<div style="text-align: right; width: 670px; margin: 0 auto;">
+    <a href="/pacientes/buscar/" class="grad-button-blue">Atras</a>
+    <a href="/pacientes/modificar-datos-basicos/{{ pac.username }}/" class="grad-button-blue">Modificar</a>
     <a href="/pacientes/borrar/{{ pac.username }}/" title="Eliminar" class="grad-button-blue">Borrar</a>
 </div>
 <br />
