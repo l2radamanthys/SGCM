@@ -3,6 +3,13 @@
 
 
 def html_message(text, type="alert"):
+    """
+        tipos de mensajes
+        info
+        success
+        alert
+        error
+    """
     return "<div class=\"%s\"> %s </div>" %(type, text)
 
 

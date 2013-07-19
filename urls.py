@@ -54,6 +54,7 @@ urlpatterns = patterns('',
     (r'^pacientes/show-info/(.+)/$', gt_medics_views.patient_show_info),
     (r'^pacientes/modificar-datos-basicos/(.+)/$', gt_medics_views.patient_edit_basic_info),
     (r'^pacientes/mostrar/consultas-medicas/(.+)/$', gt_medics_views.patient_show_medical_consultation),
+
     (r'^medicos/agregar/consulta-medica/(.+)/$', gt_medics_views.my_add_medical_consultation),
     (r'^medicos/mostrar/consulta-medica/(\d{1,2})/$', gt_medics_views.my_show_medical_consultation),
     (r'^medicos/modificar/consulta-medica/(\d{1,2})/$', gt_medics_views.my_edit_medical_consultation),
@@ -83,18 +84,22 @@ urlpatterns = patterns('',
 
     ## - Historia Clinica Views - ##
 
-    #imagenes
-    (r'^pacientes/mostrar/imagenes/(.+)/$', hc_medics_views.medic_show_patients_images),
+    #imagenes (incompleto)
+    (r'^pacientes/mostrar/imagenes/(.+)/$', hc_medics_views.medic_show_patient_images),
+    (r'^medicos/agregar/imagen/(.+)/$',  hc_medics_views.medic_add_patient_image),
 
-    #antecedentes perinatales
+    #antecedentes perinatales (hecho)
     (r'^pacientes/mostrar/antecedentes-perinatales/(.+)/$', hc_medics_views.patient_view_perinatal_antecedents),
     (r'^pacientes/modificar/antecedentes-perinatales/(.+)/$',hc_medics_views.patient_edit_perinatal_antecedents),
 
-    #habitos toxicos
+    #habitos toxicos (hecho)
     (r'^pacientes/mostrar/habitos-toxicos/(.+)/$', hc_medics_views.patient_view_toxic_habits),
+    (r'^pacientes/modificar/habitos-toxicos/(.+)/$', hc_medics_views.patient_edit_toxic_habits),
 
     #examenes fisicos
     (r'^pacientes/listado/examen-fisico/(.+)/$', hc_medics_views.patient_view_phisic_exam_list),
+
+
 
     #debug views, this views only desing for testing
     (r'^perms/$', debug_views.perms_list),

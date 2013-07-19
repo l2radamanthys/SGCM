@@ -17,9 +17,9 @@ class Image(models.Model):
     date = models.DateField(auto_now_add=True)
     medic = models.ForeignKey(User, related_name='medic_user0')
     patient = models.ForeignKey(User, related_name='patient_user0')
-    title = models.CharField(max_length=125, default='')
-    content = models.TextField(default='')
-    image = models.ImageField(upload_to='upload/images')
+    title = models.CharField('Titulo', max_length=125, default='')
+    content = models.TextField('Observaciones', default='')
+    image = models.ImageField('Imagen', upload_to='upload/images')
 
 
     class Meta:
@@ -68,10 +68,11 @@ class ToxicHabits(models.Model):
     """
         Habitos toxicos del paciente
     """
-    snuff = models.TextField('Tabaco')
-    alcohol = models.TextField('Alcohol')
-    drugs = models.TextField('Drogas')
-    infusions = models.TextField('Infuciones')
+    patient = models.ForeignKey(User,  unique=True) #fk
+    snuff = models.CharField('Tabaco', max_length=1,  choices=TRUE_FALSE_CHOICE)
+    alcohol = models.CharField('Alcohol', max_length=1,  choices=TRUE_FALSE_CHOICE)
+    drugs = models.CharField('Drogas', max_length=1,  choices=TRUE_FALSE_CHOICE)
+    infusions = models.CharField('Infuciones', max_length=1, choices=TRUE_FALSE_CHOICE)
     observations = models.TextField('Observaciones')
 
     class Meta:

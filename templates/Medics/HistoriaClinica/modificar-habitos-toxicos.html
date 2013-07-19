@@ -9,7 +9,7 @@
 
 {% block view-cont %}
 <div  style="padding-left:10px;" >
-    <h2>Antecedentes Perinatales Modificar</h2>
+    <h2>Habitos Toxicos Modificar</h2>
     <p style="font-size:14px;margin-left:10px">{{ pac.last_name  }}, {{ pac.first_name }} </p>
 </div>
 
@@ -19,32 +19,24 @@
 <form action="" method="POST">
     <table style="margin: 0 auto;">
         <tr>
-            <td> <label>{{ form.pregnancy_number.label }}:</label></td>
-            <td>{{ form.pregnancy_number }}</td>
-            <td style="width:200px;"> <label style=" padding-left: 20px;">{{ form.pregnancy_duration.label }}:</label></td>
-            <td>{{ form.pregnancy_duration }}</td>
+            <td> <label>{{ form.snuff.label }}:</label></td>
+            <td>{{ form.snuff }}</td>
+
+            <td style="width:200px;"> <label style=" padding-left: 20px;">{{ form.alcohol.label }}:</label></td>
+            <td>{{ form.alcohol }}</td>
         </tr>
+
         <tr>
-            <td> <label>{{ form.controls.label }}:</label></td>
-            <td>{{ form.controls }}</td>
-            <td> <label style=" padding-left: 20px;">{{ form.normal_birth.label }}:</label></td>
-            <td>{{ form.normal_birth }}</td>
+            <td> <label>{{ form.drugs.label }}:</label></td>
+            <td>{{ form.drugs }}</td>
+
+            <td style="width:200px;"> <label style=" padding-left: 20px;">{{ form.infusions.label }}:</label></td>
+            <td>{{ form.infusions }}</td>
         </tr>
+
         <tr>
-            <td> <label>{{ form.weight.label }}:</label></td>
-            <td>{{ form.weight }}</td>
-            <td> <label style=" padding-left: 20px;">{{ form.size.label }}:</label></td>
-            <td>{{ form.size }}</td>
-        </tr>
-        <tr>
-            <td> <label>{{ form.pathologies.label }}:</label></td>
-            <td>{{ form.pathologies }}</td>
-            <td> <label style=" padding-left: 20px;">{{ form.medical_care.label }}:</label></td>
-            <td>{{ form.medical_care }}</td>
-        </tr>
-        <tr>
-            <td style="width:200px"> <label>{{ form.coments.label }}:</label></td>
-            <td colspan="3">{{ form.coments }}</td>
+            <td style="width:200px"> <label>{{ form.observations.label }}:</label></td>
+            <td colspan="3">{{ form.observations }}</td>
         </tr>
         <tr>
             <td colspan="4" style="text-align: center">
@@ -68,11 +60,11 @@
             {{ field.errors }}
             <br />
         {% endfor %}
-        
+
         {% autoescape off %}
             {{ custon_errors }}
         {% endautoescape %}
-        </div> 
+        </div>
     {% endif %}
 
 {% endblock %}

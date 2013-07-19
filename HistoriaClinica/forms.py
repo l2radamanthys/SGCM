@@ -31,3 +31,34 @@ class AntecedentesPerinatalesForm(forms.ModelForm):
             'size': forms.TextInput({'class':'edt_c'}),
             'coments': forms.Textarea(attrs={'cols':'52', 'rows':'5'}),
         }
+
+
+class ToxicHabitsForm(forms.ModelForm):
+    """
+    """
+    class Meta:
+        model = ToxicHabits
+        fields = (
+                'snuff',
+                'alcohol',
+                'drugs',
+                'infusions',
+                'observations',
+        )
+        widgets = {
+            'observations': forms.Textarea(attrs={'cols':'52', 'rows':'5'}),
+        }
+
+class ImageUploadForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        fields = (
+            'title',
+            #'date', #es automatico
+            'content',
+            'image',
+        )
+        widgets = {
+            'title': forms.TextInput({'class':'edt_g'}),
+            'content': forms.Textarea(attrs={'cols':'52', 'rows':'5'}),
+        }

@@ -1,15 +1,45 @@
 {% extends 'Medics/GestionTurnos/patient-view.html' %}
 
+{% block ext_style %}
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
+{% endblock %}
+
 {% block view-cont %}
-<div  style="padding-left:10px;" >
-    <h2>Habitos Toxicos</h2>
-    <p style="font-size:14px;margin-left:10px">{{ pac.last_name  }}, {{ pac.first_name }} </p>
-</div>
+    <div  style="padding-left:10px;" >
+        <h2>Habitos Toxicos</h2>
+        <p style="font-size:14px;margin-left:10px">{{ pac.last_name  }}, {{ pac.first_name }} </p>
+    </div>
 
-<div style="text-align:right; margin:20px;">
-    <a href="" class="grad-button-blue">Modificar</a>
-</div>
+    <div style="text-align:right; margin:20px;">
+        <a href="/pacientes/modificar/habitos-toxicos/{{ pac.username }}/" class="grad-button-blue">Modificar</a>
+    </div>
 
+    <div class="fancy-form-white" style="text-align: left; width: 650px; margin: 0 auto;">
+    <table style="width: 650px; margin: 0 auto; font-size: 13px;">
+        <tr>
+            <td class="tbl-label" style="width:200px"> Tabaco: </td>
+            <td style="text-align: center; width:120px"> {{ habt.snuff }}</td>
+
+            <td class="tbl-label" style="width:200px"> Alcohol:</td>
+            <td style="text-align: center">{{ habt.alcohol }}</td>
+        </tr>
+
+        <tr>
+            <td class="tbl-label" style="width:200px"> Drogas: </td>
+            <td style="text-align: center; width:120px"> {{ habt.drugs }}</td>
+
+            <td class="tbl-label" style="width:200px"> Infuciones:</td>
+            <td style="text-align: center">{{ habt.infusions }}</td>
+        </tr>
+
+        <tr>
+            <td colspan="4" class="tbl-label">Observaciones:</td>
+        </tr>
+        <tr>
+            <td colspan="4" style="padding: 5px 10px;"> {{ habt.observations }}</td>
+        </tr>
+    </table>
+    </div>
 
 
 
