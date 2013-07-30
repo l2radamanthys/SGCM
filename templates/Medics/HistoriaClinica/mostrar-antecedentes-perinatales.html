@@ -28,10 +28,10 @@
 
         <tr>
             <td class="tbl-label">Controles durante embarazo:</td>
-            <td style="text-align: center"> {{ antp.controls }}</td>
+            <td style="text-align: center">{% if antp.controls == 'S' %} SI {% else %} NO {% endif %}</td>
 
             <td class="tbl-label">Parto Normal:</td>
-            <td style="text-align: center"> {{ antp.normal_birth }}</td>
+            <td style="text-align: center">{% if antp.normal_birth == 'S' %} SI {% else %} NO {% endif %}</td>
         </tr>
 
         <tr>
@@ -44,17 +44,17 @@
 
         <tr>
             <td class="tbl-label">Presento Patologias al Nacer:</td>
-            <td style="text-align: center"> {{ antp.pathologies }}</td>
+            <td style="text-align: center">{% if antp.pathologies == 'S' %} SI {% else %} NO {% endif %}</td>
 
             <td class="tbl-label">Requirio Atencion Medica:</td>
-            <td style="text-align: center"> {{ antp.medical_care }}</td>
+            <td style="text-align: center">{% if antp.medical_care == 'S' %} SI {% else %} NO {% endif %}</td>
         </tr>
 
         <tr>
             <td colspan="4" class="tbl-label">Observaciones:</td>
         </tr>
         <tr>
-            <td colspan="4" style="padding: 5px 10px;"> {{ antp.coments }}</td>
+            <td colspan="4"><div style="padding:10px; border: 1px solid #BBBBBB;"> {{ antp.coments }}</div></td>
         </tr>
 
     </table>

@@ -4,5 +4,54 @@
 {% endblock %}
 
 {% block view-cont %}
-    <h1>Solicitar Turno</h1>
+    <br />
+    <div  style="padding-left:10px;" >
+        <h2>Solicitar Turno</h2>
+        <p style="font-size:14px; margin-left: 10px;">Medico: {{ medic.user.first_name }} {{ medic.user.last_name }}</p>
+    </div>
+
+    {% if show_form %}
+        <p class="alert" style="width:450px;"><strong>Atencion:</strong><br /><br />
+        Por fabor confirme los datos antes de enviar la solicitud de turno, recuerde que al enviar esta solicitud, usted se compromete
+        a asistir en la fecha que usted acordo y el horario proporcionado.</p>
+        <br />
+        
+        <div class="fancy-form-white" style="text-align: left; width: 450px; margin: 0 auto;">
+            <h2>Confirmacion de Datos de Solicitud Turno</h2>
+            <br />
+            <form action="" method="post">
+            <table style="width: 450px;">
+                <tr>
+                    <td class="tbl-label">Fecha de Solicitud:</td>
+                    <td>{{ date_str }}</td>
+                </tr>
+
+                <tr>
+                    <td class="tbl-label">Medico:</td>
+                    <td>{{ medic.user.first_name }} {{ medic.user.last_name }}</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <input type="hidden" name="key" value="{{ key }}" />
+                        <br />
+                        <div style="text-align:center;">
+                            <input type="submit" class="grad-button-blue" value="Enviar" />
+                            <a href="/pacientes/show-info/{{ pac_username }}/" class="grad-button-blue">Atras</a>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    {% else %}
+        <br />
+    
+        {{ test }}
+    
+    {% endif %}
+
+
+    {{ errors }}
+    
 {% endblock %}

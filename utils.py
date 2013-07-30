@@ -122,7 +122,6 @@ def get_value(request, key='', default='', blank='', method=POST):
 
 
 
-
 def _get_value(request, key='', default='', blank=''):
     """
         Obtiene valor de object request de la info que se envio al
@@ -135,7 +134,6 @@ def _get_value(request, key='', default='', blank=''):
 
 
 
-
 def time_split(cad="00:00:00"):
     """
         comvierte la cadena de texto en un objecto time
@@ -143,3 +141,37 @@ def time_split(cad="00:00:00"):
     lista = [int(n) for n in cad.split(":")]
     hora = datetime.time(lista[0], lista[1])
     return hora
+
+
+
+def dia_fecha(fechaNac):
+    """
+    Obtiene el dia de la fecha pasada como string en formato dd-mm-aaaa
+
+    El codigo original pertenece a Víctor R. Varela Medina (@VitocoSan) y
+    fue obtenido de:
+    http://vitocosan.wordpress.com/2009/01/15/ocioque-dia-de-la-semana-naciste-python/
+    """
+
+    #dia = ['Sabado', 'Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes']
+    dia = (6, 7, 1, 2, 3, 4, 5)
+    arrayfNac=fechaNac.split('-')
+    dfNac=datetime.date(int(arrayfNac[2]),int(arrayfNac[1]),int(arrayfNac[0]))
+    val1=dfNac.month
+    val2=dfNac.year
+    if(dfNac.month == 1):
+        val1=13
+        val2=val2 - 1
+
+    if(dfNac.month == 2):
+        val1=14
+        val2=val2-1
+
+    val3 = ((val1+1)*3)/5;
+    val4 = val2/4
+    val5 = val2/100
+    val6 = val2/400
+    val7 = dfNac.day+(val1*2)+val3+val2+val4-val5+val6+2
+    val8 = val7/7
+    val0 = val7-(val8 * 7)
+    return dia[val0]

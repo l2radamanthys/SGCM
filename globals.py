@@ -76,6 +76,15 @@ SOLICITUD_ESTADO_CHOICE = (
 )
 
 
+TURN_STATUS_CHOICE = (
+    (0, 'Pendiente'),
+    (1, 'Concretada'),
+    (2, 'Cancelado Medico'),
+    (3, 'Cancelado Paciente'),
+    (4, 'Vencido'),
+)
+
+
 DATE_CHOICE = (
     (1, 'Lunes'),
     (2, 'Martes'),

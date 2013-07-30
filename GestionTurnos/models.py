@@ -132,6 +132,8 @@ class BusinessHours(models.Model):
     def calculate_interval_minutes(self):
         """
             Calcula la cantidad de minutos entre los 2 intervalos
+
+            *deprecated
         """
         #implementado directamente abajo :S
         pass
@@ -167,6 +169,23 @@ class DayOfAttention(models.Model):
         db_table = "DaysOfAttention"
 
 
+
+class Turn(models.Model):
+    """
+        Turno Asignado
+    """
+    day = models.ForeignKey(DayOfAttention)
+    #aunque hay referencia al medico en day.business_hour.user se implementa medico para acelerar consulta
+    medic = models.ForeignKey(User, related_name='medic_user2')
+    patient = models.ForeignKey(User, related_name='patient_user2')
+    start = models.TimeField('Hora de Inicio Turno') #hora de inicio
+    end = models.TimeField('Hora de Fin Turno') #hora prevista de finalizacion
+    status = models.IntegerField('Estado', default=0, choices=TURN_STATUS_CHOICE)
+    observation = models.TextField('Observaciones')
+    number = models.IntegerField('Numero de Turno', default=1)
+
+    class Meta:
+        db_table = "Turns"
 
 
 class Message(models.Model):

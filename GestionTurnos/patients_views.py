@@ -196,8 +196,8 @@ def patient_show_medic_info(request, med_id):
 
     if True:
         dict['medic'] = UserInformation.objects.get(user__id=med_id)
-        dict['expecialities'] = ''
-        dict['bussines_hour'] = ''
+        dict['expecialities'] = MedicalSpecialityFor.objects.filter(user__id=med_id)
+        dict['business_hours'] = BusinessHours.objects.filter(user__id=med_id)
         html_cont = mi_template.render(Context(dict))
         return HttpResponse(html_cont)
 
@@ -217,6 +217,7 @@ def patient_new_turn_day_select(request, med_id, month=None, year=None):
     dict = generate_base_keys(request)
 
     if True:
+        ## correcion de la fecha y de los spin para cambio de fechas ##
         if month != None and year != None:
             month = int(month) % 13
             year = int(year)
@@ -226,8 +227,9 @@ def patient_new_turn_day_select(request, med_id, month=None, year=None):
             month = datetime.date.today().month
 
         #hoy
-        t_year = datetime.date.today().year
-        t_month = datetime.date.today().month
+        t_day = datetime.date.today().day #dia
+        t_year = datetime.date.today().year #mes
+        t_month = datetime.date.today().month #anio
 
         dict['month'] = month
         dict['name_month'] = MONTHS[month-1]
@@ -254,32 +256,33 @@ def patient_new_turn_day_select(request, med_id, month=None, year=None):
             dict['prev_year'] = year - 1
             dict['next_year'] = year + 1
 
+        #correcion para no mostrar los meses anteriores al mes actual
         if dict['prev_month'] < t_month and dict['prev_year'] == t_year or dict['prev_year'] < t_year:
             dict['prev_month'] = t_month
             dict['prev_year'] = t_year
+        ## fin correcion fechas
 
-
-        medic = User.objects.get(id=med_id)
+        medic = UserInformation.objects.get(user__id=med_id)
         dict['medic'] = medic
+        ## diferentes grupos segun patrones para armar el calendar ##
         #dias que se atiende
-        bh = BusinessHours.objects.filter(user=medic)
+        bh = BusinessHours.objects.filter(user=medic.user)
         wd = []
         for day in bh:
             wd.append(day.date - 1)
 
         #dias no laborales
-        nwd = NonWorkingDay.objects.filter(user=medic, date__month=month, date__year=year)
+        nwd = NonWorkingDay.objects.filter(user=medic.user, date__month=month, date__year=year)
         _nwd = []
         for obj in nwd:
             _nwd.append(obj.date.day)
 
         #dias con turnos asignados
         _dta = []
-        dof = DayOfAttention.objects.filter(business_hour__user=medic, date__month=month, date__year=year)
+        dof = DayOfAttention.objects.filter(business_hour__user=medic.user, date__month=month, date__year=year)
         for day in dof:
             if day.status == 2: #marcado como completo
                 _dta.append(day.date - 1)
-
 
         #formateo del mes
         semanas = []
@@ -287,12 +290,16 @@ def patient_new_turn_day_select(request, med_id, month=None, year=None):
             sem = []
             i = 0
             for day in week:
-                if day in _nwd: #es un dia no laboral?
+                if day in _nwd: #es un dia no laboral? dias precancelados por el medico
                     sem.append(CalendarDay(day,2))
                 else:
                     if i in wd:#dias donde se atiende
+                        #estan completos los dia de atencion
                         if day in _dta:
-                            sem.append(CalendarDay(day,3)) #estan completos completos
+                            sem.append(CalendarDay(day,3))
+                        #si paso la fecha de atencion se marcara como completo en la vista
+                        elif day <= t_day and t_month == month:
+                            sem.append(CalendarDay(day,3))
                         else:
                             sem.append(CalendarDay(day,1)) #hay turnos libres
                     else:
@@ -314,6 +321,75 @@ def patient_new_turn(request, med_id, day, month, year):
     dict = generate_base_keys(request)
 
     if True:
+        medic = UserInformation.objects.get(user__id=med_id)
+        dict['medic'] = medic
+
+        if request.method == 'POST':
+            key = med_id + day + month + year
+            fkey = get_POST_value(request, 'key')
+            if key == fkey:#datos
+                ## consulta si es un dia valido
+                str_d = day + '-' + month + '-' + year #formatea un string como dd-mm-aaaa
+                s_day = dia_fecha(str_d) #nro de dia de la semana
+                result = BusinessHours.objects.filter(user__id = med_id, date=s_day).count()
+                if result == 1:
+                    ## consulta si tiene turnos disponible el dia
+                    bh = BusinessHours.objects.get(user__id = med_id, date=s_day)
+                    _date = datetime.date(int(year),int(month),int(day))
+                    is_turn = True #bandera de consulta asignacion de turno
+                    try:
+                        doa = DayOfAttention.objects.get(business_hour=bh, date=_date)
+
+                    except DayOfAttention.DoesNotExist:
+                        doa = DayOfAttention(
+                            business_hour = bh,
+                            date = _date,
+                            status = 0,
+                            number_of_turns = 0
+                        )
+
+                    if doa.number_of_turns >= doa.business_hour.number_of_turns():
+                        doa.status = 2 #esta completo de antemano no puede solicitar turno
+                        is_turn = False #ya no se puede asignar turno
+
+                    elif doa.number_of_turns == (doa.business_hour.number_of_turns() - 1):
+                        doa.status = 2 #ulimo turno que se asignara
+                        doa.number_of_turns += 1
+
+                    else:
+                        doa.number_of_turns += 1
+
+                    if is_turn: #consulta bandera de registracion de turno
+                        turn = Turn(
+                            day = doa, #dia de atencion al cual esta relacionado
+                            medic = medic.user,
+                            patient = request.user, #se supone que el paciente es el user actual logueado
+                            start = datetime.time(),
+                            end = datetime.time(),
+                            status = 0,
+                            observation = '',
+                            number = doa.number_of_turns
+                        )
+                        turn.save()
+                        dict['turn'] =turn
+
+                    else:
+                        dict['errors'] = 'no hay turnos disponibles'
+
+                    doa.save()
+
+
+                else:
+                    dict['errors'] = 'dia no valido'
+
+            else:
+                dict['errors'] = 'claves invalidas'
+
+            pass
+        else:
+            dict['show_form'] = True
+            dict['key'] = med_id + day + month + year
+            dict['date_str'] = day + ' de ' +  MONTHS[int(month)-1] + ' de ' + year
 
         html_cont = mi_template.render(Context(dict))
         return HttpResponse(html_cont)

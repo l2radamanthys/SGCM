@@ -15,28 +15,28 @@
     </div>
 
     <div class="fancy-form-white" style="text-align: left; width: 650px; margin: 0 auto;">
-    <table style="width: 650px; margin: 0 auto; font-size: 13px;">
+    <table style="width: 650px; font-size: 13px;">
         <tr>
-            <td class="tbl-label" style="width:200px"> Tabaco: </td>
-            <td style="text-align: center; width:120px"> {{ habt.snuff }}</td>
+            <td class="tbl-label"> Tabaco: </td>
+            <td style="text-align: left; width:120px">{% if habt.snuff == 'S' %} SI {% else %} NO {% endif %}</td>
 
-            <td class="tbl-label" style="width:200px"> Alcohol:</td>
-            <td style="text-align: center">{{ habt.alcohol }}</td>
+            <td class="tbl-label"> Alcohol:</td>
+            <td style="text-align: left">{% if habt.alcohol == 'S' %} SI {% else %} NO {% endif %}</td>
         </tr>
 
         <tr>
-            <td class="tbl-label" style="width:200px"> Drogas: </td>
-            <td style="text-align: center; width:120px"> {{ habt.drugs }}</td>
+            <td class="tbl-label"> Drogas: </td>
+            <td style="text-align: left; width:120px">{% if habt.drugs == 'S' %} SI {% else %} NO {% endif %}</td>
 
-            <td class="tbl-label" style="width:200px"> Infuciones:</td>
-            <td style="text-align: center">{{ habt.infusions }}</td>
+            <td class="tbl-label"> Infuciones:</td>
+            <td style="text-align: left">{% if habt.infusions == 'S' %} SI {% else %} NO {% endif %}</td>
         </tr>
 
         <tr>
             <td colspan="4" class="tbl-label">Observaciones:</td>
         </tr>
         <tr>
-            <td colspan="4" style="padding: 5px 10px;"> {{ habt.observations }}</td>
+            <td colspan="4"><div style="padding:10px; border: 1px solid #BBBBBB;"> {{ habt.observations }} </div></td>
         </tr>
     </table>
     </div>

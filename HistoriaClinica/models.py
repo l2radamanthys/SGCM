@@ -19,7 +19,7 @@ class Image(models.Model):
     patient = models.ForeignKey(User, related_name='patient_user0')
     title = models.CharField('Titulo', max_length=125, default='')
     content = models.TextField('Observaciones', default='')
-    image = models.ImageField('Imagen', upload_to='upload/images')
+    image = models.ImageField('Imagen', upload_to='upload/images/study')
 
 
     class Meta:

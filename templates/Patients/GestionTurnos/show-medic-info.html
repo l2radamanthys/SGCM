@@ -5,5 +5,68 @@
 
 {% block view-cont %}
     <br />
-    <h2>Informacion Medico</h2>
+    <h2>Informacion del Medico</h2>
+
+    <br />
+    <div class="fancy-form-white" style="text-align: left; width: 650px; margin: 0 auto;">
+    <h2>Datos Basicos</h2>
+    <br />
+        <table>
+            <tr>
+                <td class="tbl-label" style="width: 200px;">Nombre:</td>
+                <td>{{ medic.user.first_name }} {{ medic.user.last_name }}</td>
+            </tr>
+            <tr>
+                <td class="tbl-label">Telefono:</td>
+                <td>{{ medic.phone }}</td>
+            </tr>
+            <tr>
+                <td class="tbl-label">Numero de Matricula:</td>
+                <td>{{ medic.matricula }}</td>
+            </tr>
+
+
+        </table>
+    </div>
+
+
+    <br />
+    <div class="fancy-form-white" style="text-align: left; width: 650px; margin: 0 auto;">
+    <h2>Expecialidades</h2>
+
+    <br />
+    
+    {% if expecialities %}
+        {% for obj in expecialities %}
+            <p><a href="">{{ obj.speciality.name }}</a></p>
+        {% endfor %}
+    {% else %}
+        <p>Sin especificar.</p>
+    {% endif %}
+    </div>
+    
+    <br />
+    <div class="fancy-form-white" style="text-align: left; width: 650px; margin: 0 auto;">
+    <h2>Horarios Atencion</h2>
+        <br />
+        <table class="tbl-round-light" style="width: 650px; margin: 0 auto; font-weight: 100; font-size: 12px">
+        <tr>
+            <th style="text-align: center;font-weight: bold;">Dia</th>
+            <th style="text-align: center;font-weight: bold;">Hora Inicio</th>
+            <th style="text-align: center;font-weight: bold;">Hora Fin</th>
+            <th style="text-align: center;font-weight: bold;width: 100px">Duracion (Minutos)</th>
+        </tr>
+
+        {% for bh in business_hours %}
+        <tr>
+            <td style="text-align: center;">{{ bh.str_day }}</td>
+            <td style="text-align: center;">{{ bh.start_time }}</td>
+            <td style="text-align: center;">{{ bh.end_time }}</td>
+            <td style="text-align: center;">{{ bh.turn_duration }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+    </div>
+    
 {% endblock %}
