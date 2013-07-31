@@ -345,10 +345,12 @@ def patient_new_turn(request, med_id, day, month, year):
                             business_hour = bh,
                             date = _date,
                             status = 0,
-                            number_of_turns = 0
+                            number_of_turns = 0,
+                            current_end_time = bh.start_time
                         )
+                        doa.save()
 
-                    if doa.number_of_turns >= doa.business_hour.number_of_turns():
+                    if doa.number_of_turns > doa.business_hour.number_of_turns():
                         doa.status = 2 #esta completo de antemano no puede solicitar turno
                         is_turn = False #ya no se puede asignar turno
 
@@ -357,33 +359,63 @@ def patient_new_turn(request, med_id, day, month, year):
                         doa.number_of_turns += 1
 
                     else:
+                        doa.status = 1
                         doa.number_of_turns += 1
 
+                    _start = doa.current_end_time
+                    _end = doa.get_next_current_end_time()
+                    doa.current_end_time = doa.get_next_current_end_time()
+
+                    ## debug
+                    #dict['test'] = bh.number_of_turns_bh(bh)
+                    #dict['test'] = doa.number_of_turns
+                    #dict['test'] = doa.get_next_current_end_time()
+                    #dict['test'] = str(doa.number_of_turns) + " - "
+                    #dict['test'] += str(_start) + "  - "
+                    #dict['test'] += str(_end)
+
+
                     if is_turn: #consulta bandera de registracion de turno
-                        turn = Turn(
-                            day = doa, #dia de atencion al cual esta relacionado
-                            medic = medic.user,
-                            patient = request.user, #se supone que el paciente es el user actual logueado
-                            start = datetime.time(),
-                            end = datetime.time(),
-                            status = 0,
-                            observation = '',
-                            number = doa.number_of_turns
-                        )
-                        turn.save()
-                        dict['turn'] =turn
+                        dict['not_errors'] = True
+                        try:
+                             #lanza un error en caso que se haya registrado un turno previamente en la misma fecha
+                            #con el mismo especialista
+                            turn = Turn.objects.get(medic=medic.user, patient=request.user, day = doa)
+                            if turn.status == 3: #reactivar turno previamente cancelado
+                                turn.status = 0 #cambia a pendiente
+                                turn.save()
+                                dict['turn'] = turn
+
+                            else:
+                                dict['errors'] = 'No se pudo registrar el turno, por que ya posee un turno registrado esta fecha con dicho especialista'
+                                dict['not_errors'] = False
+
+                        except Turn.DoesNotExist:
+                            turn = Turn(
+                                day = doa, #dia de atencion al cual esta relacionado
+                                medic = medic.user,
+                                patient = request.user, #se supone que el paciente es el user actual logueado
+                                start = _start,
+                                end = _end,
+                                status = 0,
+                                observation = '',
+                                number = doa.number_of_turns
+                            )
+                            turn.save()
+                            doa.save()
+                            dict['turn'] =turn
 
                     else:
-                        dict['errors'] = 'no hay turnos disponibles'
-
-                    doa.save()
-
+                        dict['not_errors'] = False
+                        dict['errors'] = 'Lo sentimos pero la fecha' + str(doa.date) + 'no tiene turnos disponibles'
 
                 else:
-                    dict['errors'] = 'dia no valido'
+                    dict['not_errors'] = False
+                    dict['errors'] = 'El dia solicitado es invalido'
 
             else:
-                dict['errors'] = 'claves invalidas'
+                dict['not_errors'] = False
+                dict['errors'] = 'La clave de comprobacion no coincide'
 
             pass
         else:

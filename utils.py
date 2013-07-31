@@ -175,3 +175,44 @@ def dia_fecha(fechaNac):
     val8 = val7/7
     val0 = val7-(val8 * 7)
     return dia[val0]
+
+
+def datetime_to_time(dt):
+    """
+        convierte unicamente las horas,minutos y segundos de un objecto datetime
+        a objecto time
+    """
+    t = datetime.time(
+        hour=dt.hour,
+        minute=dt.minute,
+        second=dt.second
+    )
+    return t
+
+
+def time_to_datetime(t):
+    """
+        convierte un objecto time a datetime, por defecto se le asigna la
+        fecha 1/1/1900
+    """
+    dt = datetime.datetime(
+        1900,
+        1,
+        1,
+        t.hour,
+        t.minute,
+        t.second
+    )
+    return dt
+
+
+def time_to_timedelta(t):
+    """
+        convierte un objecto time en timedelta
+    """
+    td = datetime.timedelta(
+        hours = t.hour,
+        minutes = t.minute,
+        seconds = t.second
+    )
+    return td

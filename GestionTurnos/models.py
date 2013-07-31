@@ -9,7 +9,9 @@ from django.contrib.auth.models import User
 
 import datetime
 
+from utils import *
 from globals import *
+
 
 
 
@@ -129,14 +131,13 @@ class BusinessHours(models.Model):
         )
 
 
-    def calculate_interval_minutes(self):
-        """
-            Calcula la cantidad de minutos entre los 2 intervalos
-
-            *deprecated
-        """
-        #implementado directamente abajo :S
-        pass
+    #def calculate_interval_minutes(self):
+        #"""
+            #Calcula la cantidad de minutos entre los 2 intervalos
+            #*deprecated
+        #"""
+        ##implementado directamente abajo :S
+        #pass
 
 
     def str_day(self):
@@ -144,15 +145,27 @@ class BusinessHours(models.Model):
 
 
     def number_of_turns(self):
+        #"""
+            #Retorna el numero de turnos que se pueden asignar en dicho horario
+            #de atencion
+        #"""
+        end_time = time_to_datetime(self.end_time)
+        td = time_to_timedelta(self.start_time)
+        interval = end_time - td
+        minutes = interval.hour * 60 + interval.minute
+        n_turns = minutes / self.turn_duration
+        return n_turns
+
+
+    def number_of_turns_bh(self, bh):
         """
-            Retorna el numero de turnos que se pueden asignar en dicho horario
-            de atencion
+            retorna el numero de turnos correspondiente
         """
-        start = datetime.timedelta(hours=start_time.hour, minutes=self.start_time.minute)
-        end = datetime.datetime(hours=self.end_time.hours, minutes=self.end_time.minute)
-        dif = end - start
-        min = dif.seconds / 60  #calcula el numero de minutos
-        n_turns = min / self.turn_duration #calcula el numero de turnos por rendondeo
+        end_time = time_to_datetime(bh.end_time)
+        td = time_to_timedelta(bh.start_time)
+        interval = end_time - td
+        minutes = interval.hour * 60 + interval.minute
+        n_turns = minutes / bh.turn_duration
         return n_turns
 
 
@@ -164,6 +177,29 @@ class DayOfAttention(models.Model):
     date = models.DateField('Fecha')
     status = models.IntegerField('Estado', default=0, choices=DAY_OF_ATTENTION_STATUS_CHOICE)
     number_of_turns =  models.IntegerField('Numero de Turnos Asignados', default=0)
+    current_end_time = models.TimeField('Horario del Ultimo turno') #hora del ultimo turno
+
+
+    def get_next_current_end_time(self):
+        """
+        calcula la hora de fin del proximo nuevo turno
+
+        return:
+            next_end_time, overload_turm
+        """
+        #duracion del turno definido
+        t_inc = datetime.timedelta(minutes = self.business_hour.turn_duration)
+        current_end_time = time_to_datetime(self.current_end_time)
+
+        _end_time = current_end_time + t_inc
+        end_time = datetime_to_time(_end_time)
+        #if end_time >= self.business_hour.end_time:
+            #return end_time, True
+        #else:
+            #return end_time, False
+        return end_time
+
+
 
     class Meta:
         db_table = "DaysOfAttention"

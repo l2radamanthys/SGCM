@@ -12,8 +12,13 @@
         <h2>Solicitar Turno</h2>
         <p style="font-size:14px; margin-left: 10px;">Medico: {{ medic.user.first_name }} {{ medic.user.last_name }}</p>
     </div>
-    
+
     <br />
+    <div style="width: 650px; margin: 0 auto; text-align: right;">
+        <a href="/medicos/mostrar/{{ medic.user.id }}/" class="grad-button-blue">Atras</a>
+    </div>
+    <br />
+    
     <div class="fancy-form-white" style="text-align: left; width: 650px; margin: 0 auto;">
     <br />
     <p>Selecione la fecha del turno que desea solicitar del calendario:</p>
