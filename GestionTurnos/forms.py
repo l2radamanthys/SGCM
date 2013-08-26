@@ -213,3 +213,27 @@ class MessageSendForm(forms.Form):
         required = True
     )
 
+
+class MessageReSendForm(forms.Form):
+    content = forms.CharField(
+        label="Contenido:",
+        widget= forms.Textarea(attrs={'cols':'60'}),
+        required = True
+    )
+
+
+
+class OnlineConsulationForm(forms.Form):    
+    issue = forms.CharField(
+        label="Asunto:",
+        widget=forms.TextInput(attrs={'class':'edt_g',}),
+        required = True
+    )
+
+    content = forms.CharField(
+        label="Contenido:",
+        widget= forms.Textarea(attrs={'cols':'50'}),
+        required = True
+    )
+
+

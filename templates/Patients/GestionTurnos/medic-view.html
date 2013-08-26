@@ -22,7 +22,7 @@
         {% if login_user != 'Usuario no Conectado' %}
             <li><a href="/medicos/turnos/selecionar-dia/{{ medic.user.id }}/" title="">Solicitar Turno</a></li>
             {# en realidad este campo es de la parte mensajes #}
-            <li><a href="/medicos/nueva-consulta/{{ medic.user.id }}/" title="">Realizar Consulta Online</a></li>
+            <li><a href="/medicos/nueva/consulta-online/{{ medic.user.id }}/" title="">Realizar Consulta Online</a></li>
         {% endif %}
     </ul>
     <br />

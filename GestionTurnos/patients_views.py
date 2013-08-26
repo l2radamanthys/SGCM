@@ -166,7 +166,6 @@ def patient_activate(request, patient_username=None, activaction_key=None):
 
 
 
-
 def patient_show_medics_list(request):
     """
     Muestra el listado de Medicos
@@ -297,8 +296,9 @@ def patient_new_turn_day_select(request, med_id, month=None, year=None):
                         #estan completos los dia de atencion
                         if day in _dta:
                             sem.append(CalendarDay(day,3))
+
                         #si paso la fecha de atencion se marcara como completo en la vista
-                        elif day <= t_day and t_month == month:
+                        elif day <= t_day and t_month == month and t_year == year:
                             sem.append(CalendarDay(day,3))
                         else:
                             sem.append(CalendarDay(day,1)) #hay turnos libres
@@ -314,6 +314,7 @@ def patient_new_turn_day_select(request, med_id, month=None, year=None):
     else:
         path = request.META['PATH_INFO']
         return HttpResponseRedirect("/restricted-access%s" %path)
+
 
 
 def patient_new_turn(request, med_id, day, month, year):
@@ -429,3 +430,58 @@ def patient_new_turn(request, med_id, day, month, year):
     else:
         path = request.META['PATH_INFO']
         return HttpResponseRedirect("/restricted-access%s" %path)
+
+
+
+def patient_set_medic_consulation(request, med_id):
+    """
+        Envia una consulta online a un medico, lo que en realidad es
+        un mensaj
+    """
+    #no me acuerdo el nombre de consulta medica en ingles -.-
+    mi_template = get_template('Patients/GestionTurnos/new-online-consulation.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        medic = UserInformation.objects.get(user__id=med_id)
+        form = my_forms.OnlineConsulationForm()
+
+        dict['medic'] = medic        
+        dict['show_form'] = True
+        
+
+        if request.method == 'POST':
+            form = my_forms.OnlineConsulationForm(request.POST, auto_id=False)
+            if form.is_valid():
+                #to_user_id = form.cleaned_data['to_user']
+                try:
+                    _to_user = medic.user #el destinatario siempre sera el medico selecionado 
+                    #usuario existe y se registra el envio del mensaje
+                    Message.objects.create(
+                        from_user = request.user,
+                        to_user = _to_user,
+                        issue = form.cleaned_data['issue'],
+                        content = form.cleaned_data['content'],
+                    )
+                    dict['show_form'] = False
+
+                except User.DoesNotExist:
+                    #el usuario destinatario no existe por lo que lanzo una exepcion
+                    #personalizada que en realidad es un mensaje de error
+                    dict['custom_error'] = Tags.custom_tag(content='Error Destinatario inexistente..!')
+                    dict['show_error'] = True
+                    dict['form'] = form
+            else:
+                dict['show_error'] = True
+                dict['form'] = form
+        else:
+            dict['form'] = my_forms.OnlineConsulationForm(auto_id=False)
+
+        
+        html_cont = mi_template.render(Context(dict))
+        return HttpResponse(html_cont)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+

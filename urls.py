@@ -76,8 +76,12 @@ urlpatterns = patterns('',
 
     (r'^medicos/turnos/agregar/(\d{1,2})/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_patients_views.patient_new_turn),
 
+    #paciente realizar consulta al medico
+    (r'^medicos/nueva/consulta-online/(\d{1,2})/$', gt_patients_views.patient_set_medic_consulation),   
+
     #mensajes internos
     (r'^mensajes/redactar', gt_messages_views.send_message),
+    (r'^mensajes/redactar/(\d{1,5})/', gt_messages_views.send_message), #respodner
     (r'^mensajes/recibidos', gt_messages_views.received),
     (r'^mensajes/mostrar/(\d{1,2})/', gt_messages_views.read),
 
@@ -105,7 +109,7 @@ urlpatterns = patterns('',
     (r'^perms/$', debug_views.perms_list),
     (r'^apps/$', debug_views.apps_list),
     (r'^usuarios/calendar/$', debug_views.calendar),
-    (r'^usuarios/calendar/(\d{1,2})/(\d{4})/$', debug_views.calendar),
+    #(r'^usuarios/calendar/(\d{1,2})/(\d{4})/$', debug_views.calendar),
 
 
 

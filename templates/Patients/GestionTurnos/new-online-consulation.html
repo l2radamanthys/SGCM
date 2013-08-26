@@ -1,0 +1,56 @@
+{% extends 'Patients/GestionTurnos/medic-view.html' %}
+
+{% block ext_style %}
+{% endblock %}
+
+{% block view-cont %}
+    <br />
+    <h2>Consulta Online</h2>
+
+    <br />
+    <div style="width: 650px; margin: 0 auto; text-align: right;">
+        <a href="/medicos/listado/" class="grad-button-blue">Atras</a>
+    </div>
+    <br />
+   
+
+{% if show_form %}
+    <div class="fancy-form-white" style="margin: 0 auto; width: 500px;">
+        <h2>Nuevo Mensaje</h2>
+        <br />
+
+        <form action="" method="POST">
+        <table style="margin: 0 auto;">
+            <tr>
+                <td colspan="2">
+                <label>Medico: {{ medic.user.first_name }}, {{ medic.user.last_name }}</label>
+                </td>
+            </tr>
+
+            <tr>
+                <td> <label> {{ form.issue.label }}</label></td>
+                <td> {{ form.issue }}</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    {{ form.content }}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: right;">
+                <input type="submit" value="Enviar" class="grad-button-blue" />
+                </td>
+            </tr>
+
+        </table>
+        </form>
+    </div>
+{% else %}
+
+<div class="info" style="width:400px">
+    <p> Consulta Enviada...</p>
+</div>
+
+{% endif %}
+
+{% endblock %}
