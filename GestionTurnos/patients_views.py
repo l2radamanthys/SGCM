@@ -436,7 +436,7 @@ def patient_new_turn(request, med_id, day, month, year):
 def patient_set_medic_consulation(request, med_id):
     """
         Envia una consulta online a un medico, lo que en realidad es
-        un mensaj
+        un mensaje
     """
     #no me acuerdo el nombre de consulta medica en ingles -.-
     mi_template = get_template('Patients/GestionTurnos/new-online-consulation.html')
@@ -446,16 +446,16 @@ def patient_set_medic_consulation(request, med_id):
         medic = UserInformation.objects.get(user__id=med_id)
         form = my_forms.OnlineConsulationForm()
 
-        dict['medic'] = medic        
+        dict['medic'] = medic
         dict['show_form'] = True
-        
+
 
         if request.method == 'POST':
             form = my_forms.OnlineConsulationForm(request.POST, auto_id=False)
             if form.is_valid():
                 #to_user_id = form.cleaned_data['to_user']
                 try:
-                    _to_user = medic.user #el destinatario siempre sera el medico selecionado 
+                    _to_user = medic.user #el destinatario siempre sera el medico selecionado
                     #usuario existe y se registra el envio del mensaje
                     Message.objects.create(
                         from_user = request.user,
@@ -477,7 +477,6 @@ def patient_set_medic_consulation(request, med_id):
         else:
             dict['form'] = my_forms.OnlineConsulationForm(auto_id=False)
 
-        
         html_cont = mi_template.render(Context(dict))
         return HttpResponse(html_cont)
 
@@ -485,3 +484,19 @@ def patient_set_medic_consulation(request, med_id):
         path = request.META['PATH_INFO']
         return HttpResponseRedirect("/restricted-access%s" %path)
 
+
+
+def patient_show_turn_request(request):
+    mi_template = get_template('Patients/GestionTurnos/show-turns-request.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        user = request.user
+        dict['turns'] = Turn.objects.filter(patient=user).order_by('day__date')
+
+        html_cont = mi_template.render(Context(dict))
+        return HttpResponse(html_cont)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)

@@ -11,29 +11,29 @@
 
 
 {% if show_form %}
-    <div class="fancy-form-white" style="margin: 0 auto; width: 500px;">
-        <h2>Nuevo Mensaje</h2>
-
-        <br />
-
+    <h2>{{ title }}</h2>
+    <br />
+    <div class="fancy-form-white" style="margin: 0 auto; width: 700px;">
+    
         <form action="" method="POST">
         <table style="margin: 0 auto;">
             <tr>
-                <td> <label> {{ form.to_user.label }}</label></td>
+                <td style="width:100px"><label>De:</label></td>
                 <td>@{{ form_to_user }}</td>
             </tr>
             <tr>
-                <td> <label> {{ form.issue.label }}</label></td>
+                <td> <label>Asunto:</label></td>
                 <td> {{ form_issue }}</td>
             </tr>
             <tr>
                 <td colspan="2">
+                    <br />
                     {{ form.content }}
                 </td>
             </tr>
             <tr>
                 <td colspan="2" style="text-align: right;">
-                <input type="submit" value="Enviar" class="grad-button-blue" />
+                <input type="submit" value="Responder" class="grad-button-blue" />
                 </td>
             </tr>
 

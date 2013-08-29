@@ -15,7 +15,7 @@ from django.contrib.contenttypes.models import ContentType
 from utils import *
 from globals import *
 from GestionTurnos.models import *
-from GestionTurnos.forms import MessageSendForm
+from GestionTurnos.forms import MessageSendForm, MessageReSendForm
 
 
 def send_message(request):
@@ -26,6 +26,7 @@ def send_message(request):
     dict = generate_base_keys(request)
 
     if True: #solo los medicos y administradores podran acceder a esta vista
+        dict['title'] = "Nuevo Mensaje"
         dict['show_form'] = True
         if request.method == 'POST':
             form = MessageSendForm(request.POST, auto_id=False)
@@ -73,43 +74,42 @@ def re_send_message(request, msj_id):
     dict = generate_base_keys(request)
 
     if True: #cualquier usuario registrado
-        old_msj = Messages.objects.get(id=msj_id)
-    
-        dict['form_to_user'] = old_msj.to_user.username
+        dict['title'] = "Responder Mensaje"
+        old_msj = Message.objects.get(id=msj_id)
+
+        dict['form_to_user'] = old_msj.from_user.username
         if old_msj.issue[:3].lower() != 're:':
             dict['form_issue'] = 'RE: ' + old_msj.issue
         else:
             dict['form_issue'] = old_msj.issue
-        
+
+
 
         dict['show_form'] = True
         if request.method == 'POST':
-            form = MessageSendForm(request.POST, auto_id=False)
+            form = MessageReSendForm(request.POST, auto_id=False)
             if form.is_valid():
-                to_username = form.cleaned_data['to_user']
-                try:
-                    _to_user = User.objects.get(username=to_username)
-                    #usuario existe y se registra el envio del mensaje
-                    Message.objects.create(
+                _to_user = old_msj.from_user
+                #usuario existe y se registra el envio del mensaje
+                Message.objects.create(
                         from_user = request.user,
                         to_user = _to_user,
-                        issue = form.cleaned_data['issue'],
+                        issue = dict['form_issue'],
                         content = form.cleaned_data['content'],
-                    )
-                    dict['show_form'] = False
-
-                except User.DoesNotExist:
-                    #el usuario destinatario no existe por lo que lanzo una exepcion
-                    #personalizada que en realidad es un mensaje de error
-                    dict['custom_error'] = Tags.custom_tag(content='Error Destinatario inexistente..!')
-                    dict['show_error'] = True
-                    dict['form'] = form
+                )
+                dict['show_form'] = False
 
             else:
                 dict['show_error'] = True
                 dict['form'] = form
         else:
-            dict['form'] = MessageSendForm(auto_id=False)
+            t_content = "\n----------------------------------------------------\n"
+            t_content += "From:" + old_msj.from_user.username  + '\n'
+            t_content += str(old_msj.date)
+            t_content += "\n----------------------------------------------------\n"
+            t_content += old_msj.content
+            t_content += "\n\n---------------------------------------------------\n\n"
+            dict['form'] = MessageReSendForm(auto_id=False, initial={'content':t_content})
 
 
     else:
@@ -121,10 +121,9 @@ def re_send_message(request, msj_id):
 
 
 
-
 def received(request):
     """
-        Muestra todos los mensajes recividos del usuario
+        Muestra el listado de todos los mensajes recividos del usuario
     """
     mi_template = get_template('Messages/recibidos.html')
     dict = generate_base_keys(request)

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block style %}
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+
+    
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
+{% endblock %}    
+    
+{% block contenido %}
+
+<br />
+<h2>Turnos Solicitados</h2>    
+<br />
+
+<table style="width:800px; margin: 0 auto;" class="tbl-round-light">
+    <tr>
+        <th>Medico</th>
+        
+        <th>Fecha</th>
+        <th>Hora Inicio</th>
+        <th>Estado</th>
+        <th>Orden</th>
+        <th>Mostrar Detalles</th>
+    </tr>
+
+    {% for turn in turns %}
+        <tr>
+            <td><a href="/medicos/mostrar/{{ turn.medic.id }}/">{{ turn.medic.last_name }}, {{ turn.medic.first_name }}</a></td>
+            <td style="text-align: center;">{{ turn.day.date }}</td>
+            <td style="text-align: center;">{{ turn.start }}</td>
+            <td style="text-align: center;">{{ turn.get_status_display }}</td>
+            <td style="text-align: center;">{{ turn.number }}</td>
+            <td style="text-align: center; width:110px">
+                <a href="{{ turn.id }}" title=""><img src="/media/images/page_find.gif" /></a>
+            </td>
+        </tr>
+    {% endfor %}
+
+</table>
+
+
+{% endblock %}

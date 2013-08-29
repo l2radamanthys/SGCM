@@ -4,6 +4,7 @@
 {% block style %}
     <link type="text/css" rel="stylesheet" media="all" href="/media/css/tabs-style.css" />
     <link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
 {% endblock %}
 
 
@@ -26,9 +27,10 @@
         <p><strong>De:</strong> {{ message.from_user.get_full_name }} <a href="">@{{ message.from_user }}</a></p>
         <p><strong>Asunto:</strong> {{ message.issue }}</p>
         <br />
-        <pre style="background: #FFF;padding: 10px; width:800px;">{{ message.content }}</pre>
-        <br />
-        <a href="">Responder</a>
+        <pre style="background: #FFF;padding: 10px; width:800px; min-height: 200px">{{ message.content }}</pre>
+        <div style="text-align: right; padding: 20px 15px">            
+            <a href="/mensajes/responder/{{ message.id }}/" class="grad-button-blue">Responder</a>            
+        </div>
     </div>
     
     

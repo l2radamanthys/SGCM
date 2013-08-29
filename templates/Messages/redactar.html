@@ -8,14 +8,11 @@
 
 {% block contenido %}
 <br />
+<h2>{{ title }}</h2>
 
-
+<br />
 {% if show_form %}
     <div class="fancy-form-white" style="margin: 0 auto; width: 500px;">
-        <h2>Nuevo Mensaje</h2>
-
-        <br />
-
         <form action="" method="POST">
         <table style="margin: 0 auto;">
             <tr>
@@ -28,6 +25,7 @@
             </tr>
             <tr>
                 <td colspan="2">
+                    <br />   
                     {{ form.content }}
                 </td>
             </tr>

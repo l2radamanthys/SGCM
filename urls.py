@@ -71,19 +71,24 @@ urlpatterns = patterns('',
 
     (r'^medicos/listado/$', gt_patients_views.patient_show_medics_list),
     (r'^medicos/mostrar/(\d{1,2})/$', gt_patients_views.patient_show_medic_info),
-    (r'^medicos/turnos/selecionar-dia/(\d{1,2})/$', gt_patients_views.patient_new_turn_day_select), #selecion fecha para solicitar turno
-    (r'^medicos/turnos/selecionar-dia/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_patients_views.patient_new_turn_day_select), #selecion fecha para solicitar turno
 
+    # gestion turnos
+    (r'^pacientes/turnos/selecionar-dia/(\d{1,2})/$', gt_patients_views.patient_new_turn_day_select), #selecion fecha para solicitar turno
+    (r'^pacientes/turnos/selecionar-dia/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_patients_views.patient_new_turn_day_select), #selecion fecha para solicitar turno
     (r'^medicos/turnos/agregar/(\d{1,2})/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_patients_views.patient_new_turn),
+    (r'^pacientes/turnos/listado/$',  gt_patients_views.patient_show_turn_request), #mostrar estado turnos solicitados
+    #(r'^pacientes/turnos/mostrar/(\d{1,2})/$',  gt_patients_views. ), #detalle turno especifico
 
-    #paciente realizar consulta al medico
-    (r'^medicos/nueva/consulta-online/(\d{1,2})/$', gt_patients_views.patient_set_medic_consulation),   
+
+
+
 
     #mensajes internos
     (r'^mensajes/redactar', gt_messages_views.send_message),
-    (r'^mensajes/redactar/(\d{1,5})/', gt_messages_views.send_message), #respodner
+    (r'^mensajes/responder/(\d{1,5})/', gt_messages_views.re_send_message), #responder
     (r'^mensajes/recibidos', gt_messages_views.received),
     (r'^mensajes/mostrar/(\d{1,2})/', gt_messages_views.read),
+    (r'^medicos/nueva/consulta-online/(\d{1,2})/$', gt_patients_views.patient_set_medic_consulation), #paciente realizar consulta al medico
 
 
     ## - Historia Clinica Views - ##
@@ -102,7 +107,6 @@ urlpatterns = patterns('',
 
     #examenes fisicos
     (r'^pacientes/listado/examen-fisico/(.+)/$', hc_medics_views.patient_view_phisic_exam_list),
-
 
 
     #debug views, this views only desing for testing
