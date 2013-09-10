@@ -82,12 +82,18 @@ def re_send_message(request, msj_id):
             dict['form_issue'] = 'RE: ' + old_msj.issue
         else:
             dict['form_issue'] = old_msj.issue
-
+        t_content = "\n----------------------------------------------------\n"
+        t_content += "From:" + old_msj.from_user.username  + '\n'
+        t_content += str(old_msj.date)
+        t_content += "\n----------------------------------------------------\n"
+        t_content += old_msj.content
+        t_content += "\n\n---------------------------------------------------\n\n"
 
 
         dict['show_form'] = True
         if request.method == 'POST':
             form = MessageReSendForm(request.POST, auto_id=False)
+
             if form.is_valid():
                 _to_user = old_msj.from_user
                 #usuario existe y se registra el envio del mensaje
@@ -95,7 +101,7 @@ def re_send_message(request, msj_id):
                         from_user = request.user,
                         to_user = _to_user,
                         issue = dict['form_issue'],
-                        content = form.cleaned_data['content'],
+                        content = message_diff_insert(t_content, form.cleaned_data['content']),
                 )
                 dict['show_form'] = False
 
@@ -103,12 +109,6 @@ def re_send_message(request, msj_id):
                 dict['show_error'] = True
                 dict['form'] = form
         else:
-            t_content = "\n----------------------------------------------------\n"
-            t_content += "From:" + old_msj.from_user.username  + '\n'
-            t_content += str(old_msj.date)
-            t_content += "\n----------------------------------------------------\n"
-            t_content += old_msj.content
-            t_content += "\n\n---------------------------------------------------\n\n"
             dict['form'] = MessageReSendForm(auto_id=False, initial={'content':t_content})
 
 

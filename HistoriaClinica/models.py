@@ -77,3 +77,61 @@ class ToxicHabits(models.Model):
 
     class Meta:
         db_table = "HabitosToxicos"
+
+
+
+class BasicExam(models.Model):
+    """
+    Examen Base
+    """
+    patient = models.ForeignKey(User) #fk
+    date = models.DateField(auto_now_add=True)
+
+    #signos vitales
+    body_temperature = models.FloatField("Temperatura Corporal")
+    sistolic_blood_pressure = models.IntegerField("Presion Arterial Sistolica")
+    diastolic_blood_pressure = models.IntegerField("Presion Arterial Dastolica")
+    respiratory_rate = models.IntegerField("Frecuencia Respiratoria")
+    pulse = models.IntegerField("Pulso")
+
+    average_weight = models.FloatField("Peso Promedio")
+    average_height = models.FloatField("Altura Promedio")
+    weight = models.FloatField("Peso")
+    height = models.FloatField("Altura")
+    #size = models.CharField("Talla", max_length=30)
+    bmi = models.FloatField("Indice de Masa Corporal") #indice de masa corporal
+    general_impression = models.TextField("Imprecion General") #text
+
+
+    class Meta:
+        db_table = "ExamenesBase"
+
+
+    #calculado segun info obtenida en la siguiente presentacion
+    #http://www.slideshare.net/lSpical/5examen-fisico-signos-vitales-y-apreciacion-general
+    def presion_art_pulso(self):
+        """
+        """
+        return self.sistolic_blood_pressure - self.diastolic_blood_pressure
+
+
+    def calc_pulse(self):
+        """
+        """
+        self.pulse = self.presion_art_pulso()
+
+
+    def presion_art_media(self):
+        """
+        """
+        return self.diastolic_blood_pressure + (self.pres_art_pulso() / 3)
+
+
+    def _date(self):
+        """
+        """
+        return self.date.strftime('%d/%m/%Y')
+
+
+    def __str__(self):
+        return "Examen Realizado el: %s" %date_to_str(self.fecha)

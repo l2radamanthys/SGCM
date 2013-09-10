@@ -16,7 +16,7 @@ from globals import *
 from HTMLTags import *
 
 
-def medic_show_patient_images(request, pac_username):
+def medic_list_patient_images(request, pac_username):
     """
         Muestra el listado de imagenes subidas de los diferentes examenenes
         realizados al paciente
@@ -68,8 +68,11 @@ def medic_add_patient_image(request, pac_username):
     return HttpResponse(html_cont)
 
 
+def medic_show_patient_image(request, image):
+    pass
 
-def patient_view_perinatal_antecedents(request, pac_username):
+
+def medic_view_patient_perinatal_antecedents(request, pac_username):
     """
         Muestra los antecedentes perinatales del paciente
 
@@ -113,7 +116,7 @@ def patient_view_perinatal_antecedents(request, pac_username):
 
 
 
-def patient_edit_perinatal_antecedents(request, pac_username):
+def medic_edit_patient_perinatal_antecedents(request, pac_username):
     """
 
     """
@@ -161,7 +164,7 @@ def patient_edit_perinatal_antecedents(request, pac_username):
 
 
 
-def patient_view_toxic_habits(request, pac_username):
+def medic_view_patient_toxic_habits(request, pac_username):
     """
     Mostrar Habitos Toxicos
     """
@@ -196,7 +199,7 @@ def patient_view_toxic_habits(request, pac_username):
     return HttpResponse(html_cont)
 
 
-def patient_edit_toxic_habits(request, pac_username):
+def medic_edit_patient_toxic_habits(request, pac_username):
     """
         Modificar la informacion sobre los habitos toxicos del paciente
     """
@@ -238,9 +241,7 @@ def patient_edit_toxic_habits(request, pac_username):
 
 
 
-
-
-def patient_view_phisic_exam_list(request, pac_username):
+def medic_list_patient_phisic_exam(request, pac_username):
     mi_template = get_template('Medics/HistoriaClinica/listado-examen-fisico.html')
     dict = generate_base_keys(request)
 
@@ -257,3 +258,125 @@ def patient_view_phisic_exam_list(request, pac_username):
 
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
+
+
+
+def medic_show_patient_phisic_exam(request, exam_id):
+    #incomplete
+    mi_template = get_template('Medics/HistoriaClinica/listado-examen-fisico.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        dict['pac_username'] = pac_username
+        pac = User.objects.get(groups__name='Paciente', username=pac_username)
+        dict['BasicExams'] = BasicExam.objects.filter(patient=pac)
+        dict['pac'] = pac
+
+        #incompleto
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def medic_add_patient_phisic_exam(request, pac_username):
+    """
+     Agregar un examen Basico
+    """
+    mi_template = get_template('Medics/HistoriaClinica/nuevo-examen-fisico.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        dict['pac_username'] = pac_username
+        pac = User.objects.get(groups__name='Paciente', username=pac_username)
+        dict['pac'] = pac
+
+        form = my_forms.BasicExamForm(auto_id=False)
+        dict['show_errors'] = False
+        dict['show_form'] = True
+
+        if request.method == 'POST':
+            form = my_forms.BasicExamForm(request.POST, auto_id=False)
+            if form.is_valid():
+                b_exam = BasicExam(
+                    patient = pac,
+                    body_temperature = form.cleaned_data['body_temperature'],
+                    sistolic_blood_pressure  = form.cleaned_data['sistolic_blood_pressure'],
+                    diastolic_blood_pressure = form.cleaned_data['diastolic_blood_pressure'],
+                    respiratory_rate = form.cleaned_data['respiratory_rate'],
+                    pulse = form.cleaned_data['sistolic_blood_pressure'] - form.cleaned_data['diastolic_blood_pressure'],
+                    average_weight = form.cleaned_data['average_weight'],
+                    average_height = form.cleaned_data['average_height'],
+                    weight = form.cleaned_data['weight'],
+                    height = form.cleaned_data['height'],
+                    #size = form.cleaned_data['size'],
+                    bmi = form.cleaned_data['bmi'],
+                    general_impression = form.cleaned_data['general_impression'],
+                )
+                b_exam.save()
+                dict['show_form'] = False
+                dict['custom_message'] = html_message('Examen Registrado Correctamente', 'success')
+
+            else: #errores campos
+                dict['show_errors'] = True
+                dict['form'] = form
+
+        else:
+            dict['form'] = form
+
+
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def medic_edit_patient_phisic_exam(request, pac_username):
+    #incomplete
+    mi_template = get_template('Medics/HistoriaClinica/listado-examen-fisico.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        dict['pac_username'] = pac_username
+        pac = User.objects.get(groups__name='Paciente', username=pac_username)
+        dict['pac'] = pac
+
+        #incompleto
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def medic_del_patient_phisic_exam(request, pac_username):
+    #incomplete
+    mi_template = get_template('Medics/HistoriaClinica/listado-examen-fisico.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        dict['pac_username'] = pac_username
+        pac = User.objects.get(groups__name='Paciente', username=pac_username)
+        dict['pac'] = pac
+
+        #incompleto
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+

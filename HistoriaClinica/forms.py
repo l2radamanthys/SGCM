@@ -62,3 +62,38 @@ class ImageUploadForm(forms.ModelForm):
             'title': forms.TextInput({'class':'edt_g'}),
             'content': forms.Textarea(attrs={'cols':'52', 'rows':'5'}),
         }
+
+
+class BasicExamForm(forms.ModelForm):
+    class Meta:
+        model = BasicExam
+
+        fields = (
+            'body_temperature',
+            'sistolic_blood_pressure',
+            'diastolic_blood_pressure',
+            'respiratory_rate',
+            #'pulse',
+            'average_weight',
+            'average_height',
+            'weight',
+            'height',
+            #'size',
+            'bmi',
+            'general_impression',
+        )
+
+        widgets = {
+            'body_temperature': forms.TextInput(attrs={'class':'edt_c'}),
+            'sistolic_blood_pressure': forms.TextInput(attrs={'class':'edt_c'}),
+            'diastolic_blood_pressure': forms.TextInput(attrs={'class':'edt_c'}),
+            'respiratory_rate': forms.TextInput(attrs={'class':'edt_c'}),
+            #'pulse': forms.TextInput(attrs={'class':'edt_c'}),
+            'average_weight': forms.TextInput(attrs={'class':'edt_c'}),
+            'average_height': forms.TextInput(attrs={'class':'edt_c'}),
+            'weight': forms.TextInput(attrs={'class':'edt_c'}),
+            'height': forms.TextInput(attrs={'class':'edt_c'}),
+            #'size': forms.TextInput(attrs={'class':'edt_c'}),
+            'bmi': forms.TextInput(attrs={'class':'edt_c'}),
+            'general_impression': forms.Textarea(attrs={'cols':'62', 'rows':'5'}),
+        }

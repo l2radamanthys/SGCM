@@ -3,22 +3,22 @@
 
 import os
 import datetime
+import difflib
 
-from globals import MI_TEMPLATE_DIR, GET, POST
+from globals import MI_TEMPLATE_DIR, POST
 
 
 
 class CalendarDay:
     """
     Clase contenedora para mostrar los elementos de un calendario
-
     parametros
-	@day: la fecha
-	@type:
-	    0- No Turno
-	    1- Turno Disponible
-	    2- Sin Turno
-	    3- Cancelado
+    @day: la fecha
+    @type:
+        0- No Turno
+        1- Turno Disponible
+        2- Sin Turno
+        3- Cancelado
 
     """
     def __init__(self, day, _type=0, argv=None):
@@ -216,3 +216,32 @@ def time_to_timedelta(t):
         seconds = t.second
     )
     return td
+
+
+def message_diff_insert(text1, text2):
+    """
+    Retorna el nuevo contenido que se inserto al texto original
+    """
+    diff = difflib.Differ()
+    result = list(diff.compare(text1, text2))
+
+    insert = "" #contenido insertados
+    line = ""
+    band = False #bandera de almacenado de linea
+    for c in result:
+        # + indica insercion por lo que hubo o modificacion o insersion en
+        #la lines por ende se almacenara la misma
+        if c[0] == '+':
+            band = True
+
+        #si hay salto de linea compruebo la variable band y reseteo las mismas
+        #para la siguiente linea
+        if c[-1] == '\n':
+            if band:
+                insert += line + c[-1]
+            line = ""
+            band = False
+
+        else:
+            line += c[-1]
+    return insert

@@ -31,6 +31,7 @@ def patients_search(request):
     dict = generate_base_keys(request)
 
     if True: #asignar permiso correspondiente mas adelante
+        #busqueda de pacientes
         field = get_value(request, 'field')
         argv = get_value(request, 'search')
 

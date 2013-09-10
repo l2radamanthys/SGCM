@@ -80,9 +80,6 @@ urlpatterns = patterns('',
     #(r'^pacientes/turnos/mostrar/(\d{1,2})/$',  gt_patients_views. ), #detalle turno especifico
 
 
-
-
-
     #mensajes internos
     (r'^mensajes/redactar', gt_messages_views.send_message),
     (r'^mensajes/responder/(\d{1,5})/', gt_messages_views.re_send_message), #responder
@@ -94,19 +91,21 @@ urlpatterns = patterns('',
     ## - Historia Clinica Views - ##
 
     #imagenes (incompleto)
-    (r'^pacientes/mostrar/imagenes/(.+)/$', hc_medics_views.medic_show_patient_images),
+    (r'^pacientes/mostrar/imagenes/(.+)/$', hc_medics_views.medic_list_patient_images),
     (r'^medicos/agregar/imagen/(.+)/$',  hc_medics_views.medic_add_patient_image),
 
     #antecedentes perinatales (hecho)
-    (r'^pacientes/mostrar/antecedentes-perinatales/(.+)/$', hc_medics_views.patient_view_perinatal_antecedents),
-    (r'^pacientes/modificar/antecedentes-perinatales/(.+)/$',hc_medics_views.patient_edit_perinatal_antecedents),
+    (r'^pacientes/mostrar/antecedentes-perinatales/(.+)/$', hc_medics_views.medic_view_patient_perinatal_antecedents),
+    (r'^pacientes/modificar/antecedentes-perinatales/(.+)/$',hc_medics_views.medic_edit_patient_perinatal_antecedents),
 
     #habitos toxicos (hecho)
-    (r'^pacientes/mostrar/habitos-toxicos/(.+)/$', hc_medics_views.patient_view_toxic_habits),
-    (r'^pacientes/modificar/habitos-toxicos/(.+)/$', hc_medics_views.patient_edit_toxic_habits),
+    (r'^pacientes/mostrar/habitos-toxicos/(.+)/$', hc_medics_views.medic_view_patient_toxic_habits),
+    (r'^pacientes/modificar/habitos-toxicos/(.+)/$', hc_medics_views.medic_edit_patient_toxic_habits),
 
     #examenes fisicos
-    (r'^pacientes/listado/examen-fisico/(.+)/$', hc_medics_views.patient_view_phisic_exam_list),
+    (r'^pacientes/listado/examen-fisico/(.+)/$', hc_medics_views.medic_list_patient_phisic_exam),
+
+    (r'^pacientes/agregar/examen-fisico/(.+)/$', hc_medics_views.medic_add_patient_phisic_exam),
 
 
     #debug views, this views only desing for testing
