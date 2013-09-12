@@ -104,9 +104,8 @@ urlpatterns = patterns('',
 
     #examenes fisicos
     (r'^pacientes/listado/examen-fisico/(.+)/$', hc_medics_views.medic_list_patient_phisic_exam),
-
     (r'^pacientes/agregar/examen-fisico/(.+)/$', hc_medics_views.medic_add_patient_phisic_exam),
-
+    (r'^pacientes/mostrar/examen-fisico/(\d{1,2})/$', hc_medics_views.medic_show_patient_phisic_exam),
 
     #debug views, this views only desing for testing
     (r'^perms/$', debug_views.perms_list),

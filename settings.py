@@ -138,6 +138,7 @@ INSTALLED_APPS = (
     'GestionTurnos',
     #'SGCM.HistoriaClinica',
     'HistoriaClinica',
+    #'HistoriaClinica.verbose_name',
     #'SGCM.MyFilters', #filtros personalizados NO FOUND
 )
 

@@ -15,6 +15,8 @@ from utils import *
 from globals import *
 from HTMLTags import *
 
+from verbose import *
+
 
 def medic_list_patient_images(request, pac_username):
     """
@@ -249,6 +251,8 @@ def medic_list_patient_phisic_exam(request, pac_username):
         dict['pac_username'] = pac_username
         pac = User.objects.get(groups__name='Paciente', username=pac_username)
         dict['pac'] = pac
+        dict['BasicExams'] = BasicExam.objects.filter(patient=pac)
+
 
         #incompleto
 
@@ -262,15 +266,16 @@ def medic_list_patient_phisic_exam(request, pac_username):
 
 
 def medic_show_patient_phisic_exam(request, exam_id):
-    #incomplete
-    mi_template = get_template('Medics/HistoriaClinica/listado-examen-fisico.html')
+
+    mi_template = get_template('Medics/HistoriaClinica/mostrar-examen-fisico.html')
     dict = generate_base_keys(request)
 
     if True:
-        dict['pac_username'] = pac_username
-        pac = User.objects.get(groups__name='Paciente', username=pac_username)
-        dict['BasicExams'] = BasicExam.objects.filter(patient=pac)
-        dict['pac'] = pac
+        exam = BasicExam.objects.get(id=exam_id)
+        dict['exam'] = exam
+        dict['exam_lbl'] = get_labels_for(exam)
+        dict['pac'] = exam.patient
+        dict['pac_username'] = exam.patient.username
 
         #incompleto
 
@@ -338,25 +343,25 @@ def medic_add_patient_phisic_exam(request, pac_username):
     return HttpResponse(html_cont)
 
 
+#don't implement
+#def medic_edit_patient_phisic_exam(request, pac_username):
+    ##incomplete
+    #mi_template = get_template('Medics/HistoriaClinica/listado-examen-fisico.html')
+    #dict = generate_base_keys(request)
 
-def medic_edit_patient_phisic_exam(request, pac_username):
-    #incomplete
-    mi_template = get_template('Medics/HistoriaClinica/listado-examen-fisico.html')
-    dict = generate_base_keys(request)
+    #if True:
+        #dict['pac_username'] = pac_username
+        #pac = User.objects.get(groups__name='Paciente', username=pac_username)
+        #dict['pac'] = pac
 
-    if True:
-        dict['pac_username'] = pac_username
-        pac = User.objects.get(groups__name='Paciente', username=pac_username)
-        dict['pac'] = pac
+        ##incompleto
 
-        #incompleto
+    #else:
+        #path = request.META['PATH_INFO']
+        #return HttpResponseRedirect("/restricted-access%s" %path)
 
-    else:
-        path = request.META['PATH_INFO']
-        return HttpResponseRedirect("/restricted-access%s" %path)
-
-    html_cont = mi_template.render(Context(dict))
-    return HttpResponse(html_cont)
+    #html_cont = mi_template.render(Context(dict))
+    #return HttpResponse(html_cont)
 
 
 

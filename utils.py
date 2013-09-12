@@ -245,3 +245,8 @@ def message_diff_insert(text1, text2):
         else:
             line += c[-1]
     return insert
+
+
+
+def date_to_str(date):
+    pass

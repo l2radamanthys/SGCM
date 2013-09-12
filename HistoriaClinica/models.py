@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 
 import datetime
 from globals import *
-
+from utils import date_to_str
 
 
 class Image(models.Model):
@@ -85,7 +85,7 @@ class BasicExam(models.Model):
     Examen Base
     """
     patient = models.ForeignKey(User) #fk
-    date = models.DateField(auto_now_add=True)
+    date = models.DateField("Fecha del Examen", auto_now_add=True)
 
     #signos vitales
     body_temperature = models.FloatField("Temperatura Corporal")
@@ -115,6 +115,17 @@ class BasicExam(models.Model):
         return self.sistolic_blood_pressure - self.diastolic_blood_pressure
 
 
+    def overweight(self):
+        """
+        Exceso de peso
+        """
+        return self.weight - self.average_weight
+
+
+    def overweight_lbl(self):
+        return self.overweight.__doc__
+
+
     def calc_pulse(self):
         """
         """
@@ -134,4 +145,4 @@ class BasicExam(models.Model):
 
 
     def __str__(self):
-        return "Examen Realizado el: %s" %date_to_str(self.fecha)
+        return "Examen Realizado el: %s" %self.date.strftime('%d/%m/%Y')

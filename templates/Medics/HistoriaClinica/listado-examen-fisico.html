@@ -1,5 +1,10 @@
 {% extends 'Medics/GestionTurnos/patient-view.html' %}
 
+{% block ext_style %}
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
+{% endblock %}
+
+
 {% block view-cont %}
 <div  style="padding-left:10px;" >
     <h2>Examenes Fisico</h2>
@@ -7,14 +12,22 @@
 </div>
 
 <div style="text-align:right; margin:20px;">
-    <a href="" class="grad-button-blue">Agregar</a>
+    <a href="/pacientes/agregar/examen-fisico/{{ pac.username }}/" class="grad-button-blue">Agregar</a>
 </div>
 
 
-<table>
+<table style="width: 400px; margin: 0 auto;" class="tbl-round-light" >
+    <tr>
+        <th>Fecha del Examen</th>
+        <th colspan="2" style="text-align: center;">Opciones</th>
+    </tr>
     {% for exam in BasicExams %}
         <tr>
-            <td>{{ exam }}</td>
+            
+            <td>{{ exam.date }}</td>
+            <td style="text-align: center;"><a href="/pacientes/mostrar/examen-fisico/{{ exam.id }}/">Mostrar</a></td>
+            <td style="text-align: center;"><a href="/pacientes/borrar/examen-fisico/{{ exam.id }}/">Borrar</a></td>
+            
         </tr>
         
     {% endfor %}
