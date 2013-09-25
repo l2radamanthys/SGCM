@@ -1,40 +1,41 @@
 {% extends 'Medics/GestionTurnos/patient-view.html' %}
 
+{% load thumbnail %}
+
+
+{% block javascript %}
+    <script type="text/javascript" src="/media/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/media/js/lightbox-2.6.min.js"></script>
+{% endblock %}
+
+
+{% block ext_style %}
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/lightbox.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gallery.css" />
+{% endblock %}
+
 {% block view-cont %}
 <div  style="padding-left:10px;" >
-    <h2> Listado de Imagenes </h2>
-    <p style="font-size:14px;margin-left:10px">{{ pac.last_name  }}, {{ pac.first_name }} </p>
+    <h3> Listado de Imagenes </h3>
+    <p style="font-size:14px;">{{ pac.last_name  }}, {{ pac.first_name }} </p>
 </div>
 
 <br /><br />
 
 <div style="text-align: right; width: 600px; margin: 0 auto;">
-    <a href="/medicos/agregar/imagen/{{ pac.username }}/" class="grad-button-blue">Añadir Imagen</a>
+    <a href="/pacientes/agregar/imagen/{{ pac.username }}/" class="grad-button-blue">Añadir Imagen</a>
 </div>
 
 <br />
 
-    <table class="tbl-round-light" style="width:600px; margin: 0 auto;">
-        <tr>
-            <th>Imagen</th>
-            <th style="width:50px">Eliminar</th>
-        </tr>
-        {% for cm in medicals_consultations %}
-        <tr>
-            {% if login_username == cm.medic.username %}
-                <td>
-                    <img  src="" />
-
-                </td>
-                <td style="text-align: center;"><a href="/medicos/borrar/consulta-medica/{{ cm.id }}/"><img src="/media/images/page_delete.gif" /></a></td>
-            {% else %}
-                <td><a href="/medicos/mostrar/consulta-medica/{{ cm.id }}/">{{ cm.date }}</a></td>
-                <td><a href="/medicos/mostrar/consulta-medica/{{ cm.id }}/">{{ cm.medic.last_name }}, {{ cm.medic.first_name }}</a></td>
-                <td></td>
-            {% endif %}
-        </tr>
-        {% endfor %}
-
-    </table>
+    <div style="margin: 0 auto; width: 685px;">
+    {% for image in images %}
+        <a class="image" href="/media/{{ image.image }}"
+           data-lightbox="image-{{ image.id }}"
+           ltitle="Titulo: {{ image.title }}  <br />Contenido: <span class='cont'>{{ image.content }}</span>">
+            <img src="{% thumbnail image.image 150x150 %}" />
+        </a>
+    {% endfor %}
+    </div>
     <br />
 {% endblock %}

@@ -8,6 +8,7 @@ from HistoriaClinica.models import *
 from globals import *
 
 
+
 class AntecedentesPerinatalesForm(forms.ModelForm):
     """
     """
@@ -33,6 +34,7 @@ class AntecedentesPerinatalesForm(forms.ModelForm):
         }
 
 
+
 class ToxicHabitsForm(forms.ModelForm):
     """
     """
@@ -49,6 +51,8 @@ class ToxicHabitsForm(forms.ModelForm):
             'observations': forms.Textarea(attrs={'cols':'52', 'rows':'5'}),
         }
 
+
+
 class ImageUploadForm(forms.ModelForm):
     class Meta:
         model = Image
@@ -62,6 +66,7 @@ class ImageUploadForm(forms.ModelForm):
             'title': forms.TextInput({'class':'edt_g'}),
             'content': forms.Textarea(attrs={'cols':'52', 'rows':'5'}),
         }
+
 
 
 class BasicExamForm(forms.ModelForm):
@@ -96,4 +101,36 @@ class BasicExamForm(forms.ModelForm):
             #'size': forms.TextInput(attrs={'class':'edt_c'}),
             'bmi': forms.TextInput(attrs={'class':'edt_c'}),
             'general_impression': forms.Textarea(attrs={'cols':'62', 'rows':'5'}),
+        }
+
+
+
+class ImageForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        fields = [
+            'title',
+            'content',
+            'image',
+        ]
+        widgets = {
+            'title': forms.TextInput(attrs={'class':'edt_g'}),
+        }
+
+
+
+class FileForm(forms.ModelForm):
+    pass
+
+
+
+class HeadExamForm(forms.ModelForm):
+    class Meta:
+        model = HeadExam
+        exclude = [
+            'patient',
+            'date',
+        ]
+        widgets = {
+            'observations' : forms.Textarea(attrs={'cols':'62', 'rows':'5'}),
         }

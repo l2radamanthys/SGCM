@@ -18,7 +18,100 @@ from HTMLTags import *
 from verbose import *
 
 
-def medic_list_patient_images(request, pac_username):
+#def medic_list_patient_images(request, pac_username):
+    #"""
+        #Muestra el listado de imagenes subidas de los diferentes examenenes
+        #realizados al paciente
+    #"""
+    #mi_template = get_template('Medics/HistoriaClinica/mostrar-imagenes.html')
+    #dict = generate_base_keys(request)
+
+    #if True:
+        #dict['pac_username'] = pac_username
+        #dict['pac'] = User.objects.get(groups__name='Paciente', username=pac_username)
+        #pass
+
+    ##usuario no posee permisos
+    #else:
+        #path = request.META['PATH_INFO']
+        #return HttpResponseRedirect("/restricted-access%s" %path)
+
+    #html_cont = mi_template.render(Context(dict))
+    #return HttpResponse(html_cont)
+
+
+
+def medic_add_patients_images(request, pac_username):
+    """
+        Muestra el listado de imagenes subidas de los diferentes examenenes
+        realizados al paciente
+    """
+    mi_template = get_template('Medics/HistoriaClinica/agregar-imagen.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        dict['pac_username'] = pac_username
+        pac = User.objects.get(groups__name='Paciente', username=pac_username)
+        dict['pac'] = pac
+        #dict['show_form'] = True
+        dict['show_errors'] = False
+
+        if request.method == 'POST':
+            form = my_forms.ImageForm(request.POST, request.FILES)
+            if form.is_valid():
+                img = Image(
+                    medic = request.user,
+                    patient = pac,
+                    title = form.cleaned_data['title'],
+                    content = form.cleaned_data['content'],
+                    image = form.cleaned_data['image'],
+                )
+                img.save()
+                dict['custom_message'] = html_message('Imagen Subida con Exito', 'success')
+                form = my_forms.ImageForm()
+                dict['form'] = form
+            else:
+                dict['show_errors'] = True
+                dict['form'] = form
+
+        else:
+            form = my_forms.ImageForm()
+            dict['form'] = form
+
+    #usuario no posee permisos
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def medic_list_patients_images(request, pac_username):
+    """
+        Muestra el listado de imagenes subidas de los diferentes examenenes
+        realizados al paciente
+    """
+    mi_template = get_template('Medics/HistoriaClinica/mostrar-imagenes.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        dict['pac_username'] = pac_username
+        dict['pac'] = User.objects.get(groups__name='Paciente', username=pac_username)
+        dict['images'] = Image.objects.filter(patient__username=pac_username)
+
+    #usuario no posee permisos
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def medic_show_patients_images(request, pac_username):
     """
         Muestra el listado de imagenes subidas de los diferentes examenenes
         realizados al paciente
@@ -39,39 +132,6 @@ def medic_list_patient_images(request, pac_username):
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
 
-
-
-def medic_add_patient_image(request, pac_username):
-    """
-        Muestra el listado de imagenes subidas de los diferentes examenenes
-        realizados al paciente
-    """
-    mi_template = get_template('Medics/HistoriaClinica/agregar-imagen.html')
-    dict = generate_base_keys(request)
-
-    if True:
-        dict['pac_username'] = pac_username
-        pac = User.objects.get(groups__name='Paciente', username=pac_username)
-        dict['pac'] = pac
-
-        if request.method == 'POST':
-            pass
-
-        else:
-            form = my_forms.ImageUploadForm()
-            dict['form'] = form
-
-    #usuario no posee permisos
-    else:
-        path = request.META['PATH_INFO']
-        return HttpResponseRedirect("/restricted-access%s" %path)
-
-    html_cont = mi_template.render(Context(dict))
-    return HttpResponse(html_cont)
-
-
-def medic_show_patient_image(request, image):
-    pass
 
 
 def medic_view_patient_perinatal_antecedents(request, pac_username):
@@ -333,8 +393,6 @@ def medic_add_patient_phisic_exam(request, pac_username):
         else:
             dict['form'] = form
 
-
-
     else:
         path = request.META['PATH_INFO']
         return HttpResponseRedirect("/restricted-access%s" %path)
@@ -385,3 +443,52 @@ def medic_del_patient_phisic_exam(request, pac_username):
     return HttpResponse(html_cont)
 
 
+
+def medic_list_patient_head_exam(request, pac_username):
+    mi_template = get_template('Medics/HistoriaClinica/listado-examen-cabeza.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        dict['pac_username'] = pac_username
+        pac = User.objects.get(groups__name='Paciente', username=pac_username)
+        dict['pac'] = pac
+
+        #incompleto
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def medic_add_patient_head_exam(request, pac_username):
+    mi_template = get_template('Medics/HistoriaClinica/agregar-examen-cabeza.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        dict['pac_username'] = pac_username
+        pac = User.objects.get(groups__name='Paciente', username=pac_username)
+        dict['pac'] = pac
+        form = my_forms.BasicExamForm(auto_id=False)
+        dict['show_errors'] = False
+        dict['show_form'] = True
+
+        if request.method == 'POST':
+            form = my_forms.HeadExamForm(request.POST, auto_id=False)
+            if form.is_valid():
+                pass
+            else:
+                dict['show_errors'] = True
+        else:
+            form = my_forms.HeadExamForm(auto_id=False)
+        dict['form'] = form
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)

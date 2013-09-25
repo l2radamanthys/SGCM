@@ -1,0 +1,161 @@
+{% extends 'Medics/GestionTurnos/patient-view.html' %}
+
+{% block view-cont %}
+<div  style="padding-left:10px;" >
+    <h3> Nuevo Examen de Cabeza </h3>
+    <p style="font-size:14px;">{{ pac.last_name  }}, {{ pac.first_name }} </p>
+</div>
+
+<br /><br />
+
+<div style="text-align: right; width: 600px; margin: 0 auto;">
+    <a href="/pacientes/mostrar/imagenes/{{ pac.username }}/" class="grad-button-blue">Atras</a>
+</div>
+
+<br />
+
+        <div  class="fancy-form-white" style="width: 600px; margin: 0 auto;">
+        <form action="" method="POST" enctype="multipart/form-data">
+        <table style="width:600px; margin: 0 auto;">
+            <tr>
+                <td colspan="4">
+                <br />
+                <h3>Cabeza:</h3>
+                <br />
+                </td>
+            </tr>
+            <tr>
+                <td> {{ form.form.label }}:</td>
+                <td> {{ form.form }}</td>
+                <td  style="padding-left: 10px"> {{ form.scalp.label }}:</td>
+                <td> {{ form.scalp }}</td>
+            </tr>
+
+            <tr>
+                <td> {{ form.skull.label }}:</td>
+                <td> {{ form.skull }}</td>
+                <td style="padding-left: 10px"> {{ form.fontanelles_and_sutures.label }}:</td>
+                <td> {{ form.fontanelles_and_sutures }}</td>
+            </tr>
+            <tr>
+                <td> {{ form.facie.label }}:</td>
+                <td colspan="2"> {{ form.facie }}</td>
+            </tr>
+
+            <tr>
+                <td colspan="4">
+                <br />
+                <h3>Ojos:</h3>
+                <br />
+                </td>
+            </tr>
+            <tr>
+                <td> {{ form.eyelids.label }}:</td>
+                <td> {{ form.eyelids }}</td>
+                <td style="padding-left: 10px"> {{ form.conjunctive.label }}:</td>
+                <td> {{ form.conjunctive }}</td>
+            </tr>
+            <tr>
+                <td> {{ form.vision.label }}:</td>
+                <td> {{ form.vision }}</td>
+                <td style="padding-left: 10px"> {{ form.vision_p1.label }}:</td>
+                <td> {{ form.vision_p1 }}</td>
+            </tr>
+            <tr>
+                <td> {{ form.vision_p2.label }}:</td>
+                <td> {{ form.vision_p2 }}</td>
+                <td style="padding-left: 10px"> {{ form.vision_p3.label }}:</td>
+                <td> {{ form.vision_p3 }}</td>
+            </tr>
+            <tr>
+                <td> {{ form.eyeball_movement.label }}:</td>
+                <td colspan="3"> {{ form.eyeball_movement }}</td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                <br />
+                <h3>Nariz:</h3>
+                <br />
+                </td>
+            </tr>
+            <tr>
+                <td> {{ form.nose.label }}:</td>
+                <td> {{ form.nose }}</td>
+                <td> {{ form.nostril.label }}:</td>
+                <td> {{ form.nostril }}</td>
+            </tr>
+
+            <tr>
+                <td colspan="4">
+                <br />
+                <h3>Boca:</h3>
+                <br />
+                </td>
+            </tr>
+
+            <tr>
+                <td> {{ form.lips.label }}:</td>
+                <td> {{ form.lips }}</td>
+                <td> {{ form.language.label }}:</td>
+                <td> {{ form.oropharyngeal_mucosa }}</td>
+            </tr>
+
+            <tr>
+                <td> {{ form.teeth.label }}:</td>
+                <td> {{ form.teeth }}</td>
+                <td> {{ form.tonsils.label }}:</td>
+                <td> {{ form.tonsils }}</td>
+            </tr>
+            <tr>
+                <td colspan="4">
+                <br />
+                <h3>Oido:</h3>
+                <br />
+                </td>
+            </tr>
+            <tr>
+                <td> {{ form.ears.label }}:</td>
+                <td> {{ form.ears }}</td>
+                <td> {{ form.ear_canal.label }}:</td>
+                <td> {{ form.ear_canal }}</td>
+            </tr>
+            <tr>
+                <td> {{ form.eardrums.label }}:</td>
+                <td> {{ form.eardrums }}</td>
+                <td> {{ form.hearing.label }}:</td>
+                <td> {{ form.hearing }}</td>
+            </tr>
+            <tr>
+                <td> {{ form.observations.label }}:</td>
+                <td colspan="3">
+                    <br />
+                    {{ form.observations }}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" style="text-align: center">
+                    <br />
+                    <br />
+                    <input type="Agregar" value="Subir" class="grad-button-blue" />
+                </td>
+            </tr>
+        </table>
+        </form>
+        </div>
+        <br />
+
+
+    {% if show_errors %}
+        <div class="error">
+        {% for field in form %}
+            <p>{{ field.label }}:<p/>
+            {{ field.errors }}
+        {% endfor %}
+        <div/>
+    {% else %}
+        {% autoescape off %}
+        {{ custom_message }}
+        {% endautoescape %}
+    {% endif %}
+
+{% endblock %}

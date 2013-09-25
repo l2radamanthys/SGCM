@@ -135,3 +135,52 @@ TRUE_FALSE_CHOICE = (
     ('N', 'No'),
     ('-', '--'),
 )
+
+
+VISION_CHOICE = (
+    ('-','Sin Definir'),
+    ('N', 'Normal'),
+    ('M', 'Miopía'),
+    ('H', 'Hipermetropía'),
+    ('S', 'Astigmatismo'),
+    ('P', 'Presbiopía'),
+    ('D', 'Daltonismo'),
+    ('A', 'Ambliopía'),
+    ('E', 'Estrabismo'),
+)
+
+
+HEARING_CHOICE = (
+    ('-','Sin Definir'),
+    ('N','Normal'),
+    ('L','Hipoacusia Leve'),
+    ('S','Hipoacusia Superficial'),
+    ('M','Hipoacusia Moderada'),
+    ('S','Sordera'),
+)
+
+NOSE_CHOICE = (
+    ('-','Sin Definir'),
+    ('R','Recta'),
+    ('G','Griega'),
+    ('E','Respingada'),
+    ('I','Gibosa'),
+    ('D','Durja'),
+    ('P','Puntiaguda'),
+    ('A','Aguileña'),
+)
+
+LIPS_CHOICE = (
+    ('N','Normal'),
+    ('M','Mucocele'),
+    ('Q','Queilitis angular'),
+    ('H','Herpes labial'),
+    ('C','Cáncer de boca'),
+    ('L','Labios Leporinos'),
+)
+
+ESTADO_CHOICE = (
+    ('-','Sin Definir'),
+    ('N','Normal'),
+    ('A','Alterado'),
+)

@@ -10,16 +10,17 @@ from globals import *
 from utils import date_to_str
 
 
+
 class Image(models.Model):
     """
-	Imagenes Subidas
+    Imagenes Subidas
     """
-    date = models.DateField(auto_now_add=True)
+    date = models.DateField("Fecha", auto_now_add=True)
     medic = models.ForeignKey(User, related_name='medic_user0')
     patient = models.ForeignKey(User, related_name='patient_user0')
-    title = models.CharField('Titulo', max_length=125, default='')
-    content = models.TextField('Observaciones', default='')
-    image = models.ImageField('Imagen', upload_to='upload/images/study')
+    title = models.CharField("Titulo", max_length=125, default='')
+    content = models.TextField("Contenido", default='')
+    image = models.ImageField("Imagen", upload_to='upload/images')
 
 
     class Meta:
@@ -29,7 +30,7 @@ class Image(models.Model):
 
 class File(models.Model):
     """
-	Archivos Subidos
+    Archivos Subidos
     """
     date = models.DateField(auto_now_add=True)
     medic = models.ForeignKey(User, related_name='medic_user1')
@@ -41,6 +42,16 @@ class File(models.Model):
 
     class Meta:
         db_table = "Files"
+
+
+    def get_file_ext(self):
+        """
+            Obtiene la extencion o terminacion del archivo, no distingue
+            el bite code interno
+            doc, pdf, xls, txt, etc..
+
+        """
+        return self.archive.url.split('.')[-1].lower()
 
 
 
@@ -146,3 +157,41 @@ class BasicExam(models.Model):
 
     def __str__(self):
         return "Examen Realizado el: %s" %self.date.strftime('%d/%m/%Y')
+
+
+
+
+class HeadExam(models.Model):
+    patient = models.ForeignKey(User) #fk
+    date = models.DateField("Fecha del Examen", auto_now_add=True)
+
+    form = models.CharField('Forma', max_length=128)
+    scalp = models.CharField('Cuero Cabelludo', max_length=128)
+    skull = models.CharField('Craneo', max_length=128)  #N/A Normal - Alterado
+    fontanelles_and_sutures = models.CharField('Fontanelas y Suturas', max_length=1, default='-', choices=ESTADO_CHOICE)  #N/A Normal - Alterado
+    facie = models.CharField(max_length=1, default='-', choices=ESTADO_CHOICE)  #N/A Normal - Alterado
+    eyelids = models.CharField('Parpados', max_length=1, default='-', choices=ESTADO_CHOICE)  #N/A Normal - Alterado
+    conjunctive = models.CharField('Conjuntivas', max_length=1, default='-', choices=ESTADO_CHOICE)  #N/A Normal - Alterado
+    eyeball_movement = models.CharField('Movimiento Globo Ocular', max_length=1, default='-', choices=ESTADO_CHOICE)  #N/A Normal - Alterado
+    vision = models.CharField('Vista', max_length=1, default='-', choices=ESTADO_CHOICE)  #N/A Normal - Alterado
+    vision_p1 = models.CharField('Vista Problema', max_length=1, default='-', choices=VISION_CHOICE)
+    vision_p2 = models.CharField('Vista Problema', max_length=1, default='-', choices=VISION_CHOICE)
+    vision_p3 = models.CharField('Vista Problema', max_length=1, default='-', choices=VISION_CHOICE)
+    nose = models.CharField('Nariz', max_length=1, default='-', choices=NOSE_CHOICE)
+    nostril = models.CharField('Fosas Nasales', max_length=1, default='-', choices=ESTADO_CHOICE)  #N/A Normal - Alterado
+    lips = models.CharField('Labios' ,max_length=1, default='N', choices=LIPS_CHOICE)
+    teeth = models.CharField('Dientes', max_length=1, default='-', choices=ESTADO_CHOICE)  #N/A Normal - Alterado
+    language = models.CharField('Lengua', max_length=1, default='-', choices=ESTADO_CHOICE)  #N/A Normal - Alterado
+    oropharyngeal_mucosa = models.CharField('Mucosa Bucofaringea', max_length=1, default='-', choices=ESTADO_CHOICE)  #N/A Normal - Alterado
+    tonsils = models.CharField('Agmidalas' ,max_length=1, default='-', choices=ESTADO_CHOICE)  #N/A Normal - Alterado
+    ears = models.CharField('Pabellones Auriculares' ,max_length=1, default='-', choices=ESTADO_CHOICE)  #N/A Normal - Alterado
+    ear_canal = models.CharField('Conducto Auditivo Externo',max_length=1, default='-', choices=ESTADO_CHOICE)  #N/A Normal - Alterado
+    eardrums = models.CharField('Timpanos', max_length=1, default='-', choices=ESTADO_CHOICE)  #N/A Normal - Alterado
+    hearing = models.CharField('Problemas Audicion', max_length=1, default='N', choices=HEARING_CHOICE)  #N/A Normal - Alterado
+    observations = models.TextField('Observaciones')
+
+
+    class Meta:
+        db_table = "ExamenesCabeza"
+
+

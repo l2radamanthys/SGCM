@@ -91,8 +91,8 @@ urlpatterns = patterns('',
     ## - Historia Clinica Views - ##
 
     #imagenes (incompleto)
-    (r'^pacientes/mostrar/imagenes/(.+)/$', hc_medics_views.medic_list_patient_images),
-    (r'^medicos/agregar/imagen/(.+)/$',  hc_medics_views.medic_add_patient_image),
+    (r'^pacientes/mostrar/imagenes/(.+)/$', hc_medics_views.medic_list_patients_images),
+    (r'^pacientes/agregar/imagen/(.+)/$', hc_medics_views.medic_add_patients_images),
 
     #antecedentes perinatales (hecho)
     (r'^pacientes/mostrar/antecedentes-perinatales/(.+)/$', hc_medics_views.medic_view_patient_perinatal_antecedents),
@@ -106,6 +106,11 @@ urlpatterns = patterns('',
     (r'^pacientes/listado/examen-fisico/(.+)/$', hc_medics_views.medic_list_patient_phisic_exam),
     (r'^pacientes/agregar/examen-fisico/(.+)/$', hc_medics_views.medic_add_patient_phisic_exam),
     (r'^pacientes/mostrar/examen-fisico/(\d{1,2})/$', hc_medics_views.medic_show_patient_phisic_exam),
+
+    #examen cabeza
+    (r'^pacientes/listado/examen-cabeza/(.+)/$', hc_medics_views.medic_list_patient_head_exam),
+    (r'^pacientes/agregar/examen-cabeza/(.+)/$', hc_medics_views.medic_add_patient_head_exam),
+
 
     #debug views, this views only desing for testing
     (r'^perms/$', debug_views.perms_list),

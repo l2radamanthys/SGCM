@@ -1,0 +1,36 @@
+.galley-image {
+    text-decoration: None;
+    display: inline-block;
+    margin: 0 10px 20px 10px;
+    line-height: 0;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    border: 4px solid #5e5e5e;
+    -webkit-transition: all 0.1s ease-out;
+    -moz-transition: all 0.1s ease-out;
+    -o-transition: all 0.1s ease-out;
+    transition: all 0.1s ease-out;
+}
+
+
+.lb-caption .cont {
+    font-size: 9pt !important;
+    font-weight: 100;
+}
+
+
+a.image {
+    display: block;
+    margin:2px;
+    min-width: 155px;
+    min-height: 155px;
+    padding: 5px 5px;
+    border:1px solid #AAA;
+    height:auto;
+    width:auto;
+    float:left;
+    text-align:center;
+}

@@ -7,7 +7,7 @@
         background-color:#E5E5E5;
     }
     .table td {
-        padding: 3px 10px;
+        padding: 7px 10px;
     }
     
 </style>
@@ -20,7 +20,7 @@
 </div>
 
 <div style="text-align:right; margin:20px;">
-    <a href="/pacientes/agregar/examen-fisico/{{ pac.username }}/" class="grad-button-blue">Atras</a>
+    <a href="/pacientes/listado/examen-fisico/{{ pac.username }}/" class="grad-button-blue">Atras</a>
 </div>
 
 <div class="fancy-form-white" style="text-align: left; width: 650px; margin: 0 auto;">
@@ -43,7 +43,7 @@
     </tr>
     <tr>
         <td>{{ exam_lbl.respiratory_rate }}:</td>
-        <td>{{ exam.respiratory_rate }}</td>
+        <td>{{ exam.respiratory_rate }} (por minuto)</td>
     </tr>
     <tr>
         <td>{{ exam_lbl.pulse }}:</td>

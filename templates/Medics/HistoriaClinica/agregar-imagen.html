@@ -1,66 +1,58 @@
 {% extends 'Medics/GestionTurnos/patient-view.html' %}
 
-{% block ext_style %}
-    <link rel="stylesheet" type="text/css" href="/media/css/fancy-forms.css" />
-    <link rel="stylesheet" type="text/css" href="/media/css/messages.css">
-    <link rel="stylesheet" type="text/css" href="/media/css/gradient-buttons.css">
-{% endblock %}
-
-
 {% block view-cont %}
 <div  style="padding-left:10px;" >
-    <h2>Agregar Imagen</h2>
-    <p style="font-size:14px;margin-left:10px">{{ pac.last_name  }}, {{ pac.first_name }} </p>
+    <h3> Agregar Imagen </h3>
+    <p style="font-size:14px;">{{ pac.last_name  }}, {{ pac.first_name }} </p>
+</div>
+
+<br /><br />
+
+<div style="text-align: right; width: 600px; margin: 0 auto;">
+    <a href="/pacientes/mostrar/imagenes/{{ pac.username }}/" class="grad-button-blue">Atras</a>
 </div>
 
 <br />
 
-<div class="fancy-form-white" style="margin: 0 auto; width: 650px;">
-<form action="" method="POST">
-    <table style="margin: 0 auto;">
-        <tr>
-            <td> <label>{{ form.title.label }}:</label></td>
-            <td>{{ form.title }}</td>
-        </tr>
-        <tr>
-            <td> <label>{{ form.image.label }}:</label></td>
-            <td>{{ form.image }}</td>
-        </tr>
-        <tr>
-            <td> <label>{{ form.content.label }}:</label></td>
-            <td>{{ form.content }}</td>
-        </tr>
+        <div  class="fancy-form-white" style="width: 600px; margin: 0 auto;">
+        <form action="" method="POST" enctype="multipart/form-data">
+        <table style="width:600px; margin: 0 auto;">
+            <tr>
+                <td> {{ form.title.label }}:</td>
+                <td> {{ form.title }}</td>
+            </tr>
+            <tr>
+                <td> {{ form.content.label }}:</td>
+                <td> {{ form.content }}</td>
+            </tr>
+            <tr>
+                <td> {{ form.image.label }}:</td>
+                <td> {{ form.image }}</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center">
+                    <br />
+                    <br />
+                    <input type="submit" value="Subir" class="grad-button-blue" />
+                </td>
+            </tr>
+        </table>
+        </form>
+        </div>
+        <br />
 
-        <tr>
-            <td colspan="2" style="text-align: center">
-            <br />
-            <input type="submit" class="grad-button-blue" value="Guardar Cambios"  />
-            <a href="/pacientes/mostrar/antecedentes-perinatales/{{ pac_username }}/" class="grad-button-blue">Volver</a>
-            </td>
-        </tr>
-    </table>
-</form>
-</div>
-
-{% autoescape off %}
-    {{ custon_messages }}
-{% endautoescape %}
 
     {% if show_errors %}
-        <div class="error" >		
+        <div class="error">
         {% for field in form %}
-            <p>{{ field.name }}:</p>
+            <p>{{ field.label }}:<p/>
             {{ field.errors }}
-            <br />
         {% endfor %}
-
+        <div/>
+    {% else %}
         {% autoescape off %}
-            {{ custon_errors }}
+        {{ custom_message }}
         {% endautoescape %}
-        </div>
     {% endif %}
 
 {% endblock %}
-
-
-
