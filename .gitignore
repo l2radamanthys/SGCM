@@ -1,7 +1,7 @@
-
 *.ini
 *.pyc
 *.pyw
-
 #
 Thumbs.db
+media/upload/files
+media/upload/images
