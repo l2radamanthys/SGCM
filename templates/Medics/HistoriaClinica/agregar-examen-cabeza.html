@@ -97,14 +97,19 @@
                 <td> {{ form.lips.label }}:</td>
                 <td> {{ form.lips }}</td>
                 <td> {{ form.language.label }}:</td>
+                <td> {{ form.language }}:</td>
+            </tr>
+                <td> {{ form.oropharyngeal_mucosa.label }}</td>
                 <td> {{ form.oropharyngeal_mucosa }}</td>
+                <td> {{ form.teeth.label }}:</td>
+                <td> {{ form.teeth }}</td>
             </tr>
 
             <tr>
-                <td> {{ form.teeth.label }}:</td>
-                <td> {{ form.teeth }}</td>
                 <td> {{ form.tonsils.label }}:</td>
                 <td> {{ form.tonsils }}</td>
+                <td></td>
+                <td></td>
             </tr>
             <tr>
                 <td colspan="4">
@@ -136,7 +141,7 @@
                 <td colspan="4" style="text-align: center">
                     <br />
                     <br />
-                    <input type="Agregar" value="Subir" class="grad-button-blue" />
+                    <input type="Submit" value="Subir" class="grad-button-blue" />
                 </td>
             </tr>
         </table>
@@ -149,7 +154,8 @@
         <div class="error">
         {% for field in form %}
             <p>{{ field.label }}:<p/>
-            {{ field.errors }}
+            <p>{{ field.value }}</p>
+            {{ field.errors }}<br />
         {% endfor %}
         <div/>
     {% else %}

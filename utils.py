@@ -72,6 +72,9 @@ def get_user_info(request, name=False):
 
 
 def get_role(request):
+    """
+    Obtiene el nombre del rol del usuario.
+    """
     if request.user.is_authenticated():
         return "(%s)" %request.user.groups.all()[0].name
     else:

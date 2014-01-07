@@ -110,6 +110,7 @@ urlpatterns = patterns('',
     #examen cabeza
     (r'^pacientes/listado/examen-cabeza/(.+)/$', hc_medics_views.medic_list_patient_head_exam),
     (r'^pacientes/agregar/examen-cabeza/(.+)/$', hc_medics_views.medic_add_patient_head_exam),
+    (r'^pacientes/mostrar/examen-cabeza/(\d{1,2})/$', hc_medics_views.medic_show_patient_head_exam),
 
 
     #debug views, this views only desing for testing

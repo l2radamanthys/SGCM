@@ -1,0 +1,178 @@
+{% extends 'Medics/GestionTurnos/patient-view.html' %}
+
+{% block ext_style %}
+
+<style type="text/css">   
+    .table tr:hover td {
+        background-color:#E5E5E5;
+    }
+    .table td {
+        padding: 7px 10px;
+    }
+    
+</style>
+{% endblock %}
+
+{% block view-cont %}
+<div  style="padding-left:10px;" >
+    <h2>Examen de Cabeza</h2>
+    <p style="font-size:14px;margin-left:10px">{{ pac.last_name  }}, {{ pac.first_name }} </p>
+</div>
+
+<div style="text-align:right; margin:20px;">
+    <a href="/pacientes/listado/examen-cabeza/{{ pac.username }}/" class="grad-button-blue">Atras</a>
+</div>
+
+<div class="fancy-form-white" style="text-align: left; width: 650px; margin: 0 auto;">
+<table class="table" style="width:600px; margin: 0 auto;" cellspacing="0">
+    <tr>
+        <td>{{ exam_lbl.date }}:</td>
+        <td>{{ exam.date }}</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <br />
+            <h3>Cabeza:</h3>
+            <br />
+        </td>
+    </tr>
+    <tr>
+        <td>{{ exam_lbl.form }}:</td>
+        <td>{{ exam.form }}</td>
+    </tr>    
+    <tr>
+        <td>{{ exam_lbl.scalp }}:</td>
+        <td>{{ exam.scalp }}</td>
+    </tr>
+    <tr>
+        <td>{{ exam_lbl.skull }}:</td>
+        <td>{{ exam.skull }}</td>
+    </tr>
+    <tr>
+        <td>{{ exam_lbl.fontanelles_and_sutures }}:</td>
+        <td>{{ exam.fontanelles_and_sutures }}</td>
+    </tr>
+    <tr>
+        <td>{{ exam_lbl.facie }}:</td>
+        <td>{{ exam.facie }}</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <br />
+            <h3>Ojos y Vision:</h3>
+            <br />
+        </td>
+    </tr>    
+    <tr>
+        <td>{{ exam_lbl.eyelids }}:</td>
+        <td>{{ exam.eyelids }}</td>
+    </tr>
+    <tr>
+        <td>{{ exam_lbl.conjunctive }}:</td>
+        <td>{{ exam.conjunctive }}</td>
+    </tr>
+    <tr>
+        <td>{{ exam_lbl.eyeball_movement }}:</td>
+        <td>{{ exam.eyeball_movement }}</td>
+    </tr>
+    <tr>
+        <td>{{ exam_lbl.vision }}:</td>
+        <td>{{ exam.vision }}</td>
+    </tr>
+
+    <tr>
+        <td>{{ exam_lbl.vision_p1 }}:</td>
+        <td>{{ exam.vision_p1 }}</td>
+    </tr>
+    <tr>
+        <td>{{ exam_lbl.vision_p2 }}:</td>
+        <td>{{ exam.vision_p2 }}</td>
+    </tr>
+    <tr>
+        <td>{{ exam_lbl.vision_p3 }}:</td>
+        <td>{{ exam.vision_p3 }}</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <br />
+            <h3>Nariz:</h3>
+            <br />
+        </td>
+    </tr>        
+    <tr>
+        <td>{{ exam_lbl.nose }}:</td>
+        <td>{{ exam.nose }}</td>
+    </tr>
+    <tr>
+        <td>{{ exam_lbl.nostril }}:</td>
+        <td>{{ exam.nostril }}</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <br />
+            <h3>Boca:</h3>
+            <br />
+        </td>
+    </tr>        
+    <tr>
+        <td>{{ exam_lbl.lips }}:</td>
+        <td>{{ exam.lips }}</td>
+    </tr>
+    <tr>
+        <td>{{ exam_lbl.teeth }}:</td>
+        <td>{{ exam.teeth }}</td>
+    </tr>
+    <tr>
+        <td>{{ exam_lbl.language }}:</td>
+        <td>{{ exam.language }}</td>
+    </tr>
+    <tr>
+        <td>{{ exam_lbl.oropharyngeal_mucosa  }}:</td>
+        <td>{{ exam.oropharyngeal_mucosa  }}</td>
+    </tr>
+    <tr>
+        <td>{{ exam_lbl.tonsils }}:</td>
+        <td>{{ exam.tonsils }}</td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <br />
+            <h3>Oido:</h3>
+            <br />
+        </td>
+    </tr>        
+    <tr>
+        <td>{{ exam_lbl.ears }}:</td>
+        <td>{{ exam.ears }}</td>
+    </tr>
+    <tr>
+        <td>{{ exam_lbl.ear_canal }}:</td>
+        <td>{{ exam.ear_canal }}</td>
+    </tr>
+    <tr>
+        <td>{{ exam_lbl.eardrums }}:</td>
+        <td>{{ exam.eardrums }}</td>
+    </tr>
+    <tr>
+        <td>{{ exam_lbl.hearing }}:</td>
+        <td>{{ exam.hearing }}</td>
+    </tr>
+
+    <tr>
+        <td colspan="2">
+            <br />
+            <h3>{{ exam_lbl.observations }}</h3>
+            <br />
+        </td>
+    </tr>    
+    <tr>
+        <td colspan="2">{{ exam.observations }}:</td>
+    </tr>
+  
+                 
+</table>
+</div>
+
+
+
+{% endblock %}

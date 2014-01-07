@@ -15,7 +15,19 @@
     <a href="/pacientes/agregar/examen-cabeza/{{ pac.username }}/" class="grad-button-blue">Agregar</a>
 </div>
 
-
+<table style="width: 400px; margin: 0 auto;" class="tbl-round-light">
+    <tr>
+        <th>Fecha del Examen</th>
+        <th colspan="2" style="text-align: center;">Opciones</th>
+    </tr>
+    {% for exam in HeadExams %}
+    <tr>
+        <td> {{ exam.date }}</td>
+        <td style="text-align: center;"><a href="/pacientes/mostrar/examen-cabeza/{{ exam.id }}/">Mostrar</a></td>
+        <td style="text-align: center;"><a href="/pacientes/borrar/examen-cabeza/{{ exam.id }}/">Borrar</a></td>
+    </tr>
+    {% endfor %}
+</table>
 
 
 {% endblock %}

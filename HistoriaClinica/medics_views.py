@@ -452,7 +452,7 @@ def medic_list_patient_head_exam(request, pac_username):
         dict['pac_username'] = pac_username
         pac = User.objects.get(groups__name='Paciente', username=pac_username)
         dict['pac'] = pac
-
+        dict['HeadExams'] = HeadExam.objects.filter(patient=pac)
         #incompleto
 
     else:
@@ -472,19 +472,71 @@ def medic_add_patient_head_exam(request, pac_username):
         dict['pac_username'] = pac_username
         pac = User.objects.get(groups__name='Paciente', username=pac_username)
         dict['pac'] = pac
-        form = my_forms.BasicExamForm(auto_id=False)
+        #_form = my_forms.HeadExamForm(auto_id=False)
         dict['show_errors'] = False
         dict['show_form'] = True
 
         if request.method == 'POST':
-            form = my_forms.HeadExamForm(request.POST, auto_id=False)
-            if form.is_valid():
-                pass
+            _form = my_forms.HeadExamForm(request.POST, auto_id=False)
+            if _form.is_valid():
+                exam = HeadExam(
+                    patient = pac,
+
+                    form = _form.cleaned_data['form'],
+                    scalp = _form.cleaned_data['scalp'],
+                    skull = _form.cleaned_data['skull'],
+                    fontanelles_and_sutures = _form.cleaned_data['fontanelles_and_sutures'],
+                    facie = _form.cleaned_data['facie'],
+                    eyelids = _form.cleaned_data['eyelids'],
+                    conjunctive = _form.cleaned_data['conjunctive'],
+                    eyeball_movement = _form.cleaned_data['eyeball_movement'],
+                    vision = _form.cleaned_data['vision'],
+                    vision_p1 = _form.cleaned_data['vision_p1'],
+                    vision_p2 = _form.cleaned_data['vision_p2'],
+                    vision_p3 = _form.cleaned_data['vision_p3'],
+                    nose = _form.cleaned_data['nose'],
+                    nostril = _form.cleaned_data['nostril'],
+                    lips = _form.cleaned_data['lips'],
+                    teeth = _form.cleaned_data['teeth'],
+                    language = _form.cleaned_data['language'],
+                    oropharyngeal_mucosa = _form.cleaned_data['oropharyngeal_mucosa'],
+                    tonsils = _form.cleaned_data['tonsils'],
+                    ears = _form.cleaned_data['ears'],
+                    ear_canal = _form.cleaned_data['ear_canal'],
+                    eardrums = _form.cleaned_data['eardrums'],
+                    hearing = _form.cleaned_data['hearing'],
+                    observations = _form.cleaned_data['observations']
+                )
+                exam.save()
+                dict['show_form'] = False
+                dict['custom_message'] = html_message('Examen Registrado Correctamente', 'success')
+
             else:
                 dict['show_errors'] = True
         else:
-            form = my_forms.HeadExamForm(auto_id=False)
-        dict['form'] = form
+            _form = my_forms.HeadExamForm(auto_id=False)
+        dict['form'] = _form
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def medic_show_patient_head_exam(request, exam_id):
+
+    mi_template = get_template('Medics/HistoriaClinica/mostrar-examen-cabeza.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        exam = HeadExam.objects.get(id=exam_id)
+        dict['exam'] = exam
+        dict['exam_lbl'] = get_labels_for(exam)
+        dict['pac'] = exam.patient
+        dict['pac_username'] = exam.patient.username
 
     else:
         path = request.META['PATH_INFO']
