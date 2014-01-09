@@ -1,0 +1,81 @@
+paciente
+	- mostrar detalle turno
+	- cancelar turno
+
+-general 
+	- listar mensajes enviados
+	- mostrar mensaje enviado
+	- modificar datos personales
+
+-medicos
+	-GT
+		- Modificar Turno
+		- Cancelar Turnos
+	-HC
+		- examen fisico
+			-borrr
+
+		- examen cabeza
+			-mostrar  (mostrar bien datos -> get_field_display)
+			-borrar
+		- examen cuello
+			-listar
+			-crea
+			-mostrar
+			-borrar
+		- examen piel faneas
+			-listar
+			-crea
+			-mostrar
+			-borrar
+		- examen abdonmen
+			-listar
+			-crea
+			-mostrar
+			-borrar
+		- examen sist osteo auric
+			-listar
+			-crea
+			-mostrar
+			-borrar
+		- examen sist neuro musc
+			-listar
+			-crea
+			-mostrar
+			-borrar
+		- examen torax
+			-listar
+			-crea
+			-mostrar
+			-borrar
+		- examen cardivasc
+			-listar
+			-crea
+			-mostrar
+			-borrar
+		- imagenes
+			-modificar
+			-borrar
+		- archivos
+			-listar
+			-crea
+			-mostrar
+			-borrar	
+		- recetas
+			-listar
+			-crea
+			-mostrar
+			-borrar
+			-imprimir
+
+		todos los examenes ¿importar ?
+
+-administrativo
+	- Registrar Medico
+	- Registrar Administrativo
+	- Registrar Paciente
+	- Registrar Turno Paciente Medico
+	- Cancelar Turno Paciente
+	
+
+53 Tareas

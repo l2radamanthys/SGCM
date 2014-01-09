@@ -194,3 +194,19 @@ class HeadExam(models.Model):
         db_table = "ExamenesCabeza"
 
 
+
+class NeckExam(models.Model):
+    """
+    Examen de Cuello
+    """
+    patient = models.ForeignKey(User) #fk
+    date = models.DateField("Fecha del Examen", auto_now_add=True)
+
+    inspection = models.CharField('Inspecion', max_length=250)
+    palpation = models.CharField('Palpacion', max_length=250)
+    percussion = models.CharField('Percusion', max_length=250)
+    auscultation = models.CharField('Ausculacion', max_length=250)
+    comments = models.TextField('Observaciones')
+
+    class Meta:
+        db_table = "ExamenesCuello"
