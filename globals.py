@@ -184,3 +184,15 @@ ESTADO_CHOICE = (
     ('N','Normal'),
     ('A','Alterado'),
 )
+
+VIA_ADMINISTRACION_CHOICE = (
+    ('O', 'Oral'),
+    ('L', 'Sublingual'),
+    ('G', 'Gastroentérica'),
+    ('A', 'Rectal'),
+    ('P', 'Parenteral'),
+    ('R', 'Respiractoria'),
+    ('T', 'Topica'),
+    ('D', 'Transdermica'),
+    ('F', 'Oftálmica'),
+)
