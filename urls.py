@@ -99,6 +99,12 @@ urlpatterns = patterns('',
     (r'^pacientes/mostrar/imagenes/(.+)/$', hc_medics_views.medic_list_patients_images),
     (r'^pacientes/agregar/imagen/(.+)/$', hc_medics_views.medic_add_patients_images),
 
+
+    #archivos
+    #borrado no se incluira
+    #(r'^pacientes/listado/archivos/(.+)/$', hc_medics_views.medic_list_patient_files),
+
+
     #antecedentes perinatales (hecho)
     (r'^pacientes/mostrar/antecedentes-perinatales/(.+)/$', hc_medics_views.medic_view_patient_perinatal_antecedents),
     (r'^pacientes/modificar/antecedentes-perinatales/(.+)/$',hc_medics_views.medic_edit_patient_perinatal_antecedents),

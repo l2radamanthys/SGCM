@@ -208,5 +208,26 @@ class NeckExam(models.Model):
     auscultation = models.CharField('Ausculacion', max_length=250)
     comments = models.TextField('Observaciones')
 
+
     class Meta:
         db_table = "ExamenesCuello"
+
+
+
+
+class PFTSExam(models.Model):
+    """
+        Examen Fisico - Analisis de Piel, Faneas y Tejido Subcutaneo
+    """
+    patient = models.ForeignKey(User) #fk
+    date = models.DateField("Fecha del Examen", auto_now_add=True)
+
+    aspect = models.TextField('Aspecto')
+    pilosa_distribution = models.TextField('Distribucion Pilosa')
+    injuries = models.TextField('Leciones')
+    appendages = models.TextField('Faneras')
+    subcutaneous_tissue = models.TextField('Tejido Celular Subcutaneo')
+
+
+    class Meta:
+        db_table = "ExamenesPielFaneasTejSubCutaneo"

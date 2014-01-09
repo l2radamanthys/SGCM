@@ -544,3 +544,18 @@ def medic_show_patient_head_exam(request, exam_id):
 
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
+
+
+def medic_list_patient_files(request, patient):
+    mi_template = get_template('Medics/HistoriaClinica/listado-archivos.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        pass
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
