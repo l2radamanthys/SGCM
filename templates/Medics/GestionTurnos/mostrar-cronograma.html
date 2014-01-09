@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+
+{% block style %}
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/calendar-style.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+{% endblock %}
+
+
+{% block contenido %}
+<br />
+<h2>Cronograma del Dia</h2>
+<br />
+<p style="text-align: right">Fecha: {{ date }}</p>
+
+<br />
+<h3>Consultas Sin Responder</h3>
+
+{% if have_msj %}
+    <div class="info">
+        <p>Usted Tiene {{ num_msj }} Mensajes En su bandeja sin Responder</p>
+        <br />
+        <p style="text-align: center"><a href="/mensajes/recibidos/" class="grad-button-blue">Ir a la Bandeja de Mensajes</a></p>
+    </div>
+{% else %}
+    <div class="info">
+        <p>Usted no tiene Mensajes en su bandeja sin responder</p>
+    </div>
+{% endif %}
+
+<br />
+<h3>Turnos Solcitados</h3>
+
+{% if not_turns %}
+    <p class="alert">Usted no tiene turnos solicitados para la fecha {{ date }}.</p>
+
+{% else %}
+    <table style="width:500px; margin: 0 auto;" class="tbl-round-light">
+        <tr>
+            <th>Paciente</th>
+            <th>Estado</th>
+            <th>Opciones</th>
+        </tr>
+
+        {% for turn in turns %}
+        <tr>
+            <td>{{ turn.patient.first_name }} {{ turn.patient.last_name }}</td>
+            <td style="width:100px">{{ turn.get_status_display }}</td>
+            <td style="width:100px"><a>Mostrar</a></td>
+        </tr>    
+        {% endfor %}    
+    </table>
+{% endif %}
+        
+{% endblock %}

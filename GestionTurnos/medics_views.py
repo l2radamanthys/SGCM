@@ -841,11 +841,26 @@ def show_cronogram(request):
     """
     Muestra el cronograma los mensajes Pendientes Para el Dia y Demas.
     """
-    mi_template = get_template('Medics/GestionTurnos/borrar-consulta-medica.html')
+    mi_template = get_template('Medics/GestionTurnos/mostrar-cronograma.html')
     dict = generate_base_keys(request)
 
     if True: #requiere permiso del medico
 
+        #fecha a controlar
+        _date = datetime.date.today()
+        dict['date'] = _date
+        medic = request.user
+        #mensajes no leidos
+        messages = Message.objects.filter(read=False, to_user=request.user)
+        if len(messages) > 0:
+            dict['have_msj'] = True
+            dict['num_msj'] = len(messages)
+
+        #turnos para el dia
+        turns = Turn.objects.filter(day__date=_date, medic=request.user)
+        if len(turns) == 0:
+            dict['not_turns'] = True
+        dict['turns'] = turns
 
         html_cont = mi_template.render(Context(dict))
         return HttpResponse(html_cont)
@@ -860,23 +875,25 @@ def show_turns(request, day=None, month=None, year=None):
     """
         Muestra los
     """
-    mi_template = get_template('Medics/GestionTurnos/borrar-consulta-medica.html')
+    mi_template = get_template('Medics/GestionTurnos/mostrar-turnos-dia.html')
     dict = generate_base_keys(request)
 
     if True: #requiere permiso del medico
 
         #si no se pasa la fecha se toma el dia actual
-        if day = None
+        if day == None:
             date = datetime.datetime.today()
             day = date.day
             month = date.month
             year = date.year
 
-
-        medic = request.user
-        turns =
-
-
+        #fecha a controlar
+        _date = datetime.date(int(year), int(month), int(day))
+        turns = Turn.objects.filter(day__date=_date, medic=request.user)
+        dict['date'] = _date
+        if len(turns) == 0:
+            dict['not_turns'] = True
+        dict['turns'] = turns
 
         html_cont = mi_template.render(Context(dict))
         return HttpResponse(html_cont)
@@ -896,25 +913,14 @@ def select_date_to_show_turns(request, month=None, year=None):
         mi_template = get_template('Medics/GestionTurnos/selecionar-dia-mostrar-turnos.html')
         dict = generate_base_keys(request)
 
-        #import datetime
-
-        if month == None:
-
-            date = datetime.datetime.today()
-            month = date.month
-            year = date.year
-
         if month != None and year != None:
             month = int(month) % 13
             year = int(year)
 
         else:
-            year = datetime.date.today().year
-            month = datetime.date.today().month
-
-        #hoy
-        t_year = datetime.date.today().year
-        t_month = datetime.date.today().month
+            date = datetime.date.today()
+            month = date.month
+            year = date.year
 
         dict['month'] = month
         dict['name_month'] = MONTHS[month-1]
@@ -938,8 +944,12 @@ def select_date_to_show_turns(request, month=None, year=None):
         else:
             dict['prev_month'] = month - 1
             dict['next_month'] = month + 1
-            dict['prev_year'] = year - 1
-            dict['next_year'] = year + 1
+            dict['prev_year'] = year
+            dict['next_year'] = year
+
+        dict['y_prev_year'] = year - 1
+        dict['y_next_year'] = year + 1
+
 
         #dias que se atiende
         bh = BusinessHours.objects.filter(user=request.user)
@@ -958,7 +968,7 @@ def select_date_to_show_turns(request, month=None, year=None):
         dof = DayOfAttention.objects.filter(business_hour__user=request.user, date__month=month, date__year=year)
         for day in dof:
             if day.number_of_turns > 0:
-                _dta.append(day.date - 1)
+                _dta.append(day.date.day - 1)
 
 
         #formateo del mes
