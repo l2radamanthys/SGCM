@@ -49,7 +49,6 @@ class File(models.Model):
             Obtiene la extencion o terminacion del archivo, no distingue
             el bite code interno
             doc, pdf, xls, txt, etc..
-
         """
         return self.archive.url.split('.')[-1].lower()
 

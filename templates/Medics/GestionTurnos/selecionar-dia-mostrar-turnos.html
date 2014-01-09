@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+
+{% block style %}
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/calendar-style.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+{% endblock %}
+
+
+{% block contenido %}
+<br />
+<h2>Turnos Solicitados</h2>
+<p>Seleccione el dia para consultar los los turnos solicitados correspondientes a la fecha</p>
+
+<br />
+<div style="width: 500px; margin: 0 auto;">
+    <div style="float: left; width: 250px; text-align: center;">
+    <a href="/medicos/selecionar/turnos-asignados/{{ prev_month }}/{{ prev_year }}/" style="text-decoration: None;"><img src="/media/images/minus-icon.png">&nbsp;</a>
+    {{ name_month }}
+    <a href="/medicos/selecionar/turnos-asignados/{{ next_month }}/{{ next_year }}/" style="text-decoration: None;">&nbsp;<img src="/media/images/plus-icon.png" /></a>
+    </div>
+    <div style="width: 250px; margin-left:250px; text-align: center;">
+    <a href="/medicos/selecionar/turnos-asignados/{{ month }}/{{ prev_year }}/" style="text-decoration: None;"><img src="/media/images/minus-icon.png">&nbsp;</a>
+    {{ year }}
+    <a href="/medicos/selecionar/turnos-asignados/{{ month }}/{{ next_year }}/" style="text-decoration: None;">&nbsp;<img src="/media/images/plus-icon.png" /></a>
+    </div>
+</div>
+
+<br />
+<table class="calendar" style="margin: 0 auto;">
+	<tr>
+		<th>Lunes</th>
+		<th>Martes</th>
+		<th>Miercoles</th>
+		<th>Jueves</th>
+		<th>Viernes</th>
+		<th>Sabado</th>
+		<th>Domingo</th>
+	</tr>
+
+	{% for week in wekends %}
+		<tr>
+		{% for day in week %}
+			{% if day.day %}
+                {% if day.type == 1 %}
+                    <td class="calendar-blank"><a href="/medicos/agregar/dia-no-laboral/{{ day.day }}/{{ month }}/{{ year }}/">{{ day.day }}</a></td>
+                {% else %}{% if day.type == 2 %}
+                    <td class="calendar-cancel"><a  href="/medicos/borrar/dia-no-laboral/{{ day.day }}/{{ month }}/{{ year }}/">{{ day.day }}</a></td>
+                {% else %}{% if day.type == 3 %}
+                    <td class="calendar-over">{{ day.day }}</td>
+                {% else %} 
+                   <td class="calendar-null">{{ day.day }}</td>
+                    
+                {% endif %}{% endif %}{% endif %}
+            {% else %}
+				<td class="calendar-no-day"></td>
+			{% endif %}
+		{% endfor %}
+		</tr>
+	{% endfor %}
+</table>
+<br />
+
+        
+{% endblock %}

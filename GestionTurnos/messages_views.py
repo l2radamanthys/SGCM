@@ -133,7 +133,6 @@ def received(request):
             dict['messages'] = messages
             dict['not_empty'] = True
 
-
     else:
         path = request.META['PATH_INFO']
         return HttpResponseRedirect("/restricted-access%s" %path)
@@ -150,8 +149,10 @@ def read(request, msj_id):
     mi_template = get_template('Messages/mostrar.html')
     dict = generate_base_keys(request)
     if request.user.is_authenticated():
-        dict['message'] = Message.objects.get(to_user=request.user, id=int(msj_id))
-
+        msj = Message.objects.get(to_user=request.user, id=int(msj_id))
+        dict['message'] = msj
+        msj.read = True
+        msj.save()
 
     else:
         path = request.META['PATH_INFO']
@@ -159,3 +160,39 @@ def read(request, msj_id):
 
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
+
+
+
+def sendings(request):
+    """
+    Enviados
+    """
+    pass
+
+
+
+def delete(request, msj_id):
+    """
+        Elimina El Mensaje
+    """
+    mi_template = get_template('Messages/borrar.html')
+    dict = generate_base_keys(request)
+    if request.user.is_authenticated():
+        try:
+            msj = Message.objects.get(to_user=request.user, id=int(msj_id))
+            if msj.from_user == request.user or msj.to_user == request.user:
+                msj.delete()
+            else:
+                path = request.META['PATH_INFO']
+                return HttpResponseRedirect("/restricted-access%s" %path)
+        except:
+            pass
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+

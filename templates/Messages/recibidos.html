@@ -13,6 +13,11 @@
 <h2>Mensajes Recibidos</h2>
 <br />
 
+<a href="/mensajes/redactar/" class="grad-button-blue">Nuevo Mensaje</a>
+<a href="" class="grad-button-blue">Enviados</a>
+
+
+<br /><br />
 <table class="tbl-round-light" style="width: 700px;">
 <tr>
     <th style="width: 200px;">De:</th>
@@ -22,7 +27,7 @@
 {% if not_empty %}
     {% for msj in messages %}
         {% if msj.read %}
-            <tr>
+            <tr  style="background-color: #E6F2FF">
                 <td> {{ msj.from_user.first_name }}, {{ msj.from_user.last_name }}</td>
                 <td> {{ msj.issue }}</td>
                 <td style="width:110px; text-align: center;">
@@ -31,7 +36,7 @@
                 </td>
             </tr>
         {% else %}
-            <tr style="background-color: #E6F2FF">
+            <tr>
                 <td> {{ msj.from_user.first_name }}, {{ msj.from_user.last_name }}</td>
                 <td> {{ msj.issue }}</td>
                 <td style="width:110px; text-align: center;">

@@ -67,7 +67,8 @@ urlpatterns = patterns('',
     (r'^medicos/mostrar/dias-no-laborales/(\d{1,2})/(\d{4})/$', gt_medics_views.my_medic_show_nonworking_days),
     (r'^medicos/agregar/dia-no-laboral/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_medics_views.my_medic_add_nonworking_day),
     (r'^medicos/borrar/dia-no-laboral/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_medics_views.my_medic_del_nonworking_day),
-
+    (r'^medicos/selecionar/turnos-asignados/(\d{1,2})/(\d{4})/$', gt_medics_views.select_date_to_show_turns),
+    (r'^medicos/selecionar/turnos-asignados/$', gt_medics_views.select_date_to_show_turns),
 
     (r'^medicos/listado/$', gt_patients_views.patient_show_medics_list),
     (r'^medicos/mostrar/(\d{1,2})/$', gt_patients_views.patient_show_medic_info),
@@ -85,6 +86,7 @@ urlpatterns = patterns('',
     (r'^mensajes/responder/(\d{1,5})/', gt_messages_views.re_send_message), #responder
     (r'^mensajes/recibidos', gt_messages_views.received),
     (r'^mensajes/mostrar/(\d{1,2})/', gt_messages_views.read),
+    (r'^mensajes/borrar/(\d{1,2})/', gt_messages_views.delete),
     (r'^medicos/nueva/consulta-online/(\d{1,2})/$', gt_patients_views.patient_set_medic_consulation), #paciente realizar consulta al medico
 
 

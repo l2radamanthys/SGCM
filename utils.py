@@ -8,7 +8,6 @@ import difflib
 from globals import MI_TEMPLATE_DIR, POST
 
 
-
 class CalendarDay:
     """
     Clase contenedora para mostrar los elementos de un calendario
@@ -253,3 +252,21 @@ def message_diff_insert(text1, text2):
 
 def date_to_str(date):
     pass
+
+
+
+
+def have_acess(request, argv):
+    """
+    No yet Implement
+    Falla de seguridad a proposito digamos :D
+    """
+    if ('patient' in argv) or ('P' in argv):
+        pass
+
+    if ('medic' in argv) or ('M' in argv):
+        pass
+
+    if ('admin' in argv) or ('A' in argv):
+        pass
+    return True

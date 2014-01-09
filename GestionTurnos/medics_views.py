@@ -828,9 +828,162 @@ def my_delete_medical_consultation(request, cm_id):
 
         else:
             dict['cm'] = cm
-
             html_cont = mi_template.render(Context(dict))
             return HttpResponse(html_cont)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+
+
+def show_cronogram(request):
+    """
+    Muestra el cronograma los mensajes Pendientes Para el Dia y Demas.
+    """
+    mi_template = get_template('Medics/GestionTurnos/borrar-consulta-medica.html')
+    dict = generate_base_keys(request)
+
+    if True: #requiere permiso del medico
+
+
+        html_cont = mi_template.render(Context(dict))
+        return HttpResponse(html_cont)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+
+
+def show_turns(request, day=None, month=None, year=None):
+    """
+        Muestra los
+    """
+    mi_template = get_template('Medics/GestionTurnos/borrar-consulta-medica.html')
+    dict = generate_base_keys(request)
+
+    if True: #requiere permiso del medico
+
+        #si no se pasa la fecha se toma el dia actual
+        if day = None
+            date = datetime.datetime.today()
+            day = date.day
+            month = date.month
+            year = date.year
+
+
+        medic = request.user
+        turns =
+
+
+
+        html_cont = mi_template.render(Context(dict))
+        return HttpResponse(html_cont)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+
+
+def select_date_to_show_turns(request, month=None, year=None):
+    """
+        Seleciona Dia Para Mostrar Turnoss
+    """
+
+    if True: #requiere permiso del medico
+        mi_template = get_template('Medics/GestionTurnos/selecionar-dia-mostrar-turnos.html')
+        dict = generate_base_keys(request)
+
+        #import datetime
+
+        if month == None:
+
+            date = datetime.datetime.today()
+            month = date.month
+            year = date.year
+
+        if month != None and year != None:
+            month = int(month) % 13
+            year = int(year)
+
+        else:
+            year = datetime.date.today().year
+            month = datetime.date.today().month
+
+        #hoy
+        t_year = datetime.date.today().year
+        t_month = datetime.date.today().month
+
+        dict['month'] = month
+        dict['name_month'] = MONTHS[month-1]
+        dict['year'] = year
+
+        cal = calendar.Calendar()
+        wekends = cal.monthdayscalendar(year, month)
+
+        if month == 1:
+            dict['prev_month'] = 12
+            dict['next_month'] = 2
+            dict['prev_year'] = year - 1
+            dict['next_year'] = year
+
+        elif month == 12:
+            dict['prev_month'] = 11
+            dict['next_month'] = 1
+            dict['prev_year'] = year
+            dict['next_year'] = year + 1
+
+        else:
+            dict['prev_month'] = month - 1
+            dict['next_month'] = month + 1
+            dict['prev_year'] = year - 1
+            dict['next_year'] = year + 1
+
+        #dias que se atiende
+        bh = BusinessHours.objects.filter(user=request.user)
+        wd = []
+        for day in bh:
+            wd.append(day.date - 1)
+
+        #dias no laborales
+        nwd = NonWorkingDay.objects.filter(user=request.user, date__month=month, date__year=year)
+        _nwd = []
+        for obj in nwd:
+            _nwd.append(obj.date.day)
+
+        #dias con turnos asignados
+        _dta = []
+        dof = DayOfAttention.objects.filter(business_hour__user=request.user, date__month=month, date__year=year)
+        for day in dof:
+            if day.number_of_turns > 0:
+                _dta.append(day.date - 1)
+
+
+        #formateo del mes
+        semanas = []
+        for week in wekends:
+            sem = []
+            i = 0
+            for day in week:
+                if day in _nwd: #es un dia no laboral?
+                    sem.append(CalendarDay(day,2))
+                else:
+                    if i in wd:#dias donde se atiende
+                        if day in _dta:
+                            sem.append(CalendarDay(day,3)) #hay turnos asignados no se puede cancelar
+                        else:
+                            sem.append(CalendarDay(day,1)) #hay turnos libres
+                    else:
+                        sem.append(CalendarDay(day,0)) #dias q no se atiende
+                i += 1
+            semanas.append(sem)
+        dict['wekends'] = semanas
+
+
+        html_cont = mi_template.render(Context(dict))
+        return HttpResponse(html_cont)
 
     else:
         path = request.META['PATH_INFO']

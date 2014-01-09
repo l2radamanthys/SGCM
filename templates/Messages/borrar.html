@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block style %}
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/tabs-style.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+{% endblock %}
+
+
+{% block contenido %}
+
+<br />
+<br />
+
+<div style="text-align: center">
+    <p class="info">El mensaje fue eliminado correctamente..</p><br />
+    <a href="/mensajes/recibidos/" class="grad-button-blue">Volver a Recividos</a>
+</div>
+
+{% endblock %}
