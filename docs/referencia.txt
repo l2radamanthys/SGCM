@@ -16,3 +16,6 @@ Nariz
 http://sisbib.unmsm.edu.pe/BibVirtualdata/libros/Medicina/cirugia/Tomo_V/archivos%20PDF/7Rinologia.pdf
 Boca
 http://es.wikipedia.org/wiki/Labio
+3-receta medica
+http://www.consumoteca.com/bienestar-y-salud/medicamentos/que-partes-deben-tener-y-datos-incluir-por-ley-las-recetas-medicas/
+http://es.wikipedia.org/wiki/V%C3%ADas_de_administraci%C3%B3n_de_f%C3%A1rmacos

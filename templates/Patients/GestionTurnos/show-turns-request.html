@@ -33,7 +33,7 @@
             <td style="text-align: center;">{{ turn.get_status_display }}</td>
             <td style="text-align: center;">{{ turn.number }}</td>
             <td style="text-align: center; width:110px">
-                <a href="{{ turn.id }}" title=""><img src="/media/images/page_find.gif" /></a>
+                <a href="/pacientes/turnos/mostrar/{{ turn.id }}/" title=""><img src="/media/images/page_find.gif" /></a>
             </td>
         </tr>
     {% endfor %}

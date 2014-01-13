@@ -500,3 +500,49 @@ def patient_show_turn_request(request):
     else:
         path = request.META['PATH_INFO']
         return HttpResponseRedirect("/restricted-access%s" %path)
+
+
+
+def patient_show_turn_detail(request, turn_id):
+    mi_template = get_template('Patients/GestionTurnos/show-turn-detail.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        user = request.user
+        try:
+            dict['turn'] = Turn.objects.get(id=turn_id, patient=request.user)
+
+
+        except:
+            path = request.META['PATH_INFO']
+            return HttpResponseRedirect("/restricted-access%s" %path)
+
+        html_cont = mi_template.render(Context(dict))
+        return HttpResponse(html_cont)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+
+def patient_turn_pdf(request, turn_id):
+    #mi_template = get_template('Patients/GestionTurnos/show-turn-detail.html')
+    #dict = generate_base_keys(request)
+    if True:
+        user = request.user
+        try:
+            turn = Turn.objects.get(id=turn_id, patient=request.user)
+
+        except:
+            path = request.META['PATH_INFO']
+            return HttpResponseRedirect("/restricted-access%s" %path)
+
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="turno.pdf"'
+        import reports_templates as report
+        report.generate_turn(response, turn)
+        return response
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)

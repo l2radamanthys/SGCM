@@ -81,8 +81,8 @@ urlpatterns = patterns('',
     (r'^pacientes/turnos/selecionar-dia/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_patients_views.patient_new_turn_day_select), #selecion fecha para solicitar turno
     (r'^medicos/turnos/agregar/(\d{1,2})/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_patients_views.patient_new_turn),
     (r'^pacientes/turnos/listado/$',  gt_patients_views.patient_show_turn_request), #mostrar estado turnos solicitados
-    #(r'^pacientes/turnos/mostrar/(\d{1,2})/$',  gt_patients_views. ), #detalle turno especifico
-
+    (r'^pacientes/turnos/mostrar/(\d{1,2})/$',  gt_patients_views.patient_show_turn_detail ), #detalle turno especifico
+    (r'^pacientes/turnos/imprimir/(\d{1,2})/$',  gt_patients_views.patient_turn_pdf),
 
     #mensajes internos
     (r'^mensajes/redactar', gt_messages_views.send_message),

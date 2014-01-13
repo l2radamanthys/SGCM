@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block style %}
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
+{% endblock %}    
+    
+{% block contenido %}
+    <br />
+    <br />
+    <div class="fancy-form-white" style="text-align: left; width: 450px; margin: 0 auto;">
+            <table>
+                <tr>
+                    <td colspan="2">
+                    <h2>Comprobante Turno Solicitado</h2>
+                    <br />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tbl-label">Paciente:</td>
+                    <td>{{ turn.patient.first_name }} {{ turn.patient.last_name }}</td>
+                </tr>
+                <tr>
+                    <td class="tbl-label">Medico:</td>
+                    <td>{{ turn.medic.first_name }} {{ turn.medic.last_name }}</td>
+                </tr>
+                <tr>
+                    <td class="tbl-label">Fecha:</td>
+                    <td>{{ turn.day.date }}</td>
+                </tr>
+                <tr>
+                    <td class="tbl-label">Numero de Orden:</td>
+                    <td>{{ turn.number }}</td>
+                </tr>
+                <tr>
+                    <td class="tbl-label">Hora Inicio:</td>
+                    <td>{{ turn.start }}</td>
+                </tr>
+                <tr>
+                    <td class="tbl-label">Hora Fin:</td>
+                    <td>{{ turn.end }}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                    <br />
+                    <p>Se recomienda que asista 20 minutos antes del horario acordado, para evitar inconvenientes.</p>
+                    <br />
+                    </td>
+                </tr>
+            </table>
+        </div>
+  
+        <br />   
+        <div style="text-align:center">
+            <a class="grad-button-blue" href="/pacientes/turnos/imprimir/{{ turn.id }}/">Imprimir</a>
+        </div>
+        
+{% endblock %}
