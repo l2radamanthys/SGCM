@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block style %}
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+{% endblock %}    
+    
+{% block contenido %}
+    <br />
+    <br />
+
+{% if show_turn %}
+        <div class="fancy-form-white" style="text-align: left; width: 450px; margin: 0 auto;">
+                <table>
+                    <tr>
+                        <td colspan="2">
+                        <h2>Comprobante Turno</h2>
+                        <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="tbl-label">Paciente:</td>
+                        <td>{{ turn.patient.first_name }} {{ turn.patient.last_name }}</td>
+                    </tr>
+                    <tr>
+                        <td class="tbl-label">Medico:</td>
+                        <td>{{ turn.medic.first_name }} {{ turn.medic.last_name }}</td>
+                    </tr>
+                    <tr>
+                        <td class="tbl-label">Fecha:</td>
+                        <td>{{ turn.day.date }}</td>
+                    </tr>
+                    <tr>
+                        <td class="tbl-label">Numero de Orden:</td>
+                        <td>{{ turn.number }}</td>
+                    </tr>
+                    <tr>
+                        <td class="tbl-label">Hora Inicio:</td>
+                        <td>{{ turn.start }}</td>
+                    </tr>
+                    <tr>
+                        <td class="tbl-label">Hora Fin:</td>
+                        <td>{{ turn.end }}</td>
+                    </tr>
+                </table>
+            </div>
+
+           <br />
+        
+            <form action="" method="post">
+                <input type="hidden" name="q" value="1" />
+                <div style="text-align:center">
+                    <p>¿Desea cancelar el turno?</p><br />
+                    
+                    <input type="submit" class="grad-button-blue" value="Si" />
+                    <a href="/pacientes/turnos/listado/"  class="grad-button-blue">No</a>
+                </div>
+            </form>
+{%  else %}
+    <p class="info">El Turno fue cancelado con Exito</p>
+    <div style="text-align:center">
+        <br />        
+        <a href="/pacientes/turnos/listado/"  class="grad-button-blue">Continuar</a>
+    </div>
+{% endif %}        
+        
+{% endblock %}

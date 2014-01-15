@@ -133,6 +133,8 @@ INSTALLED_APPS = (
 
     'django_extensions', #no hay forma de hacerlo funcar en win a pygraphivs
     'easy_thumbnails',  #generar thumbnails de las imagenes
+    'django_cron',  #tareas automaticas
+
 
     #'SGCM.GestionTurnos',
     'GestionTurnos',

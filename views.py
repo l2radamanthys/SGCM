@@ -151,3 +151,29 @@ def my_info(request):
     else:
         path = request.META['PATH_INFO']
         return HttpResponseRedirect("/restricted-access%s" %path)
+
+
+
+def change_my_info(request):
+    pass
+
+
+def change_my_avatar(request):
+    mi_template = get_template('cambiar-mi-avatar.html')
+    dict = generate_base_keys(request)
+
+    if request.user.is_authenticated():
+
+        dict['show_form'] = True
+        if request.method == "POST":
+            pass
+
+        else:
+            pass
+
+        html_cont = mi_template.render(Context(dict))
+        return HttpResponse(html_cont)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)

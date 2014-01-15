@@ -12,9 +12,13 @@
 
     #custom-tbl {
         margin: 0 auto;
-        width: 600px;
+        width: 800px;
         background-color: #F2F2F2;
-        font-size: 12px;
+        font-size: 11pt;
+    }
+
+    #custom-tbl strong {
+        color: #333;
     }
 
     #custom-tbl td {
@@ -22,10 +26,10 @@
     }
 
     #custom-tbl h3 {
-        color: #333;
-        background-color: #E4E4E4;
+        /*color: #333;*/
+        /*background-color: #E4E4E4;*/
         padding: 5px 15px;
-        font-size: 16px;
+        font-size: 16pt;
     }
 
     </style>
@@ -36,14 +40,19 @@
     <br />
     <div style="text-align: right; width:600px;margin: 0 auto;">
         <a href="" title="Modificar Datos" class="grad-button-blue">Modificar Datos</a>
+        <a href="" title="Modificar Datos" class="grad-button-blue">Cambiar Contraseña</a>
+        <a href="" title="Modificar Datos" class="grad-button-blue">Cambiar Avatar</a>
     </div>
     <br />
     <table  id="custom-tbl">
         <tr>
-            <td colspan="2"><h3>Datos de Cuenta</h3></td>
+            <td colspan="2">
+                <h3>Datos de Cuenta</h3>
+                <br />
+            </td>
         </tr>
         <tr>
-            <td style="width:150px;"><strong>Email:</strong></td>
+            <td style="width:200px;"><strong>Email:</strong></td>
             <td> {{ user.email }}</td>
         </tr>
         <tr>
@@ -56,7 +65,11 @@
         </tr>
 
         <tr>
-            <td colspan="2"><br /><h3>Datos Personales</h3></td>
+            <td colspan="2">
+                <br />
+                <h3>Datos Personales</h3>
+                <br />
+                </td>
         </tr>
         <tr>
             <td> <strong>Apellido y Nombre: </strong></td>
@@ -79,8 +92,16 @@
             <td> {{ user_data.state }}</td>
         </tr>
         <tr>
-            <td><strong>Foto:</strong></td>
-            <td><br /><img src="{% thumbnail user_data.photo 350x350 %}"></td>
+            <td>
+                <br />
+                <h3>Foto:</h3>
+                <br />
+            </td>
+            <td><br />
+
+                <img src="{% thumbnail user_data.photo 350x350 %}">
+
+            </td>
         </tr>
         <tr>
             <td colspan="2"><br /><h3></h3></td>

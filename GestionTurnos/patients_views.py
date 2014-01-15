@@ -490,9 +490,18 @@ def patient_show_turn_request(request):
     mi_template = get_template('Patients/GestionTurnos/show-turns-request.html')
     dict = generate_base_keys(request)
 
+    #como el scheduler de tareas no funciona lo ejecuto manual por el momento
+    import cron
+    _cron = cron.UpdateTurnStatus()
+    _cron.job()
+
     if True:
         user = request.user
-        dict['turns'] = Turn.objects.filter(patient=user).order_by('day__date')
+        t_stat = [1,2,3,4,5]
+        #status = 0 turno pendiente
+        dict['p_turns'] = Turn.objects.filter(patient=user, status=0).order_by('day__date')
+        dict['c_turns'] = Turn.objects.filter(patient=user, status__in=t_stat).order_by('day__date')
+
 
         html_cont = mi_template.render(Context(dict))
         return HttpResponse(html_cont)
@@ -526,6 +535,8 @@ def patient_show_turn_detail(request, turn_id):
 
 
 def patient_turn_pdf(request, turn_id):
+    """
+    """
     #mi_template = get_template('Patients/GestionTurnos/show-turn-detail.html')
     #dict = generate_base_keys(request)
     if True:
@@ -542,6 +553,37 @@ def patient_turn_pdf(request, turn_id):
         import reports_templates as report
         report.generate_turn(response, turn)
         return response
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+
+
+def patient_turn_cancel(request, turn_id):
+    """
+        Vista para cancelar los turnos pendientes.
+    """
+    mi_template = get_template('Patients/GestionTurnos/cancel-turn.html')
+    dict = generate_base_keys(request)
+    if True:
+        user = request.user
+        try:
+            turn = Turn.objects.get(id=turn_id, patient=request.user)
+
+        except:
+            path = request.META['PATH_INFO']
+            return HttpResponseRedirect("/restricted-access%s" %path)
+
+        dict['show_turn'] = True
+
+        if request.method == "POST":
+            dict['show_turn'] = False
+            turn.status = 3 #cancelado paciente
+            turn.save()
+
+        html_cont = mi_template.render(Context(dict))
+        return HttpResponse(html_cont)
 
     else:
         path = request.META['PATH_INFO']

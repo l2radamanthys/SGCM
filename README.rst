@@ -12,3 +12,5 @@ Requeriments
     
     - easy_thumbnails
     - django_extensions
+    - ReporLab
+    - django_cron (inclido en el proyecto)

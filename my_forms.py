@@ -33,3 +33,11 @@ class ChangePasswordForm(forms.Form):
 
         if password != re_password:
             raise forms.ValidationError("Error las contrasenias no coinciden")
+
+
+
+class ChangeAvatarForm(forms.Form):
+    photo = forms.ImageField(
+        label="Foto",
+        required = False
+    )

@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% load thumbnail %}
+
+{% block style %}
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+{% endblock %}
+
+{% block contenido %}
+    <br />
+    <h2>Cambiar Avatar</h2>
+    <br />
+
+    {% if show_form %}
+        <div class="fancy-form-white" style="width: 550px; margin: 0 auto;">
+            <form action="." method="POST" enctype="multipart/form-data">
+                <table style="width: 550px; margin: 0 auto;">
+                <tr>
+                    <td><strong>Avatar Actual:</strong></td>
+                    <td>
+                        <div style="text-align: center">
+                        {% if user_data.photo %}
+                            <img src="{% thumbnail user_data.photo 350x350 %}">
+                        {% else %}
+                            <img src="/media/images/no-avatar.png">
+                        {% endif %}
+                        </div>
+                        <br />
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Nuevo Avatar:</strong></td>
+                    <td><input type="file" name="image"/>
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                    <div style="text-align: center">
+                    <br />                                          
+                    <input type="submit" value="Actualizar" class="grad-button-blue"/>
+                    </div>
+                    </td>                    
+                </tr>
+                    
+                
+            </form>    
+        </div>
+    {% else %}
+
+    {% endif %}
+{% endblock %}

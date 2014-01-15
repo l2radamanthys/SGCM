@@ -5,7 +5,6 @@ from django.conf.urls.defaults import *
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 
-admin.autodiscover()
 
 from settings import MEDIA_ROOT
 import views as base_views
@@ -18,6 +17,12 @@ import GestionTurnos.patients_views as gt_patients_views
 #historia clinica
 import HistoriaClinica.medics_views as hc_medics_views
 
+#django tareas programadas
+import django_cron
+django_cron.autodiscover()
+
+#habilitar el administrado
+admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
@@ -46,6 +51,7 @@ urlpatterns = patterns('',
     (r'^activar-usuario/(.+)/(.+)/$', gt_patients_views.patient_activate),
     (r'^activar-usuario/$', gt_patients_views.patient_activate),
     (r'^mis-datos/$', base_views.my_info),
+    (r'^cambiar-avatar/$', base_views.change_my_avatar),
 
     ## - Gestion de Turnos Views - ##
 
@@ -82,7 +88,9 @@ urlpatterns = patterns('',
     (r'^medicos/turnos/agregar/(\d{1,2})/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_patients_views.patient_new_turn),
     (r'^pacientes/turnos/listado/$',  gt_patients_views.patient_show_turn_request), #mostrar estado turnos solicitados
     (r'^pacientes/turnos/mostrar/(\d{1,2})/$',  gt_patients_views.patient_show_turn_detail ), #detalle turno especifico
-    (r'^pacientes/turnos/imprimir/(\d{1,2})/$',  gt_patients_views.patient_turn_pdf),
+    (r'^pacientes/turnos/cancelar/(\d{1,2})/$',  gt_patients_views.patient_turn_cancel), #cancelar turno
+    (r'^pacientes/turnos/imprimir/(\d{1,2})/$',  gt_patients_views.patient_turn_pdf), #imprimir comprobante turno
+
 
     #mensajes internos
     (r'^mensajes/redactar', gt_messages_views.send_message),
