@@ -1,11 +1,13 @@
 paciente
-	- mostrar detalle turno
-	- cancelar turno
+	- mostrar detalle turno  [OK]
+	- imprimir comprobante turno [OK]
+	- cancelar turno [OK]
 
 -general 
 	- listar mensajes enviados
 	- mostrar mensaje enviado
 	- modificar datos personales
+	- cancelar turnos vencidos [OK] #no probado 
 
 -medicos
 	-GT

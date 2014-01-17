@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% load thumbnail %}
+
+{% block style %}
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+{% endblock %}
+
+
+{% block contenido %}
+    <br />
+    <h2>Modificar mis Datos Personales</h2>
+    <br />
+
+    {% if show_form %}
+    <div class="fancy-form-white" style="width: 650px; margin: 0 auto;">
+        <form action="." method="POST" enctype="multipart/form-data">
+        <table style="margin: 0 auto; width:600px;">
+
+            <tr>
+                <td>{{ form.type_doc.label }}</td>
+                <td>{{ form.type_doc }}</td>
+            </tr>
+
+            <tr>
+                <td>{{ form.nro_doc.label }}</td>
+                <td>{{ form.nro_doc }}</td>
+            </tr>
+
+            <tr>
+                <td>{{ form.matricula.label }}</td>
+                <td>{{ form.matricula }}</td>
+            </tr>
+
+
+            <tr>
+                <td>{{ form.birth_date.label }}</td>
+                <td>{{ form.birth_date }}</td>
+            </tr>
+
+            <tr>
+                <td colspan="2" style="text-align: center">
+                <br />
+                <input type="submit" class="grad-button-blue" value="Actualizar"  />
+                <a href="/mis-datos/" class="grad-button-blue">Atras</a>
+                </td>
+            </tr>
+        </tablet>
+        </form>
+    </div>    
+    {% endif %}
+    
+{% endblock %}

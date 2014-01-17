@@ -38,10 +38,10 @@
     <br />
     <h2>Mis Datos</h2>
     <br />
-    <div style="text-align: right; width:600px;margin: 0 auto;">
-        <a href="" title="Modificar Datos" class="grad-button-blue">Modificar Datos</a>
-        <a href="" title="Modificar Datos" class="grad-button-blue">Cambiar Contraseña</a>
-        <a href="" title="Modificar Datos" class="grad-button-blue">Cambiar Avatar</a>
+    <div style="text-align: right; width:800px;margin: 0 auto;">
+        <a href="/modificar-datos-personales/" title="Modificar Datos" class="grad-button-blue">Modificar Datos Personales</a>
+        <a href="/change-password/" title="Modificar Datos" class="grad-button-blue">Cambiar Contraseña</a>
+        <a href="/cambiar-avatar/" title="Modificar Datos" class="grad-button-blue">Cambiar Avatar</a>
     </div>
     <br />
     <table  id="custom-tbl">
@@ -52,15 +52,15 @@
             </td>
         </tr>
         <tr>
-            <td style="width:200px;"><strong>Email:</strong></td>
+            <td style="width:200px; padding-left: 40px;"><strong>Email:</strong></td>
             <td> {{ user.email }}</td>
         </tr>
         <tr>
-            <td> <strong>Usuario:</strong></td>
+            <td style="width:200px; padding-left: 40px;"> <strong>Usuario:</strong></td>
             <td> {{ user.username }}</td>
         </tr>
         <tr>
-            <td> <strong>Tipo Usuario</strong></td>
+            <td style="width:200px; padding-left: 40px;"> <strong>Tipo Usuario</strong></td>
             <td> {{ login_user_role }}</td> {# extraido de la general #}
         </tr>
 
@@ -72,35 +72,55 @@
                 </td>
         </tr>
         <tr>
-            <td> <strong>Apellido y Nombre: </strong></td>
+            <td style="width:200px; padding-left: 40px;"> <strong>Apellido y Nombre: </strong></td>
             <td> {{ user.last_name }}, {{ user.first_name }}</td>
         </tr>
         <tr>
-            <td> <strong>Documento:</strong></td>
+            <td style="width:200px; padding-left: 40px;"> <strong>Documento:</strong></td>
             <td> {{ user_data.type_doc }} {{ user_data.nro_doc }}</td>
         </tr>
+        {% if is_medic %}
         <tr>
-            <td> <strong>Direccion:</strong></td>
+            <td style="width:200px; padding-left: 40px;"> <strong>Matricula Profesional:</strong></td>
+            <td>{{ user_data.matricula }}</td>
+        </tr>
+        {% endif %}
+        <tr>
+            <td style="width:200px; padding-left: 40px;"> <strong>Fecha de Nacimiento: </strong></td>
+            <td> {{ user_data.birth_date  }}</td>
+        </tr>        
+        <tr>
+            <td style="width:200px; padding-left: 40px;"> <strong>Sexo: </strong></td>
+            <td> {{ user_data.get_gender_display }}</td>
+        </tr>
+        <tr>
+            <td style="width:200px; padding-left: 40px;"> <strong>Telefono: </strong></td>
+            <td> {{ user_data.phone }}</td>
+        </tr>        
+        <tr>
+            <td style="width:200px; padding-left: 40px;"> <strong>Direccion:</strong></td>
             <td> {{ user_data.address }}</td>
         </tr>
         <tr>
-            <td> <strong>Ciudad:</strong></td>
+            <td style="width:200px; padding-left: 40px;"> <strong>Ciudad:</strong></td>
             <td> {{ user_data.city }}</td>
         </tr>
         <tr>
-            <td> <strong>Provincia: </strong></td>
+            <td style="width:200px; padding-left: 40px;"> <strong>Provincia: </strong></td>
             <td> {{ user_data.state }}</td>
         </tr>
         <tr>
-            <td>
+            <td colspan="2">
                 <br />
                 <h3>Foto:</h3>
                 <br />
             </td>
-            <td><br />
-
+        </tr>
+        <tr>
+            <td colspan="2">
+            <div style="text-align: center">
                 <img src="{% thumbnail user_data.photo 350x350 %}">
-
+            </div>    
             </td>
         </tr>
         <tr>

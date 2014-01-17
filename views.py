@@ -143,6 +143,8 @@ def my_info(request):
     dict = generate_base_keys(request)
 
     if request.user.is_authenticated():
+        #para mostrar matricula
+        dict['is_medic'] = (request.user.groups.all()[0].name == "Medico")
         dict['user'] = request.user
         dict['user_data'] = UserInformation.objects.get(user__username=request.user.username)
         html_cont = mi_template.render(Context(dict))
@@ -155,7 +157,45 @@ def my_info(request):
 
 
 def change_my_info(request):
-    pass
+    mi_template = get_template('modificar-mis-datos.html')
+    dict = generate_base_keys(request)
+
+    dict['show_errors'] = False
+    dict['show_form'] = False
+    if request.user.is_authenticated():
+        if request.method == "POST" and False:
+            form = my_forms.ChangeUserInformationForm(request.POST)
+            if form.is_valid():
+                pass
+            else:
+                dict['show_errors'] = True
+                dict['form'] = form
+
+        else:
+            user_data = UserInformation.objects.get(user__username=request.user.username)
+            form_data = {
+                'type_doc': user_data.type_doc,
+                'nro_doc': user_data.nro_doc,
+                'gender': user_data.gender,
+                'phone': user_data.phone,
+                'address': user_data.address,
+                'city': user_data.city,
+                'state': user_data.state,
+                'birth_date': user_data.birth_date,
+                'matricula': user_data.matricula,
+            }
+
+            dict['form'] = my_forms.ChangeUserInformationForm(initial=form_data)
+            dict['show_form'] = True
+
+
+        html_cont = mi_template.render(Context(dict))
+        return HttpResponse(html_cont)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
 
 
 def change_my_avatar(request):
@@ -163,13 +203,21 @@ def change_my_avatar(request):
     dict = generate_base_keys(request)
 
     if request.user.is_authenticated():
-
         dict['show_form'] = True
+        info = UserInformation.objects.get(user=request.user)
+        dict['user_data'] = info
         if request.method == "POST":
-            pass
+            form = my_forms.ChangeAvatarForm(request.POST, request.FILES)
+            if form.is_valid():
+                info.photo = form.cleaned_data['photo']
+                info.save()
+                return HttpResponseRedirect("/mis-datos/")
+            else:
+                print "Error"
 
         else:
-            pass
+            dict['form'] = my_forms.ChangeAvatarForm(auto_id=False)
+
 
         html_cont = mi_template.render(Context(dict))
         return HttpResponse(html_cont)

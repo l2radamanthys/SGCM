@@ -52,6 +52,7 @@ urlpatterns = patterns('',
     (r'^activar-usuario/$', gt_patients_views.patient_activate),
     (r'^mis-datos/$', base_views.my_info),
     (r'^cambiar-avatar/$', base_views.change_my_avatar),
+    (r'^modificar-datos-personales/$', base_views.change_my_info),
 
     ## - Gestion de Turnos Views - ##
 

@@ -5,6 +5,10 @@
 from django import forms
 
 
+from GestionTurnos.models import UserInformation
+
+
+
 class ChangePasswordForm(forms.Form):
     old_password = forms.CharField(
         label="Contrasenia Anterior (*):",
@@ -38,6 +42,32 @@ class ChangePasswordForm(forms.Form):
 
 class ChangeAvatarForm(forms.Form):
     photo = forms.ImageField(
-        label="Foto",
+        label="Avatar",
         required = False
     )
+
+
+
+class ChangeUserInformationForm(forms.Form):
+    class Meta:
+        model = UserInformation
+        fields = (
+            'type_doc',
+            'nro_doc',
+            'gender',
+            'phone',
+            'address',
+            'city',
+            'state',
+            'birth_date',
+            'matricula',
+        )
+
+
+        #def __init__(self, *args, **kwargs):
+            #"""
+            #Todo esto de redefinir el constructor para
+            #que el campo matricula no sea obligatorio
+            #"""
+            #super(ChangeUserInformationForm, self).__init__(*args, **kwargs)
+            #self.fields['matricula'].required = False
