@@ -1,0 +1,184 @@
+﻿Implementando el Servidor de Produccion
+
+Nota: Esta guia de instalacion esta basada sobre que se cumplen las siguientes condiciones:
+
+- Sistema Operativo: Microsoft Windows 7 
+- Instalado Apache 2.2.22 (Instalado como parte de WAMP Server 2.2 32 bits) [7]
+- Instalado ActivePython - Python 2.7.2 - 32 bits [8]
+- PosgreSQL **
+- Django **
+- libreria psycopg2 **
+
+No se tendra mucho en cuenta las Instalacion de ActivePython, WAMP y PosgreSQL por considerarse informacion imnecesaria ya que se instalan de manera similar a cualquier otra aplicacion de MS Windows (R).
+
+-ActivePython 
+Instalar con permisos para todos los usuarios.
+
+-WAMP 
+Asegurese de instalar la version de 32 bits o sino tendra problemas mas adelante. la contraseña de MySQL no interesa por que usaremos Posgre.
+
+-Posgre
+**
+
+1- Instalando mod_wsgi
+
+1.1- ¿Que es mod_wsgi?
+
+El objectivo de mod_wsgi es implementar un simple modulo que puede alvergar cualquier aplicacion de Python que soporta la Python WSGI interfaz. Para su uso de alojamiento en los sitios de alto rendimiento para produccion web asi tambien como sitios personales que se ejecutan en un servidor de alojamiento web, mas info en [1].
+
+1.2- WSGI
+
+WSGI [3] son las siglas de Web Server Gateway Interface, Dicha especificacion para Servidores Web y Aplicaciones de Servidor se comuniquen mediante aplicaciones web. Es un estandar de Python el cual se describe con detalle en la PEP 333 [4]
+
+1- Descargando mod_wsgi
+
+la ultima version de mod_wsgi se puede descargar desde su pagina oficial [1]. lo que descargaran sera un archivo similar a "mod_wsgi-win32-ap22py27-3.3.so" la version que descarguen de mod_wsgi depende como se ve, de la plataforma asi como de la version de python que correrar en el servidor. luego por cuestiones de practicidad renombraremos el archivo de la siguiente manera: 	
+
+	 mod_wsgi-win32-ap22py27-3.3.so -> mod_wsgi.so
+
+Realizado dicho cambio copiamos el modulo a la siguiente carpeta:
+
+WAMP_FOLDER\bin\apache2.2.22\modules
+
+Donde WAMP_FOLDER vendria a ser el directorio donde tenemos la instalacion de WAMP en mi caso es:
+
+F:\wamp 
+
+por lo que la ruta completa quedaria de la siguiente manera:
+
+F:\wamp\bin\apache\apache2.2.22\modules
+
+2- Cargando el Modulo en Apache
+
+Una vez que el módulo de Apache ha sido instalado en el directorio de módulos de su instalación de Apache, todavía es necesario configurar Apache para cargar el módulo en realidad. abrimos el archivo "httpd.conf" y agregamos la siguiente linea en el mismo punto donde se cargan el resto de los modulos.
+
+LoadModule wsgi_module modules/mod_wsgi.so
+
+Nota: El archivo httpd.conf esta en la siguiente ruta en el caso de mi instalacion:
+ 
+F:\wamp\bin\apache\apache2.2.22\conf\httpd.conf
+
+con todo esto echo solo tenemos que reiniciar el servidor Apache, en nuestro caso como tenemos instalado Wamp hacemos clic en el icono con forma de [W] en la barra de notificaciones luego las opciones  Apache->Service->Reiniciar Servicio. Si todo salio bien despues de un momento el icono con forma de [W] en la barra de notificaciones se pondra de color verde, lo que significa que el modulo cargo correctamente.
+
+Para mas informacion sobre instalacion del modulo_wsgi en otros Sistemas Operativo puede consultar [6].
+
+
+Configurando mod_wsgi
+
+Bueno Ahora solo tenemos que crear un alias (para mayor informacion de como crear alias en Apache consulte [9]) para nuestra carpeta donde colocaremos en mi caso la carpeta destino sera:
+
+	D:/Proyectos/wsgi_app/
+
+y el alias 
+
+	/wsgi/ 
+
+por lo que tendremos que agregar las siguientes lineas al final del archivo httpd.conf de apache.
+
+
+Alias /wsgi/ "D:/Proyectos/wsgi_app/" 
+WSGIScriptAlias /wsgi "D:/Proyectos/wsgi_app/handle.wsgi" 
+
+<Directory "D:/Proyectos/wsgi_app/">
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride all
+    Order allow,deny
+    Allow from all
+</Directory>
+
+
+Hay un número de maneras en que una aplicación WSGI organizada por mod_wsgi puede montarse contra una URL específica. Estos métodos son similares a cómo se podría configurar las aplicaciones CGI tradicionales.
+
+El principal enfoque implica declarar explícitamente en el archivo de configuración principal de Apache el punto de montaje URL y una referencia al archivo de comandos de aplicaciones WSGI. En este caso, el mapeo se fija, con cambios sólo ser capaz de ser hecho mediante la modificación de la configuración principal de Apache y reiniciar Apache.
+
+Al utilizar mod_cgi para alojar aplicaciones CGI, esto se haría mediante la directiva ScriptAlias. Para mod_wsgi, la directiva en su lugar se llama WSGIScriptAlias.
+
+WSGIScriptAlias /wsgi "D:/Proyectos/wsgi_app/handle.wsgi" 
+
+Esta directiva sólo puede aparecer en los principales archivos de configuración de Apache. La directiva se puede utilizar en el ámbito del servidor, pero normalmente se coloca en el contenedor VirtualHost para un sitio en particular. No se puede utilizar en cualquiera de las directivas de contenedores ubicación, directorios o archivos, ni puede ser utilizada dentro de un archivo ". Htaccess"
+
+El primer argumento de la directiva WSGIScriptAlias ​​debe ser el punto de montaje URL para la aplicación WSGI. En este caso, la URL no debe contener una barra diagonal. La única excepción a esto es si la aplicación WSGI es para ser montado en la raíz del servidor web, en cuyo caso '/' sería utilizado.
+
+El segundo argumento de la directiva WSGIScriptAlias ​​debe ser una ruta absoluta para el archivo de comandos de aplicaciones WSGI. Es en este archivo que la muestra de código de la aplicación WSGI debe colocarse.
+
+Tenga en cuenta que una ruta absoluta debe ser utilizado para el archivo de comandos de aplicaciones WSGI suministrado como segundo argumento. No es posible especificar una aplicación por sí sola Python nombre de módulo. Una ruta de acceso completa se utiliza para una serie de razones, la principal de las cuales por lo que todos los controles de acceso de Apache todavía pueden aplicarse para indicar que en realidad puede acceder a la aplicación WSGI.
+
+Porque se aplicarán los controles de acceso de Apache, si la aplicación WSGI se encuentra fuera de los directorios que ya están configurados para ser accesible a Apache, habrá que decirle a Apache que los archivos dentro de ese directorio se pueden utilizar. Para ello se debe utilizar la directiva Directory.
+
+Puede consultar [6] si desea explorar otras opciones de configuracion.
+
+Hasta aqui tenemos mod_wsgi y nuestro directorio listo, ahora probaremos que todo va bien para ello dentro del directorio crearemos un archivo llamado "handle.wsgi" 
+que tendra el siguiente contenido.
+
+def application(environ, start_response):
+    status = '200 OK'
+    output = 'Hello World!'
+    response_headers = [('Content-type', 'text/plain'), ('Content-Length', str(len(output)))]
+    start_response(status, response_headers)
+    return [output]
+
+Reseteamos el servicio de Apache y si todo funcion deberiamos poder acceder a 
+
+127.0.0.1/wsgi 
+
+la cual nos mostraria el mensaje 
+
+Hello World!.
+
+Colocando nuestro Proyecto en Django
+
+Hasta el paso anterior tenemos un servidor que tiene activado mod_wsgi y puede ejecutar archivos de python. Entonces ahora para colocar nuestros proyectos de Django regresaremos al archivo httpd.conf y vamos a modificar el directorio que creamos para que quede asi
+
+WSGIScriptAlias / "D:/Proyectos/wsgi_app/SGCM/apache/django.wsgi" 
+Alias /wsgi/ "D:/Proyectos/wsgi_app/" 
+
+<Directory "D:/Proyectos/wsgi_app/">
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride all
+    Order allow,deny
+    Allow from all
+</Directory>
+
+Luego copiamos la carpeta del Proyecto SGCM al directorio "D:/Proyectos/wsgi_app/" por los que no quedaria como "D:/Proyectos/wsgi_app/SGCM/" dentro de ella crearemos un directorio llamado /apache en el cual copiaremos el archivo django.wsgi con el siguiente contenido:
+
+# -*- coding: utf-8 -*-
+
+
+
+
+import os, sys
+import django.core.handlers.wsgi
+
+
+
+sys.path.append('D:/Proyectos/wsgi_app/SGCM')
+
+sys.path.append('D:/Proyectos/wsgi_app')
+
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+
+
+
+
+application = django.core.handlers.wsgi.WSGIHandler()
+
+
+Con esto nuestro servidor de aplicacion ya deberia funcionar aunque como veran no se cargan los archivos estaticos como imagenes y hojas de estilo por lo que necesitamos agregarlo.
+
+
+
+Por defecto
+
+
+ENLACES
+
+1. https://code.google.com/p/modwsgi/
+2. https://code.google.com/p/modwsgi/wiki/QuickConfigurationGuide
+3. http://wsgi.readthedocs.org/en/latest/
+4. http://www.python.org/dev/peps/pep-0333/
+5. https://code.google.com/p/modwsgi/wiki/DownloadTheSoftware?tm=2
+6. https://code.google.com/p/modwsgi/wiki/QuickInstallationGuide
+7. http://www.wampserver.com/en/
+8. http://www.activestate.com/activepython/downloads
+9. http://httpd.apache.org/docs/2.2/urlmapping.html
