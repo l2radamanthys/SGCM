@@ -40,6 +40,7 @@ from verbose import *
     #return HttpResponse(html_cont)
 
 
+## Imagenes
 
 def medic_add_patients_images(request, pac_username):
     """
@@ -133,6 +134,8 @@ def medic_show_patients_images(request, pac_username):
     return HttpResponse(html_cont)
 
 
+## Antecedentes Perinatales
+
 
 def medic_view_patient_perinatal_antecedents(request, pac_username):
     """
@@ -225,6 +228,7 @@ def medic_edit_patient_perinatal_antecedents(request, pac_username):
     return HttpResponse(html_cont)
 
 
+## Habitos Toxicos
 
 def medic_view_patient_toxic_habits(request, pac_username):
     """
@@ -301,7 +305,7 @@ def medic_edit_patient_toxic_habits(request, pac_username):
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
 
-
+# Examenes Fisico
 
 def medic_list_patient_phisic_exam(request, pac_username):
     mi_template = get_template('Medics/HistoriaClinica/listado-examen-fisico.html')
@@ -422,7 +426,6 @@ def medic_add_patient_phisic_exam(request, pac_username):
     #return HttpResponse(html_cont)
 
 
-
 def medic_del_patient_phisic_exam(request, pac_username):
     #incomplete
     mi_template = get_template('Medics/HistoriaClinica/listado-examen-fisico.html')
@@ -442,6 +445,8 @@ def medic_del_patient_phisic_exam(request, pac_username):
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
 
+
+## Examenes de Cabeza
 
 
 def medic_list_patient_head_exam(request, pac_username):
@@ -546,16 +551,18 @@ def medic_show_patient_head_exam(request, exam_id):
     return HttpResponse(html_cont)
 
 
-def medic_list_patient_files(request, patient):
-    mi_template = get_template('Medics/HistoriaClinica/listado-archivos.html')
-    dict = generate_base_keys(request)
+#def medic_add_patient_prescription(request, patient):
+    #mi_template = get_template('Medics/GestionTurnos/agregar-receta-medica.html')
+    #dict = generate_base_keys(request)
 
-    if True:
-        pass
+    #if True:
+        #pass
 
-    else:
-        path = request.META['PATH_INFO']
-        return HttpResponseRedirect("/restricted-access%s" %path)
+    #else:
+        #path = request.META['PATH_INFO']
+        #return HttpResponseRedirect("/restricted-access%s" %path)
 
-    html_cont = mi_template.render(Context(dict))
-    return HttpResponse(html_cont)
+    #html_cont = mi_template.render(Context(dict))
+    #return HttpResponse(html_cont)
+
+

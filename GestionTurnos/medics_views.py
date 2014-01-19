@@ -998,3 +998,89 @@ def select_date_to_show_turns(request, month=None, year=None):
     else:
         path = request.META['PATH_INFO']
         return HttpResponseRedirect("/restricted-access%s" %path)
+
+
+
+## Recetas Medicas
+
+def medic_list_patient_prescriptions(request, patient):
+    mi_template = get_template('Medics/GestionTurnos/listado-receta-medica.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        dict['pac_username'] = patient
+        pac = User.objects.get(groups__name='Paciente', username=patient)
+        dict['pac'] = pac
+
+
+
+
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def medic_add_patient_prescription(request, id_pm):
+    mi_template = get_template('Medics/GestionTurnos/agregar-receta-medica.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        dict['show_form'] = True
+        dict['show_error'] = False
+        pm = MedicalConsultation.objects.get(id=id_pm)
+        if request.method == "POST":
+            pass
+
+        else:
+            dict['pm'] = pm
+            hoy = datetime.date.today()
+            dict['today'] = hoy.strftime("%d/%m/%Y")
+            venc = hoy + datetime.timedelta(days=30) #por defecto la receta prescrivira en 30 dias
+            form_data = {'expiration_date': venc.strftime("%d/%m/%Y") }
+            form = my_forms.MedicalPrescriptionForm(initial=form_data)
+            dict['form'] = form
+
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def medic_show_patient_prescription(request, patient):
+    mi_template = get_template('Medics/GestionTurnos/listado-archivos.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        pass
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def medic_del_patient_prescription(request, patient):
+    mi_template = get_template('Medics/GestionTurnos/listado-archivos.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        pass
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)

@@ -4,20 +4,37 @@
     <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
     <link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
     <link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
 {% endblock %}
 
 
 {% block contenido %}
 <br />
-<h3>Agregar Consulta Medica</h3>
+<h2>Modificar Datos Consulta Medica</h2>
 <br />
     {% include "Medics/GestionTurnos/modificar-consulta-medica-form.html" %}
 
-<br /><br />
+<br />
     {% autoescape off %}
         {{ custon_messages }}
     {% endautoescape %}
 
- 
+<br />
+<h3>Prescriones Medicas Asociadas</h3>
+
+<br />
+
+
+<div style="text-align: right; width:600px; margin: 0 auto;">
+    <a href="/medicos/agregar/prescripcion-medica/{{ cm.id }}/">Agregar</a>
+</div>
+<br />
+<table class="tbl-round-light" style="width:600px; margin: 0 auto;">
+    <tr>
+        <th>Fecha</th>
+        <th>Medico</th>
+        <th>Principio Activo</th>  
+    </tr>
+</table>
  
 {% endblock %}

@@ -1,0 +1,61 @@
+<div class="fancy-form-white" style="width: 550px; margin: 0 auto;">
+    <form action="" method="POST">
+    <table style="width:500px; margin: 0 auto;">
+        <tr>
+            <td>Medico:</td>
+            <td><strong>{{ pm.medic.last_name }}, {{ pm.medic.first_name }} </strong><br /><br /></td>
+        </tr>
+        
+        <tr>
+            <td>Paciente:</td>
+            <td><strong>{{ pm.patient.last_name }}, {{ pm.patient.first_name }} </strong><br /><br /></td>
+        </tr>
+
+        <tr>
+            <td>Fecha Prescripcion:<br /><br /></td>
+            <td>{{ today }}<br /><br /></td>
+        </tr>
+
+        <tr>
+            <td style="width:150px"> {{ form.expiration_date.label }}:<br /><br /></td>
+            <td><p>{{ form.expiration_date }}</p> <br /></td>
+        </tr>
+        <tr>
+            <td> {{ form.active_principle.label }}:<br /><br /></td>
+            <td>{{ form.active_principle }}
+            <br /><br /></td>
+        </tr>
+        <tr>
+            <td> {{ form.dosage.label }}:</td>
+            <td>{{ form.dosage }}
+            <br /><br /></td>
+        </tr>
+        <tr>
+            <td> {{ form.administration_route.label }}:<br /><br /></td>
+            <td>{{ form.administration_route }}
+            <br /><br /></td>
+        </tr>
+        <tr>
+            <td> {{ form.container_format.label }}:<br /><br /></td>
+            <td>{{ form.container_format }}
+            <br /><br /></td>
+        </tr>
+        <tr>
+            <td> {{ form.posology.label }}:<br /><br /></td>
+            <td>{{ form.posology }}
+            <br /><br /></td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+            <div style="text-align: center;">
+                <input type="submit" class="grad-button-blue" value="Agregar"  />
+                <a href="/medicos/modificar/consulta-medica/{{ pm.id }}/" class="grad-button-blue">Volver</a>
+            </div>  
+            </td>
+        </tr>
+
+    </table>
+    </form>
+ </div>
+

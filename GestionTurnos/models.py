@@ -278,14 +278,14 @@ class MedicalPrescription(models.Model):
         Receta Medica
 
         #Nota: A la hora de mostrar la receta medica debe incluir los datos del
-        #      medico y del paciente.
+        #medico y del paciente.
     """
     med_consulation = models.ForeignKey(MedicalConsultation)
 
-    prescription_date = models.DateField('Fecha Prescripcion')
+    prescription_date = models.DateField('Fecha Prescripcion', auto_now_add=True)
     expiration_date = models.DateField('Fecha Vencimiento')
-    active_principle = models.CharField('Denominacion Principio Activo:',  max_length=30)
+    active_principle = models.CharField('Denominacion Principio Activo',  max_length=30)
     dosage = models.TextField('Dosificacion')
-    administration_route = models.CharField('Dosificacion', max_length=1, default='O', choices=VIA_ADMINISTRACION_CHOICE)
+    administration_route = models.CharField('Administrar por via', max_length=1, default='O', choices=VIA_ADMINISTRACION_CHOICE)
     container_format = models.CharField('Formato de Envase',  max_length=45)
     posology = models.IntegerField('Posologia')

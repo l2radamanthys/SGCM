@@ -48,7 +48,7 @@ class ChangeAvatarForm(forms.Form):
 
 
 
-class ChangeUserInformationForm(forms.Form):
+class ChangeUserInformationForm(forms.ModelForm):
     class Meta:
         model = UserInformation
         fields = (

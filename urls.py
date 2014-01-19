@@ -60,12 +60,19 @@ urlpatterns = patterns('',
     (r'^pacientes/registrar/$', gt_medics_views.patient_register),
     (r'^pacientes/show-info/(.+)/$', gt_medics_views.patient_show_info),
     (r'^pacientes/modificar-datos-basicos/(.+)/$', gt_medics_views.patient_edit_basic_info),
-    (r'^pacientes/mostrar/consultas-medicas/(.+)/$', gt_medics_views.patient_show_medical_consultation),
 
+    ## consultas medicas
+    (r'^pacientes/mostrar/consultas-medicas/(.+)/$', gt_medics_views.patient_show_medical_consultation),
     (r'^medicos/agregar/consulta-medica/(.+)/$', gt_medics_views.my_add_medical_consultation),
     (r'^medicos/mostrar/consulta-medica/(\d{1,2})/$', gt_medics_views.my_show_medical_consultation),
     (r'^medicos/modificar/consulta-medica/(\d{1,2})/$', gt_medics_views.my_edit_medical_consultation),
     (r'^medicos/borrar/consulta-medica/(\d{1,2})/$', gt_medics_views.my_delete_medical_consultation),
+
+    ## recetas
+     (r'^medicos/listado/prescripcion-medica/(.+)/$', gt_medics_views.medic_list_patient_prescriptions),
+     (r'^medicos/agregar/prescripcion-medica/(\d{1,2})/$', gt_medics_views.medic_add_patient_prescription),
+     #(r'^medicos/mostrar/consulta-medica/(\d{1,2})/$', gt_medics_views.medic_list_patient_prescriptions),
+     #(r'^medicos/borrar/consulta-medica/(\d{1,2})/$', gt_medics_views.medic_list_patient_prescriptions),
 
     (r'^medicos/mostrar/mis-horarios-atencion/$', gt_medics_views.my_medic_show_business_hours),
     (r'^medicos/agregar/mi-horario-atencion/$', gt_medics_views.my_medic_add_business_hours),

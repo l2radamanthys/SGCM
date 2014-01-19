@@ -119,11 +119,6 @@ class ImageForm(forms.ModelForm):
 
 
 
-class FileForm(forms.ModelForm):
-    pass
-
-
-
 class HeadExamForm(forms.ModelForm):
     class Meta:
         model = HeadExam

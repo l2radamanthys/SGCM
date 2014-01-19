@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/DatePicker-style.css" />
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript" src="/media/js/DatePicker.js"></script>
+{% endblock %}
+
+{% block contenido %}
+<br />
+<h2>Agregar Prescrion Medica </h2>
+<br />
+    {% if show_form %}
+        {% include "Medics/GestionTurnos/agregar-receta-medica-form.html" %}
+    {% else %}
+    
+        <div class="success">Prescripcion Medica Agregada Exitosamente </div>
+        <br />
+        <br />
+        <div style="text-align: center">
+            <a href="/pacientes/mostrar/consultas-medicas/{{ pac.username }}/" class="grad-button-blue">Continuar</a>
+        </div>
+    {% endif %}
+    
+    {% if show_errors %}
+        <div class="alert" >		
+        {% for field in form %}
+            {{ field.errors }}
+        {% endfor %}
+        
+        {% autoescape off %}
+            {{ custon_errors }}
+        {% endautoescape %}
+        </div> 
+    {% endif %}
+
+
+    <!--Init DatePicker.js Code Definition -->
+    <script type="text/javascript">
+        DatePicker.SetUpElement("id_expiration_date");
+    </script>
+    <!--End DatePicker.js Code Definition -->
+ 
+{% endblock %}

@@ -4,7 +4,9 @@
 
 from django import forms
 
+from GestionTurnos.models import *
 from globals import *
+
 
 
 class RegisterForm(forms.Form):
@@ -240,3 +242,19 @@ class OnlineConsulationForm(forms.Form):
     )
 
 
+
+class MedicalPrescriptionForm(forms.ModelForm):
+
+    class Meta:
+        model = MedicalPrescription
+        exclude = [
+            'med_consulation',
+            'prescription_date',
+        ]
+
+        widgets = {
+            'expiration_date': forms.TextInput(attrs={'class':'edt_c',}),
+            'active_principle': forms.TextInput(attrs={'class':'edt_g',}),
+            'container_format' : forms.TextInput(attrs={'class':'edt_g',}),
+            'posology' : forms.TextInput(attrs={'class':'edt_g',}),
+        }
