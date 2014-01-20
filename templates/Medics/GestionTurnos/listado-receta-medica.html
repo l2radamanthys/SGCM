@@ -17,21 +17,16 @@
 
     <table class="tbl-round-light" style="width:600px; margin: 0 auto;">
         <tr>
-            <th style="width:150px">Fecha</th>
             <th>Medico</th>
-            <th style="width:50px">Eliminar</th>
+            <th style="width:150px">Fecha Prescripcion</th>
+            <th style="width:150px">Fecha Vencimiento</th>
+
         </tr>
-        {% for cm in medicals_consultations %}
+        {% for pm in prescs_medics %}
         <tr>
-            {% if login_username == cm.medic.username %}
-                <td><a href="/medicos/modificar/consulta-medica/{{ cm.id }}/">{{ cm.date }}</a></td>
-                <td><a href="/medicos/modificar/consulta-medica/{{ cm.id }}/">{{ cm.medic.last_name }}, {{ cm.medic.first_name }}</a></td>
-                <td style="text-align: center;"><a href="/medicos/borrar/consulta-medica/{{ cm.id }}/"><img src="/media/images/page_delete.gif" /></a></td>
-            {% else %}
-                <td><a href="/medicos/mostrar/consulta-medica/{{ cm.id }}/">{{ cm.date }}</a></td>
-                <td><a href="/medicos/mostrar/consulta-medica/{{ cm.id }}/">{{ cm.medic.last_name }}, {{ cm.medic.first_name }}</a></td>
-                <td></td>
-            {% endif %}
+                <td><a href="/medicos/mostrar/consulta-medica/{{ pm.id }}/">{{ pm.med_consulation.medic.last_name }}, {{ pm.med_consulation.medic.first_name }}</a></td>
+                <td><a href="/medicos/modificar/consulta-medica/{{ pm.id }}/">{{ pm.prescription_date }}</a></td>
+                <td><a href="/medicos/modificar/consulta-medica/{{ pm.id }}/">{{ pm.expiration_date }}</a></td>
         </tr>
         {% endfor %}
 

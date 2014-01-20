@@ -288,4 +288,4 @@ class MedicalPrescription(models.Model):
     dosage = models.TextField('Dosificacion')
     administration_route = models.CharField('Administrar por via', max_length=1, default='O', choices=VIA_ADMINISTRACION_CHOICE)
     container_format = models.CharField('Formato de Envase',  max_length=45)
-    posology = models.IntegerField('Posologia')
+    posology = models.IntegerField('Dosificacion en mg')

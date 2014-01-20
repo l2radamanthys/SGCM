@@ -70,7 +70,7 @@ paciente
 			-listar
 			-crea
 			-mostrar
-			-borrar
+			-borrar (Cancelada las recetas no se podran borrar)
 			-imprimir
 
 		todos los examenes ¿importar ?

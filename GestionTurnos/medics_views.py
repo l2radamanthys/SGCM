@@ -1012,9 +1012,7 @@ def medic_list_patient_prescriptions(request, patient):
         pac = User.objects.get(groups__name='Paciente', username=patient)
         dict['pac'] = pac
 
-
-
-
+        dict['prescs_medics'] = MedicalPrescription.objects.filter(med_consulation__patient = pac)
 
     else:
         path = request.META['PATH_INFO']
@@ -1030,14 +1028,31 @@ def medic_add_patient_prescription(request, id_pm):
     dict = generate_base_keys(request)
 
     if True:
+        mc = MedicalConsultation.objects.get(id=id_pm)
+        dict['mc'] = mc
         dict['show_form'] = True
-        dict['show_error'] = False
-        pm = MedicalConsultation.objects.get(id=id_pm)
+        dict['show_errors'] = False
+
         if request.method == "POST":
-            pass
+            form = my_forms.MedicalPrescriptionForm(request.POST)
+            if form.is_valid():
+                pm = MedicalPrescription(
+                    med_consulation = mc,
+                    #prescription_date = form.cleaned_data['prescription_date'],
+                    expiration_date = form.cleaned_data['expiration_date'],
+                    active_principle = form.cleaned_data['active_principle'],
+                    dosage = form.cleaned_data['dosage'],
+                    administration_route = form.cleaned_data['administration_route'],
+                    container_format = form.cleaned_data['container_format'],
+                    posology = form.cleaned_data['posology']
+                )
+                pm.save()
+                dict['show_form'] = False
+            else:
+                dict['form'] = form
+                dict['show_errors'] = True
 
         else:
-            dict['pm'] = pm
             hoy = datetime.date.today()
             dict['today'] = hoy.strftime("%d/%m/%Y")
             venc = hoy + datetime.timedelta(days=30) #por defecto la receta prescrivira en 30 dias

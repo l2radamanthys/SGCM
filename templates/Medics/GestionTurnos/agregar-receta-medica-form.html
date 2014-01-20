@@ -3,12 +3,12 @@
     <table style="width:500px; margin: 0 auto;">
         <tr>
             <td>Medico:</td>
-            <td><strong>{{ pm.medic.last_name }}, {{ pm.medic.first_name }} </strong><br /><br /></td>
+            <td><strong>{{ mc.medic.last_name }}, {{ mc.medic.first_name }} </strong><br /><br /></td>
         </tr>
-        
+
         <tr>
             <td>Paciente:</td>
-            <td><strong>{{ pm.patient.last_name }}, {{ pm.patient.first_name }} </strong><br /><br /></td>
+            <td><strong>{{ mc.patient.last_name }}, {{ mc.patient.first_name }} </strong><br /><br /></td>
         </tr>
 
         <tr>
@@ -50,8 +50,8 @@
             <td colspan="2">
             <div style="text-align: center;">
                 <input type="submit" class="grad-button-blue" value="Agregar"  />
-                <a href="/medicos/modificar/consulta-medica/{{ pm.id }}/" class="grad-button-blue">Volver</a>
-            </div>  
+                <a href="/medicos/modificar/consulta-medica/{{ mc.id }}/" class="grad-button-blue">Volver</a>
+            </div>
             </td>
         </tr>
 
