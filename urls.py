@@ -71,7 +71,9 @@ urlpatterns = patterns('',
     ## recetas
      (r'^medicos/listado/prescripcion-medica/(.+)/$', gt_medics_views.medic_list_patient_prescriptions),
      (r'^medicos/agregar/prescripcion-medica/(\d{1,2})/$', gt_medics_views.medic_add_patient_prescription),
-     #(r'^medicos/mostrar/consulta-medica/(\d{1,2})/$', gt_medics_views.medic_list_patient_prescriptions),
+     (r'^medicos/mostrar/prescripcion-medica/(\d{1,2})/$', gt_medics_views.medic_show_patient_prescription),
+     (r'^medicos/imprimir/prescripcion-medica/(\d{1,2})/$', gt_medics_views.medical_prescription_pdf),
+
      #(r'^medicos/borrar/consulta-medica/(\d{1,2})/$', gt_medics_views.medic_list_patient_prescriptions),
 
     (r'^medicos/mostrar/mis-horarios-atencion/$', gt_medics_views.my_medic_show_business_hours),

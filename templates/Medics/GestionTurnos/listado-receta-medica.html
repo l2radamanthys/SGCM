@@ -24,9 +24,9 @@
         </tr>
         {% for pm in prescs_medics %}
         <tr>
-                <td><a href="/medicos/mostrar/consulta-medica/{{ pm.id }}/">{{ pm.med_consulation.medic.last_name }}, {{ pm.med_consulation.medic.first_name }}</a></td>
-                <td><a href="/medicos/modificar/consulta-medica/{{ pm.id }}/">{{ pm.prescription_date }}</a></td>
-                <td><a href="/medicos/modificar/consulta-medica/{{ pm.id }}/">{{ pm.expiration_date }}</a></td>
+                <td><a href="/medicos/mostrar/prescripcion-medica/{{ pm.id }}/">{{ pm.med_consulation.medic.last_name }}, {{ pm.med_consulation.medic.first_name }}</a></td>
+                <td><a href="/medicos/mostrar/prescripcion-medica/{{ pm.id }}/">{{ pm.prescription_date }}</a></td>
+                <td><a href="/medicos/mostrar/prescripcion-medica/{{ pm.id }}/">{{ pm.expiration_date }}</a></td>
         </tr>
         {% endfor %}
 

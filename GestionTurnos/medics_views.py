@@ -22,6 +22,7 @@ from globals import *
 import HTMLTags as Tags
 
 
+
 def patients_search(request):
     """
     Vista para buscar Paciente por similitud y mostrar el listado de
@@ -1070,12 +1071,15 @@ def medic_add_patient_prescription(request, id_pm):
 
 
 
-def medic_show_patient_prescription(request, patient):
-    mi_template = get_template('Medics/GestionTurnos/listado-archivos.html')
+def medic_show_patient_prescription(request, id_pm):
+    mi_template = get_template('Medics/GestionTurnos/mostrar-receta-medica.html')
     dict = generate_base_keys(request)
 
     if True:
-        pass
+        pm = MedicalPrescription.objects.get(id=id_pm)
+        dict['pm'] = pm
+        dict['pinfo'] = UserInformation.objects.get(user=pm.med_consulation.patient)
+        dict['minfo'] = UserInformation.objects.get(user=pm.med_consulation.medic)
 
     else:
         path = request.META['PATH_INFO']
@@ -1085,17 +1089,47 @@ def medic_show_patient_prescription(request, patient):
     return HttpResponse(html_cont)
 
 
+import reports_templates as reports
 
-def medic_del_patient_prescription(request, patient):
-    mi_template = get_template('Medics/GestionTurnos/listado-archivos.html')
-    dict = generate_base_keys(request)
 
+def medical_prescription_pdf(request, id_pm):
+    """
+    """
+    #mi_template = get_template('Patients/GestionTurnos/show-turn-detail.html')
+    #dict = generate_base_keys(request)
     if True:
-        pass
+        try:
+            pm = MedicalPrescription.objects.get(id=id_pm)
+            pinfo = UserInformation.objects.get(user=pm.med_consulation.patient)
+            minfo = UserInformation.objects.get(user=pm.med_consulation.medic)
+
+        except:
+            path = request.META['PATH_INFO']
+            return HttpResponseRedirect("/restricted-access%s" %path)
+
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="test.pdf"'
+
+        reports.test(response)#, pm, minfo, pinfo)
+        return response
+
+
 
     else:
         path = request.META['PATH_INFO']
         return HttpResponseRedirect("/restricted-access%s" %path)
 
-    html_cont = mi_template.render(Context(dict))
-    return HttpResponse(html_cont)
+
+#def medic_del_patient_prescription(request, patient):
+    #mi_template = get_template('Medics/GestionTurnos/listado-archivos.html')
+    #dict = generate_base_keys(request)
+
+    #if True:
+        #pass
+
+    #else:
+        #path = request.META['PATH_INFO']
+        #return HttpResponseRedirect("/restricted-access%s" %path)
+
+    #html_cont = mi_template.render(Context(dict))
+    #return HttpResponse(html_cont)

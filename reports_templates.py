@@ -8,6 +8,14 @@ from report_globals import *
 from report_utils import *
 
 
+
+def test(response):
+    c = canvas.Canvas(response, A4)
+    c.drawString(m_left, 100, "Pdf prueba")
+    c.save()
+
+
+
 def generate_turn(response, turn):
     """
         Genera un comprobante en PDF con los datos del turno
@@ -95,3 +103,26 @@ def generate_turn(response, turn):
     hr_line(c, y)
     #--------------------------------------------------------------
     c.save()
+
+
+
+def generate_medical_presc(response, pm):#, minfo, pinfo):
+    """
+        pm datos de la prescripcion medica o receta
+        pinfo informacion del paciente
+        minfo informacion del medico
+    """
+
+    c = canvas.Canvas(response, A4)
+    y = y_rest #alto disponible
+
+    c.setFont("Helvetica", P)
+    #c.drawString(m_left, y, "Dr % %" %(minfo.first_name, minfo.last_name))
+
+
+    c.save()
+
+
+
+
+test('hola.pdf')

@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block style %}
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+{% endblock %}
+
+
+{% block contenido %}
+
+<h2>Detalle Receta Medica</h2>
+<br />
+
+
+<div class="fancy-form-white" style="width: 450px; margin: 0 auto;">
+
+    
+        <table>
+            <tr>
+                <td colspan="2"><br /><h3>Datos del Paciente</h3><br /></td>
+            </tr>
+            <tr>
+                <td><strong>Apellido y Nombre:&nbsp;</strong></td>
+                <td>{{ pm.med_consulation.patient.last_name }} {{ pm.med_consulation.patient.first_name }} </td>
+            </tr>
+            <tr>
+                <td><strong>Documento:&nbsp;</strong></td>
+                <td>{{ pinfo.type_doc }} {{ pinfo.nro_doc }}</td>
+            </tr>
+            <tr>
+                <td><strong>Fecha de Nacimiento:&nbsp;&nbsp;</strong></td>
+                <td>{{ pinfo.birth_date }}</td>
+            </tr>
+            <tr>
+                <td colspan="2"><br /><h3>Datos del Medico</h3><br /></td>
+            </tr>            
+            <tr>
+                <td><strong>Apellido y Nombre:&nbsp;</strong></td>
+                <td>{{ pm.med_consulation.medic.last_name }} {{ pm.med_consulation.medic.first_name }} </td>
+            </tr>
+            <tr>
+                <td><strong>Documento:&nbsp;</strong></td>
+                <td>{{ minfo.type_doc }} {{ minfo.nro_doc }}</td>
+            </tr>
+            <tr>
+                <td><strong>Matricula:</strong></td>
+                <td>{{ minfo.matricula }}</td>
+            </tr>
+            <tr>
+                <td colspan="2"><br /><h3>Datos de la Prescripcion</h3><br /></td>
+            </tr>             
+            <tr>
+                <td><strong>Fecha:</strong></td>
+                <td>{{ pm.prescription_date }}</td>
+            </tr>
+            <tr>
+                <td><strong>Vencimiento:</strong></td>
+                <td>{{ pm.expiration_date }}</td>
+            </tr>
+            <tr>
+                <td><strong>Principio Activo:</strong></td>
+                <td>{{ pm.active_principle }}</td>
+            </tr>
+            <tr>
+                <td><strong>Dosificacion:</strong></td>
+                <td>{{ pm.dosage }}</td>
+            </tr>
+            <tr>
+                <td><strong>Administracion por via:</strong></td>
+                <td>{{ pm.get_administration_route_display }}</td>
+            </tr>
+            <tr>
+                <td><strong>Formato Envase:</strong></td>
+                <td>{{ pm.container_format }}</td>
+            </tr>
+            <tr>
+                <td><strong>Dosificacion:</strong></td>
+                <td>{{ pm.posology }} mg</td>
+            </tr>                                        
+        </table>
+        <br />
+    <div style="text-align: center">        
+        <br />
+        <a href="/medicos/imprimir/prescripcion-medica/{{ pm.id }}/" class="grad-button-blue">Imprimir</a>
+        <a href="/medicos/listado/prescripcion-medica/{{ pm.med_consulation.patient.username }}/" class="grad-button-blue">Volver</a>
+        <br /><br />
+    </div>
+</div>
+{% endblock %}
