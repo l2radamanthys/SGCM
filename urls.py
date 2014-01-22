@@ -141,6 +141,15 @@ urlpatterns = patterns('',
     (r'^pacientes/agregar/examen-cabeza/(.+)/$', hc_medics_views.medic_add_patient_head_exam),
     (r'^pacientes/mostrar/examen-cabeza/(\d{1,2})/$', hc_medics_views.medic_show_patient_head_exam),
 
+     #Examenes de Cuello
+     (r'^pacientes/listado/examen-cuello/(.+)/$', hc_medics_views.medic_list_patient_neck_exam),
+     (r'^pacientes/agregar/examen-cuello/(.+)/$', hc_medics_views.medic_add_patient_neck_exam),
+     (r'^pacientes/mostrar/examen-cuello/(\d{1,2})/$', hc_medics_views.medic_show_patient_neck_exam),
+
+    #EXAMEn piel faneras y tejido subcutaneo
+    (r'^pacientes/listado/examen-piel-faneras/(.+)/$', hc_medics_views.medic_list_patient_pfts_exam),
+    (r'^pacientes/agregar/examen-piel-faneras/(.+)/$', hc_medics_views.medic_add_patient_pfts_exam),
+    (r'^pacientes/mostrar/examen-piel-faneras/(\d{1,2})/$', hc_medics_views.medic_show_patient_pfts_exam),
 
     #debug views, this views only desing for testing
     (r'^perms/$', debug_views.perms_list),

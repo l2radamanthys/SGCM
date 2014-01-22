@@ -131,3 +131,32 @@ class HeadExamForm(forms.ModelForm):
         }
 
 
+
+class NeckExamForm(forms.ModelForm):
+    class Meta:
+        model = NeckExam
+        exclude = [
+            'patient',
+            'date'
+        ]
+        comments = {
+            'observations' : forms.Textarea(attrs={'cols':'62', 'rows':'5'}),
+        }
+
+
+
+class PFTSExamForm(forms.ModelForm):
+    class Meta:
+        model = PFTSExam
+        exclude = [
+            'patient',
+            'date'
+        ]
+        widgets = {
+            'aspect' : forms.Textarea(attrs={'cols':'62', 'rows':'3'}),
+            'pilosa_distribution' : forms.Textarea(attrs={'cols':'62', 'rows':'3'}),
+            'injuries' : forms.Textarea(attrs={'cols':'62', 'rows':'3'}),
+            'appendages' : forms.Textarea(attrs={'cols':'62', 'rows':'3'}),
+            'subcutaneous_tissue' : forms.Textarea(attrs={'cols':'62', 'rows':'3'}),
+
+        }

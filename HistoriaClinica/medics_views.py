@@ -566,3 +566,165 @@ def medic_show_patient_head_exam(request, exam_id):
     #return HttpResponse(html_cont)
 
 
+def medic_add_patient_neck_exam(request, pac_username):
+    mi_template = get_template('Medics/HistoriaClinica/agregar-examen-cuello.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        dict['pac_username'] = pac_username
+        pac = User.objects.get(groups__name='Paciente', username=pac_username)
+        dict['pac'] = pac
+        #_form = my_forms.HeadExamForm(auto_id=False)
+        dict['show_errors'] = False
+        dict['show_form'] = True
+
+        if request.method == 'POST':
+            _form = my_forms.NeckExamForm(request.POST, auto_id=False)
+            if _form.is_valid():
+                exam = NeckExam(
+                    patient = pac,
+                    inspection = _form.cleaned_data['inspection'],
+                    palpation = _form.cleaned_data['palpation'],
+                    percussion = _form.cleaned_data['percussion'],
+                    auscultation = _form.cleaned_data['auscultation'],
+                    comments = _form.cleaned_data['comments']
+                )
+                exam.save()
+                dict['show_form'] = False
+                dict['custom_message'] = html_message('Examen Registrado Correctamente', 'success')
+
+            else:
+                dict['show_errors'] = True
+        else:
+            _form = my_forms.NeckExamForm(auto_id=False)
+            dict['form'] = _form
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def medic_list_patient_neck_exam(request, pac_username):
+    mi_template = get_template('Medics/HistoriaClinica/listado-examen-cuello.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        dict['pac_username'] = pac_username
+        pac = User.objects.get(groups__name='Paciente', username=pac_username)
+        dict['pac'] = pac
+        dict['NeckExams'] = NeckExam.objects.filter(patient=pac)
+
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def medic_show_patient_neck_exam(request, exam_id):
+
+    mi_template = get_template('Medics/HistoriaClinica/mostrar-examen-cuello.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        exam = NeckExam.objects.get(id=exam_id)
+        dict['exam'] = exam
+        dict['exam_lbl'] = get_labels_for(exam)
+        dict['pac'] = exam.patient
+        dict['pac_username'] = exam.patient.username
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def medic_add_patient_pfts_exam(request, pac_username):
+    mi_template = get_template('Medics/HistoriaClinica/agregar-examen-piel.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        dict['pac_username'] = pac_username
+        pac = User.objects.get(groups__name='Paciente', username=pac_username)
+        dict['pac'] = pac
+        #_form = my_forms.HeadExamForm(auto_id=False)
+        dict['show_errors'] = False
+        dict['show_form'] = True
+
+        if request.method == 'POST':
+            _form = my_forms.PFTSExamForm(request.POST, auto_id=False)
+            if _form.is_valid():
+                exam = PFTSExam(
+                    patient = pac,
+                    aspect = _form.cleaned_data['aspect'],
+                    pilosa_distribution = _form.cleaned_data['pilosa_distribution'],
+                    injuries = _form.cleaned_data['injuries'],
+                    appendages = _form.cleaned_data['appendages'],
+                    subcutaneous_tissue = _form.cleaned_data['subcutaneous_tissue'],
+                )
+                exam.save()
+                dict['show_form'] = False
+                dict['custom_message'] = html_message('Examen Registrado Correctamente', 'success')
+
+            else:
+                dict['show_errors'] = True
+        else:
+            _form = my_forms.PFTSExamForm(auto_id=False)
+            dict['form'] = _form
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+def medic_list_patient_pfts_exam(request, pac_username):
+    mi_template = get_template('Medics/HistoriaClinica/listado-examen-piel.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        dict['pac_username'] = pac_username
+        pac = User.objects.get(groups__name='Paciente', username=pac_username)
+        dict['pac'] = pac
+        dict['PFTSExams'] = PFTSExam.objects.filter(patient=pac)
+
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def medic_show_patient_pfts_exam(request, exam_id):
+
+    mi_template = get_template('Medics/HistoriaClinica/mostrar-examen-piel.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        exam = PFTSExam.objects.get(id=exam_id)
+        dict['exam'] = exam
+        dict['exam_lbl'] = get_labels_for(exam)
+        dict['pac'] = exam.patient
+        dict['pac_username'] = exam.patient.username
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)

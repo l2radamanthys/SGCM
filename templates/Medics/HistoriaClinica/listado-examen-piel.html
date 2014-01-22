@@ -1,0 +1,33 @@
+{% extends 'Medics/GestionTurnos/patient-view.html' %}
+
+{% block ext_style %}
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
+{% endblock %}
+
+
+{% block view-cont %}
+<div  style="padding-left:10px;" >
+    <h2>Examenes de Piel Faneras y Tejido Subcutaneo</h2>
+    <p style="font-size:14px;margin-left:10px">{{ pac.last_name  }}, {{ pac.first_name }} </p>
+</div>
+
+<div style="text-align:right; margin:20px;">
+    <a href="/pacientes/agregar/examen-piel-faneras/{{ pac.username }}/" class="grad-button-blue">Agregar</a>
+</div>
+
+<table style="width: 400px; margin: 0 auto;" class="tbl-round-light">
+    <tr>
+        <th>Fecha del Examen</th>
+        <th colspan="2" style="text-align: center;">Opciones</th>
+    </tr>
+    {% for exam in PFTSExams %}
+    <tr>
+        <td> {{ exam.date }}</td>
+        <td style="text-align: center;"><a href="/pacientes/mostrar/examen-piel-faneras/{{ exam.id }}/">Mostrar</a></td>
+        <td style="text-align: center;"><a href="/pacientes/borrar/examen-piel-faneras/{{ exam.id }}/">Borrar</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+{% endblock %}

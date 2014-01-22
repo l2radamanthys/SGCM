@@ -67,8 +67,8 @@ paciente
 			-borrar	
 
 		- recetas
-			-listar
-			-crea
+			-listar [OK]
+			-crea [OK]
 			-mostrar
 			-borrar (Cancelada las recetas no se podran borrar)
 			-imprimir

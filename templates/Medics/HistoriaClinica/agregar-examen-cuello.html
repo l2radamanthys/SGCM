@@ -1,0 +1,70 @@
+{% extends 'Medics/GestionTurnos/patient-view.html' %}
+
+{% block view-cont %}
+<div  style="padding-left:10px;" >
+    <h3> Nuevo Examen de Cuello </h3>
+    <p style="font-size:14px;">{{ pac.last_name  }}, {{ pac.first_name }} </p>
+</div>
+
+<br /><br />
+
+<div style="text-align: right; width: 600px; margin: 0 auto;">
+    <a href="/pacientes/listado/examen-cuello/{{ pac.username }}/" class="grad-button-blue">Atras</a>
+</div>
+
+
+<br />
+
+    {% if show_form %}
+        <div  class="fancy-form-white" style="width: 600px; margin: 0 auto;">
+        <form action="" method="POST" enctype="multipart/form-data">
+        <table style="width:600px; margin: 0 auto;">
+            <tr>
+                <td> {{ form.inspection.label }}:</td>
+                <td> {{ form.inspection }}</td>
+            </tr>
+
+            <tr>
+                <td> {{ form.palpation.label }}:</td>
+                <td> {{ form.palpation }}</td>
+            </tr>
+            <tr>
+                <td> {{ form.percussion.label }}:</td>
+                <td> {{ form.percussion }}</td>
+            </tr>
+            <tr>
+                <td> {{ form.auscultation.label }}:</td>
+                <td> {{ form.auscultation }}</td>
+            </tr>
+            <tr>
+                <td> {{ form.comments.label }}:</td>
+                <td> {{ form.comments }}</td>
+            </tr>             
+            <tr>
+                <td colspan="2" style="text-align: center">
+                    <br />
+                    <br />
+                    <input type="Submit" value="Agregar" class="grad-button-blue" />
+                </td>
+            </tr>
+        </table>
+        </form>
+        </div>
+        <br />
+    {% endif %}
+
+    {% if show_errors %}
+        <div class="error">
+        {% for field in form %}
+            <p>{{ field.label }}:<p/>
+            <p>{{ field.value }}</p>
+            {{ field.errors }}<br />
+        {% endfor %}
+        <div/>
+    {% else %}
+        {% autoescape off %}
+        {{ custom_message }}
+        {% endautoescape %}
+    {% endif %}
+
+{% endblock %}
