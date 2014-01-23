@@ -196,3 +196,21 @@ VIA_ADMINISTRACION_CHOICE = (
     ('D', 'Transdermica'),
     ('F', 'Oftálmica'),
 )
+
+TYPE_THORAX_CHOICE = (
+    ('N', 'Normal'),
+    ('P', 'Paralítico'),
+    ('E', 'Enfisematoso'),
+    ('R', 'Raquítico'),
+    ('I', 'Infundibuliforme'),
+    ('C', 'Cifoescoliótico'),
+    ('P', 'Piriforme'),
+    ('T', 'Piramidal'),
+
+)
+
+RESPIRATORY_RATE_CHOICE = (
+    ('N', 'Normal'),
+    ('P', 'polipnea'),
+    ('B', 'bardipnea'),
+)

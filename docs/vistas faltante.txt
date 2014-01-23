@@ -60,7 +60,7 @@ paciente
 			-modificar
 			-borrar
 
-		- archivos
+		- archivos (desestimado)
 			-listar
 			-crea
 			-mostrar

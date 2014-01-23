@@ -231,3 +231,63 @@ class PFTSExam(models.Model):
 
     class Meta:
         db_table = "ExamenesPielFaneasTejSubCutaneo"
+
+
+
+class OsteoArticularExam(models.Model):
+    patient = models.ForeignKey(User) #fk
+    date = models.DateField("Fecha del Examen", auto_now_add=True)
+
+    vertebra_column = models.TextField('Columna Vertebral')
+    bone_axles = models.TextField('Ejes Oseos')
+    joints = models.TextField('Articulaciones')
+    members = models.TextField('Miembros')
+    muscular_tropism = models.TextField('Trofismo muscular')
+
+
+
+class RespiratorySystemExam(models.Model):
+    """
+        Examen Torax y Aparato respiratorio
+    """
+    patient = models.ForeignKey(User) #fk
+    date = models.DateField("Fecha del Examen", auto_now_add=True)
+
+    type_chest = models.CharField('Tipo de Torax', max_lenght=1, default='N', choices=TYPE_THORAX_CHOICE)
+    breast = models.TextField('Pechos')
+    accessory_muscle_use= models.CharField('Tamaño', max_lenght=100)
+    respiratory_rate  = models.CharField('Frecuencia Respiratoria', max_lenght=1, default='N', choices=RESPIRATORY_RATE_CHOICE)
+    tour_freely = models.CharField('Excursion de Bases', max_lenght=100)
+    tour_vertices = models.CharField('Excursion de Vertices', max_lenght=100)
+    jars_vibrations = models.CharField('Vibraciones Vocales', max_lenght=100)
+    sonority = models.CharField('Sonoridad', max_lenght=100)
+    vesicular_murmur = models.CharField('Murmullo Vesicular', max_lenght=100)
+    rales_moist_rales = models.CharField('Rales crepitantes húmedos ', max_lenght=100)
+    roncus = models.CharField('Roncus', max_lenght=100)
+    wheezing = models.CharField('Sibilancias', max_lenght=100)
+    tubal_puff = models.CharField('Soplo Tubario', max_lenght=100)
+    pleural_rub = models.CharField('Frote Pleural', max_lenght=100)
+    comments = models.TextField('Observaciones')
+
+
+
+class CardiovascularSystemExam(models.Model):
+    patient = models.ForeignKey(User) #fk
+    date = models.DateField("Fecha del Examen", auto_now_add=True)
+
+    beats = models.CharField('Latidos', max_lenght=100)
+    shock_tip = models.CharField('Choques de Punta', max_lenght=100)
+    R1 = models.CharField('Murmullo Vesicular', max_lenght=100)
+    R2 = models.CharField('Murmullo Vesicular', max_lenght=100)
+    R3 = models.CharField('Murmullo Vesicular', max_lenght=100)
+    R4 = models.CharField('Murmullo Vesicular', max_lenght=100)
+    puffs = models.CharField('Murmullo Vesicular', max_lenght=100)
+    clicks= models.CharField('Chasquidos', max_lenght=100)
+    carotid_pulse = models.IntegerField('Pulso Carotídeo')
+    humeral_pulse = models.IntegerField('Pulso Humeral ')
+    radial_pulse = models.IntegerField('Pulso Radial ')
+    femoral_pulse = models.IntegerField('Pulso Femoral ')
+    popliteal_pulse = models.IntegerField('Pulso Poplíteo')
+    posterior_tibial_pulse = models.IntegerField('Pulso Tibial posterior ')
+    pedius_pulse = models.IntegerField('Pulso Pedio')
+    comments = models.TextField('Observaciones')
