@@ -1,0 +1,60 @@
+<tr>
+    <td>{{ exam_lbl.type_chest }}:</td>
+    <td>{{ exam.type_chest }}</td>
+</tr>
+<tr>
+    <td>{{ exam_lbl.breast }}:</td>
+    <td>{{ exam.breast }}</td>
+</tr>
+<tr>
+    <td>{{ exam_lbl.accessory_muscle_use }}:</td>
+    <td>{{ exam.accessory_muscle_use }}</td>
+</tr>
+<tr>
+    <td>{{ exam_lbl.respiratory_rate }}:</td>
+    <td>{{ exam.respiratory_rate }}</td>
+</tr>
+<tr>
+    <td>{{ exam_lbl.tour_freely }}:</td>
+    <td>{{ exam.tour_freely }}</td>
+</tr>
+<tr>
+    <td>{{ exam_lbl.tour_vertices }}:</td>
+    <td>{{ exam.tour_vertices }}</td>
+</tr>
+<tr>
+    <td>{{ exam_lbl.jars_vibrations }}:</td>
+    <td>{{ exam.jars_vibrations }}</td>
+</tr>
+<tr>
+    <td>{{ exam_lbl.sonority }}:</td>
+    <td>{{ exam.sonority }}</td>
+</tr>
+<tr>
+    <td>{{ exam_lbl.vesicular_murmur }}:</td>
+    <td>{{ exam.vesicular_murmur }}</td>
+</tr>
+<tr>
+    <td>{{ exam_lbl.rales_moist_rales }}:</td>
+    <td>{{ exam.rales_moist_rales }}</td>
+</tr>
+<tr>
+    <td>{{ exam_lbl.roncus }}:</td>
+    <td>{{ exam.roncus }}</td>
+</tr>
+<tr>
+    <td>{{ exam_lbl.wheezing }}:</td>
+    <td>{{ exam.wheezing }}</td>
+</tr>
+<tr>
+    <td>{{ exam_lbl.tubal_puff }}:</td>
+    <td>{{ exam.tubal_puff }}</td>
+</tr>
+<tr>
+    <td>{{ exam_lbl.pleural_rub }}:</td>
+    <td>{{ exam.pleural_rub }}</td>
+</tr>
+<tr>
+    <td>{{ exam_lbl.comments }}:</td>
+    <td>{{ exam.comments }}</td>
+</tr>

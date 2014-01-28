@@ -159,8 +159,19 @@ urlpatterns = patterns('',
     #Examen Sistema Osteo Articular
     (r'^pacientes/listado/examen-osteo-articular/(.+)/$', hc_medics_views.medic_list_patient_osteo_art_exam),
     (r'^pacientes/agregar/examen-osteo-articular/(.+)/$', hc_medics_views.medic_add_patient_osteo_art_exam),
-    (r'^pacientes/mostrar/examen-osteo-articular/(.+)/$', hc_medics_views.medic_show_patient_osteo_art_exam),
-    (r'^pacientes/borrar/examen-osteo-articular/(.+)/$', hc_medics_views.medic_del_patient_osteo_art_exam),
+    (r'^pacientes/mostrar/examen-osteo-articular/(\d{1,2})/$', hc_medics_views.medic_show_patient_osteo_art_exam),
+    (r'^pacientes/borrar/examen-osteo-articular/(\d{1,2})/$', hc_medics_views.medic_del_patient_osteo_art_exam),
+
+
+    (r'^pacientes/listado/examen-aparato-respiratorio/(.+)/$', hc_medics_views.medic_list_patient_resp_system_exam),
+    (r'^pacientes/agregar/examen-aparato-respiratorio/(.+)/$', hc_medics_views.medic_add_patient_resp_system_exam),
+    (r'^pacientes/mostrar/examen-aparato-respiratorio/(\d{1,2})/$', hc_medics_views.medic_show_patient_resp_system_exam),
+    (r'^pacientes/borrar/examen-aparato-respiratorio/(\d{1,2})/$', hc_medics_views.medic_del_patient_resp_system_exam),
+
+    #(r'^pacientes/listado/examen-cardiovascular/(.+)/$', hc_medics_views.),
+    #(r'^pacientes/agregar/examen-cardiovascular/(.+)/$', hc_medics_views.),
+    #(r'^pacientes/mostrar/examen-cardiovascular/(\d{1,2})/$', hc_medics_views.),
+    #(r'^pacientes/borrar/examen-cardiovascular/(\d{1,2})/$', hc_medics_views.),
 
 
     ######################################################################################

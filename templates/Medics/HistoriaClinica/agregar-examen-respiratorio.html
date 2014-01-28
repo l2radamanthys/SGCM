@@ -3,14 +3,14 @@
 {% block view-cont %}
 <div  style="padding-left:10px;" >
     <br />
-    <h3> Nuevo Examen Osteo Articular </h3>
+    <h3> Nuevo Examen de Torax y Aparato Respiratorio </h3>
     <p style="font-size:14px;">{{ pac.last_name  }}, {{ pac.first_name }} </p>
 </div>
 
 <br /><br />
 
 <div style="text-align: right; width: 600px; margin: 0 auto;">
-    <a href="/pacientes/listado/examen-osteo-articular/{{ pac.username }}/" class="grad-button-blue">Atras</a>
+    <a href="/pacientes/listado/examen-aparato-respiratorio/{{ pac.username }}/" class="grad-button-blue">Atras</a>
 </div>
 
 <br />
@@ -25,7 +25,7 @@
                 <td>{{ field }}</td>
             </tr>
             {% endfor %}
-           
+                       
             <tr>
                 <td colspan="2" style="text-align: center">
                     <br />

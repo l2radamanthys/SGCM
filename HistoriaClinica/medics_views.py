@@ -950,3 +950,254 @@ def medic_del_patient_osteo_art_exam(request, exam_id):
 
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
+
+
+
+#Examen Torax y Aparato Respiratorio
+
+def medic_add_patient_resp_system_exam(request, pac_username):
+    mi_template = get_template('Medics/HistoriaClinica/agregar-examen-respiratorio.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        dict['pac_username'] = pac_username
+        pac = User.objects.get(groups__name='Paciente', username=pac_username)
+        dict['pac'] = pac
+        #_form = my_forms.HeadExamForm(auto_id=False)
+        dict['show_errors'] = False
+        dict['show_form'] = True
+
+        if request.method == 'POST':
+            _form = my_forms.RespiratorySystemExamForm(request.POST, auto_id=False)
+            if _form.is_valid():
+                exam = RespiratorySystemExam(
+                    patient = pac,
+                    type_chest = _form.cleaned_data['type_chest'],
+                    breast = _form.cleaned_data['breast'],
+                    accessory_muscle_use = _form.cleaned_data['accessory_muscle_use'],
+                    respiratory_rate = _form.cleaned_data['respiratory_rate'],
+                    tour_freely = _form.cleaned_data['tour_freely'],
+                    tour_vertices = _form.cleaned_data['tour_vertices'],
+                    jars_vibrations = _form.cleaned_data['jars_vibrations'],
+                    sonority = _form.cleaned_data['sonority'],
+                    vesicular_murmur = _form.cleaned_data['vesicular_murmur'],
+                    rales_moist_rales = _form.cleaned_data['rales_moist_rales'],
+                    roncus = _form.cleaned_data['roncus'],
+                    wheezing = _form.cleaned_data['wheezing'],
+                    tubal_puff = _form.cleaned_data['tubal_puff'],
+                    pleural_rub = _form.cleaned_data['pleural_rub'],
+                    comments = _form.cleaned_data['comments']
+                )
+                exam.save()
+                dict['show_form'] = False
+                dict['custom_message'] = html_message('Examen Registrado Correctamente', 'success')
+
+            else:
+                dict['show_errors'] = True
+        else:
+            _form = my_forms.RespiratorySystemExamForm(auto_id=False)
+            dict['form'] = _form
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def medic_list_patient_resp_system_exam(request, pac_username):
+    mi_template = get_template('Medics/HistoriaClinica/listado-examen-respiratorio.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        dict['pac_username'] = pac_username
+        pac = User.objects.get(groups__name='Paciente', username=pac_username)
+        dict['pac'] = pac
+        dict['RespExams'] = RespiratorySystemExam.objects.filter(patient=pac)
+
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def medic_show_patient_resp_system_exam(request, exam_id):
+
+    mi_template = get_template('Medics/HistoriaClinica/mostrar-examen-respiratorio.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        exam = RespiratorySystemExam.objects.get(id=exam_id)
+        dict['exam'] = exam
+        dict['exam_lbl'] = get_labels_for(exam)
+        dict['pac'] = exam.patient
+        dict['pac_username'] = exam.patient.username
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def medic_del_patient_resp_system_exam(request, exam_id):
+    #incomplete
+    mi_template = get_template('Medics/HistoriaClinica/borrar-examen.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        try:
+            exam = RespiratorySystemExam.objects.get(id=exam_id)
+            dict['exam'] = exam
+            dict['exam_lbl'] = get_labels_for(exam)
+            dict['pac'] = exam.patient
+            dict['pac_username'] = exam.patient.username
+
+            dict['exam_name'] = "Torax y Aparato Respiratorio"
+            dict['return_url'] = "/pacientes/listado/examen-aparato-respiratorio/%s/" %dict['pac_username']
+
+            if request.method == 'POST':
+                RespiratorySystemExam.objects.get(id=exam_id).delete()
+                dict['response'] = True
+
+            else:
+                dict['answer'] = True
+
+        except:
+            path = request.META['PATH_INFO']
+            return HttpResponseRedirect("/restricted-access%s" %path)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+## Examen Aparato Cardiovascular (incompleto)
+
+#def medic_add_patient_cardio_exam(request, pac_username):
+    #mi_template = get_template('Medics/HistoriaClinica/agregar-examen-cardio.html')
+    #dict = generate_base_keys(request)
+
+    #if True:
+        #dict['pac_username'] = pac_username
+        #pac = User.objects.get(groups__name='Paciente', username=pac_username)
+        #dict['pac'] = pac
+        ##_form = my_forms.HeadExamForm(auto_id=False)
+        #dict['show_errors'] = False
+        #dict['show_form'] = True
+
+        #if request.method == 'POST':
+            #_form = my_forms.OsteoArticularExamForm(request.POST, auto_id=False)
+            #if _form.is_valid():
+                #exam = OsteoArticularExam(
+                    #patient = pac,
+                    #vertebra_column = _form.cleaned_data['vertebra_column'],
+                    #bone_axles =  _form.cleaned_data['bone_axles'],
+                    #joints =  _form.cleaned_data['joints'],
+                    #members =  _form.cleaned_data['members'],
+                    #muscular_tropism =  _form.cleaned_data['muscular_tropism']
+                #)
+                #exam.save()
+                #dict['show_form'] = False
+                #dict['custom_message'] = html_message('Examen Registrado Correctamente', 'success')
+
+            #else:
+                #dict['show_errors'] = True
+        #else:
+            #_form = my_forms.OsteoArticularExamForm(auto_id=False)
+            #dict['form'] = _form
+
+    #else:
+        #path = request.META['PATH_INFO']
+        #return HttpResponseRedirect("/restricted-access%s" %path)
+
+    #html_cont = mi_template.render(Context(dict))
+    #return HttpResponse(html_cont)
+
+
+
+#def medic_list_patient_cardio_exam(request, pac_username):
+    #mi_template = get_template('Medics/HistoriaClinica/listado-examen-cardio.html')
+    #dict = generate_base_keys(request)
+
+    #if True:
+        #dict['pac_username'] = pac_username
+        #pac = User.objects.get(groups__name='Paciente', username=pac_username)
+        #dict['pac'] = pac
+        #dict['OsteoArtExams'] = OsteoArticularExam.objects.filter(patient=pac)
+
+
+    #else:
+        #path = request.META['PATH_INFO']
+        #return HttpResponseRedirect("/restricted-access%s" %path)
+
+    #html_cont = mi_template.render(Context(dict))
+    #return HttpResponse(html_cont)
+
+
+
+#def medic_show_patient_cardio_exam(request, exam_id):
+
+    #mi_template = get_template('Medics/HistoriaClinica/mostrar-examen-cardio.html')
+    #dict = generate_base_keys(request)
+
+    #if True:
+        #exam = OsteoArticularExam.objects.get(id=exam_id)
+        #dict['exam'] = exam
+        #dict['exam_lbl'] = get_labels_for(exam)
+        #dict['pac'] = exam.patient
+        #dict['pac_username'] = exam.patient.username
+
+    #else:
+        #path = request.META['PATH_INFO']
+        #return HttpResponseRedirect("/restricted-access%s" %path)
+
+    #html_cont = mi_template.render(Context(dict))
+    #return HttpResponse(html_cont)
+
+
+
+#def medic_del_patient_cardio_exam(request, exam_id):
+    ##incomplete
+    #mi_template = get_template('Medics/HistoriaClinica/borrar-examen.html')
+    #dict = generate_base_keys(request)
+
+    #if True:
+        #try:
+            #exam = OsteoArticularExam.objects.get(id=exam_id)
+            #dict['exam'] = exam
+            #dict['exam_lbl'] = get_labels_for(exam)
+            #dict['pac'] = exam.patient
+            #dict['pac_username'] = exam.patient.username
+
+            #dict['exam_name'] = "Osteo Articular"
+            #dict['return_url'] = "/pacientes/listado/examen-osteo-articular/%s/" %dict['pac_username']
+
+            #if request.method == 'POST':
+                #OsteoArticularExam.objects.get(id=exam_id).delete()
+                #dict['response'] = True
+
+            #else:
+                #dict['answer'] = True
+
+        #except:
+            #path = request.META['PATH_INFO']
+            #return HttpResponseRedirect("/restricted-access%s" %path)
+
+    #else:
+        #path = request.META['PATH_INFO']
+        #return HttpResponseRedirect("/restricted-access%s" %path)
+
+    #html_cont = mi_template.render(Context(dict))
+    #return HttpResponse(html_cont)
