@@ -135,22 +135,35 @@ urlpatterns = patterns('',
     (r'^pacientes/listado/examen-fisico/(.+)/$', hc_medics_views.medic_list_patient_phisic_exam),
     (r'^pacientes/agregar/examen-fisico/(.+)/$', hc_medics_views.medic_add_patient_phisic_exam),
     (r'^pacientes/mostrar/examen-fisico/(\d{1,2})/$', hc_medics_views.medic_show_patient_phisic_exam),
+    (r'^pacientes/borrar/examen-fisico/(\d{1,2})/$', hc_medics_views.medic_del_patient_phisic_exam),
+
 
     #examen cabeza
     (r'^pacientes/listado/examen-cabeza/(.+)/$', hc_medics_views.medic_list_patient_head_exam),
     (r'^pacientes/agregar/examen-cabeza/(.+)/$', hc_medics_views.medic_add_patient_head_exam),
     (r'^pacientes/mostrar/examen-cabeza/(\d{1,2})/$', hc_medics_views.medic_show_patient_head_exam),
+    (r'^pacientes/borrar/examen-cabeza/(\d{1,2})/$', hc_medics_views.medic_del_patient_head_exam),
 
      #Examenes de Cuello
      (r'^pacientes/listado/examen-cuello/(.+)/$', hc_medics_views.medic_list_patient_neck_exam),
      (r'^pacientes/agregar/examen-cuello/(.+)/$', hc_medics_views.medic_add_patient_neck_exam),
      (r'^pacientes/mostrar/examen-cuello/(\d{1,2})/$', hc_medics_views.medic_show_patient_neck_exam),
+     (r'^pacientes/borrar/examen-cuello/(\d{1,2})/$', hc_medics_views.medic_del_patient_neck_exam),
 
     #EXAMEn piel faneras y tejido subcutaneo
     (r'^pacientes/listado/examen-piel-faneras/(.+)/$', hc_medics_views.medic_list_patient_pfts_exam),
     (r'^pacientes/agregar/examen-piel-faneras/(.+)/$', hc_medics_views.medic_add_patient_pfts_exam),
     (r'^pacientes/mostrar/examen-piel-faneras/(\d{1,2})/$', hc_medics_views.medic_show_patient_pfts_exam),
+    (r'^pacientes/borrar/examen-piel-faneras/(\d{1,2})/$', hc_medics_views.medic_del_patient_pfts_exam),
 
+    #Examen Sistema Osteo Articular
+    (r'^pacientes/listado/examen-osteo-articular/(.+)/$', hc_medics_views.medic_list_patient_osteo_art_exam),
+    (r'^pacientes/agregar/examen-osteo-articular/(.+)/$', hc_medics_views.medic_add_patient_osteo_art_exam),
+    (r'^pacientes/mostrar/examen-osteo-articular/(.+)/$', hc_medics_views.medic_show_patient_osteo_art_exam),
+    (r'^pacientes/borrar/examen-osteo-articular/(.+)/$', hc_medics_views.medic_del_patient_osteo_art_exam),
+
+
+    ######################################################################################
     #debug views, this views only desing for testing
     (r'^perms/$', debug_views.perms_list),
     (r'^apps/$', debug_views.apps_list),

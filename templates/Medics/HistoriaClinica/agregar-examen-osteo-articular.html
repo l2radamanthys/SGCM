@@ -1,0 +1,51 @@
+{% extends 'Medics/GestionTurnos/patient-view.html' %}
+
+{% block view-cont %}
+<div  style="padding-left:10px;" >
+    <br />
+    <h3> Nuevo Examen Osteo Articular </h3>
+    <p style="font-size:14px;">{{ pac.last_name  }}, {{ pac.first_name }} </p>
+</div>
+
+<br /><br />
+
+<div style="text-align: right; width: 600px; margin: 0 auto;">
+    <a href="/pacientes/listado/examen-osteo-articular/{{ pac.username }}/" class="grad-button-blue">Atras</a>
+</div>
+
+<br />
+    {% if show_form %}
+        <div  class="fancy-form-white" style="width: 600px; margin: 0 auto;">
+        <form action="" method="POST" enctype="multipart/form-data">
+        <table style="width:600px; margin: 0 auto;">
+
+            {{ form.as_table }}
+           
+            <tr>
+                <td colspan="2" style="text-align: center">
+                    <br />
+                    <br />
+                    <input type="Submit" value="Agregar" class="grad-button-blue" />
+                </td>
+            </tr>
+        </table>
+        </form>
+        </div>
+        <br />
+    {% endif %}
+
+    {% if show_errors %}
+        <div class="error">
+        {% for field in form %}
+            <p>{{ field.label }}:<p/>
+            <p>{{ field.value }}</p>
+            {{ field.errors }}<br />
+        {% endfor %}
+        <div/>
+    {% else %}
+        {% autoescape off %}
+        {{ custom_message }}
+        {% endautoescape %}
+    {% endif %}
+
+{% endblock %}

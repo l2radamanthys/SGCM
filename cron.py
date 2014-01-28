@@ -2,7 +2,7 @@
 
 
 """
-Tareas Programadas
+Tareas Programadas o CronTabs
 """
 
 from django_cron import cronScheduler, Job
@@ -35,6 +35,7 @@ class UpdateTurnStatus(Job):
             turn.save()
 
         print "run job .D"
+
 
 
 cronScheduler.register(UpdateTurnStatus)

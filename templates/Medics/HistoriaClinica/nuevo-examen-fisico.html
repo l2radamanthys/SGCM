@@ -63,15 +63,22 @@
             </tr> 
         </table>
         </form>
+        </div>
     {% endif %}
 
     {% if show_errors %}
+        <div class="error" style="width: 500px">
+        
         {% for field in form %}
-            {{ field.errors }}
+            {{ field.label }} ->
+            {% for error in field.errors %}
+                {{ error|escape }}
+            {% endfor %}
+                <br />
         {% endfor %}
     
-        {{ custom_erros }}
-
+        <p>{{ custom_erros }}</p>
+        </div>
     {% else %}
     
         {{ custom_message }}

@@ -18,28 +18,6 @@ from HTMLTags import *
 from verbose import *
 
 
-#def medic_list_patient_images(request, pac_username):
-    #"""
-        #Muestra el listado de imagenes subidas de los diferentes examenenes
-        #realizados al paciente
-    #"""
-    #mi_template = get_template('Medics/HistoriaClinica/mostrar-imagenes.html')
-    #dict = generate_base_keys(request)
-
-    #if True:
-        #dict['pac_username'] = pac_username
-        #dict['pac'] = User.objects.get(groups__name='Paciente', username=pac_username)
-        #pass
-
-    ##usuario no posee permisos
-    #else:
-        #path = request.META['PATH_INFO']
-        #return HttpResponseRedirect("/restricted-access%s" %path)
-
-    #html_cont = mi_template.render(Context(dict))
-    #return HttpResponse(html_cont)
-
-
 ## Imagenes
 
 def medic_add_patients_images(request, pac_username):
@@ -317,9 +295,6 @@ def medic_list_patient_phisic_exam(request, pac_username):
         dict['pac'] = pac
         dict['BasicExams'] = BasicExam.objects.filter(patient=pac)
 
-
-        #incompleto
-
     else:
         path = request.META['PATH_INFO']
         return HttpResponseRedirect("/restricted-access%s" %path)
@@ -340,8 +315,6 @@ def medic_show_patient_phisic_exam(request, exam_id):
         dict['exam_lbl'] = get_labels_for(exam)
         dict['pac'] = exam.patient
         dict['pac_username'] = exam.patient.username
-
-        #incompleto
 
     else:
         path = request.META['PATH_INFO']
@@ -426,17 +399,33 @@ def medic_add_patient_phisic_exam(request, pac_username):
     #return HttpResponse(html_cont)
 
 
-def medic_del_patient_phisic_exam(request, pac_username):
+def medic_del_patient_phisic_exam(request, exam_id):
     #incomplete
-    mi_template = get_template('Medics/HistoriaClinica/listado-examen-fisico.html')
+    mi_template = get_template('Medics/HistoriaClinica/borrar-examen.html')
     dict = generate_base_keys(request)
 
     if True:
-        dict['pac_username'] = pac_username
-        pac = User.objects.get(groups__name='Paciente', username=pac_username)
-        dict['pac'] = pac
+        try:
+            exam = BasicExam.objects.get(id=exam_id)
 
-        #incompleto
+            dict['exam'] = exam
+            dict['exam_lbl'] = get_labels_for(exam)
+            dict['pac'] = exam.patient
+            dict['pac_username'] = exam.patient.username
+
+            dict['exam_name'] = "Fisico"
+            dict['return_url'] = "/pacientes/listado/examen-fisico/%s/" %dict['pac_username']
+
+            if request.method == 'POST':
+                BasicExam.objects.get(id=exam_id).delete()
+                dict['response'] = True
+
+            else:
+                dict['answer'] = True
+
+        except:
+            path = request.META['PATH_INFO']
+            return HttpResponseRedirect("/restricted-access%s" %path)
 
     else:
         path = request.META['PATH_INFO']
@@ -551,6 +540,41 @@ def medic_show_patient_head_exam(request, exam_id):
     return HttpResponse(html_cont)
 
 
+def medic_del_patient_head_exam(request, exam_id):
+    #incomplete
+    mi_template = get_template('Medics/HistoriaClinica/borrar-examen.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        try:
+            exam = HeadExam.objects.get(id=exam_id)
+            dict['exam'] = exam
+            dict['exam_lbl'] = get_labels_for(exam)
+            dict['pac'] = exam.patient
+            dict['pac_username'] = exam.patient.username
+
+            dict['exam_name'] = "de Cabeza"
+            dict['return_url'] = "/pacientes/listado/examen-cabeza/%s/" %dict['pac_username']
+
+            if request.method == 'POST':
+                BasicExam.objects.get(id=exam_id).delete()
+                dict['response'] = True
+
+            else:
+                dict['answer'] = True
+
+        except:
+            path = request.META['PATH_INFO']
+            return HttpResponseRedirect("/restricted-access%s" %path)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
 #def medic_add_patient_prescription(request, patient):
     #mi_template = get_template('Medics/GestionTurnos/agregar-receta-medica.html')
     #dict = generate_base_keys(request)
@@ -565,6 +589,8 @@ def medic_show_patient_head_exam(request, exam_id):
     #html_cont = mi_template.render(Context(dict))
     #return HttpResponse(html_cont)
 
+
+## examen cuello
 
 def medic_add_patient_neck_exam(request, pac_username):
     mi_template = get_template('Medics/HistoriaClinica/agregar-examen-cuello.html')
@@ -649,6 +675,44 @@ def medic_show_patient_neck_exam(request, exam_id):
 
 
 
+def medic_del_patient_neck_exam(request, exam_id):
+    #incomplete
+    mi_template = get_template('Medics/HistoriaClinica/borrar-examen.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        try:
+            exam = NeckExam.objects.get(id=exam_id)
+            dict['exam'] = exam
+            dict['exam_lbl'] = get_labels_for(exam)
+            dict['pac'] = exam.patient
+            dict['pac_username'] = exam.patient.username
+
+            dict['exam_name'] = "de Cuello"
+            dict['return_url'] = "/pacientes/listado/examen-cuello/%s/" %dict['pac_username']
+
+            if request.method == 'POST':
+                NeckExam.objects.get(id=exam_id).delete()
+                dict['response'] = True
+
+            else:
+                dict['answer'] = True
+
+        except:
+            path = request.META['PATH_INFO']
+            return HttpResponseRedirect("/restricted-access%s" %path)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+## piel faneas tejidos subcutaneo
+
+
+
 def medic_add_patient_pfts_exam(request, pac_username):
     mi_template = get_template('Medics/HistoriaClinica/agregar-examen-piel.html')
     dict = generate_base_keys(request)
@@ -690,6 +754,7 @@ def medic_add_patient_pfts_exam(request, pac_username):
     return HttpResponse(html_cont)
 
 
+
 def medic_list_patient_pfts_exam(request, pac_username):
     mi_template = get_template('Medics/HistoriaClinica/listado-examen-piel.html')
     dict = generate_base_keys(request)
@@ -721,6 +786,163 @@ def medic_show_patient_pfts_exam(request, exam_id):
         dict['exam_lbl'] = get_labels_for(exam)
         dict['pac'] = exam.patient
         dict['pac_username'] = exam.patient.username
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def medic_del_patient_pfts_exam(request, exam_id):
+    #incomplete
+    mi_template = get_template('Medics/HistoriaClinica/borrar-examen.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        try:
+            exam = PFTSExam.objects.get(id=exam_id)
+            dict['exam'] = exam
+            dict['exam_lbl'] = get_labels_for(exam)
+            dict['pac'] = exam.patient
+            dict['pac_username'] = exam.patient.username
+
+            dict['exam_name'] = "de Cabeza"
+            dict['return_url'] = "/pacientes/listado/examen-piel-faneras/%s/" %dict['pac_username']
+
+            if request.method == 'POST':
+                PFTSExam.objects.get(id=exam_id).delete()
+                dict['response'] = True
+
+            else:
+                dict['answer'] = True
+
+        except:
+            path = request.META['PATH_INFO']
+            return HttpResponseRedirect("/restricted-access%s" %path)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+## Examen Osteo Articular
+
+
+def medic_add_patient_osteo_art_exam(request, pac_username):
+    mi_template = get_template('Medics/HistoriaClinica/agregar-examen-osteo-articular.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        dict['pac_username'] = pac_username
+        pac = User.objects.get(groups__name='Paciente', username=pac_username)
+        dict['pac'] = pac
+        #_form = my_forms.HeadExamForm(auto_id=False)
+        dict['show_errors'] = False
+        dict['show_form'] = True
+
+        if request.method == 'POST':
+            _form = my_forms.OsteoArticularExamForm(request.POST, auto_id=False)
+            if _form.is_valid():
+                exam = OsteoArticularExam(
+                    patient = pac,
+                    vertebra_column = _form.cleaned_data['vertebra_column'],
+                    bone_axles =  _form.cleaned_data['bone_axles'],
+                    joints =  _form.cleaned_data['joints'],
+                    members =  _form.cleaned_data['members'],
+                    muscular_tropism =  _form.cleaned_data['muscular_tropism']
+                )
+                exam.save()
+                dict['show_form'] = False
+                dict['custom_message'] = html_message('Examen Registrado Correctamente', 'success')
+
+            else:
+                dict['show_errors'] = True
+        else:
+            _form = my_forms.OsteoArticularExamForm(auto_id=False)
+            dict['form'] = _form
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def medic_list_patient_osteo_art_exam(request, pac_username):
+    mi_template = get_template('Medics/HistoriaClinica/listado-examen-osteo-articular.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        dict['pac_username'] = pac_username
+        pac = User.objects.get(groups__name='Paciente', username=pac_username)
+        dict['pac'] = pac
+        dict['OsteoArtExams'] = OsteoArticularExam.objects.filter(patient=pac)
+
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def medic_show_patient_osteo_art_exam(request, exam_id):
+
+    mi_template = get_template('Medics/HistoriaClinica/mostrar-examen-osteo-articular.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        exam = OsteoArticularExam.objects.get(id=exam_id)
+        dict['exam'] = exam
+        dict['exam_lbl'] = get_labels_for(exam)
+        dict['pac'] = exam.patient
+        dict['pac_username'] = exam.patient.username
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def medic_del_patient_osteo_art_exam(request, exam_id):
+    #incomplete
+    mi_template = get_template('Medics/HistoriaClinica/borrar-examen.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        try:
+            exam = OsteoArticularExam.objects.get(id=exam_id)
+            dict['exam'] = exam
+            dict['exam_lbl'] = get_labels_for(exam)
+            dict['pac'] = exam.patient
+            dict['pac_username'] = exam.patient.username
+
+            dict['exam_name'] = "Osteo Articular"
+            dict['return_url'] = "/pacientes/listado/examen-osteo-articular/%s/" %dict['pac_username']
+
+            if request.method == 'POST':
+                OsteoArticularExam.objects.get(id=exam_id).delete()
+                dict['response'] = True
+
+            else:
+                dict['answer'] = True
+
+        except:
+            path = request.META['PATH_INFO']
+            return HttpResponseRedirect("/restricted-access%s" %path)
 
     else:
         path = request.META['PATH_INFO']

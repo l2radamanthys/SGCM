@@ -158,5 +158,58 @@ class PFTSExamForm(forms.ModelForm):
             'injuries' : forms.Textarea(attrs={'cols':'62', 'rows':'3'}),
             'appendages' : forms.Textarea(attrs={'cols':'62', 'rows':'3'}),
             'subcutaneous_tissue' : forms.Textarea(attrs={'cols':'62', 'rows':'3'}),
-
         }
+
+
+
+class OsteoArticularExamForm(forms.ModelForm):
+    class Meta:
+        model = OsteoArticularExam
+        exclude = [
+            'patient',
+            'date'
+        ]
+        widgets = {
+            'vertebra_column' : forms.Textarea(attrs={'cols':'62', 'rows':'3'}),
+            'bone_axles' : forms.Textarea(attrs={'cols':'62', 'rows':'3'}),
+            'joints' : forms.Textarea(attrs={'cols':'62', 'rows':'3'}),
+            'members' : forms.Textarea(attrs={'cols':'62', 'rows':'3'}),
+            'muscular_tropism' : forms.Textarea(attrs={'cols':'62', 'rows':'3'}),
+            #'' : forms.Textarea(attrs={'cols':'62', 'rows':'3'}),
+        }
+
+
+
+class RespiratorySystemExamForm(forms.ModelForm):
+    class Meta:
+        model = RespiratorySystemExam
+        exclude = [
+            'patient',
+            'date'
+        ]
+        widgets = {
+        }
+
+
+
+class CardiovascularSystemExamForm(forms.ModelForm):
+    class Meta:
+        model = CardiovascularSystemExam
+        exclude = [
+            'patient',
+            'date'
+        ]
+        widgets = {
+        }
+
+
+
+#class Form(forms.ModelForm):
+    #class Meta:
+        #model =
+        #exclude = [
+            #'patient',
+            #'date'
+        #]
+        #widgets = {
+        #}

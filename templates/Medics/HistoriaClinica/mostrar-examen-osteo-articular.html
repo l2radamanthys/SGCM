@@ -15,12 +15,12 @@
 
 {% block view-cont %}
 <div  style="padding-left:10px;" >
-    <h2>Detalle Examen de Cuello</h2>
+    <h2>Detalle de Examen de Piel Faneras y Tejido Subcutaneo</h2>
     <p style="font-size:14px;margin-left:10px">{{ pac.last_name  }}, {{ pac.first_name }} </p>
 </div>
 
 <div style="text-align:right; margin:20px;">
-    <a href="/pacientes/listado/examen-cuello/{{ pac.username }}/" class="grad-button-blue">Atras</a>
+    <a href="/pacientes/listado/examen-osteo-articular/{{ pac.username }}/" class="grad-button-blue">Atras</a>
 </div>
 
 <div class="fancy-form-white" style="text-align: left; width: 650px; margin: 0 auto;">
@@ -28,29 +28,28 @@
     <tr>
         <td>{{ exam_lbl.date }}:</td>
         <td>{{ exam.date }}</td>
+    </tr>   
+    <tr>
+        <td>{{ exam_lbl.vertebra_column }}:</td>
+        <td>{{ exam.vertebra_column }}</td>
+    </tr>    
+    <tr>
+        <td>{{ exam_lbl.bone_axles }}:</td>
+        <td>{{ exam.bone_axles }}</td>
     </tr>
     <tr>
-        <td>{{ exam_lbl.inspection }}:</td>
-        <td>{{ exam.inspection }}</td>
-    </tr>    
+        <td>{{ exam_lbl.joints }}:</td>
+        <td>{{ exam.joints }}</td>
+    </tr>
     <tr>
-        <td>{{ exam_lbl.palpation }}:</td>
-        <td>{{ exam.palpation }}</td>
-    </tr>    
+        <td>{{ exam_lbl.members }}:</td>
+        <td>{{ exam.members }}</td>
+    </tr>
     <tr>
-        <td>{{ exam_lbl.percussion }}:</td>
-        <td>{{ exam.percussion }}</td>
-    </tr>    
-    <tr>
-        <td>{{ exam_lbl.auscultation }}:</td>
-        <td>{{ exam.auscultation }}</td>
-    </tr>    
-    <tr>
-        <td>{{ exam_lbl.comments }}:</td>
-        <td>{{ exam.comments }}</td>
-    </tr>    
-                
+        <td>{{ exam_lbl.muscular_tropism }}:</td>
+        <td>{{ exam.muscular_tropism }}</td>
+    </tr>               
 </table>
-</div>
+</div>    
 
 {% endblock %}
