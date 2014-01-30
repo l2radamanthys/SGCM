@@ -202,6 +202,7 @@ class CardiovascularSystemExamForm(forms.ModelForm):
             'date'
         ]
         widgets = {
+            'comments' : forms.Textarea(attrs={'cols':'60', 'rows':'3'}),
         }
 
 

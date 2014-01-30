@@ -1,60 +1,40 @@
 <tr>
-    <td>{{ exam_lbl.type_chest }}:</td>
-    <td>{{ exam.type_chest }}</td>
+    <td>{{ exam_lbl.type_doc }}:</td>
+    <td>{{ exam.type_doc }}</td>
 </tr>
 <tr>
-    <td>{{ exam_lbl.breast }}:</td>
-    <td>{{ exam.breast }}</td>
+    <td>{{ exam_lbl.nro_doc }}:</td>
+    <td>{{ exam.nro_doc }}</td>
 </tr>
 <tr>
-    <td>{{ exam_lbl.accessory_muscle_use }}:</td>
-    <td>{{ exam.accessory_muscle_use }}</td>
+    <td>{{ exam_lbl.gender }}:</td>
+    <td>{{ exam.gender }}</td>
 </tr>
 <tr>
-    <td>{{ exam_lbl.respiratory_rate }}:</td>
-    <td>{{ exam.respiratory_rate }}</td>
+    <td>{{ exam_lbl.phone }}:</td>
+    <td>{{ exam.phone }}</td>
 </tr>
 <tr>
-    <td>{{ exam_lbl.tour_freely }}:</td>
-    <td>{{ exam.tour_freely }}</td>
+    <td>{{ exam_lbl.address }}:</td>
+    <td>{{ exam.address }}</td>
 </tr>
 <tr>
-    <td>{{ exam_lbl.tour_vertices }}:</td>
-    <td>{{ exam.tour_vertices }}</td>
+    <td>{{ exam_lbl.city }}:</td>
+    <td>{{ exam.city }}</td>
 </tr>
 <tr>
-    <td>{{ exam_lbl.jars_vibrations }}:</td>
-    <td>{{ exam.jars_vibrations }}</td>
+    <td>{{ exam_lbl.state }}:</td>
+    <td>{{ exam.state }}</td>
 </tr>
 <tr>
-    <td>{{ exam_lbl.sonority }}:</td>
-    <td>{{ exam.sonority }}</td>
+    <td>{{ exam_lbl.birth_date }}:</td>
+    <td>{{ exam.birth_date }}</td>
 </tr>
 <tr>
-    <td>{{ exam_lbl.vesicular_murmur }}:</td>
-    <td>{{ exam.vesicular_murmur }}</td>
+    <td>{{ exam_lbl.photo }}:</td>
+    <td>{{ exam.photo }}</td>
 </tr>
 <tr>
-    <td>{{ exam_lbl.rales_moist_rales }}:</td>
-    <td>{{ exam.rales_moist_rales }}</td>
-</tr>
-<tr>
-    <td>{{ exam_lbl.roncus }}:</td>
-    <td>{{ exam.roncus }}</td>
-</tr>
-<tr>
-    <td>{{ exam_lbl.wheezing }}:</td>
-    <td>{{ exam.wheezing }}</td>
-</tr>
-<tr>
-    <td>{{ exam_lbl.tubal_puff }}:</td>
-    <td>{{ exam.tubal_puff }}</td>
-</tr>
-<tr>
-    <td>{{ exam_lbl.pleural_rub }}:</td>
-    <td>{{ exam.pleural_rub }}</td>
-</tr>
-<tr>
-    <td>{{ exam_lbl.comments }}:</td>
-    <td>{{ exam.comments }}</td>
+    <td>{{ exam_lbl.matricula }}:</td>
+    <td>{{ exam.matricula }}</td>
 </tr>

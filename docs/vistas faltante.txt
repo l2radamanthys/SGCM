@@ -15,40 +15,40 @@ paciente
 		- Cancelar Turnos
 	-HC
 		- examen fisico
-			-borrar
+			-borrar [OK]
 
 		- examen cabeza
-			-borrar
+			-borrar [OK]
 
 		- examen cuello
-			-listar
-			-crea
-			-mostrar
-			-borrar
+			-listar [OK]
+			-crea [OK]
+			-mostrar [OK]
+			-borrar [OK]
 
 		- examen piel faneas
-			-listar
-			-crea
-			-mostrar
-			-borrar
+			-listar [OK]
+			-creaR [OK]
+			-mostrar [OK]
+			-borrar [OK]
 
 		- examen sist osteo auric
-			-listar
-			-crea
-			-mostrar
-			-borrar
+			-listar [OK]
+			-crea [OK]
+			-mostrar [OK]
+			-borrar [OK]
 
-		- examen sist neuro musc
+		- examen sist neuro musc (No se implementara por falta tiempo)
 			-listar
 			-crea
 			-mostrar
 			-borrar
 
 		- examen torax
-			-listar
-			-crea
-			-mostrar
-			-borrar
+			-listar [OK]
+			-crea [OK]
+			-mostrar [OK]
+			-borrar [OK]
 
 		- examen cardivasc
 			-listar
@@ -60,8 +60,8 @@ paciente
 			-modificar
 			-borrar
 
-		- archivos (desestimado)
-			-listar
+		- archivos (CANCELADO NO SE IMPLEMENTARA)
+			-listar [OK]
 			-crea
 			-mostrar
 			-borrar	
@@ -69,9 +69,9 @@ paciente
 		- recetas
 			-listar [OK]
 			-crea [OK]
-			-mostrar
+			-mostrar [ok]
 			-borrar (Cancelada las recetas no se podran borrar)
-			-imprimir
+			-imprimir (hay problemas -.-)
 
 		todos los examenes ¿importar ?
 
@@ -81,6 +81,42 @@ paciente
 	- Registrar Paciente
 	- Registrar Turno Paciente Medico
 	- Cancelar Turno Paciente
+
 	
 
 53 Tareas
+-----------------------------------------------------------------------
+revision 28/01
+
+-general 
+	- listar mensajes enviados [OK]
+	- mostrar mensaje enviado [OK]
+	- modificar datos personales [OK]
+
+-medicos
+	-GT
+		- Modificar Turno
+		- Cancelar Turnos
+	-HC
+
+		- examen cardivasc
+			-listar [OK]
+			-crea [OK]
+			-mostrar [OK] 
+			-borrar [OK]
+
+		- imagenes
+			-modificar
+			-borrar
+
+		- recetas
+			-imprimir (hay problemas -.-)
+
+		todos los examenes ¿importar ?
+
+-administrativo
+	- Registrar Medico
+	- Registrar Administrativo
+	- Registrar Paciente
+	- Registrar Turno Paciente Medico
+	- Cancelar Turno Paciente

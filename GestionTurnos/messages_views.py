@@ -142,6 +142,26 @@ def received(request):
 
 
 
+def sent(request):
+    """
+        Muestra el listado de todos los mensajes recividos del usuario
+    """
+    mi_template = get_template('Messages/enviados.html')
+    dict = generate_base_keys(request)
+    if request.user.is_authenticated():
+        messages = Message.objects.filter(from_user=request.user)
+        if len(messages) > 0:
+            dict['messages'] = messages
+            dict['not_empty'] = True
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
 def read(request, msj_id):
     """
         Muestra un Mensaje en Particular

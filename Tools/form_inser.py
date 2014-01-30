@@ -1,6 +1,7 @@
 
 def main():
-    rem = "%s = _form.cleaned_data['%s'], \n"
+    #rem = "%s = _form.cleaned_data['%s'], \n"
+    rem = "info.%s = _form.cleaned_data['%s']\n"
     sho = "<tr>\n    <td>{{ exam_lbl.%s }}:</td>\n    <td>{{ exam.%s }}</td>\n</tr>\n"
     lines = open('file.txt')
     out = open("form.txt", "w")

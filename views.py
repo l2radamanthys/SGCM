@@ -159,34 +159,93 @@ def my_info(request):
 def change_my_info(request):
     mi_template = get_template('modificar-mis-datos.html')
     dict = generate_base_keys(request)
-
     dict['show_errors'] = False
-    dict['show_form'] = False
+    dict['show_form'] = True
+
     if request.user.is_authenticated():
-        if request.method == "POST" and False:
-            form = my_forms.ChangeUserInformationForm(request.POST)
-            if form.is_valid():
-                pass
+        user_data = UserInformation.objects.get(user=request.user)
+        form_data = {
+            'type_doc': user_data.type_doc,
+            'nro_doc': user_data.nro_doc,
+            'gender': user_data.gender,
+            'phone': user_data.phone,
+            'address': user_data.address,
+            'city': user_data.city,
+            'state': user_data.state,
+            'birth_date': user_data.birth_date.strftime("%d/%m/%Y"),
+            'matricula': user_data.matricula,
+        }
+
+        _form_data = {
+            'first_name' : request.user.first_name,
+            'last_name' : request.user.last_name,
+            'email' : request.user.email,
+        }
+
+        print user_data.birth_date.strftime("%d/%m/%Y")
+        #si es medico
+        if request.user.groups.all()[0].name == "Medico":
+            if request.method == 'POST':
+                form = my_forms.ChangeMedicInformationForm(request.POST)
+                _form = my_forms.ChangeUserDataForm(request.POST)
+                if form.is_valid() and _form.is_valid():
+                    user = request.user
+                    user.first_name = _form.cleaned_data['first_name']
+                    user.last_name = _form.cleaned_data['last_name']
+                    user.email = _form.cleaned_data['email']
+                    user.save()
+
+                    info = UserInformation.objects.get(user=request.user)
+                    info.type_doc = form.cleaned_data['type_doc']
+                    info.nro_doc = form.cleaned_data['nro_doc']
+                    info.gender = form.cleaned_data['gender']
+                    info.phone = form.cleaned_data['phone']
+                    info.address = form.cleaned_data['address']
+                    info.city = form.cleaned_data['city']
+                    info.state = form.cleaned_data['state']
+                    info.birth_date = form.cleaned_data['birth_date']
+                    info.matricula = form.cleaned_data['matricula']
+                    info.save()
+
+                    return HttpResponseRedirect("/mis-datos/")
+                else:
+                    dict['show_errors'] = True
+                    dict['form'] = form
+                    dict['aform'] = _form
             else:
-                dict['show_errors'] = True
-                dict['form'] = form
+                dict['form'] = my_forms.ChangeMedicInformationForm(initial=form_data)
+                dict['aform'] = my_forms.ChangeUserDataForm(initial=_form_data)
 
+        #el resto de los usuarios
         else:
-            user_data = UserInformation.objects.get(user__username=request.user.username)
-            form_data = {
-                'type_doc': user_data.type_doc,
-                'nro_doc': user_data.nro_doc,
-                'gender': user_data.gender,
-                'phone': user_data.phone,
-                'address': user_data.address,
-                'city': user_data.city,
-                'state': user_data.state,
-                'birth_date': user_data.birth_date,
-                'matricula': user_data.matricula,
-            }
+            if request.method == 'POST':
+                form = my_forms.ChangeUserInformationForm(request.POST)
+                _form = my_forms.ChangeUserDataForm(request.POST)
+                if form.is_valid() and _form.is_valid():
+                    user = request.user
+                    user.first_name = _form.cleaned_data['first_name']
+                    user.last_name = _form.cleaned_data['last_name']
+                    user.email = _form.cleaned_data['email']
+                    user.save()
 
-            dict['form'] = my_forms.ChangeUserInformationForm(initial=form_data)
-            dict['show_form'] = True
+                    info = UserInformation.objects.get(user=request.user)
+                    info.type_doc = form.cleaned_data['type_doc']
+                    info.nro_doc = form.cleaned_data['nro_doc']
+                    info.gender = form.cleaned_data['gender']
+                    info.phone = form.cleaned_data['phone']
+                    info.address = form.cleaned_data['address']
+                    info.city = form.cleaned_data['city']
+                    info.state = form.cleaned_data['state']
+                    info.birth_date = form.cleaned_data['birth_date']
+                    info.save()
+                    return HttpResponseRedirect("/mis-datos/")
+                else:
+                    dict['show_errors'] = True
+                    dict['form'] = form
+                    dict['aform'] = _form
+            else:
+                dict['form'] = my_forms.ChangeUserInformationForm(initial=form_data)
+                dict['aform'] = my_forms.ChangeUserDataForm(initial=_form_data)
 
 
         html_cont = mi_template.render(Context(dict))

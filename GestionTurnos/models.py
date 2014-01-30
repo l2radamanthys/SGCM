@@ -21,15 +21,15 @@ class UserInformation(models.Model):
     """
     user = models.ForeignKey(User, unique=True) #Fk
 
-    type_doc = models.CharField(max_length=6, default='---', choices=TYPE_DOC_CHOICE)
-    nro_doc = models.CharField(max_length=12, default='')
-    gender = models.CharField(max_length=1, default='-', choices=SEXO_CHOICE)
-    phone = models.CharField(max_length=20, default='No Definido')
-    address = models.CharField(max_length=120, default='No Definido')
-    city = models.CharField(max_length=120, default='No Definido')
-    state = models.CharField(max_length=120, default='No Definido')
-    birth_date = models.DateField()
-    photo = models.ImageField(upload_to='upload/images', default='upload/images/no-avatar.png')
+    type_doc = models.CharField("Tipo Documente", max_length=6, default='---', choices=TYPE_DOC_CHOICE)
+    nro_doc = models.CharField("Nro Documento", max_length=12, default='')
+    gender = models.CharField("Sexo", max_length=1, default='-', choices=SEXO_CHOICE)
+    phone = models.CharField("Telefono", max_length=20, default='No Definido')
+    address = models.CharField("Direccion", max_length=120, default='No Definido')
+    city = models.CharField("Ciudad", max_length=120, default='No Definido')
+    state = models.CharField("Provincia", max_length=120, default='No Definido')
+    birth_date = models.DateField("Fecha de Nacimiento")
+    photo = models.ImageField("Avatar", upload_to='upload/images', default='upload/images/no-avatar.png')
 
     #solo para los medicos
     matricula = models.CharField(max_length=30, default='No Medic')

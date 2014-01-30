@@ -60,10 +60,57 @@ class ChangeUserInformationForm(forms.ModelForm):
             'city',
             'state',
             'birth_date',
+            #'matricula',
+        )
+
+        widgets = {
+            'birth_date': forms.TextInput(attrs={'class':'edt_c',}),
+            'nro_doc': forms.TextInput(attrs={'class':'edt_c',}),
+            'address' : forms.TextInput(attrs={'class':'edt_g',}),
+        }
+
+
+class ChangeMedicInformationForm(forms.ModelForm):
+    class Meta:
+        model = UserInformation
+        fields = (
+            'type_doc',
+            'nro_doc',
+            'gender',
+            'phone',
+            'address',
+            'city',
+            'state',
+            'birth_date',
             'matricula',
         )
 
+        widgets = {
+            'birth_date': forms.TextInput(attrs={'class':'edt_c',}),
+            'nro_doc': forms.TextInput(attrs={'class':'edt_c',}),
+            'address' : forms.TextInput(attrs={'class':'edt_g',}),
+        }
 
+
+class ChangeUserDataForm(forms.Form):
+
+    first_name = forms.CharField(
+        label="Nombre",
+        widget=forms.TextInput(attrs={'class':'edt_m'}),
+        required = False
+    )
+
+    last_name = forms.CharField(
+        label="Apellido",
+        widget=forms.TextInput(attrs={'class':'edt_m'}),
+        required = False
+    )
+
+    email = forms.EmailField(
+        label="Email (*)",
+        widget=forms.TextInput(attrs={'class':'edt_m'}),
+        error_messages={'required': 'El Campo "Email" es obligatorio'}
+    )
         #def __init__(self, *args, **kwargs):
             #"""
             #Todo esto de redefinir el constructor para

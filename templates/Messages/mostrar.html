@@ -14,7 +14,7 @@
 <h2>Mensajes Recibidos</h2>
 <br />
 <a href="/mensajes/recibidos/" class="grad-button-blue">Recibidos</a>
-<a href="" class="grad-button-blue">Enviados</a>
+<a href="/mensajes/enviados/" class="grad-button-blue">Enviados</a>
 <br />
 <!-- ul class="tabs">
    <li><a href="/usuarios/inbox/redactar/">Nuevo Mensaje</a></li>
@@ -28,6 +28,7 @@
     <br />
     <div style="font-size:12px;background: #EEE; padding: 10px;width:840px;">
         <p><strong>De:</strong> {{ message.from_user.get_full_name }} <a href="">@{{ message.from_user }}</a></p>
+        <p><strong>Para:</strong> {{ message.to_user.get_full_name }} <a href="">@{{ message.to_user }}</a></p>
         <p><strong>Asunto:</strong> {{ message.issue }}</p>
         <br />
         <pre style="background: #FFF;padding: 10px; width:800px; min-height: 200px">{{ message.content }}</pre>

@@ -6,8 +6,12 @@
 	<link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
     <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
     <link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/DatePicker-style.css" />
 {% endblock %}
 
+{% block javascript %}
+    <script type="text/javascript" src="/media/js/DatePicker.js"></script>
+{% endblock %}
 
 {% block contenido %}
     <br />
@@ -19,26 +23,19 @@
         <form action="." method="POST" enctype="multipart/form-data">
         <table style="margin: 0 auto; width:600px;">
 
+            {% for field in aform %}
             <tr>
-                <td>{{ form.type_doc.label }}</td>
-                <td>{{ form.type_doc }}</td>
+                <td>{{ field.label }}:</td>
+                <td>{{ field }}</td>
             </tr>
+            {% endfor %}
 
+            {% for field in form %}
             <tr>
-                <td>{{ form.nro_doc.label }}</td>
-                <td>{{ form.nro_doc }}</td>
+                <td>{{ field.label }}:</td>
+                <td>{{ field }}</td>
             </tr>
-
-            <tr>
-                <td>{{ form.matricula.label }}</td>
-                <td>{{ form.matricula }}</td>
-            </tr>
-
-
-            <tr>
-                <td>{{ form.birth_date.label }}</td>
-                <td>{{ form.birth_date }}</td>
-            </tr>
+            {% endfor %}
 
             <tr>
                 <td colspan="2" style="text-align: center">
@@ -47,9 +44,34 @@
                 <a href="/mis-datos/" class="grad-button-blue">Atras</a>
                 </td>
             </tr>
-        </tablet>
+        </table>
         </form>
     </div>    
     {% endif %}
-    
+
+    <br />
+    {% if show_errors %}
+        <div class="error">
+        {% for field in form %}
+            {% if field.errors %}
+                <p><strong>{{ field.label }}:</strong> {{ field.value }}</p>
+                {{ field.errors }}<br />
+            {% endif %}
+        {% endfor %}
+        {% for field in aform %}
+            {% if field.errors %}
+                <p><strong>{{ field.label }}:</strong> {{ field.value }}</p>
+                {{ field.errors }}<br />
+            {% endif %}
+        {% endfor %}
+        
+        </div>
+    {% endif %}
+
+
+    <!--Init DatePicker.js Code Definition -->
+    <script type="text/javascript">
+        DatePicker.SetUpElement("id_birth_date");
+    </script>
+    <!--End DatePicker.js Code Definiti
 {% endblock %}

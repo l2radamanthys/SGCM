@@ -74,8 +74,7 @@ urlpatterns = patterns('',
      (r'^medicos/mostrar/prescripcion-medica/(\d{1,2})/$', gt_medics_views.medic_show_patient_prescription),
      (r'^medicos/imprimir/prescripcion-medica/(\d{1,2})/$', gt_medics_views.medical_prescription_pdf),
 
-     #(r'^medicos/borrar/consulta-medica/(\d{1,2})/$', gt_medics_views.medic_list_patient_prescriptions),
-
+    # Horario de Atencion
     (r'^medicos/mostrar/mis-horarios-atencion/$', gt_medics_views.my_medic_show_business_hours),
     (r'^medicos/agregar/mi-horario-atencion/$', gt_medics_views.my_medic_add_business_hours),
     (r'^medicos/borrar/mi-horarios-atencion/(\d{1,2})/$', gt_medics_views.my_medic_del_business_hours),
@@ -88,7 +87,6 @@ urlpatterns = patterns('',
     (r'^medicos/mostrar/turnos-asignados/$', gt_medics_views.show_turns),
     (r'^medicos/mostrar/turnos-asignados/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_medics_views.show_turns),
     (r'^medicos/cronograma/$', gt_medics_views.show_cronogram),
-
     (r'^medicos/listado/$', gt_patients_views.patient_show_medics_list),
     (r'^medicos/mostrar/(\d{1,2})/$', gt_patients_views.patient_show_medic_info),
 
@@ -103,13 +101,14 @@ urlpatterns = patterns('',
 
 
     #mensajes internos
-    (r'^mensajes/redactar', gt_messages_views.send_message),
-    (r'^mensajes/responder/(\d{1,5})/', gt_messages_views.re_send_message), #responder
-    (r'^mensajes/recibidos', gt_messages_views.received),
-    (r'^mensajes/mostrar/(\d{1,2})/', gt_messages_views.read),
-    (r'^mensajes/borrar/(\d{1,2})/', gt_messages_views.delete),
+    (r'^mensajes/redactar/$', gt_messages_views.send_message),
+    (r'^mensajes/responder/(\d{1,5})/$', gt_messages_views.re_send_message), #responder
+    (r'^mensajes/recibidos/$', gt_messages_views.received),
+    (r'^mensajes/mostrar/(\d{1,2})/$', gt_messages_views.read),
+    (r'^mensajes/borrar/(\d{1,2})/$', gt_messages_views.delete),
     (r'^medicos/nueva/consulta-online/(\d{1,2})/$', gt_patients_views.patient_set_medic_consulation), #paciente realizar consulta al medico
 
+    (r'^mensajes/enviados/$', gt_messages_views.sent),
 
     ## - Historia Clinica Views - ##
 
@@ -117,11 +116,9 @@ urlpatterns = patterns('',
     (r'^pacientes/mostrar/imagenes/(.+)/$', hc_medics_views.medic_list_patients_images),
     (r'^pacientes/agregar/imagen/(.+)/$', hc_medics_views.medic_add_patients_images),
 
-
     #archivos
     #borrado no se incluira
     #(r'^pacientes/listado/archivos/(.+)/$', hc_medics_views.medic_list_patient_files),
-
 
     #antecedentes perinatales (hecho)
     (r'^pacientes/mostrar/antecedentes-perinatales/(.+)/$', hc_medics_views.medic_view_patient_perinatal_antecedents),
@@ -136,7 +133,6 @@ urlpatterns = patterns('',
     (r'^pacientes/agregar/examen-fisico/(.+)/$', hc_medics_views.medic_add_patient_phisic_exam),
     (r'^pacientes/mostrar/examen-fisico/(\d{1,2})/$', hc_medics_views.medic_show_patient_phisic_exam),
     (r'^pacientes/borrar/examen-fisico/(\d{1,2})/$', hc_medics_views.medic_del_patient_phisic_exam),
-
 
     #examen cabeza
     (r'^pacientes/listado/examen-cabeza/(.+)/$', hc_medics_views.medic_list_patient_head_exam),
@@ -162,16 +158,16 @@ urlpatterns = patterns('',
     (r'^pacientes/mostrar/examen-osteo-articular/(\d{1,2})/$', hc_medics_views.medic_show_patient_osteo_art_exam),
     (r'^pacientes/borrar/examen-osteo-articular/(\d{1,2})/$', hc_medics_views.medic_del_patient_osteo_art_exam),
 
-
+    #Examen Aparato Respiratorio
     (r'^pacientes/listado/examen-aparato-respiratorio/(.+)/$', hc_medics_views.medic_list_patient_resp_system_exam),
     (r'^pacientes/agregar/examen-aparato-respiratorio/(.+)/$', hc_medics_views.medic_add_patient_resp_system_exam),
     (r'^pacientes/mostrar/examen-aparato-respiratorio/(\d{1,2})/$', hc_medics_views.medic_show_patient_resp_system_exam),
     (r'^pacientes/borrar/examen-aparato-respiratorio/(\d{1,2})/$', hc_medics_views.medic_del_patient_resp_system_exam),
 
-    #(r'^pacientes/listado/examen-cardiovascular/(.+)/$', hc_medics_views.),
-    #(r'^pacientes/agregar/examen-cardiovascular/(.+)/$', hc_medics_views.),
-    #(r'^pacientes/mostrar/examen-cardiovascular/(\d{1,2})/$', hc_medics_views.),
-    #(r'^pacientes/borrar/examen-cardiovascular/(\d{1,2})/$', hc_medics_views.),
+    (r'^pacientes/listado/examen-aparato-cardiovascular/(.+)/$', hc_medics_views.medic_list_patient_cardio_exam),
+    (r'^pacientes/agregar/examen-aparato-cardiovascular/(.+)/$', hc_medics_views.medic_add_patient_cardio_exam),
+    (r'^pacientes/mostrar/examen-aparato-cardiovascular/(\d{1,2})/$', hc_medics_views.medic_show_patient_cardio_exam),
+    (r'^pacientes/borrar/examen-aparato-cardiovascular/(\d{1,2})/$', hc_medics_views.medic_del_patient_cardio_exam),
 
 
     ######################################################################################
