@@ -27,3 +27,4 @@ def set_color(canvas, color):
 
 def hr_line(canvas, y):
     canvas.line(m_left, y, m_right, y)
+

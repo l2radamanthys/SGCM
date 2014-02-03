@@ -30,12 +30,19 @@
 
     <div style="margin: 0 auto; width: 685px;">
     {% for image in images %}
-        <a class="image" href="/media/{{ image.image }}"
-           data-lightbox="image-{{ image.id }}"
-           ltitle="Titulo: {{ image.title }}  <br />Contenido: <span class='cont'>{{ image.content }}</span>">
-            <img src="{% thumbnail image.image 150x150 %}" />
-        </a>
+        <div class="image">
+            <a href="/media/{{ image.image }}" class="img"
+               data-lightbox="image-{{ image.id }}"
+               ltitle="Titulo: {{ image.title }}  <br />Contenido: <span class='cont'>{{ image.content }}</span>">
+                <img src="{% thumbnail image.image 150x150 %}" />
+            </a>
+            <br />
+
+            <a href="/pacientes/modificar/imagen/{{ image.id }}/" title="Modificar Informacion"><img src="/media/images/page_edit.gif" alt="Modificar" /></a>
+            <a href="/pacientes/borrar/imagen/{{ image.id }}/" title="Borrar Imagen"><img src="/media/images/page_delete.gif" alt="Borrar" /></a>
+        </div>
     {% endfor %}
     </div>
+    <div style="clear: both;"></div>
     <br />
 {% endblock %}

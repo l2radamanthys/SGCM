@@ -106,7 +106,7 @@ def generate_turn(response, turn):
 
 
 
-def generate_medical_presc(response, pm):#, minfo, pinfo):
+def generate_medical_presc(response, pm, med, pac):
     """
         pm datos de la prescripcion medica o receta
         pinfo informacion del paciente
@@ -114,10 +114,35 @@ def generate_medical_presc(response, pm):#, minfo, pinfo):
     """
 
     c = canvas.Canvas(response, A4)
-    y = y_rest #alto disponible
+    y = y_rest + 60 #alto disponible ,agrego cabecera
+
+    #med = pm.med_consulation.medic
 
     c.setFont("Helvetica", P)
-    #c.drawString(m_left, y, "Dr % %" %(minfo.first_name, minfo.last_name))
-
-
+    c.drawString(m_left, y, "Dr: " + med.user.first_name + " " + med.user.last_name)
+    y -= P
+    c.drawString(m_left, y, "Documento: " + med.type_doc + " " + med.nro_doc)
+    y -= P
+    c.drawString(m_left, y, "Matricula: " + med.matricula)
+    y -= P
+    hr_line(c, y)
+    #fin cabecera
+    y -= H2
+    c.setFont("Helvetica", H2)
+    c.drawString(m_left, y, "Prescripcion Medica")
+    y -= H3
+    y -= P
+    c.setFont("Helvetica", H3)
+    c.drawString(m_left, y, "Datos de Paciente")
+    y -= P * 2
+    c.setFont("Helvetica", P)
+    c.drawString(m_left, y, "Apellido y Nombre: "+ pac.user.first_name + " " + pac.user.last_name)
+    y -= P
+    c.drawString(m_left, y, "Documento: "+ pac.type_doc + " " + pac.nro_doc)
+    y -= P
+    c.drawString(m_left, y, "Fecha de Nacimiento: "+ pac.birth_date.strftime("%d/%m/%Y"))
+    y -= P
+    y -= H3
+    c.setFont("Helvetica", H3)
+    c.drawString(m_left, y, "Datos de la Prescripcion")
     c.save()

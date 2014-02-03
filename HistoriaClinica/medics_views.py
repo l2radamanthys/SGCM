@@ -101,9 +101,88 @@ def medic_show_patients_images(request, pac_username):
     if True:
         dict['pac_username'] = pac_username
         dict['pac'] = User.objects.get(groups__name='Paciente', username=pac_username)
-        pass
+
 
     #usuario no posee permisos
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+def medic_edit_patient_image(request, img_id):
+    mi_template = get_template('Medics/HistoriaClinica/modificar-image-info.html')
+    dict = generate_base_keys(request)
+    dict['show_errors'] = False
+    dict['show_form'] = True
+
+    if request.user.is_authenticated():
+        image = Image.objects.get(id=img_id)
+        dict['pac_username'] = image.patient.username
+        pac = image.patient
+        dict['pac'] = pac
+        dict['img'] = image
+        form_data = {
+            'title' : image.title,
+            'content' : image.content
+        }
+
+        if request.method == 'POST':
+            form = my_forms.ImageInfoForm(request.POST)
+
+            if form.is_valid() :
+                #image = Image.objects.get(id=img_id)
+                image.title =  form.cleaned_data['title']
+                image.content =  form.cleaned_data['content']
+                image.save()
+
+                return HttpResponseRedirect("/pacientes/mostrar/imagenes/%s/" %image.patient.username)
+            else:
+                dict['show_errors'] = True
+                dict['form'] = form
+
+        else:
+            dict['form'] = my_forms.ImageInfoForm(initial=form_data)
+
+
+        html_cont = mi_template.render(Context(dict))
+        return HttpResponse(html_cont)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+
+
+def medic_del_patient_image(request, img_id):
+    #incomplete
+    mi_template = get_template('Medics/HistoriaClinica/borrar-imagen.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        try:
+            exam = Image.objects.get(id=img_id)
+            dict['exam'] = exam
+            dict['exam_lbl'] = get_labels_for(exam)
+            dict['pac'] = exam.patient
+            dict['pac_username'] = exam.patient.username
+
+            dict['exam_name'] = exam.title
+            dict['return_url'] = "/pacientes/mostrar/imagenes/%s/" %dict['pac_username']
+
+            if request.method == 'POST':
+                Image.objects.get(id=img_id).delete()
+                dict['response'] = True
+
+            else:
+                dict['answer'] = True
+
+        except:
+            path = request.META['PATH_INFO']
+            return HttpResponseRedirect("/restricted-access%s" %path)
+
     else:
         path = request.META['PATH_INFO']
         return HttpResponseRedirect("/restricted-access%s" %path)
@@ -241,6 +320,7 @@ def medic_view_patient_toxic_habits(request, pac_username):
 
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
+
 
 
 def medic_edit_patient_toxic_habits(request, pac_username):

@@ -1,0 +1,56 @@
+{% extends 'Medics/GestionTurnos/patient-view.html' %}
+
+{% block ext_style %}
+    
+{% endblock %}
+
+{% load thumbnail %}
+
+{% block view-cont %}
+<div  style="padding-left:10px;" >
+    <br />
+    <h2>Borrar Imagen</h2>
+    <br />
+    <br />
+    
+    {% if answer %}
+    <div class="fancy-form-white" style="width: 400px; margin: 0 auto;">
+        <form action="" method="POST">
+            <div style="text-align: center">
+            <br />
+            <img src="{% thumbnail exam.image 250x250 %}" />
+            <br />
+            <p>&iquest; Desea la imagen "{{ exam_name }}" ?</p>
+            <input type="hidden" value="1" name="borrar" />
+            <br />            
+                <input type="Submit" value="Si" class="grad-button-blue" />
+                <a href="{{ return_url }}" class="grad-button-blue">No</a>
+            </div>
+        </form>   
+    </div>
+    {% endif %}
+
+    {% if response %}
+    <div class="info" style="width: 600px">
+        <p> La Imagen fue borrada con Exito</p>
+    </div>
+        <br />
+        
+    <div style="text-align: center">
+        <a href="{{ return_url }}" class="grad-button-blue">Continuar</a>
+    </div>
+    {% endif %}
+
+    {% if error %}
+    <div class="error" style="width: 600px">
+        <p >El Examen Solicitado No Existe</p>
+    </div>
+        <br />
+        
+    <div style="text-align: center">
+        <a href="{{ return_url }}" class="grad-button-blue">Volver</a>
+    </div>
+    {% endif %}
+    
+
+{% endblock %}

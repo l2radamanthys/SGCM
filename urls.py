@@ -112,9 +112,11 @@ urlpatterns = patterns('',
 
     ## - Historia Clinica Views - ##
 
-    #imagenes (incompleto)
+    #imagenes
     (r'^pacientes/mostrar/imagenes/(.+)/$', hc_medics_views.medic_list_patients_images),
     (r'^pacientes/agregar/imagen/(.+)/$', hc_medics_views.medic_add_patients_images),
+    (r'^pacientes/borrar/imagen/(\d{1,2})/$', hc_medics_views.medic_del_patient_image),
+    (r'^pacientes/modificar/imagen/(\d{1,2})/$', hc_medics_views.medic_edit_patient_image),
 
     #archivos
     #borrado no se incluira

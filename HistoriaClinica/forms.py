@@ -207,12 +207,16 @@ class CardiovascularSystemExamForm(forms.ModelForm):
 
 
 
-#class Form(forms.ModelForm):
-    #class Meta:
-        #model =
-        #exclude = [
-            #'patient',
-            #'date'
-        #]
-        #widgets = {
-        #}
+class ImageInfoForm(forms.ModelForm):
+    class Meta:
+        model = Image
+        exclude = [
+            'image',
+            'date',
+            'patient',
+            'medic',
+        ]
+        widgets = {
+            'title' : forms.TextInput(attrs={'class':'edt_g'}),
+            'content' : forms.Textarea(attrs={'cols':'60', 'rows':'3'}),
+        }

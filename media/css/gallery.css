@@ -22,15 +22,24 @@
 }
 
 
-a.image {
-    display: block;
+.image {
     margin:2px;
+    border:1px solid #AAA;
+    height: 200px;
+    float:left;
+    text-align:center;
+}
+
+.image .img {
+    display: block;
     min-width: 155px;
     min-height: 155px;
     padding: 5px 5px;
-    border:1px solid #AAA;
-    height:auto;
+    height: auto;
     width:auto;
-    float:left;
-    text-align:center;
+}
+
+
+.image a {
+    text-decoration: None;
 }

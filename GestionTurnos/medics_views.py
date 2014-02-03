@@ -1089,7 +1089,7 @@ def medic_show_patient_prescription(request, id_pm):
     return HttpResponse(html_cont)
 
 
-import reports_templates as reports
+import repor as reports
 
 
 def medical_prescription_pdf(request, id_pm):
@@ -1100,9 +1100,8 @@ def medical_prescription_pdf(request, id_pm):
     if True:
         try:
             pm = MedicalPrescription.objects.get(id=id_pm)
-            pinfo = UserInformation.objects.get(user=pm.med_consulation.patient)
-            minfo = UserInformation.objects.get(user=pm.med_consulation.medic)
-
+            pac = UserInformation.objects.get(user=pm.med_consulation.patient)
+            med = UserInformation.objects.get(user=pm.med_consulation.medic)
         except:
             path = request.META['PATH_INFO']
             return HttpResponseRedirect("/restricted-access%s" %path)
@@ -1110,7 +1109,7 @@ def medical_prescription_pdf(request, id_pm):
         response = HttpResponse(content_type='application/pdf')
         response['Content-Disposition'] = 'attachment; filename="test.pdf"'
 
-        reports.test(response)#, pm, minfo, pinfo)
+        reports.generate_medical_presc(response, pm, med, pac)
         return response
 
 
