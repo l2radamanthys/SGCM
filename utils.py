@@ -53,7 +53,7 @@ def get_user_menu(request):
             return load_cont(os.path.join('Menu', 'medic.html'))
         #administradores
         else:
-            return load_cont(os.path.join('Menu', 'medic.html'))
+            return load_cont(os.path.join('Menu', 'admin.html'))
     else:
         return load_cont(os.path.join('Menu', 'not-login.html'))
 

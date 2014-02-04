@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+
+{% block style %}
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
+{% endblock %}
+
+
+{% block contenido %}
+    <br />
+    <div style="text-align: center; width: 680px; margin: 0 auto;">
+        <h2 style="text-align: left;">Buscar {{ type_user }}</h2><br />
+        
+        <form action="" method="POST">
+            <select name="field">
+                <option value="">Usuario</option>
+                <option value="">Nombre</option>
+                <option value="">Apellido</option>
+            </select>
+            <input type="text" name="search" style="width:250px;"> <input type="Submit" value="Buscar" class="grad-button-blue"> 
+        </form>
+    </div>
+    <br />
+    
+    <table class="tbl-round-light" style="width:700px; margin: 0 auto;">
+        <tr>
+            <th>Usuario</th>
+            <th>Apellido y Nombre</th>
+        </tr>
+    {% for user in search_result %}
+        <tr>
+            <td><a href="{{ url_dest }}{{ user.username }}/">{{ user.username }}</a></td>
+            <td><a href="{{ url_dest }}{{ user.username }}/">{{ user.last_name }}, {{ user.first_name }}</a></td>
+        </tr>
+    {% endfor %}
+    </table>
+
+{% endblock %}

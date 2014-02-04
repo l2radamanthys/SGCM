@@ -106,8 +106,8 @@ revision 28/01
 			-borrar [OK]
 
 		- imagenes
-			-modificar
-			-borrar
+			-modificar [OK]
+			-borrar [OK]
 
 		- recetas
 			-imprimir (hay problemas -.-)

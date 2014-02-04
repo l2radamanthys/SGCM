@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+
+{% block style %}
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
+{% endblock %}
+
+
+{% block contenido %}
+    <br />
+    <h2>Listado Expecialidades Medicas</h2>
+
+    <br />
+    
+    <table class="tbl-round-light" style="width:400px; margin: 0 auto;">
+        <tr>
+            <th>Nombre</th>
+            <th style="width: 120px">Opciones</th>
+        </tr>
+    {% for exp in expecialidades %}
+        <tr>
+           <td>{{ exp.name }}</td>
+           <td>
+                <!-- <a href="/admins/modificar/" title="">Modificar</a> -->
+                <a href="" title="">Mostrar</a>
+                &nbsp;|&nbsp;
+                <a href="" title="">borrar</a>
+           </td>
+        </tr>
+    {% endfor %}
+    </table>
+
+{% endblock %}

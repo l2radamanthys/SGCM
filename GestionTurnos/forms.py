@@ -258,3 +258,69 @@ class MedicalPrescriptionForm(forms.ModelForm):
             'container_format' : forms.TextInput(attrs={'class':'edt_g',}),
             'posology' : forms.TextInput(attrs={'class':'edt_g',}),
         }
+
+
+
+#admins forms
+
+from django.contrib.auth.models import User
+
+
+class UserRegForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = (
+            "username",
+            "password",
+            "email",
+            "first_name",
+            "last_name",
+
+        )
+
+
+
+class RegMedicInformationForm(forms.ModelForm):
+    class Meta:
+        model = UserInformation
+        fields = (
+            'type_doc',
+            'nro_doc',
+            'birth_date',
+            'matricula',
+            'gender',
+            'phone',
+            'address',
+            'city',
+            'state',
+
+        )
+
+        widgets = {
+            'birth_date': forms.TextInput(attrs={'class':'edt_c',}),
+            'nro_doc': forms.TextInput(attrs={'class':'edt_c',}),
+            'address' : forms.TextInput(attrs={'class':'edt_g',}),
+        }
+
+
+
+class RegAdminInformationForm(forms.ModelForm):
+    class Meta:
+        model = UserInformation
+        fields = (
+            'type_doc',
+            'nro_doc',
+            'birth_date',
+            'gender',
+            'phone',
+            'address',
+            'city',
+            'state',
+
+        )
+
+        widgets = {
+            'birth_date': forms.TextInput(attrs={'class':'edt_c',}),
+            'nro_doc': forms.TextInput(attrs={'class':'edt_c',}),
+            'address' : forms.TextInput(attrs={'class':'edt_g',}),
+        }

@@ -10,10 +10,10 @@ from settings import MEDIA_ROOT
 import views as base_views
 import debug_views
 #gestion de turnos
-import GestionTurnos.patients_views as gt_users_views
+import GestionTurnos.patients_views as gt_patients_views
 import GestionTurnos.medics_views as gt_medics_views
 import GestionTurnos.messages_views as gt_messages_views
-import GestionTurnos.patients_views as gt_patients_views
+import GestionTurnos.admins_views as gt_admins_views
 #historia clinica
 import HistoriaClinica.medics_views as hc_medics_views
 
@@ -55,6 +55,19 @@ urlpatterns = patterns('',
     (r'^modificar-datos-personales/$', base_views.change_my_info),
 
     ## - Gestion de Turnos Views - ##
+
+    ## Admins Viewws
+    (r'^admins/registrar/medico/$', gt_admins_views.admin_add_medic),
+    (r'^admins/buscar/medico/$', gt_admins_views.admin_search_medic),
+
+    (r'^admins/registrar/administrativo/$', gt_admins_views.admin_add_admin),
+    (r'^admins/buscar/administrativo/$', gt_admins_views.admin_search_admin),
+
+    (r'^admins/buscar/paciente/$', gt_admins_views.admin_search_patient),
+
+    #expecialidades
+    (r'^admins/listado/expecialidad-medica/$', gt_admins_views.admin_list_expecialities),
+    #####
 
     (r'^pacientes/buscar/$', gt_medics_views.patients_search),
     (r'^pacientes/registrar/$', gt_medics_views.patient_register),
