@@ -252,12 +252,23 @@ def admin_add_expeciality(request):
 
 
 
-def show_expeciality(request, exp_id):
+def admin_show_expeciality(request, exp_id):
     """
         Es generico para ver la informacion sobre la expecialidad
         en particular
     """
-    pass
+    mi_template = get_template('Admins/GestionTurnos/mostrar-expecialidad.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        dict['exp'] = MedicalSpecialties.objects.get(id=exp_id)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
 
 
 

@@ -67,6 +67,8 @@ urlpatterns = patterns('',
 
     #expecialidades
     (r'^admins/listado/expecialidad-medica/$', gt_admins_views.admin_list_expecialities),
+    (r'^admins/mostrar/expecialidad-medica/(\d{1,2})/$', gt_admins_views.admin_show_expeciality),
+
     #####
 
     (r'^pacientes/buscar/$', gt_medics_views.patients_search),

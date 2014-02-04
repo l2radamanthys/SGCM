@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+
+{% block style %}
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
+{% endblock %}
+
+
+{% block contenido %}
+    <br />
+    <h2>Detalle de la Expecialidad Medica</h2>
+    <br />
+    <div style="text-align: right; width: 600px; margin: 0 auto;">
+        <a href="/admins/listado/expecialidad-medica/" title="" class="grad-button-blue">Atras</a>
+    </div>
+
+    <br />
+    <div  class="fancy-form-white" style="width: 600px; margin: 0 auto;">
+        <table>
+            <tr>
+                <td style="width: 200px"><strong>Nombre de la Expecialidad:</strong></td>
+                <td>{{ exp.name }}</td>
+            </tr>
+            <tr>
+                <td colspan="2"><br /></td>
+            </tr>
+            <tr>
+                <td><strong>Descripcion:</strong></td>
+                <td>{{ exp.description }}</td>
+            </tr>
+        </table>
+    </div>
+
+
+{% endblock %}
