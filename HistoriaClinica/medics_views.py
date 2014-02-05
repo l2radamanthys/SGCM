@@ -14,6 +14,7 @@ import HistoriaClinica.forms as my_forms
 from utils import *
 from globals import *
 from HTMLTags import *
+import reports
 
 from verbose import *
 

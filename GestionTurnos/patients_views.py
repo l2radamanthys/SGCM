@@ -22,7 +22,7 @@ import GestionTurnos.forms as my_forms
 from utils import *
 from globals import *
 import HTMLTags as Tags
-
+import reports
 
 
 def patient_register(request):
@@ -550,8 +550,7 @@ def patient_turn_pdf(request, turn_id):
 
         response = HttpResponse(content_type='application/pdf')
         response['Content-Disposition'] = 'attachment; filename="turno.pdf"'
-        import reports_templates as report
-        report.generate_turn(response, turn)
+        reports.generate_turn(response, turn)
         return response
 
     else:

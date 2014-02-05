@@ -20,7 +20,7 @@ import GestionTurnos.forms as my_forms
 from utils import *
 from globals import *
 import HTMLTags as Tags
-
+import reports
 
 
 def patients_search(request):
@@ -1089,8 +1089,6 @@ def medic_show_patient_prescription(request, id_pm):
     return HttpResponse(html_cont)
 
 
-import repor as reports
-
 
 def medical_prescription_pdf(request, id_pm):
     """
@@ -1107,7 +1105,7 @@ def medical_prescription_pdf(request, id_pm):
             return HttpResponseRedirect("/restricted-access%s" %path)
 
         response = HttpResponse(content_type='application/pdf')
-        response['Content-Disposition'] = 'attachment; filename="test.pdf"'
+        response['Content-Disposition'] = 'attachment; filename="receta.pdf"'
 
         reports.generate_medical_presc(response, pm, med, pac)
         return response
