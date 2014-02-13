@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block style %}
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/sub-menu-style.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+
+    {% block ext_style %}
+    {% endblock %}
+
+{% endblock %}
+
+{% block contenido %}
+
+<div class="left-cont">
+    <div class="left-sub-menu">
+        {% block sub-cont %}
+        {% endblock %}
+        <br />
+    </div>
+
+</div>
+
+<div class="center-cont">
+    {% block view-cont %}
+    {% endblock %}
+</div>
+{% endblock %}

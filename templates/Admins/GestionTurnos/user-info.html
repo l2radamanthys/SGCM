@@ -1,0 +1,57 @@
+
+<table id="custom-tbl" cellspacing="8px">
+    <tr>
+        <td style="width:150px;"><label>Nombre y Apellido:</label></td>
+        <td style="width:400px;"> {{ iuser.first_name }} {{ iuser.last_name }}</td>
+    </tr>
+
+    <tr>
+        <td><label>Usuario:</label></td>
+        <td> {{ iuser.first_name }}</td>
+    </tr>
+
+    <tr>
+        <td><label>Email:</label></td>
+        <td>{{ iuser.email }}</td>
+    </tr>
+
+    <tr>
+        <td><label>Documento:</label></td>
+        <td>{{ info.type_doc }} - {{ info.nro_doc }}</td>
+    </tr>
+    <tr>
+        <td><label>Fecha de Nacimiento:</label></td>
+        <td>{{ info.birth_date }}</td>
+    </tr>
+    <tr>
+        <td><label>Sexo:</label></td>
+        <td>{{ info.get_gender_display }}</td>
+    </tr>
+    <tr>
+        <td><label>Telefono:</label></td>
+        <td>{{ info.phone }}</td>
+    </tr>
+    <tr>
+        <td><label>Direccion:</label></td>
+        <td>{{ info.address }}</td>
+    </tr>
+    <tr>
+        <td><label>Ciudad:</label></td>
+        <td>{{ info.city }}</td>
+    </tr>
+    <tr>
+        <td><label>Provincia:</label></td>
+        <td>{{ info.state }}</td>
+    </tr>
+    <!-- tr>
+        <td>{{ info.photo.label }}:</td>
+        <td>{{ info.photo }}</td>
+    </tr -->
+
+    {% if is_medic %}
+    <tr>
+        <td><label>Matricula:</label></td>
+        <td>{{ info.matricula }}</td>
+    </tr>
+    {% endif %}
+</table>

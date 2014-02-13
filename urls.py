@@ -59,6 +59,7 @@ urlpatterns = patterns('',
     ## Admins Viewws
     (r'^admins/registrar/medico/$', gt_admins_views.admin_add_medic),
     (r'^admins/buscar/medico/$', gt_admins_views.admin_search_medic),
+    (r'^admins/mostrar/medico/(.+)/$', gt_admins_views.admin_show_medic),
 
     (r'^admins/registrar/administrativo/$', gt_admins_views.admin_add_admin),
     (r'^admins/buscar/administrativo/$', gt_admins_views.admin_search_admin),

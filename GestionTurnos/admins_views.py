@@ -13,6 +13,7 @@ from django.contrib.contenttypes.models import ContentType
 from GestionTurnos.models import *
 import GestionTurnos.forms as myforms
 from utils import *
+import verbose
 from globals import *
 import HTMLTags as Tags
 
@@ -97,7 +98,7 @@ def admin_search_medic(request):
         #conf
         type = "Medico"
         dict['type_user'] = 'Medico'
-        dict['url_dest'] = '/admins/mostrar/medicos/'
+        dict['url_dest'] = '/admins/mostrar/medico/'
 
         field = get_value(request, 'field')
         argv = get_value(request, 'search')
@@ -121,7 +122,22 @@ def admin_search_medic(request):
 
 
 def admin_show_medic(request, med_id):
-    pass
+    mi_template = get_template('Admins/GestionTurnos/medic-view.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        iuser = User.objects.get(username=med_id)
+        dict['iuser'] = iuser
+        #dict['iuser_lbl'] = iuser.
+        dict['info'] = UserInformation.objects.get(user=iuser)
+
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
 
 
 
@@ -289,6 +305,9 @@ def admin_list_expecialities(request):
 
 
 def admin_add_patient(request):
+    """
+        Implementado
+    """
     pass
 
 

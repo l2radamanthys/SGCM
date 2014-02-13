@@ -1,0 +1,25 @@
+{% extends 'Admins/GestionTurnos/user-view.html' %}
+
+{% block sub-cont %}
+<h4> Opciones</h4>
+<br />
+<ul>
+    <li><a href="" title="">Modificar Datos</a></li>
+    <li><a href="" title="">Cambiar Contraseña</a></li>
+    <li><a href="" title="">Turnos Solicitados</a></li>
+    <li><a href="" title="">Agregar Expecialidad</a></li>
+</ul>
+
+{% endblock %}
+
+<!-- sub contenido -->
+{% block view-cont %}
+<br />
+<h2>Datos del Medico</h2>
+
+<br />
+<div class="fancy-form-white" style="width: 550px; margin: 0 auto;">
+    {% include "Admins/GestionTurnos/user-info.html" %}
+</div>
+
+{% endblock %}

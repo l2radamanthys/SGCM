@@ -1,40 +1,40 @@
 <tr>
-    <td>{{ exam_lbl.type_doc }}:</td>
-    <td>{{ exam.type_doc }}</td>
+    <td>{{ info.type_doc.label }}:</td>
+    <td>{{ info.type_doc }}</td>
 </tr>
 <tr>
-    <td>{{ exam_lbl.nro_doc }}:</td>
-    <td>{{ exam.nro_doc }}</td>
+    <td>{{ info.nro_doc.label }}:</td>
+    <td>{{ info.nro_doc }}</td>
 </tr>
 <tr>
-    <td>{{ exam_lbl.gender }}:</td>
-    <td>{{ exam.gender }}</td>
+    <td>{{ info.gender.label }}:</td>
+    <td>{{ info.gender }}</td>
 </tr>
 <tr>
-    <td>{{ exam_lbl.phone }}:</td>
-    <td>{{ exam.phone }}</td>
+    <td>{{ info.phone.label }}:</td>
+    <td>{{ info.phone }}</td>
 </tr>
 <tr>
-    <td>{{ exam_lbl.address }}:</td>
-    <td>{{ exam.address }}</td>
+    <td>{{ info.address.label }}:</td>
+    <td>{{ info.address }}</td>
 </tr>
 <tr>
-    <td>{{ exam_lbl.city }}:</td>
-    <td>{{ exam.city }}</td>
+    <td>{{ info.city.label }}:</td>
+    <td>{{ info.city }}</td>
 </tr>
 <tr>
-    <td>{{ exam_lbl.state }}:</td>
-    <td>{{ exam.state }}</td>
+    <td>{{ info.state.label }}:</td>
+    <td>{{ info.state }}</td>
 </tr>
 <tr>
-    <td>{{ exam_lbl.birth_date }}:</td>
-    <td>{{ exam.birth_date }}</td>
+    <td>{{ info.birth_date.label }}:</td>
+    <td>{{ info.birth_date }}</td>
 </tr>
 <tr>
-    <td>{{ exam_lbl.photo }}:</td>
-    <td>{{ exam.photo }}</td>
+    <td>{{ info.photo.label }}:</td>
+    <td>{{ info.photo }}</td>
 </tr>
 <tr>
-    <td>{{ exam_lbl.matricula }}:</td>
-    <td>{{ exam.matricula }}</td>
+    <td>{{ info.matricula.label }}:</td>
+    <td>{{ info.matricula }}</td>
 </tr>

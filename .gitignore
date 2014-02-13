@@ -5,3 +5,9 @@
 Thumbs.db
 media/upload/files
 media/upload/images
+
+
+#latex configuracion
+*.aux
+*.bak
+*.log

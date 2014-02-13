@@ -1,0 +1,58 @@
+\chapter{Diseño}
+Acá un resumen del capitulo
+\section{Bases}
+Para diseñar JDBGM se tomo como idea base el patrón de desarrollo DAO
+\section{JDBC y su envoltorio}
+y otro
+\section{Abstracción de SQL}
+Así que para brindar una abstracción sobre la base de datos es necesario que las consultas SQL (sin hacer diferencias sobre DDL \footnote{Data Definition Lenguaje} y DML \footnote{Data Manipulation Lenguaje}) no sean manejadas de forma explicita es decir que no seria conveniente, por ejemplo, manejar las consultas como cadenas de caracteres ya que esta es una estructura estática dependiente del DBMS que se este usando. Por lo que para poder manejar adecuadamente las consultas se considero usar una estructura de datos un poco mas compleja que contenga la consulta de manera desglosada. Es decir que en ves de tener una sentencia como la siguiente:
+%ejmplo de uso de fancyvrb
+\begin{Verbatim}
+  nombre_comando [parametro] opcion1 [parametro] opcion2 [parametro]; 
+\end{Verbatim}
+
+Se tendría una estructura de datos como la siguiente:
+%ejemplo de uso de listing
+\lstset{frame=single, rulesepcolor=\color{black}, backgroundcolor=\color{lightgray}}
+\begin{lstlisting}
+class Sentencia{
+	nombre_comando;
+	opcion1;
+	opcion2;
+	devolver_sentencia;
+}
+\end{lstlisting}
+
+Este conjunto estará formado por:
+\begin{enumerate}
+\item CREATE TABLE - Permite crear tablas 
+\item ALTER TABLE - Modifica la estructura de una tablas \footnote{Solo se da un soporte básico para esta sentencia}
+\item UPDATE - Modifica las filas de una tabla 
+\item INSERT - Inserta nuevas filas a una tabla
+\item DELETE - Elimina columnas de una tabla
+\item SELECT - Realiza consulta sobre las tablas
+\end{enumerate}
+
+\subsection{Diseño de CREATE TABLE}
+Esta sentencia es usada para crear tablas en una base de datos relacional, un resumen de su sintaxis como se la define en el estándar SQL es la siguiente:
+\begin{lstlisting}
+  CREATE TABLE <table name> (
+  { <column name> [ <column type> ][ PRYMARY KEY ][ REFERENCES <foreign table> ] }...
+  )
+  [ PRIMARY KEY <indexed columns> ]
+  [ FOREIGN KEY <columns and referenced table> ]
+\end{lstlisting}
+
+Así que finalmente tenemos las siguiente sintaxis para nuestro proyecto
+\begin{lstlisting}
+  CREATE [ TEMPORARY ] TABLE <database name> <dot> <table name> 
+  <table contents source>
+
+  <table contents source> ::=
+    <left paren> <table element> [ { <comma> <table element> }... ] <right paren>
+  | AS <select stmt>
+
+\end{lstlisting}
+
+\subsection{Diseño de UPDATE e INSERT}
+Y
