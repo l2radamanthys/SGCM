@@ -1,5 +1,10 @@
 ﻿Listado de Sitios Referidos y tomados en cuenta durante el Desarrollo
 
+http://es.wikipedia.org/wiki/Servidor_HTTP_Apache
+http://kuyne.blogspot.com.ar/2013/03/servidor-apache-en-ubuntu-instalacion-y.html
+http://norfipc.com/internet/instalar-servidor-apache.html
+http://es.wikipedia.org/wiki/Modelo_Vista_Controlador
+
 1- Formato recomendable para llenar la hoja de remisión médica de un paciente
 http://bvs.sld.cu/revistas/mgi/vol22_2_06/mgi10206.htm 
 https://www.consultorioweb.com/intranet/doctor/pacienteConsultas.aspx

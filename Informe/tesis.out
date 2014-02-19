@@ -1,20 +1,34 @@
-\BOOKMARK [0][-]{chapter.1}{Instalacion}{}% 1
-\BOOKMARK [1][-]{section.1.1}{Requerimientos}{chapter.1}% 2
-\BOOKMARK [2][-]{subsection.1.1.1}{Requerimientos de Hardware}{section.1.1}% 3
-\BOOKMARK [2][-]{subsection.1.1.2}{Requerimientos de Software}{section.1.1}% 4
-\BOOKMARK [1][-]{section.1.2}{Apache}{chapter.1}% 5
-\BOOKMARK [2][-]{subsection.1.2.1}{Instalacion en Limpio}{section.1.2}% 6
-\BOOKMARK [2][-]{subsection.1.2.2}{Instalacion mediante WAMP, LAMP, MAMP, WAPP}{section.1.2}% 7
-\BOOKMARK [2][-]{subsection.1.2.3}{Configuracion}{section.1.2}% 8
-\BOOKMARK [1][-]{section.1.3}{PosgreSQL}{chapter.1}% 9
-\BOOKMARK [2][-]{subsection.1.3.1}{Instalacion}{section.1.3}% 10
-\BOOKMARK [2][-]{subsection.1.3.2}{Creacion de la Base de Datos}{section.1.3}% 11
-\BOOKMARK [1][-]{section.1.4}{Python}{chapter.1}% 12
-\BOOKMARK [2][-]{subsection.1.4.1}{La Filosofia detras de Python}{section.1.4}% 13
-\BOOKMARK [2][-]{subsection.1.4.2}{Baterias Incluidas}{section.1.4}% 14
-\BOOKMARK [2][-]{subsection.1.4.3}{Implementaciones}{section.1.4}% 15
-\BOOKMARK [2][-]{subsection.1.4.4}{Instalacion}{section.1.4}% 16
-\BOOKMARK [2][-]{subsection.1.4.5}{Probando Python}{section.1.4}% 17
-\BOOKMARK [1][-]{section.1.5}{Django}{chapter.1}% 18
-\BOOKMARK [1][-]{section.1.6}{Otros Modulos}{chapter.1}% 19
-\BOOKMARK [-1][-]{part*.5}{Ap\351ndices}{}% 20
+\BOOKMARK [0][-]{chapter.1}{Dedicatoria}{}% 1
+\BOOKMARK [0][-]{chapter.2}{Introduccion}{}% 2
+\BOOKMARK [0][-]{chapter.3}{Instalacion}{}% 3
+\BOOKMARK [1][-]{section.3.1}{Requerimientos}{chapter.3}% 4
+\BOOKMARK [2][-]{subsection.3.1.1}{Requerimientos de Hardware}{section.3.1}% 5
+\BOOKMARK [2][-]{subsection.3.1.2}{Requerimientos de Software}{section.3.1}% 6
+\BOOKMARK [1][-]{section.3.2}{Apache}{chapter.3}% 7
+\BOOKMARK [2][-]{subsection.3.2.1}{Instalacion en Limpio}{section.3.2}% 8
+\BOOKMARK [2][-]{subsection.3.2.2}{Instalacion mediante WAMP, LAMP, MAMP, WAPP}{section.3.2}% 9
+\BOOKMARK [2][-]{subsection.3.2.3}{Configuracion}{section.3.2}% 10
+\BOOKMARK [1][-]{section.3.3}{PosgreSQL}{chapter.3}% 11
+\BOOKMARK [2][-]{subsection.3.3.1}{Instalacion}{section.3.3}% 12
+\BOOKMARK [2][-]{subsection.3.3.2}{Creacion de la Base de Datos}{section.3.3}% 13
+\BOOKMARK [1][-]{section.3.4}{Python}{chapter.3}% 14
+\BOOKMARK [2][-]{subsection.3.4.1}{La Filosofia detras de Python}{section.3.4}% 15
+\BOOKMARK [2][-]{subsection.3.4.2}{Baterias Incluidas}{section.3.4}% 16
+\BOOKMARK [2][-]{subsection.3.4.3}{Implementaciones}{section.3.4}% 17
+\BOOKMARK [2][-]{subsection.3.4.4}{Instalacion}{section.3.4}% 18
+\BOOKMARK [2][-]{subsection.3.4.5}{Probando Python}{section.3.4}% 19
+\BOOKMARK [1][-]{section.3.5}{Django}{chapter.3}% 20
+\BOOKMARK [2][-]{subsection.3.5.1}{MVC}{section.3.5}% 21
+\BOOKMARK [2][-]{subsection.3.5.2}{Django y el MVT}{section.3.5}% 22
+\BOOKMARK [2][-]{subsection.3.5.3}{El Modelo}{section.3.5}% 23
+\BOOKMARK [2][-]{subsection.3.5.4}{La Vista}{section.3.5}% 24
+\BOOKMARK [2][-]{subsection.3.5.5}{La Plantilla}{section.3.5}% 25
+\BOOKMARK [2][-]{subsection.3.5.6}{La Configuracion de Rutas}{section.3.5}% 26
+\BOOKMARK [2][-]{subsection.3.5.7}{Instalar Django}{section.3.5}% 27
+\BOOKMARK [1][-]{section.3.6}{Instalando el Resto de Las Dependencias}{chapter.3}% 28
+\BOOKMARK [2][-]{subsection.3.6.1}{psycopg2}{section.3.6}% 29
+\BOOKMARK [2][-]{subsection.3.6.2}{ReportLab}{section.3.6}% 30
+\BOOKMARK [2][-]{subsection.3.6.3}{easy\137thumbnails}{section.3.6}% 31
+\BOOKMARK [2][-]{subsection.3.6.4}{django\137extensions}{section.3.6}% 32
+\BOOKMARK [2][-]{subsection.3.6.5}{django\137cron}{section.3.6}% 33
+\BOOKMARK [-1][-]{part*.8}{Ap\351ndices}{}% 34

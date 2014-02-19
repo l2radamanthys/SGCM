@@ -1,11 +1,12 @@
-\documentclass[a4papper,10pt,fleqn,twoside]{book}
-\usepackage{amsmath, amsfonts, psfrag, fancyhdr, layout, appendix, subfig}
-\usepackage{graphicx}
-
+\documentclass[10pt,fleqn,twoside]{book}
+\topmargin=3cm
 
 %cambiar fuente defecto
 \usepackage{helvet}
 %\renewcommand{\normalfont}{\sfdefault}
+
+\usepackage{amsmath, amsfonts, psfrag, fancyhdr, layout, appendix, subfig}
+\usepackage{graphicx}
 
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
@@ -126,6 +127,33 @@
 %listings reconoce la sintaxis de varios lenguajes y permite otras configuraciones.
 \usepackage{listings}
 %listing definicion para formateo de codigo fuente
+\lstdefinestyle{Python}
+{
+    basicstyle=\small\ttfamily\color{code_fg},
+    backgroundcolor=\color{code_bg},
+    keywordstyle=\color{code_keyword}\tt, % underlined bold black keywords
+	identifierstyle=\color{code_indetif}, % color identificadores
+	commentstyle=\color{code_coment},                       % comentarios
+	stringstyle=\ttfamily,                                 % typewriter type for strings
+	showstringspaces=false,
+	frame=shadowbox,%\linewidth=3,
+	framexleftmargin=8mm,
+	rulesepcolor=\color{code_fg},
+	backgroundcolor=\color{code_bg},
+	language=Python, 
+	numbers=left, 
+	numberstyle=\color{code_number}\footnotesize\tt,		%estilo numero linea
+	tabsize=4, 						                        %tamaño tabulacion 	    
+	%showspaces=true,
+}
+
+\lstdefinestyle{HTML}
+{
+    basicstyle=\small\ttfamily\color{code_fg},
+    backgroundcolor=\color{code_bg},
+    keywordstyle=\color{code_keyword}\tt, % underlined bold black keywords
+	identifierstyle=\color{code_indetif}, % color identificadores
+}
 
 \lstdefinestyle{consola}
 {
@@ -136,12 +164,15 @@
 
 %FIN Definicion para Formateo Codigo
 
+\usepackage{lmodern}% http://ctan.org/pkg/lm 
 
 \begin{document}
 
+
 %Cambiar Cuadros por Tablas y lista de... Debe ir después de \begin{document}
-\renewcommand{\listtablename}{Índice de tablas} 
-\renewcommand{\tablename}{Tabla} 
+%\renewcommand{\listtablename}{Índice de tablas} 
+%\renewcommand{\tablename}{Tabla} 
+
 
 \pagenumbering{arabic}
 
@@ -176,9 +207,13 @@
 % Remove parskip for toc
 \setlength{\parskip}{0ex plus 0.5ex minus 0.2ex}
 
-\tableofcontents
-\listoffigures
-\listoftables
+
+%Portada
+\include{portada}
+
+\tableofcontents %Indice
+\listoffigures %listado de figuras
+%\listoftables
 
 %\cleardoublepage
 %\ include{resumen} 
@@ -203,8 +238,9 @@
 %similar pero no agrega las paginas en blanco  
 %elimine algunos \include por que no aportan nada, el que quedo tiene algunos ejemplos de uso de fancyvrb y listings
 %el espacio que queda en \ include es solo para que Texmaker no reconozca el include y lo muestre en la estructura del archivo.
-%\include{portada}
-%\include{introduccion}
+
+\include{dedicatoria}
+\include{introduccion}
 %\ include{antecedentes}
 %\include{disenio}
 %\ include{implementacion}
@@ -219,6 +255,7 @@
 %\ include{futuro}
 
 \include{instalacion}
+\include{instalacion-2}
 
 
 \part*{\addcontentsline{toc}{part}{Apéndices}Apéndices}

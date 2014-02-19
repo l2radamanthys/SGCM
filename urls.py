@@ -60,6 +60,10 @@ urlpatterns = patterns('',
     (r'^admins/registrar/medico/$', gt_admins_views.admin_add_medic),
     (r'^admins/buscar/medico/$', gt_admins_views.admin_search_medic),
     (r'^admins/mostrar/medico/(.+)/$', gt_admins_views.admin_show_medic),
+    (r'^admins/agregar/medico/expecialidad/(.+)/$', gt_admins_views.admin_add_medic_expeciality),
+
+
+
 
     (r'^admins/registrar/administrativo/$', gt_admins_views.admin_add_admin),
     (r'^admins/buscar/administrativo/$', gt_admins_views.admin_search_admin),
@@ -69,7 +73,7 @@ urlpatterns = patterns('',
     #expecialidades
     (r'^admins/listado/expecialidad-medica/$', gt_admins_views.admin_list_expecialities),
     (r'^admins/mostrar/expecialidad-medica/(\d{1,2})/$', gt_admins_views.admin_show_expeciality),
-
+    (r'^admins/registrar/expecialidad-medica/$', gt_admins_views.admin_add_expeciality),
     #####
 
     (r'^pacientes/buscar/$', gt_medics_views.patients_search),

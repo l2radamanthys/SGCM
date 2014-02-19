@@ -168,7 +168,7 @@ def patient_activate(request, patient_username=None, activaction_key=None):
 
 def patient_show_medics_list(request):
     """
-    Muestra el listado de Medicos
+        Muestra el listado de Medicos
     """
     mi_template = get_template('Patients/GestionTurnos/medics-list.html')
     dict = generate_base_keys(request)
@@ -489,11 +489,6 @@ def patient_set_medic_consulation(request, med_id):
 def patient_show_turn_request(request):
     mi_template = get_template('Patients/GestionTurnos/show-turns-request.html')
     dict = generate_base_keys(request)
-
-    #como el scheduler de tareas no funciona lo ejecuto manual por el momento
-    import cron
-    _cron = cron.UpdateTurnStatus()
-    _cron.job()
 
     if True:
         user = request.user

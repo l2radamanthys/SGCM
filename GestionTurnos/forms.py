@@ -6,7 +6,7 @@ from django import forms
 
 from GestionTurnos.models import *
 from globals import *
-
+from django.contrib.auth.models import User
 
 
 class RegisterForm(forms.Form):
@@ -261,11 +261,6 @@ class MedicalPrescriptionForm(forms.ModelForm):
 
 
 
-#admins forms
-
-from django.contrib.auth.models import User
-
-
 class UserRegForm(forms.ModelForm):
     class Meta:
         model = User
@@ -324,3 +319,16 @@ class RegAdminInformationForm(forms.ModelForm):
             'nro_doc': forms.TextInput(attrs={'class':'edt_c',}),
             'address' : forms.TextInput(attrs={'class':'edt_g',}),
         }
+
+
+class MedicalSpecialtiesForm(forms.ModelForm):
+    class Meta:
+        model = MedicalSpecialties
+        fields = ('name', 'description')
+        widgets = {
+            'name' : forms.TextInput(attrs={'class':'edt_l',}),
+            'description' : forms.Textarea(attrs={'cols':'52', 'rows':'5'}),
+        }
+
+class MedicalSpecialtyForForm(forms.Form):
+      expecialidad = forms.ModelChoiceField(MedicalSpecialties.objects.all())

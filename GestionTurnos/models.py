@@ -230,10 +230,10 @@ class Message(models.Model):
     """
     from_user = models.ForeignKey(User, related_name='from_user')
     to_user = models.ForeignKey(User, related_name='to_user')
-    date = models.DateTimeField(auto_now_add=True)
-    issue = models.CharField(max_length=125, default='')
-    content = models.TextField()
-    read = models.BooleanField(default=False)
+    date = models.DateTimeField("Fecha y Hora",auto_now_add=True)
+    issue = models.CharField("Asunto",max_length=125, default='')
+    content = models.TextField("Cuerpo del Mensaje")
+    read = models.BooleanField("Leido",default=False)
 
 
     class Meta:
@@ -262,9 +262,9 @@ class MedicalConsultation(models.Model):
     """
     medic = models.ForeignKey(User, related_name='medic_user')
     patient = models.ForeignKey(User, related_name='patient_user')
-    date = models.DateTimeField(auto_now_add=True)
-    issue = models.TextField(default='') #motivo
-    diagnostic = models.TextField(default='') #diagnostico
+    date = models.DateTimeField("Fecha",auto_now_add=True)
+    issue = models.TextField("Asunto",default='') #motivo
+    diagnostic = models.TextField("Diagnostico",default='') #diagnostico
     physical_exam = models.TextField(default='') #examen fisico
     observations = models.TextField(default='') #observaciones
 

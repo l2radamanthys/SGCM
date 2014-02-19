@@ -14,6 +14,7 @@ from GestionTurnos.models import *
 import GestionTurnos.forms as myforms
 from utils import *
 import verbose
+import forms as my_forms
 from globals import *
 import HTMLTags as Tags
 
@@ -127,6 +128,7 @@ def admin_show_medic(request, med_id):
 
     if True:
         iuser = User.objects.get(username=med_id)
+        dict['expecialidades'] = MedicalSpecialityFor.objects.filter(user=iuser)
         dict['iuser'] = iuser
         #dict['iuser_lbl'] = iuser.
         dict['info'] = UserInformation.objects.get(user=iuser)
@@ -151,8 +153,41 @@ def admin_delete_medic(request):
 
 
 
-def admin_add_medic_expeciality(request, med_id):
-    pass
+
+def admin_add_medic_expeciality(request, med_id, exp_id=None):
+    mi_template = get_template('Admins/GestionTurnos/medic-add-expeciality.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        dict['show_form'] = True
+        dict['show_errors'] = False
+        med = User.objects.get(username=med_id)
+        dict['med'] = med
+
+        if request.method == 'POST':
+            form = my_forms.MedicalSpecialtyForForm(request.POST)
+            if form.is_valid():
+                print form.cleaned_data['expecialidad']
+                expf =  MedicalSpecialityFor(
+                    user=med,
+                    speciality = MedicalSpecialties.objects.get(id=get_value(request,'expecialidad'))
+                )
+                expf.save()
+                #dict['show_form'] = False
+                #dict['show_errors'] = False
+                return HttpResponseRedirect("/admins/mostrar/medico/%s/" %med.username)
+            else:
+                dict['form'] = form
+                dict['show_errors'] = True
+        else:
+            dict['form'] = my_forms.MedicalSpecialtyForForm()
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
 
 
 
@@ -263,9 +298,36 @@ def admin_delete_admin(request):
 
 
 
-def admin_add_expeciality(request):
-    pass
 
+def admin_add_expeciality(request):
+    mi_template = get_template('Admins/GestionTurnos/agregar-expecialidad.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        dict['show_form'] = True
+        dict['show_errors'] = False
+        if request.method == 'POST':
+            form = my_forms.MedicalSpecialtiesForm(request.POST)
+            if form.is_valid():
+                exp = MedicalSpecialties(
+                    name = form.cleaned_data['name'],
+                    description = form.cleaned_data['description']
+                )
+                exp.save()
+                #dict['show_form'] = False
+                #dict['show_errors'] = False
+                return HttpResponseRedirect("/admins/listado/expecialidad-medica/")
+            else:
+                dict['form'] = form
+                dict['show_errors'] = True
+        else:
+            dict['form'] = my_forms.MedicalSpecialtiesForm()
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
 
 
 def admin_show_expeciality(request, exp_id):

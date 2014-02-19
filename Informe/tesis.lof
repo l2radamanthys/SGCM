@@ -1,3 +1,8 @@
 \select@language {spanish}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Ejecutando Python en la Terminal\relax }}{8}{figure.caption.4}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Ejecutando Python en la Terminal\relax }}{12}{figure.caption.4}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Diagrama del Patron MVC Modelo Vista Controlador\relax }}{14}{figure.caption.5}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Generaciones de Herramientas de Desarrollo Web\relax }}{14}{figure.caption.6}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces El patron Modelo Vista Template de Django\relax }}{15}{figure.caption.7}

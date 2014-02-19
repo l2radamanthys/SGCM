@@ -11,3 +11,8 @@ media/upload/images
 *.aux
 *.bak
 *.log
+*.out
+*.lof
+*.synctex.gz
+*.toc
+*.idx

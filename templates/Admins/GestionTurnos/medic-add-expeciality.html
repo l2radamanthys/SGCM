@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+
+{% block style %}
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
+     <link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+{% endblock %}
+
+
+{% block contenido %}
+    <br />
+    <h2> Medico Agregar Expecialidad</h2>
+    <br />
+
+<br />
+    {% if show_form %}
+        <div  class="fancy-form-white" style="width: 600px; margin: 0 auto;">
+        <form action="" method="POST" enctype="multipart/form-data">
+        <table style="width:600px; margin: 0 auto;">
+            <tr>
+                <td>Medico:</td>
+                <td>{{ med.first_name }} {{ med.last_name }}</td>
+                
+            </tr>
+            
+            {% for field in form %}
+            <tr>
+                <td>{{ field.label }}:</td>
+                <td>{{ field }}</td>
+            </tr>
+            {% endfor %}
+
+            <tr>
+                <td colspan="2" style="text-align: center">
+                    <br />
+                    <br />
+                    <input type="Submit" value="Registrar" class="grad-button-blue" />
+                    <a href="/admins/listado/medicos/" class="grad-button-blue">Atras</a>
+                </td>
+            </tr>
+        </table>
+        </form>
+        </div>
+        <br />
+    {% endif %}
+
+    {% if show_errors %}
+        <div class="error">
+        {% for field in uform %}
+            {% if field.errors %}
+                <p>{{ field.label }} -> {{ field.value }}</p>
+                {{ field.errors }}<br />
+            {% endif %}
+        {% endfor %}
+        {% for field in dform %}
+            {% if field.errors %}
+                <p>{{ field.label }} -> {{ field.value }}</p>
+                {{ field.errors }}<br />
+            {% endif %}
+        {% endfor %}
+        <div/>
+    {% else %}
+        {% autoescape off %}
+        {{ custom_message }}
+        {% endautoescape %}
+    {% endif %}
+
+
+{% endblock %}
