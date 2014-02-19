@@ -56,9 +56,13 @@
 %Esto genera enlaces en el PDF
 \usepackage{url}
 
+%cambiar margenes
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist
+
+
 % \usepackage{html}
 %Esto es para el conversor latex2html
-
 
 %Este mejora las prestaciones de "\verbatim" que sirve para poner texto preformateado y en fuente monospace tipo maquina de escribir, dentro del ambito de verbatim no se reconoce ningun comando de latex
 %\usepackage{verbatim}
@@ -210,6 +214,7 @@
 
 %Portada
 \include{portada}
+\include{dedicatoria}
 
 \tableofcontents %Indice
 \listoffigures %listado de figuras
@@ -239,7 +244,6 @@
 %elimine algunos \include por que no aportan nada, el que quedo tiene algunos ejemplos de uso de fancyvrb y listings
 %el espacio que queda en \ include es solo para que Texmaker no reconozca el include y lo muestre en la estructura del archivo.
 
-\include{dedicatoria}
 \include{introduccion}
 %\ include{antecedentes}
 %\include{disenio}
@@ -256,6 +260,7 @@
 
 \include{instalacion}
 \include{instalacion-2}
+\include{instalacion-3}
 
 
 \part*{\addcontentsline{toc}{part}{Apéndices}Apéndices}
