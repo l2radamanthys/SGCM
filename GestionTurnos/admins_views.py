@@ -385,7 +385,7 @@ def admin_search_patient(request):
 
     if True:
         #conf
-        type = "Administrativo"
+        type = "Paciente"
         dict['type_user'] = 'Administrativo'
         dict['url_dest'] = '/admins/mostrar/administrativo/'
 

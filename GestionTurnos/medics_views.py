@@ -23,6 +23,7 @@ import HTMLTags as Tags
 import reports
 
 
+
 def patients_search(request):
     """
     Vista para buscar Paciente por similitud y mostrar el listado de
