@@ -1,314 +1,4 @@
-\section{Django}
-
-Django es un framework de desarrollo web de código abierto, escrito en Python,
-que respeta el paradigma conocido como {\bfseries Model Template View}. Fue desarrollado en
-origen para gestionar varias páginas orientadas a noticias de la
-{\bfseries World Company de Lawrence, Kansas}, y fue liberada al público bajo una licencia
-BSD en julio de 2005; el framework fue nombrado en alusión al guitarrista de
-jazz gitano Django Reinhardt \url{http://es.wikipedia.org/wiki/Django_Reinhardt}.
-
-En junio del 2008 fue anunciado que la recién formada Django Software Foundation
-se haría cargo de Django en el futuro.
-
-La meta fundamental de Django es facilitar la creación de sitios web complejos.
-Django pone énfasis en el re-uso, la conectividad y extensibilidad de
-componentes, el desarrollo rápido y el principio No te repitas
-(DRY, del inglés Don't Repeat Yourself). Python es usado en todas las partes
-del framework, incluso en configuraciones, archivos, y en los modelos de datos.
-
-
-\subsection{MVC}
-
-Antes de Explicar como funciona Django empezare por una breve explicacion de
-el patr\'on (MVC) Modelo Vista Controlador el cual es un patrón de arquitectura de software que
-separa los datos y la lógica de negocio de una aplicación de la interfaz de
-usuario y el módulo encargado de gestionar los eventos y las comunicaciones.
-Para ello MVC propone la construcción de tres componentes distintos que son el
-modelo, la vista y el controlador, es decir, por un lado define componentes
-para la representación de la información, y por otro lado para la interacción
- del usuario. Este patrón de diseño se basa en las ideas de reutilización de
- código y la separación de conceptos, características que buscan facilitar la
- tarea de desarrollo de aplicaciones y su posterior mantenimiento.
-
-De manera genérica, los componentes de MVC se podrían definir como sigue:
-
-{\bfseries  El Modelo:} Es la representación de la información con la cual el sistema opera,
-por lo tanto gestiona todos los accesos a dicha información, tanto consultas
-como actualizaciones, implementando también los privilegios de acceso que se
-hayan descrito en las especificaciones de la aplicación (lógica de negocio).
-Envía a la 'vista' aquella parte de la información que en cada momento se le
-solicita para que sea mostrada (típicamente a un usuario). Las peticiones de
-acceso o manipulación de información llegan al 'modelo' a través del
-'controlador'.
-
-{\bfseries El Controlador: } Responde a eventos (usualmente acciones del
-usuario) e invoca peticiones al 'modelo' cuando se hace alguna solicitud sobre
-la información (por ejemplo, editar un documento o un registro en una base de
-datos). También puede enviar comandos a su 'vista' asociada si se solicita un
-cambio en la forma en que se presenta de 'modelo' (por ejemplo, desplazamiento
- o scroll por un documento o por los diferentes registros de una base de datos),
-  por tanto se podría decir que el 'controlador' hace de intermediario entre
-   la 'vista' y el 'modelo' actuando como Middleware
-\footnote{Middleware es el software que proporciona un enlace entre aplicaciones de software
-independientes. Middleware a veces se llama a la vía que conecta dos
-aplicaciones y pasa los datos entre ellas. Los Middleware permiten que los
-datos contenidos en una base de datos puedan ser accedidos a través de otra.
-Ahorra el tiempo a los programadores.}.
-   
-{\bfseries La Vista: } Presenta el 'modelo' (información y lógica de negocio)
- en un formato adecuado para interactuar (usualmente la interfaz de usuario)
- por tanto requiere de dicho 'modelo' la información que debe representar como
- salida.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.7]{resourse/MVC-Process.png}
-    \caption{Diagrama del Patron MVC Modelo Vista Controlador}
-    \label{fig:03}
-\end{figure}    
-
-
-\subsection{Django y el MVT}
-
-Si hicieramos una clasificacion de Herramientas de desarrollo web, podriamos
-clasificar a Django como parte de la tercera generacion:
-
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.7]{resourse/desarrolloweb.png}
-    \caption{Generaciones de Herramientas de Desarrollo Web}
-    \label{fig:02}
-\end{figure}   
-
-Sin embargo más alla de las clasificaciones que podr\'ian existir, está el
-entender como funciona realmente, al entenderlo se puede llegar a dominarlo.
-
-Dijimos que era un framework MTV (una modificación de MVC, nada que ver con
-un canal de m\'usica), esto se debe a que los desarrolladores no tuvieron la
- intención de seguir algún patron de desarrollo, sino hacer el framework lo
-más funcional posible.
-
-\begin{itemize}
-    \item {\bfseries  El Modelo} en Django sigue siendo el modelo
-    \item {\bfseries La Vista} en Django se llama Plantilla (Template)
-    \item {\bfseries El controlador} en Django se llama Vista
-\end{itemize}
-
-Una imagen nos hará entender mejor esta relación:
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.5]{resourse/esquema-mtv.png}
-    \caption{El patron Modelo Vista Template de Django}
-    \label{fig:04}
-\end{figure}   
-
-
-
-\subsection{El Modelo}
-El modelo define los datos almacenados, se encuentra en forma de clases de
-Python, las clases definidas son traducidas por Django y este genera las Tablas
-necesarias para el funcionamiento del modelo dentro de la base de datos, cada
-tipo de dato que debe ser almacenado se encuentra en una variable 
-con ciertos parámetros, posee métodos también. Todo esto permite indicar y
-controlar el comportamiento de los datos.\\[0.1cm]
-
-Aqui un extracto del codigo mostrando como se implementa uno de los tantos
-modelos con los que trabaja el Sistema\\[0.3cm]
-
-
-\begin{lstlisting}[style=Python]
-
-class Message(models.Model):
-    """
-        Clase Para Manejar mensajes entre usuarios
-    """
-    from_user = models.ForeignKey(User, related_name='from_user')
-    to_user = models.ForeignKey(User, related_name='to_user')
-    date = models.DateTimeField("Fecha y Hora",auto_now_add=True)
-    issue = models.CharField("Asunto",max_length=125, default='')
-    content = models.TextField("Cuerpo del Mensaje")
-    read = models.BooleanField("Leido",default=False)
-
-
-    class Meta:
-        db_table = "Messages"
-        verbose_name = "InboxMessage"
-        verbose_name_plural = "InboxMessages"
-\end{lstlisting}
-
-\footnote{Como algunos lo notaran la variable from\_user del modelo internamente
-es una relacion 1:M dentro de la base de datos.}
-
-\footnote{La Clase interna Meta define atributos expeciales como 'db\_name' que hace
-referencia a como se llamara la tabla dentro de la Bases de Datos.}
-
-\vspace{0.1cm}
-
-\subsection{La Vista}
-La vista se presenta en forma de funciones en Python, su propósito es
-determinar que datos serán visualizados, entre otras cosas más que iremos
-viendo conforme avanzamos con el curso. El ORM de Django permite escribir
-código Python en lugar de SQL para hacer las consultas que necesita la vista.
-La vista también se encarga de tareas conocidas como el envío de correo
-electrónico, la autenticación con servicios externos y la validación de
-datos a través de formularios. Lo mas importante a entender con respecto a la
- vista es que no tiene nada que ver con el estilo de presentación de los
- datos, sólo se encarga de los datos, la presentación es tarea de la plantilla.\\[0.1cm]
-
-
-Aqui muestro una vista sencilla que realiza una consulta base de datos que listara todos
-los usuarios que sean medicos. \\[0.1cm]
-
-\begin{lstlisting}[style=Python]
-def patient_show_medics_list(request):
-    """
-        Muestra el listado de Medicos
-    """
-    mi_template = get_template('Patients/GestionTurnos/medics-list.html')
-    dict = generate_base_keys(request)
-
-    if is_patient(request.user):
-        dict['medics'] = UserInformation.objects.filter( \\
-                                    user__groups__name='Medico')
-        html_cont = mi_template.render(Context(dict))
-        return HttpResponse(html_cont)
-
-    else:
-        #si hay un usuario logueado intentanto acceder sera enviado a una
-        # pagina de error
-        path = request.META['PATH_INFO']
-        return HttpResponseRedirect("/restricted-access%s" %path)
-\end{lstlisting}
-
-\vspace{0.1cm}
-
-Aunque es un ejemplo sencillo podemos apreciar el potencial de Django, como vemos
-no vemos ningun codigo SQL, pues bien dicho codigo SQL se ejecuta internamente
-nos aleja del problema de las restriciones de la Base de Datos ya sea que usemos
-PosgreSQL (como en este sistema), MySQL, SQLServer o SQLite nosotros
-solo escribiremos codigo Python, El framework se encargargara de traducir esa
-instrucion al motor de bases de datos correspondiente que estemos usando.\\[0.2cm]
-
-\begin{lstlisting}[style=consola]
-dict['medics'] = UserInformation.objects.filter( \\
-                            user__groups__name='Medico')
-\end{lstlisting}
-
-\vspace{0.1cm}
-
-Traducido a SQL terminariamos con algo tan orrible como esto:\\[0.1cm]
-
-\begin{lstlisting}[style=consola]
-SELECT * FROM UserInformation as Info
-INNER JOIN User ON Info.username = User.username
-INNER JOIN GroupsByUsers ON User.username = GroupsByUsers.username
-...
-\end{lstlisting}
-
-\vspace{0.1cm}
-
-\subsection{La Plantilla}
-La plantilla es básicamente una página HTML con algunas etiquetas extras
-propias de Django, en si no solamente crea contenido en HTML (también XML, CSS,
-Javascript, CSV, etc).\\[0.1cm]
-
-La plantilla recibe los datos de la vista y luego los organiza para la
-presentación al navegador web. Las etiquetas que Django usa para las plantillas
-permiten que sea flexible para los
-diseñadores del frontend, pueden Extenderse a partir de otras plantillas incluso
-tiene estructuras de datos como if, por por si es necesaria una presentación
-lógica de los datos, estas estructuras
-son límitadas para evitar un desorden poniendo cualquier tipo de código Python.\\[0.1cm]
-
-Esto permite que la lógica del sistema siga permaneciendo en la vista. Aqui la
-vista para Iniciar Session:\\[0.1cm]
-
-\begin{lstlisting}[style=HTML]
-{% extends 'base.html' %}
-
-{% block style %}
-<link type="text/css" rel="stylesheet" media="all"
-    href="/media/css/fancy-forms.css" />
-<link type="text/css" rel="stylesheet" media="all"
-    href="/media/css/gradient-buttons.css" />
-<link type="text/css" rel="stylesheet" media="all"
-    href="/media/css/messages.css" />
-{% endblock %}
-
-
-{% block contenido %}
-<br /><br /><br />
-        {% if not_login %}
-            <div class="fancy-form-white" style="width: 350px;
-                margin: 0 auto;">
-                <h3 class="title">Inciar Session</h3><br />
-                <form action="." method="POST">
-                <table style="margin: 0 auto; width: 330px;" >
-                <tr>
-                    <td><label for="username">Usuario:</label></td>
-                    <td><input type="text" name="username" value=""
-                    tabindex="1" id="username"></td>
-                    <td rowspan="2">
-                    <input type="submit" value="Login" tabindex="3"
-                    class="grad-button-blue" style="height: 50px;">
-                    </td>
-                </tr>
-                <tr>
-                    <td><label for="password">Contrase\~na:</label></td>
-                    <td><input type="password" name="password" value=""
-                     tabindex="2" id="password"></td>
-                </tr>
-                </table>
-                </form>
-                <br />
-            </div>
-
-            {% if login_error %}
-                    <br />
-                    <br />
-                <div class="alert">Alerta: Error Usuario y/o Contrase\~na
-                Incorrectos</div>
-            {% endif %}
-
-        {% else %}
-            <div class="alert">Alerta: Usted ya ha iniciado session con el
-            usuario <strong>{{ username }}</strong></div>
-            <br />
-            <a href="/logout">Cerrar Session</a>
-        {% endif %}
-{% endblock %}
-\end{lstlisting}
-
-\vspace{0.1cm}
-
-\subsection{La Configuracion de Rutas}
-
-Django posee un mapeo de URLs que permite controlar el despliegue de las vistas,
-esta configuración es conocida como URLConf. El trabajo del URLConf es leer
-la URL que el usuario solicitó, encontrar la vista apropiada para la solicitud
-y pasar cualquier variable que la vista necesite para completar su trabajo. El
-URLConf esta construido con expresiones regulares en Python y sigue la filosofia
-de Python: Explicito es mejor que implícito. Este URLConf permite que las rutas
-que maneje Django seán agradables y entendibles para el usuario.\\[0.1cm]
-
-Fragmento del archivo urls.py del Proyecto\\[0.1cm]
-
-\begin{lstlisting}[style=HTML]
-    (r'^$', base_views.index),
-    (r'^index/$', base_views.index),
-    (r'^login/$', base_views.login),
-    (r'^logout/$', base_views.logout),
-    (r'^change-password/$', base_views.change_password),
-    (r'^restricted-access/$', base_views.restricted_access),
-    (r'^restricted-access/(.+)/$', base_views.restricted_access),
-\end{lstlisting}
-
-\vspace{0.1cm}
-
-
-\subsection{Instalar Django}
+\section{Instalar Django}
 
 Puedes bajarte Django desde el siguiente enlace \url{https://www.djangoproject.com/download/1.3.7/tarball/}
 \footnote {la version 1.3.7 no es la ultima version disponible a la hora de crear
@@ -406,6 +96,156 @@ seguimiento y ejecución de las tareas. En este caso no es Necesario Instalar
 Nada, viene junto con el Codigo Fuente del Proyecto. Igualmente si tiene curiosidad
 puede visitar la pagina del proyecto \url{https://github.com/Tivix/django-cron}
 
+\subsection{Descargar e Instalacion de mod\_wsgi}
 
+ Asumiendo que ya  tienes instalado Python y Apache, solo debes descargar el paquete
+ libapache2-mod-wsgi ,la ultima version de mod\_wsgi se puede descargar desde su
+ pagina oficial \url{https://code.google.com/p/modwsgi/} descargaran un archivo
+ similar a "mod\_wsgi-win32-ap22py27-3.3.so" la version que descarguen de mod\_wsgi
+ depende como se ve, de la plataforma asi como de la version de python que
+ correrar en el servidor. luego por cuestiones de practicidad renombraremos
+ el archivo de la siguiente manera:
+
+\begin{lstlisting}[style=consola]
+    mod_wsgi-win32-ap22py27-3.3.so -> mod_wsgi.so
+\end{lstlisting}
+\vspace{0.1cm}
+
+Realizado dicho cambio copiamos el modulo dentro de la siguiente carpeta:
+APACHE\_FOLDER \textbackslash modules \textbackslash APACHE\_FOLDER vendria a
+ser el directorio donde tenemos la instalacion de WAMP en mi caso es:
+C:\textbackslash Apache.
+
+\subsection{Cargando el Modulo en Apache}
+
+Una vez que el módulo de Apache ha sido instalado en el directorio de módulos
+de su instalación de Apache, todavía es necesario configurar Apache para cargar
+el módulo en realidad.
+
+Abrimos el archivo "httpd.conf" y agregamos la siguiente linea en el mismo
+punto donde se cargan el resto de los modulos. \footnote {El archivo httpd.conf
+esta en la siguiente ruta en el caso de mi instalacion:
+C:\textbackslash Apache \textbackslash conf \textbackslash httpd.conf}
+
+\begin{lstlisting}[style=consola]
+    LoadModule wsgi_module modules/mod_wsgi.so
+\end{lstlisting}
+\vspace{0.1cm}
+
+Con todo esto echo solo tenemos que reiniciar el servidor Apache, en nuestro
+ caso clic en el icono en la barra de notificaciones luego las opciones
+ Apache->Service->Reiniciar Servicio. 
+
+\subsection{Configuracion del Proyecto}
+
+Bueno Ahora solo tenemos que crear un alias en Apache \footnote{Para mayor
+informacion de como crear alias en Apache consulte
+\url{http://httpd.apache.org/docs/2.2/urlmapping.html}} para nuestra carpeta
+donde colocaremos en mi caso la carpeta destino sera:
+
+\begin{lstlisting}[style=consola]
+	C:\Servidor\SGCM
+\end{lstlisting}
+\vspace{0.1cm}
+
+SGCM es la carpeta contenedora del proyecto, y el alias que usaremos sera:
+
+\begin{lstlisting}[style=consola]
+	/sgcm/ 
+\end{lstlisting}
+\vspace{0.1cm}
+
+tendremos que agregar las siguientes lineas al final del archivo
+httpd.conf de apache.
+
+\begin{lstlisting}[style=HTML]
+Alias /sgcm/ "C:/Servidor/SGCM/" 
+WSGIScriptAlias /sgcm "C:/Servidor/SGCM/handle.wsgi" 
+
+<Directory "C:/Servidor/SGCM">
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride all
+    Order allow,deny
+    Allow from all
+</Directory>
+\end{lstlisting}
+\vspace{0.1cm}
+
+
+
+Hay un número de maneras en que una aplicación WSGI organizada por mod\_wsgi
+\footnote{Puede consultar \url{https://code.google.com/p/modwsgi/wiki/QuickInstallationGuide}
+si desea explorar otras opciones de configuracion.}
+puede montarse contra una URL específica. Estos métodos son similares a cómo se
+podría configurar las aplicaciones CGI tradicionales.
+
+El principal enfoque implica declarar explícitamente en el archivo de
+configuración principal de Apache el punto de montaje URL y una referencia al
+archivo de comandos de aplicaciones WSGI. En este caso, el mapeo se fija,
+con cambios sólo ser capaz de ser hecho mediante la modificación de la
+configuración principal de Apache y reiniciar Apache.
+
+Al utilizar mod\_cgi para alojar aplicaciones CGI, esto se haría mediante la
+directiva ScriptAlias. Para mod\_wsgi, la directiva en su lugar se
+llama WSGIScriptAlias.
+
+\begin{lstlisting}[style=consola]
+WSGIScriptAlias /wsgi "C:/Servidor/SGCM/handle.wsgi" 
+\end{lstlisting}
+\vspace{0.1cm}
+
+Esta directiva s\'olo puede aparecer en los principales archivos de configuración
+de Apache. La directiva se puede utilizar en el ámbito del servidor, pero
+normalmente se coloca en el contenedor VirtualHost para un sitio en particular.
+No se puede utilizar en cualquiera de las directivas de contenedores ubicación,
+directorios o archivos, ni puede ser utilizada dentro de un archivo ''.httaccess''.
+
+El primer argumento de la directiva WSGIScriptAlias debe ser el punto de montaje
+URL para la aplicación WSGI. En este caso, la URL no debe contener una barra
+diagonal. La única excepción a esto es si la aplicación WSGI es para ser
+montado en la raíz del servidor web, en cuyo caso / sería utilizado.
+
+El segundo argumento de la directiva WSGIScriptAlias debe ser una ruta absoluta
+para el archivo de comandos de aplicaciones WSGI. Es en este archivo que la
+muestra de código de la aplicación WSGI debe colocarse.
+
+Tenga en cuenta que una ruta absoluta debe ser utilizado para el archivo de
+comandos de aplicaciones WSGI suministrado como segundo argumento. No es posible
+especificar una aplicación por sí sola Python nombre de módulo. Una ruta de
+acceso completa se utiliza para una serie de razones, la principal de las
+cuales por lo que todos los controles de acceso de Apache todavía pueden aplicarse
+para indicar que en realidad puede acceder a la aplicación WSGI.
+
+Porque se aplicarán los controles de acceso de Apache, si la aplicación WSGI se
+ encuentra fuera de los directorios que ya están configurados para ser accesible a
+  Apache, habrá que decirle a Apache que los archivos dentro de ese directorio se
+  pueden utilizar. Para ello se debe utilizar la directiva Directory.
+
+Hasta aqui tenemos mod\_wsgi y nuestro directorio listo, ahora probaremos que
+todo va bien para ello dentro del directorio crearemos un archivo llamado
+"handle.wsgi" que tendra el siguiente contenido:
+
+\begin{lstlisting}[style=Python]
+# -*- coding: utf-8 -*-
+
+import os, sys
+import django.core.handlers.wsgi
+
+sys.path.append('C:/Servidor/SGCM')
+sys.path.append('C:/Servidor')
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+
+application = django.core.handlers.wsgi.WSGIHandler()
+
+\end{lstlisting}
+\vspace{0.1cm}
+
+
+Con esto nuestro servidor de aplicacion ya deberia funcionar aunque como veran
+no se cargan los archivos estaticos como imagenes y hojas de estilo por lo
+que necesitamos agregarlo.
+
+%%%
 
 

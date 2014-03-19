@@ -2,46 +2,53 @@
 \contentsline {chapter}{\numberline {1}Introduccion}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Objectivos Generales}{1}{section.1.1}
 \contentsline {section}{\numberline {1.2}Resumen}{1}{section.1.2}
-\contentsline {section}{\numberline {1.3}Motivaci\IeC {\'o}n}{1}{section.1.3}
-\contentsline {section}{\numberline {1.4}Descripci\IeC {\'o}n del Proyecto}{1}{section.1.4}
-\contentsline {section}{\numberline {1.5}Elecci\IeC {\'o}n de la metodolog\IeC {\'\i }a de Programaci\IeC {\'o}n}{1}{section.1.5}
-\contentsline {section}{\numberline {1.6}Elecci\IeC {\'o}n de la Base de Datos}{1}{section.1.6}
-\contentsline {section}{\numberline {1.7}Elecci\IeC {\'o}n de la Tecnolog\IeC {\'\i }a}{1}{section.1.7}
-\contentsline {chapter}{\numberline {2}Instalacion y Configuracion}{3}{chapter.2}
-\contentsline {section}{\numberline {2.1}Requerimientos}{3}{section.2.1}
-\contentsline {subsection}{\numberline {2.1.1}Requerimientos de Hardware}{3}{subsection.2.1.1}
-\contentsline {subsection}{\numberline {2.1.2}Requerimientos de Hardware}{3}{subsection.2.1.2}
-\contentsline {subsection}{\numberline {2.1.3}Requerimientos de Software}{3}{subsection.2.1.3}
-\contentsline {section}{\numberline {2.2}Apache}{4}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}Instalacion en Limpio}{4}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Instalacion mediante WAMP, LAMP, MAMP, WAPP}{4}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Configuracion}{5}{subsection.2.2.3}
-\contentsline {section}{\numberline {2.3}PosgreSQL}{5}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Instalacion}{6}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}Creacion de la Base de Datos}{6}{subsection.2.3.2}
-\contentsline {section}{\numberline {2.4}Python}{7}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}La Filosofia detras de Python}{7}{subsection.2.4.1}
-\contentsline {subsection}{\numberline {2.4.2}Baterias Incluidas}{8}{subsection.2.4.2}
-\contentsline {subsection}{\numberline {2.4.3}Implementaciones}{8}{subsection.2.4.3}
-\contentsline {subsection}{\numberline {2.4.4}Instalacion}{8}{subsection.2.4.4}
-\contentsline {subsection}{\numberline {2.4.5}Probando Python}{8}{subsection.2.4.5}
-\contentsline {section}{\numberline {2.5}Django}{10}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}MVC}{10}{subsection.2.5.1}
-\contentsline {subsection}{\numberline {2.5.2}Django y el MVT}{10}{subsection.2.5.2}
-\contentsline {subsection}{\numberline {2.5.3}El Modelo}{11}{subsection.2.5.3}
-\contentsline {subsection}{\numberline {2.5.4}La Vista}{12}{subsection.2.5.4}
-\contentsline {subsection}{\numberline {2.5.5}La Plantilla}{13}{subsection.2.5.5}
-\contentsline {subsection}{\numberline {2.5.6}La Configuracion de Rutas}{15}{subsection.2.5.6}
-\contentsline {subsection}{\numberline {2.5.7}Instalar Django}{15}{subsection.2.5.7}
-\contentsline {section}{\numberline {2.6}Instalando el Resto de Las Dependencias}{15}{section.2.6}
-\contentsline {subsection}{\numberline {2.6.1}psycopg2}{15}{subsection.2.6.1}
-\contentsline {subsection}{\numberline {2.6.2}ReportLab}{16}{subsection.2.6.2}
-\contentsline {subsection}{\numberline {2.6.3}easy\_thumbnails}{16}{subsection.2.6.3}
-\contentsline {subsection}{\numberline {2.6.4}django\_extensions}{16}{subsection.2.6.4}
-\contentsline {subsection}{\numberline {2.6.5}django\_cron}{16}{subsection.2.6.5}
-\contentsline {section}{\numberline {2.7}mod\_wsgi}{17}{section.2.7}
-\contentsline {subsection}{\numberline {2.7.1}WSGI}{17}{subsection.2.7.1}
-\contentsline {subsection}{\numberline {2.7.2}Descargar e Instalacion}{17}{subsection.2.7.2}
-\contentsline {subsection}{\numberline {2.7.3}Cargando el Modulo en Apache}{17}{subsection.2.7.3}
-\contentsline {subsection}{\numberline {2.7.4}Configuracion del Proyecto}{17}{subsection.2.7.4}
-\contentsline {part}{Ap\IeC {\'e}ndices}{21}{part*.8}
+\contentsline {chapter}{\numberline {2}Elecci\IeC {\'o}n de la Tecnolog\IeC {\'\i }a}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}\IeC {\textquestiondown }Por que Web y no Desktop?}{3}{section.2.1}
+\contentsline {section}{\numberline {2.2}Apache}{5}{section.2.2}
+\contentsline {section}{\numberline {2.3}mod\_wsgi}{5}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}WSGI}{5}{subsection.2.3.1}
+\contentsline {section}{\numberline {2.4}PosgreSQL}{6}{section.2.4}
+\contentsline {section}{\numberline {2.5}Python}{7}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}La Filosofia detras de Python}{7}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.5.2}Baterias Incluidas}{8}{subsection.2.5.2}
+\contentsline {subsection}{\numberline {2.5.3}Implementaciones}{8}{subsection.2.5.3}
+\contentsline {section}{\numberline {2.6}Django}{9}{section.2.6}
+\contentsline {subsection}{\numberline {2.6.1}MVC}{9}{subsection.2.6.1}
+\contentsline {subsection}{\numberline {2.6.2}Django y el MVT}{9}{subsection.2.6.2}
+\contentsline {subsection}{\numberline {2.6.3}El Modelo}{10}{subsection.2.6.3}
+\contentsline {subsection}{\numberline {2.6.4}La Vista}{11}{subsection.2.6.4}
+\contentsline {subsection}{\numberline {2.6.5}La Plantilla}{12}{subsection.2.6.5}
+\contentsline {subsection}{\numberline {2.6.6}La Configuracion de Rutas}{14}{subsection.2.6.6}
+\contentsline {chapter}{\numberline {3}La Historia Clinica}{15}{chapter.3}
+\contentsline {section}{\numberline {3.1}El Problema}{15}{section.3.1}
+\contentsline {section}{\numberline {3.2}La Solucion}{18}{section.3.2}
+\contentsline {chapter}{\numberline {4}El Proyecto}{19}{chapter.4}
+\contentsline {section}{\numberline {4.1}Motivaci\IeC {\'o}n}{19}{section.4.1}
+\contentsline {section}{\numberline {4.2}Descripci\IeC {\'o}n del Proyecto}{19}{section.4.2}
+\contentsline {section}{\numberline {4.3}El Modelo de Datos}{19}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Modulo Usuarios}{19}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Modulo Gestion de Turnos}{19}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Modulo Historia Clinica}{19}{subsection.4.3.3}
+\contentsline {section}{\numberline {4.4}Elecci\IeC {\'o}n de la metodolog\IeC {\'\i }a de Programaci\IeC {\'o}n}{19}{section.4.4}
+\contentsline {chapter}{\numberline {5}Instalacion y Configuracion}{21}{chapter.5}
+\contentsline {section}{\numberline {5.1}Requerimientos}{21}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Requerimientos de Hardware}{21}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Requerimientos de Software}{21}{subsection.5.1.2}
+\contentsline {section}{\numberline {5.2}Apache}{22}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Instalacion en Limpio}{22}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Instalacion mediante WAMP, LAMP, MAMP, WAPP}{22}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Configuracion}{22}{subsection.5.2.3}
+\contentsline {subsection}{\numberline {5.2.4}Instalacion de PosgreSQL}{23}{subsection.5.2.4}
+\contentsline {subsection}{\numberline {5.2.5}Creacion de la Base de Datos}{23}{subsection.5.2.5}
+\contentsline {section}{\numberline {5.3}Instalacion de Python}{24}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Probando Python}{24}{subsection.5.3.1}
+\contentsline {section}{\numberline {5.4}Instalar Django}{25}{section.5.4}
+\contentsline {section}{\numberline {5.5}Instalando el Resto de Las Dependencias}{25}{section.5.5}
+\contentsline {subsection}{\numberline {5.5.1}psycopg2}{25}{subsection.5.5.1}
+\contentsline {subsection}{\numberline {5.5.2}ReportLab}{25}{subsection.5.5.2}
+\contentsline {subsection}{\numberline {5.5.3}easy\_thumbnails}{25}{subsection.5.5.3}
+\contentsline {subsection}{\numberline {5.5.4}django\_extensions}{26}{subsection.5.5.4}
+\contentsline {subsection}{\numberline {5.5.5}django\_cron}{26}{subsection.5.5.5}
+\contentsline {subsection}{\numberline {5.5.6}Descargar e Instalacion de mod\_wsgi}{26}{subsection.5.5.6}
+\contentsline {subsection}{\numberline {5.5.7}Cargando el Modulo en Apache}{26}{subsection.5.5.7}
+\contentsline {subsection}{\numberline {5.5.8}Configuracion del Proyecto}{26}{subsection.5.5.8}

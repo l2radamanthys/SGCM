@@ -13,6 +13,8 @@
 \usepackage{makeidx}
 %\usepackage{ucs}
 
+%imagenes donde deben ir
+\usepackage{float}
 
 \usepackage{color}
 
@@ -33,7 +35,7 @@
 %color de los enlaces
 \definecolor{link}{RGB}{0, 79, 157}
 
-\usepackage[sort&compress]{natbib}
+%\usepackage[sort&compress]{natbib}
 
 %Para bibliogafía por capítulos con BibTeX
 %\usepackage[sectionbib]{natbib}
@@ -245,32 +247,29 @@
 %el espacio que queda en \ include es solo para que Texmaker no reconozca el include y lo muestre en la estructura del archivo.
 
 \include{introduccion}
-%\ include{antecedentes}
-%\include{disenio}
-%\ include{implementacion}
-%\ include{ejemplo}
-%\ include{conclusiones}
-%\ include{trabajofuturo}
-%\ include{designsvt}
-%\ include{lira}
-%\ include{pcnc}
-%\ include{exp}
-%\ include{conclusion}
-%\ include{futuro}
-
+\include{tecnologia}
+\include{apache}
+\include{posgre}
+\include{python}
+\include{django}
+\include{antecedentes}
+\include{proyecto}
 \include{instalacion}
 \include{instalacion-2}
-\include{instalacion-3}
 
 
-\part*{\addcontentsline{toc}{part}{Apéndices}Apéndices}
+\include{bibliografia}
+
+%\part*{\addcontentsline{toc}{part}{Apéndices}Apéndices}
+
+
 
 % Adjustments headers
-\fancyhead[RO]{\leftmark}
-\fancyhead[EL]{\emph{Apéndice \thechapter}}
+%\fancyhead[RO]{\leftmark}
+%\fancyhead[EL]{\emph{Apéndice \thechapter}}
 
 %%%%%%%%%%%%%
-\appendix
+%\appendix
 %%%%%%%%%%%%%%
 %\ include{software}
 %\ include{publicaciones}
@@ -283,9 +282,12 @@
 \fancyhead[RO]{\leftmark}
 \fancyhead[EL]{}
 \addcontentsline{toc}{chapter}{Bibliografía}
-\bibliographystyle{unsrt}
-%\bibliography{lmm,gengisNOlmm}
-%\printindex
+%\bibliographystyle{unsrt}
+%\bibliographystyle{plain}
+%\bibliography{biblio.bib}
+
+\include{bibligrafia}
+
 \end{document}
 
 %%% Local Variables: 
