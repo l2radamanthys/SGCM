@@ -1,0 +1,28 @@
+http://es.wikipedia.org/wiki/Servidor\_HTTP\_Apache
+http://kuyne.blogspot.com.ar/2013/03/servidor-apache-en-ubuntu-instalacion-y.html
+http://norfipc.com/internet/instalar-servidor-apache.html
+http://es.wikipedia.org/wiki/Modelo\_Vista\_Controlador
+
+1- Formato recomendable para llenar la hoja de remisión médica de un paciente
+http://bvs.sld.cu/revistas/mgi/vol22\_2\_06/mgi10206.htm 
+https://www.consultorioweb.com/intranet/doctor/pacienteConsultas.aspx
+
+2- Modelos de Historia Clinica
+http://www.med.unne.edu.ar/internado/his\_cli.pdf
+http://www.slideshare.net/AnyFlowers/ejemplo-historia-clinica
+http://www.biocom.com/informatica\_medica/historia\_5\_examen\_fisico.html
+http://www.sld.cu/galerias/pdf/sitios/pdguanabo/cap04.pdf
+problemas auditivos comunes
+http://www.esmas.com/salud/enfermedades/notransmisibles/368755.html
+http://es.wikipedia.org/wiki/P\%C3\%A9rdida\_de\_audici\%C3\%B3n
+Nariz
+http://sisbib.unmsm.edu.pe/BibVirtualdata/libros/Medicina/cirugia/Tomo\_V/archivos\%20PDF/7Rinologia.pdf
+Boca
+http://es.wikipedia.org/wiki/Labio
+3-receta medica
+http://www.consumoteca.com/bienestar-y-salud/medicamentos/que-partes-deben-tener-y-datos-incluir-por-ley-las-recetas-medicas/
+http://es.wikipedia.org/wiki/V\%C3\%ADas\_de\_administraci\%C3\%B3n\_de\_f\%C3\%A1rmacos
+
+http://escuela.med.puc.cl/Publ/ManualSemiologia/190Respiracion.htm
+http://www.biocom.com/informatica\_medica/historia\_5\_examen\_fisico.html
+http://www.slideshare.net/wendy1971/examen-fisico-del-sistema-ostiomioarticular
