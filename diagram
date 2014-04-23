@@ -1,5 +1,6 @@
 #!/bin/sh
 
-python manage.py graph_models -a -o docs/project-class-diagram.png
-python manage.py graph_models auth -a -o docs/auth-class-diagram.png
-python manage.py graph_models GestionTurnos docs/gestionturnos-class-diagram.png
+python manage.py graph_models -a > docs/project-class-diagram.dot
+python manage.py graph_models auth -a > docs/auth-class-diagram.dot
+python manage.py graph_models GestionTurnos -a > docs/gestionturnos-class-diagram.dot
+python manage.py graph_models HistoriaClinica -a > docs/historiaclinica-class-diagram.dot
