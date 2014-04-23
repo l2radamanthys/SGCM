@@ -9,7 +9,7 @@ if [ $1 == "posgre" ]; then
     
 elif [ $1 == "sqlite" ]; then
     echo "Cargando configuracion para Sqlite"
-    cp settings-posgre.py settings.py
+    cp settings-sqlite.py settings.py
 else
     echo "Parametro Invalido: $1"
 fi
