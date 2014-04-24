@@ -67,8 +67,11 @@ urlpatterns = patterns('',
 
     (r'^admins/registrar/administrativo/$', gt_admins_views.admin_add_admin),
     (r'^admins/buscar/administrativo/$', gt_admins_views.admin_search_admin),
+    (r'^admins/mostrar/administrativo/(.+)/$', gt_admins_views.admin_show_admin),
+
 
     (r'^admins/buscar/paciente/$', gt_admins_views.admin_search_patient),
+    (r'^admins/mostrar/paciente/(.+)/$', gt_admins_views.admin_show_patient),
 
     #expecialidades
     (r'^admins/listado/expecialidad-medica/$', gt_admins_views.admin_list_expecialities),
