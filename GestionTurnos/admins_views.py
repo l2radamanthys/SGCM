@@ -288,8 +288,24 @@ def admin_search_admin(request):
 
 
 
-def admin_show_admin(request):
-    pass
+def admin_show_admin(request, adm_id):
+    mi_template = get_template('Admins/GestionTurnos/admin-view.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        iuser = User.objects.get(username=adm_id)
+        dict['expecialidades'] = MedicalSpecialityFor.objects.filter(user=iuser)
+        dict['iuser'] = iuser
+        #dict['iuser_lbl'] = iuser.
+        dict['info'] = UserInformation.objects.get(user=iuser)
+
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
 
 
 
@@ -328,6 +344,7 @@ def admin_add_expeciality(request):
 
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
+
 
 
 def admin_show_expeciality(request, exp_id):
@@ -378,7 +395,6 @@ def admin_edit_patient_info(request, pac_id):
     pass
 
 
-
 def admin_search_patient(request):
     mi_template = get_template('Admins/GestionTurnos/buscar-usuarios.html')
     dict = generate_base_keys(request)
@@ -386,8 +402,8 @@ def admin_search_patient(request):
     if True:
         #conf
         type = "Paciente"
-        dict['type_user'] = 'Administrativo'
-        dict['url_dest'] = '/admins/mostrar/administrativo/'
+        dict['type_user'] = 'Paciente'
+        dict['url_dest'] = '/admins/mostrar/paciente/'
 
         field = get_value(request, 'field')
         argv = get_value(request, 'search')
@@ -408,6 +424,28 @@ def admin_search_patient(request):
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
 
+
+def admin_show_patient(request, pac_id):
+    mi_template = get_template('Admins/GestionTurnos/patient-view.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        iuser = User.objects.get(username=pac_id)
+        dict['expecialidades'] = MedicalSpecialityFor.objects.filter(user=iuser)
+        dict['iuser'] = iuser
+        #dict['iuser_lbl'] = iuser.
+        dict['info'] = UserInformation.objects.get(user=iuser)
+
+        dict['turns'] = Turn.objects.filter(patient=iuser)
+
+
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
 
 
 def admin_select_medic_for_patient(request, pac_id):

@@ -14,14 +14,15 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASES = {
-    'default': { #configuracion netbook
-        'ENGINE': 'sqlite3',           # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'media/data/SGCM_DB.sqlite3',                         # Or path to database file if using sqlite3.
-        'USER': '',                          # Not used with sqlite3.
-        'PASSWORD': '',                    # Not used with sqlite3.
-        'HOST': '',                       # Set to empty string for localhost. Not used with sqlite3.
+    'default': {
+        'ENGINE': 'postgresql_psycopg2',           # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'SGCM_DB',                         # Or path to database file if using sqlite3.
+        'USER': 'wyrven',                          # Not used with sqlite3.
+        'PASSWORD': 'inmortal',                    # Not used with sqlite3.
+        'HOST': '127.0.0.1',                       # Set to empty string for localhost. Not used with sqlite3.
         'PORT': '',                                  # Set to empty string for default. Not used with sqlite3.
     }
+<<<<<<< HEAD
 #    'default': {
 #        'ENGINE': 'postgresql_psycopg2',           # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
 #        'NAME': 'SGCM_DB',                         # Or path to database file if using sqlite3.
@@ -30,6 +31,8 @@ DATABASES = {
 #        'HOST': '127.0.0.1',                       # Set to empty string for localhost. Not used with sqlite3.
 #        'PORT': '',                                  # Set to empty string for default. Not used with sqlite3.
 #    }
+=======
+>>>>>>> c05122d73c3790c0a18845e5d5a0198960c98432
 }
 
 # Local time zone for this installation. Choices can be found here:

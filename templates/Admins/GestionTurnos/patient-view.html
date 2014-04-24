@@ -1,12 +1,11 @@
 {% extends 'Admins/GestionTurnos/user-view.html' %}
 
 {% block sub-cont %}
-<h4>Opciones</h4>
-
+<h4> Opciones</h4>
+<br />
 <ul>
     <li><a href="" title="">Modificar Datos</a></li>
     <li><a href="" title="">Cambiar Contraseña</a></li>
-    <li><a href="" title="">Asignar Turno</a></li>
     <li><a href="" title="">Turnos Solicitados</a></li>
 </ul>
 
@@ -15,6 +14,38 @@
 <!-- sub contenido -->
 {% block view-cont %}
 <br />
-<h2>title</h2>
+<h2>Datos del Paciente</h2>
+
+<br />
+<div class="fancy-form-white" style="width: 550px; margin: 0 auto;">
+    {% include "Admins/GestionTurnos/user-info.html" %}
+</div>
+
+    <br />
+    <h2>Turnos Solicitados</h2>
+    <br />
+    
+    <table class="tbl-round-light" style="width:650px; margin: 0 auto;">
+        <tr>
+            <th>Fecha</th>
+            <th>Medico</th>
+            <th>Estado</th>
+            <th>Opciones</th>
+        </tr>
+        {% for turn in turns %}
+        <tr>
+            <td>{{ turn.day.date|date:"d/m/Y" }} - {{ turn.start }}</td>
+            <td>{{ turn.medic.last_name }}, {{ turn.medic.first_name }}</td>
+            <td>{{ turn.get_status_display }}</td>
+            <td>
+                <a href="" title="">Mostrar</a>
+                <a href="" title="">Modificar</a>                
+            </td>
+        </tr>            
+        {% endfor %}
+
+    
+    </table>
+
 
 {% endblock %}
