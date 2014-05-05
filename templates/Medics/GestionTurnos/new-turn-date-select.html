@@ -1,4 +1,4 @@
-{% extends 'Patients/GestionTurnos/medic-view.html' %}
+{% extends 'Medics/GestionTurnos/patient-view.html' %}
 
 {% block ext_style %}
     <link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
@@ -26,14 +26,14 @@
     <br />
 <div style="width: 500px; margin: 0 auto;">
     <div style="float: left; width: 250px; text-align: center;">
-    <a href="/pacientes/turnos/selecionar-dia/{{ medic.user.id }}/{{ prev_month }}/{{ year }}/" style="text-decoration: None;"><img src="/media/images/minus-icon.png">&nbsp;</a>
+    <a href="/medicos/turnos/seleccionar-dia/{{ patient.username }}/{{ prev_month }}/{{ year }}/" style="text-decoration: None;"><img src="/media/images/minus-icon.png">&nbsp;</a>
     {{ name_month }}
-    <a href="/pacientes/turnos/selecionar-dia/{{ medic.user.id }}/{{ next_month }}/{{ year }}/" style="text-decoration: None;">&nbsp;<img src="/media/images/plus-icon.png" /></a>
+    <a href="/medicos/turnos/seleccionar-dia/{{ patient.username }}/{{ next_month }}/{{ year }}/" style="text-decoration: None;">&nbsp;<img src="/media/images/plus-icon.png" /></a>
     </div>
     <div style="width: 250px; margin-left:250px; text-align: center;">
-    <a href="/pacientes/turnos/selecionar-dia/{{ medic.user.id }}/{{ month }}/{{ prev_year }}/" style="text-decoration: None;"><img src="/media/images/minus-icon.png">&nbsp;</a>
+    <a href="/medicos/turnos/seleccionar-dia/{{ patient.username }}/{{ month }}/{{ prev_year }}/" style="text-decoration: None;"><img src="/media/images/minus-icon.png">&nbsp;</a>
     {{ year }}
-    <a href="/pacientes/turnos/selecionar-dia/{{ medic.user.id }}/{{ month }}/{{ next_year }}/" style="text-decoration: None;">&nbsp;<img src="/media/images/plus-icon.png" /></a>
+    <a href="/medicos/turnos/seleccionar-dia/{{ patient.username }}/{{ month }}/{{ next_year }}/" style="text-decoration: None;">&nbsp;<img src="/media/images/plus-icon.png" /></a>
     </div>
     </div>
 

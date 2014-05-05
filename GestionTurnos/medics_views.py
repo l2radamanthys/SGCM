@@ -12,8 +12,7 @@ from django.contrib.auth.models import Group as DjangoGroup
 from django.contrib.auth.models import Group, Permission
 from django.contrib.contenttypes.models import ContentType
 
-import calendar
-import datetime
+import calendar, datetime
 
 from GestionTurnos.models import *
 import GestionTurnos.forms as my_forms
@@ -167,7 +166,6 @@ def patient_register(request):
     """
     Vista para registrar un nuevo usuario, paciente
     """
-    #mi_template = get_template('Patients/GestionTurnos/register.html')
     mi_template = get_template('Medics/GestionTurnos/registrar-paciente.html')
     dict = generate_base_keys(request)
 
@@ -221,7 +219,7 @@ def patient_register(request):
                             matricula = "No Medic"
                     )
                     dict['show_form'] = False
-                    dict['custon_message'] = Tags.html_message("Paciente <strong>%s</strong> Registrado Correctamente.."  %(form.cleaned_data['first_name']+form.cleaned_data['last_name']), type="ok")
+                    dict['custon_message'] = Tags.html_message("Paciente <strong>%s</strong> Registrado Correctamente.."  %(user.first_name + ' ' + user.last_name), type="success")
 
             else:
                 dict['query'] += " | FORM ERROR"  #debug only
@@ -246,11 +244,6 @@ def patient_register(request):
 def medic_register(request):
     """
      Vista, para registrar un Paciente
-
-    Accesso:
-    --------
-        - Administradores (Total)
-    - Medicos
     """
     mi_template = get_template('GestionTurnos/medico-nuevo.html')
     dict = generate_base_keys(request)
@@ -415,7 +408,6 @@ def my_medic_show_business_hours(request):
     """
         Muestra mis dias y horario de atencion
     """
-
     if True: #por ahora no controlo permisos
         mi_template = get_template('Medics/GestionTurnos/mis-horarios-atencion.html')
         dict = generate_base_keys(request)
@@ -467,7 +459,6 @@ def my_medic_add_business_hours(request):
 
         else:
             dict['form'] = my_forms.BusinessHoursForm(auto_id=False)
-
 
         html_cont = mi_template.render(Context(dict))
         return HttpResponse(html_cont)
@@ -615,7 +606,6 @@ def my_medic_show_nonworking_days(request, month=None, year=None):
             dict['prev_month'] = t_month
             dict['prev_year'] = t_year
 
-
         #dias que se atiende
         bh = BusinessHours.objects.filter(user=request.user)
         wd = []
@@ -634,7 +624,6 @@ def my_medic_show_nonworking_days(request, month=None, year=None):
         for day in dof:
             if day.number_of_turns > 0:
                 _dta.append(day.date - 1)
-
 
         #formateo del mes
         semanas = []
@@ -662,8 +651,6 @@ def my_medic_show_nonworking_days(request, month=None, year=None):
     else:
         path = request.META['PATH_INFO']
         return HttpResponseRedirect("/restricted-access%s" %path)
-
-
 
 
 
@@ -881,7 +868,6 @@ def show_turns(request, day=None, month=None, year=None):
     dict = generate_base_keys(request)
 
     if True: #requiere permiso del medico
-
         #si no se pasa la fecha se toma el dia actual
         if day == None:
             date = datetime.datetime.today()
@@ -894,7 +880,8 @@ def show_turns(request, day=None, month=None, year=None):
         turns = Turn.objects.filter(day__date=_date, medic=request.user)
         dict['date'] = _date
         if len(turns) == 0:
-            dict['not_turns'] = True
+            #dict['not_turns'] = True
+            pass
         dict['turns'] = turns
 
         html_cont = mi_template.render(Context(dict))
@@ -910,7 +897,6 @@ def select_date_to_show_turns(request, month=None, year=None):
     """
         Seleciona Dia Para Mostrar Turnoss
     """
-
     if True: #requiere permiso del medico
         mi_template = get_template('Medics/GestionTurnos/selecionar-dia-mostrar-turnos.html')
         dict = generate_base_keys(request)
@@ -952,7 +938,6 @@ def select_date_to_show_turns(request, month=None, year=None):
         dict['y_prev_year'] = year - 1
         dict['y_next_year'] = year + 1
 
-
         #dias que se atiende
         bh = BusinessHours.objects.filter(user=request.user)
         wd = []
@@ -971,7 +956,6 @@ def select_date_to_show_turns(request, month=None, year=None):
         for day in dof:
             if day.number_of_turns > 0:
                 _dta.append(day.date.day - 1)
-
 
         #formateo del mes
         semanas = []
@@ -993,7 +977,6 @@ def select_date_to_show_turns(request, month=None, year=None):
             semanas.append(sem)
         dict['wekends'] = semanas
 
-
         html_cont = mi_template.render(Context(dict))
         return HttpResponse(html_cont)
 
@@ -1004,8 +987,10 @@ def select_date_to_show_turns(request, month=None, year=None):
 
 
 ## Recetas Medicas
-
 def medic_list_patient_prescriptions(request, patient):
+    """
+        Listado Prescripciones Medicas
+    """
     mi_template = get_template('Medics/GestionTurnos/listado-receta-medica.html')
     dict = generate_base_keys(request)
 
@@ -1026,6 +1011,9 @@ def medic_list_patient_prescriptions(request, patient):
 
 
 def medic_add_patient_prescription(request, id_pm):
+    """
+        Agregar receta medica
+    """
     mi_template = get_template('Medics/GestionTurnos/agregar-receta-medica.html')
     dict = generate_base_keys(request)
 
@@ -1062,7 +1050,6 @@ def medic_add_patient_prescription(request, id_pm):
             form = my_forms.MedicalPrescriptionForm(initial=form_data)
             dict['form'] = form
 
-
     else:
         path = request.META['PATH_INFO']
         return HttpResponseRedirect("/restricted-access%s" %path)
@@ -1073,6 +1060,9 @@ def medic_add_patient_prescription(request, id_pm):
 
 
 def medic_show_patient_prescription(request, id_pm):
+    """
+        Mostrar la receta medica
+    """
     mi_template = get_template('Medics/GestionTurnos/mostrar-receta-medica.html')
     dict = generate_base_keys(request)
 
@@ -1093,9 +1083,8 @@ def medic_show_patient_prescription(request, id_pm):
 
 def medical_prescription_pdf(request, id_pm):
     """
+        Exporta la receta a PDF
     """
-    #mi_template = get_template('Patients/GestionTurnos/show-turn-detail.html')
-    #dict = generate_base_keys(request)
     if True:
         try:
             pm = MedicalPrescription.objects.get(id=id_pm)
@@ -1139,6 +1128,19 @@ def medic_new_turn_day_select(request, pac_id, month=None, year=None):
     """
     mi_template = get_template('Medics/GestionTurnos/new-turn-date-select.html')
     dict = generate_base_keys(request)
+    
+    # parche aplicacion por alguna razon el parseo de la expresion regular en  
+    # urls.py no funciona correctamente esto es una correcion temporal hasta
+    # que encuentre una expresion que funcione correctamente
+    lst = pac_id.split('/')
+    if len(lst) == 3:
+        pac_id = lst[0]
+        month = lst[1]
+        year = lst[2]
+
+    print pac_id
+
+    dict['pac_username'] = pac_id #en este caso hace referencia al nombre de usuario
 
     if True:
         ## correcion de la fecha y de los spin para cambio de fechas ##
@@ -1251,6 +1253,7 @@ def medic_new_turn(request, pac_id, day, month, year):
         medic = UserInformation.objects.get(user=request.user)
         patient = User.objects.get(id=pac_id) 
         dict['patient'] = patient 
+        dict['pac_username'] = patient.username
         dict['medic'] = medic
 
         if request.method == 'POST':
@@ -1295,15 +1298,6 @@ def medic_new_turn(request, pac_id, day, month, year):
                     _end = doa.get_next_current_end_time()
                     doa.current_end_time = doa.get_next_current_end_time()
 
-                    ## debug
-                    #dict['test'] = bh.number_of_turns_bh(bh)
-                    #dict['test'] = doa.number_of_turns
-                    #dict['test'] = doa.get_next_current_end_time()
-                    #dict['test'] = str(doa.number_of_turns) + " - "
-                    #dict['test'] += str(_start) + "  - "
-                    #dict['test'] += str(_end)
-
-
                     if is_turn: #consulta bandera de registracion de turno
                         dict['not_errors'] = True
                         try:
@@ -1347,7 +1341,6 @@ def medic_new_turn(request, pac_id, day, month, year):
                 dict['not_errors'] = False
                 dict['errors'] = 'La clave de comprobacion no coincide'
 
-            pass
         else:
             dict['show_form'] = True
             dict['key'] = str(medic.user.id) + day + month + year
@@ -1362,9 +1355,24 @@ def medic_new_turn(request, pac_id, day, month, year):
 
 
 
-def patient_set_medic_consulation(request, med_id):
-    """
-        Envia una consulta online a un medico, lo que en realidad es
-        un mensaje
-    """
-    pass
+def medic_show_patient_turn_request(request, pac_username):
+    mi_template = get_template('Medics/GestionTurnos/show-turns-request.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        user = User.objects.get(username=pac_username)
+        dict['patient'] = user
+        dict['pac_username'] = user.username
+
+        t_stat = [1,2,3,4,5]
+        #status = 0 turno pendiente
+        dict['p_turns'] = Turn.objects.filter(patient=user, status=0).order_by('day__date')
+        dict['c_turns'] = Turn.objects.filter(patient=user, status__in=t_stat).order_by('day__date')
+
+        html_cont = mi_template.render(Context(dict))
+        return HttpResponse(html_cont)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
