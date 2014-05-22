@@ -1379,3 +1379,57 @@ def medic_show_patient_turn_request(request, pac_username):
         path = request.META['PATH_INFO']
         return HttpResponseRedirect("/restricted-access%s" %path)
 
+
+
+def medic_show_patient_turn_detail(request, turn_id):
+    mi_template = get_template('Medics/GestionTurnos/show-turn-detail.html')
+    dict = generate_base_keys(request)
+
+    if have_acess(request):
+        user = request.user
+        try: 
+            turn = Turn.objects.get(id=turn_id, medic=request.user)
+            dict['turn'] = turn 
+            dict['pac_username'] = turn.patient.username
+
+        except:
+            path = request.META['PATH_INFO']
+            return HttpResponseRedirect("/restricted-access%s" %path)
+
+        html_cont = mi_template.render(Context(dict))
+        return HttpResponse(html_cont)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+
+def medic_turn_cancel(request, turn_id):
+    """
+        Vista para cancelar los turnos pendientes.
+    """
+    mi_template = get_template('Patients/GestionTurnos/cancel-turn.html')
+    dict = generate_base_keys(request)
+    if True:
+        user = request.user
+        try:
+            turn = Turn.objects.get(id=turn_id)#, patient=request.user)
+            dict['turn'] = turn
+
+        except:
+            path = request.META['PATH_INFO']
+            return HttpResponseRedirect("/restricted-access%s" %path)
+
+        dict['show_turn'] = True
+
+        if request.method == "POST":
+            dict['show_turn'] = False
+            turn.status = 2 #cancelado por medico
+            turn.save()
+
+        html_cont = mi_template.render(Context(dict))
+        return HttpResponse(html_cont)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)

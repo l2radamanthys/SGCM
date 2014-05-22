@@ -60,8 +60,8 @@ SEXO_CHOICE = (
 
 
 TYPE_DOC_CHOICE = (
-    ('D.N.I.', 'Documento Nacional de Identidad (Nuevo)'),
-    ('DNI', 'Documento Nacional de Identidad Mercosur'),
+    ('D.N.I.', 'Documento Nacional de Identidad'),
+    #('DNI', 'Documento Nacional de Identidad Mercosur'),
     ('L.E.', 'Libreta de Enrrolamiento'),
     ('L.C.', 'Libreta Civica'),
     ('C.I.', 'Cedula de Identificacion'),

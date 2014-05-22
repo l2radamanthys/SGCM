@@ -511,11 +511,10 @@ def patient_show_turn_detail(request, turn_id):
     mi_template = get_template('Patients/GestionTurnos/show-turn-detail.html')
     dict = generate_base_keys(request)
 
-    if True:
+    if have_acess(request):
         user = request.user
         try:
             dict['turn'] = Turn.objects.get(id=turn_id, patient=request.user)
-
 
         except:
             path = request.META['PATH_INFO']
@@ -564,6 +563,7 @@ def patient_turn_cancel(request, turn_id):
         user = request.user
         try:
             turn = Turn.objects.get(id=turn_id, patient=request.user)
+            dict['turn'] = turn
 
         except:
             path = request.META['PATH_INFO']
