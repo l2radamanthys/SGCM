@@ -1,0 +1,112 @@
+{% extends 'Medics/GestionTurnos/patient-view.html' %}
+
+{% block ext_style %}
+{% endblock %}
+
+{% block view-cont %}
+    <br />
+    <div  style="padding-left:10px;" >
+        <h2>Registrar Turno</h2>
+        <p style="font-size:14px; margin-left: 10px;">Medico: {{ medic.user.first_name }} {{ medic.user.last_name }}</p>
+    </div>
+
+    <br />
+    <div style="width: 650px; margin: 0 auto; text-align: right;">
+        <a href="/medicos/turnos/selecionar-dia/{{ patient.id }}/" class="grad-button-blue">Atras</a>
+    </div>
+    <br />
+
+    {% if show_form %}
+        <p class="alert" style="width:450px;"><strong>Atencion:</strong><br /><br />
+        Por fabor confirme los datos antes de enviar la solicitud de turno, recuerde que al enviar esta solicitud, usted se compromete
+        a asistir en la fecha que usted acordo y el horario proporcionado.</p>
+        <br />
+
+        <div class="fancy-form-white" style="text-align: left; width: 450px; margin: 0 auto;">
+            <h2>Confirmacion de Datos de Solicitud Turno</h2>
+            <br />
+            <form action="" method="post">
+            <table style="width: 450px;">
+                <tr>
+                    <td class="tbl-label">Fecha de Solicitud:</td>
+                    <td>{{ date_str }}</td>
+                </tr>
+
+                <tr>
+                    <td class="tbl-label">Medico:</td>
+                    <td>{{ medic.user.first_name }} {{ medic.user.last_name }}</td>
+                </tr>
+                
+                <tr>
+                    <td class="tbl-label">Paciente:</td>
+                    <td>{{ patient.first_name }} {{ patient.last_name }}</td>
+                </tr>
+                  
+
+                <tr>
+                    <td colspan="2">
+                        <input type="hidden" name="key" value="{{ key }}" />
+                        <br />
+                        <div style="text-align:center;">
+                            <input type="submit" class="grad-button-blue" value="Enviar" />
+                            <!-- <a href="/pacientes/show-info/{{ pac_username }}/" class="grad-button-blue">Atras</a> -->
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    {% else %}
+        <br />
+        
+        {% if not_errors  %}
+        <div class="fancy-form-white" style="text-align: left; width: 450px; margin: 0 auto;">
+            <table>
+                <tr>
+                    <td colspan="2">
+                    <h2>Comprobante Turno Solicitado</h2>
+                    <br />
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tbl-label">Paciente:</td>
+                    <td>{{ turn.patient.first_name }} {{ turn.patient.last_name }}</td>
+                </tr>
+                <tr>
+                    <td class="tbl-label">Medico:</td>
+                    <td>{{ turn.medic.first_name }} {{ turn.medic.last_name }}</td>
+                </tr>
+                <tr>
+                    <td class="tbl-label">Fecha:</td>
+                    <td>{{ turn.day.date }}</td>
+                </tr>
+                <tr>
+                    <td class="tbl-label">Numero de Orden:</td>
+                    <td>{{ turn.number }}</td>
+                </tr>
+                <tr>
+                    <td class="tbl-label">Hora Inicio:</td>
+                    <td>{{ turn.start }}</td>
+                </tr>
+                <tr>
+                    <td class="tbl-label">Hora Fin:</td>
+                    <td>{{ turn.end }}</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                    <br />
+                    <p>Se recomienda que asista 20 minutos antes del horario acordado, para evitar inconvenientes.</p>
+                    <br />
+                    </td>
+                </tr>
+            </table>
+        </div>
+        {% endif %}
+    {% endif %}
+
+    {% if errors != None %}
+        <p class="error" style="width:450px;"><strong>Error:</strong><br /><br />
+        {{ errors }}</p>
+    {% endif %}
+    
+{% endblock %}

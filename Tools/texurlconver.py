@@ -1,3 +1,5 @@
+#Latex Urls Format
+__autor__ = 'Ricardo Daniel Quiroga'
 
 data = open('urls.txt', 'r').readlines()
 out = open('urls-out.txt', 'w')

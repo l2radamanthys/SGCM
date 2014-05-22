@@ -63,8 +63,6 @@ urlpatterns = patterns('',
     (r'^admins/agregar/medico/expecialidad/(.+)/$', gt_admins_views.admin_add_medic_expeciality),
 
 
-
-
     (r'^admins/registrar/administrativo/$', gt_admins_views.admin_add_admin),
     (r'^admins/buscar/administrativo/$', gt_admins_views.admin_search_admin),
     (r'^admins/mostrar/administrativo/(.+)/$', gt_admins_views.admin_show_admin),
@@ -116,12 +114,17 @@ urlpatterns = patterns('',
     # gestion turnos
     (r'^pacientes/turnos/selecionar-dia/(\d{1,2})/$', gt_patients_views.patient_new_turn_day_select), #selecion fecha para solicitar turno
     (r'^pacientes/turnos/selecionar-dia/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_patients_views.patient_new_turn_day_select), #selecion fecha para solicitar turno
-    (r'^medicos/turnos/agregar/(\d{1,2})/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_patients_views.patient_new_turn),
+    (r'^pacientes/turnos/agregar/(\d{1,2})/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_patients_views.patient_new_turn),
     (r'^pacientes/turnos/listado/$',  gt_patients_views.patient_show_turn_request), #mostrar estado turnos solicitados
     (r'^pacientes/turnos/mostrar/(\d{1,2})/$',  gt_patients_views.patient_show_turn_detail ), #detalle turno especifico
     (r'^pacientes/turnos/cancelar/(\d{1,2})/$',  gt_patients_views.patient_turn_cancel), #cancelar turno
     (r'^pacientes/turnos/imprimir/(\d{1,2})/$',  gt_patients_views.patient_turn_pdf), #imprimir comprobante turno
 
+    #turnos asignados medico
+    (r'^medicos/turnos/seleccionar-dia/(.+)/$', gt_medics_views.medic_new_turn_day_select), #selecion fecha para solicitar turno
+    (r'^medicos/turnos/seleccionar-dia/(.+)/(\d{1,2})/(\d{4})/$', gt_medics_views.medic_new_turn_day_select), #selecion fecha para solicitar turno
+    (r'^medicos/turnos/agregar/(\d{1,2})/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_medics_views.medic_new_turn),
+    (r'^medicos/turnos/listado/(.+)/$',  gt_medics_views.medic_show_patient_turn_request), #mostrar estado turnos solicitados
 
     #mensajes internos
     (r'^mensajes/redactar/$', gt_messages_views.send_message),

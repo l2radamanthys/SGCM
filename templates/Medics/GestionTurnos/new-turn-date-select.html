@@ -1,4 +1,4 @@
-{% extends 'Patients/GestionTurnos/medic-view.html' %}
+{% extends 'Medics/GestionTurnos/patient-view.html' %}
 
 {% block ext_style %}
     <link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
@@ -9,8 +9,8 @@
 {% block view-cont %}
     <br />
     <div  style="padding-left:10px;" >
-        <h2>Solicitar Turno</h2>
-        <p style="font-size:14px; margin-left: 10px;">Medico: {{ medic.user.first_name }} {{ medic.user.last_name }}</p>
+        <h2>Asignar Turno</h2>
+        <p style="font-size:14px; margin-left: 10px;">Paciente: {{ patient.first_name }} {{ patient.last_name }}</p>
     </div>
 
     <br />
@@ -26,14 +26,14 @@
     <br />
 <div style="width: 500px; margin: 0 auto;">
     <div style="float: left; width: 250px; text-align: center;">
-    <a href="/pacientes/turnos/selecionar-dia/{{ medic.user.id }}/{{ prev_month }}/{{ year }}/" style="text-decoration: None;"><img src="/media/images/minus-icon.png">&nbsp;</a>
+    <a href="/medicos/turnos/seleccionar-dia/{{ patient.username }}/{{ prev_month }}/{{ year }}/" style="text-decoration: None;"><img src="/media/images/minus-icon.png">&nbsp;</a>
     {{ name_month }}
-    <a href="/pacientes/turnos/selecionar-dia/{{ medic.user.id }}/{{ next_month }}/{{ year }}/" style="text-decoration: None;">&nbsp;<img src="/media/images/plus-icon.png" /></a>
+    <a href="/medicos/turnos/seleccionar-dia/{{ patient.username }}/{{ next_month }}/{{ year }}/" style="text-decoration: None;">&nbsp;<img src="/media/images/plus-icon.png" /></a>
     </div>
     <div style="width: 250px; margin-left:250px; text-align: center;">
-    <a href="/pacientes/turnos/selecionar-dia/{{ medic.user.id }}/{{ month }}/{{ prev_year }}/" style="text-decoration: None;"><img src="/media/images/minus-icon.png">&nbsp;</a>
+    <a href="/medicos/turnos/seleccionar-dia/{{ patient.username }}/{{ month }}/{{ prev_year }}/" style="text-decoration: None;"><img src="/media/images/minus-icon.png">&nbsp;</a>
     {{ year }}
-    <a href="/pacientes/turnos/selecionar-dia/{{ medic.user.id }}/{{ month }}/{{ next_year }}/" style="text-decoration: None;">&nbsp;<img src="/media/images/plus-icon.png" /></a>
+    <a href="/medicos/turnos/seleccionar-dia/{{ patient.username }}/{{ month }}/{{ next_year }}/" style="text-decoration: None;">&nbsp;<img src="/media/images/plus-icon.png" /></a>
     </div>
     </div>
 
@@ -54,7 +54,7 @@
 		{% for day in week %}
 			{% if day.day %}
                 {% if day.type == 1 %}
-                    <td class="calendar-blank"><a href="/pacientes/turnos/agregar/{{ medic.user.id }}/{{ day.day }}/{{ month }}/{{ year }}/">{{ day.day }}</a></td>
+                    <td class="calendar-blank"><a href="/medicos/turnos/agregar/{{ patient.id }}/{{ day.day }}/{{ month }}/{{ year }}/">{{ day.day }}</a></td>
                 {% else %}{% if day.type == 2 %}
                     <td class="calendar-cancel">{{ day.day }}</td>
                 {% else %}{% if day.type == 3 %}
