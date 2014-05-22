@@ -749,6 +749,8 @@ def my_edit_medical_consultation(request, cm_id):
     if True:
         cm = MedicalConsultation.objects.get(id=cm_id)
         dict['cm'] = cm
+        dict['precriptions'] = MedicalPrescription.objects.filter(med_consulation=cm)
+
         if request.method == 'POST':
             cm.issue = get_value(request, 'issue')
             cm.diagnostic = get_value(request, 'diagnostic')
@@ -897,7 +899,7 @@ def select_date_to_show_turns(request, month=None, year=None):
     """
         Seleciona Dia Para Mostrar Turnoss
     """
-    if True: #requiere permiso del medico
+    if have_acess(request): #requiere permiso del medico
         mi_template = get_template('Medics/GestionTurnos/selecionar-dia-mostrar-turnos.html')
         dict = generate_base_keys(request)
 
@@ -994,7 +996,7 @@ def medic_list_patient_prescriptions(request, patient):
     mi_template = get_template('Medics/GestionTurnos/listado-receta-medica.html')
     dict = generate_base_keys(request)
 
-    if True:
+    if have_acess(request):
         dict['pac_username'] = patient
         pac = User.objects.get(groups__name='Paciente', username=patient)
         dict['pac'] = pac
@@ -1017,9 +1019,10 @@ def medic_add_patient_prescription(request, id_pm):
     mi_template = get_template('Medics/GestionTurnos/agregar-receta-medica.html')
     dict = generate_base_keys(request)
 
-    if True:
+    if have_acess():
         mc = MedicalConsultation.objects.get(id=id_pm)
         dict['mc'] = mc
+        dict['pac'] = mc.patient
         dict['show_form'] = True
         dict['show_errors'] = False
 

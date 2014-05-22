@@ -256,7 +256,7 @@ def date_to_str(date):
 
 
 
-def have_acess(request, argv):
+def have_acess(request=None, argv=[]):
     """
     No yet Implement
     Falla de seguridad a proposito digamos :D
