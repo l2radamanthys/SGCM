@@ -127,7 +127,7 @@ urlpatterns = patterns('',
     (r'^medicos/turnos/listado/(.+)/$',  gt_medics_views.medic_show_patient_turn_request), #mostrar estado turnos solicitados
     (r'^medicos/turnos/mostrar/(\d{1,2})/$',  gt_medics_views.medic_show_patient_turn_detail), #detalle turno especifico
     (r'^medicos/turnos/cancelar/(\d{1,2})/$',  gt_medics_views.medic_turn_cancel), #cancelar turno
-    (r'^medicos/turnos/reactivar/(\d{1,2})$', gt_medics_views.medic_turn_reset),
+    (r'^medicos/turnos/reactivar/(\d{1,2})/$', gt_medics_views.medic_turn_reset),
 
     #mensajes internos
     (r'^mensajes/redactar/$', gt_messages_views.send_message),

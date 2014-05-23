@@ -1408,13 +1408,14 @@ def medic_turn_cancel(request, turn_id):
     """
         Vista para cancelar los turnos pendientes.
     """
-    mi_template = get_template('Patients/GestionTurnos/cancel-turn.html')
+    mi_template = get_template('Medics/GestionTurnos/cancel-turn.html')
     dict = generate_base_keys(request)
     if True:
         user = request.user
         try:
             turn = Turn.objects.get(id=turn_id)#, patient=request.user)
             dict['turn'] = turn
+            dict['pac_username'] = turn.patient.username
 
         except:
             path = request.META['PATH_INFO']
@@ -1438,16 +1439,27 @@ def medic_turn_cancel(request, turn_id):
 def medic_turn_reset(request, turn_id):
     """
         Reactiva un turno cancelado siempre y cuando el mismo no haya caducado
-
-        #no implementado
     """
-    mi_template = get_template('Medics/GestionTurnos/reset-turn.html')
+    mi_template = get_template('Medics/GestionTurnos/turn-reset.html')
     dict = generate_base_keys(request)
 
     if have_acess(request):
         try: 
             turn = Turn.objects.get(id=turn_id)
             dict['pac_username'] = turn.patient.username
+            
+            today = datetime.date.today() #hoy
+            #si la fecha del turno es mayor significa que no expiro y que puede
+            #ser reactivado
+            if turn.day.date >= today:
+                turn.status = 0
+                turn.observation = ""
+                turn.save()
+                dict['turn_valid'] = True
+                dict['turn_id'] = turn.id
+
+            else:
+                dict['turn_valid'] = False
 
         except:
             path = request.META['PATH_INFO']
