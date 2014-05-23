@@ -623,7 +623,7 @@ def my_medic_show_nonworking_days(request, month=None, year=None):
         dof = DayOfAttention.objects.filter(business_hour__user=request.user, date__month=month, date__year=year)
         for day in dof:
             if day.number_of_turns > 0:
-                _dta.append(day.date - 1)
+                _dta.append(day.date - datetime.timedelta(1))
 
         #formateo del mes
         semanas = []
@@ -864,12 +864,12 @@ def show_cronogram(request):
 
 def show_turns(request, day=None, month=None, year=None):
     """
-        Muestra los
+        Muestra los turnos solicitados al medico en una fecha en particular
     """
     mi_template = get_template('Medics/GestionTurnos/mostrar-turnos-dia.html')
     dict = generate_base_keys(request)
 
-    if True: #requiere permiso del medico
+    if have_acess(request, ['medic']): #requiere permiso del medico
         #si no se pasa la fecha se toma el dia actual
         if day == None:
             date = datetime.datetime.today()
@@ -1433,3 +1433,30 @@ def medic_turn_cancel(request, turn_id):
     else:
         path = request.META['PATH_INFO']
         return HttpResponseRedirect("/restricted-access%s" %path)
+
+ 
+def medic_turn_reset(request, turn_id):
+    """
+        Reactiva un turno cancelado siempre y cuando el mismo no haya caducado
+
+        #no implementado
+    """
+    mi_template = get_template('Medics/GestionTurnos/reset-turn.html')
+    dict = generate_base_keys(request)
+
+    if have_acess(request):
+        try: 
+            turn = Turn.objects.get(id=turn_id)
+            dict['pac_username'] = turn.patient.username
+
+        except:
+            path = request.META['PATH_INFO']
+            return HttpResponseRedirect("/restricted-access%s" %path)
+
+        html_cont = mi_template.render(Context(dict))
+        return HttpResponse(html_cont)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+    pass
