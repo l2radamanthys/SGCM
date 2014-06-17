@@ -35,6 +35,14 @@
         <th>Medico</th>
         <th>Principio Activo</th>  
     </tr>
+    {% for pm in precriptions %}
+    <tr> 
+        <td><a href="/medicos/mostrar/prescripcion-medica/{{ pm.id }}/">{{ pm.prescription_date }}</a></td>
+        <td><a href="/medicos/mostrar/prescripcion-medica/{{ pm.id }}/">{{ pm.med_consulation.medic.last_name }} {{ pm.med_consulation.medic.first_name }}</a></td>
+        <td><a href="/medicos/mostrar/prescripcion-medica/{{ pm.id }}/">{{ pm.active_principle }}</a></td>
+    </tr>
+    {% endfor %}
 </table>
- 
+
+
 {% endblock %}

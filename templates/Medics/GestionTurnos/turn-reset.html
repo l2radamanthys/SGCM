@@ -1,0 +1,33 @@
+{% extends 'Medics/GestionTurnos/patient-view.html' %}
+
+{% block ext_style %}
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+{% endblock %}
+
+{% block view-cont %}
+
+<br />
+<h2>Reactivar Turno</h2>
+<p> &nbsp; Paciente: {{ patient.last_name }}, {{ patient.first_name }}</p>   
+<br />
+
+    {% if turn_valid %}
+        <div class="info">
+            El Turno Fue Reactivado Correctamente
+        </div>
+    {% else %}
+        <div class="error">
+            Error El turno Expiro por lo que no puede ser reactivado
+        </div>
+    {% endif %}
+
+    <br />
+    <br />
+    <div style="text-align: center">
+        <a href="/medicos/turnos/mostrar/{{ turn_id }}/" title="" class="grad-button-blue">Continuar</a>
+    </div>
+
+{% endblock %}
