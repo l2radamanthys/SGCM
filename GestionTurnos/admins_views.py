@@ -486,11 +486,14 @@ def admin_change_patient_password(request, pac_id):
 
     if True:
         iuser = User.objects.get(username=pac_id) 
+        dict['iuser'] = iuser
+        
         if request.method == "POST":
-            pass
+            pswd = get_value(request, 'password')
+            iuser.set_password(pswd)
+            iuser.save()
 
         else: 
-            dict['iuser'] = iuser
             dict['show_form'] = True
     else:
         path = request.META['PATH_INFO']
