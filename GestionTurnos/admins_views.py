@@ -433,12 +433,8 @@ def admin_show_patient(request, pac_id):
         iuser = User.objects.get(username=pac_id)
         dict['expecialidades'] = MedicalSpecialityFor.objects.filter(user=iuser)
         dict['iuser'] = iuser
-        #dict['iuser_lbl'] = iuser.
         dict['info'] = UserInformation.objects.get(user=iuser)
-
         dict['turns'] = Turn.objects.filter(patient=iuser)
-
-
 
     else:
         path = request.META['PATH_INFO']
@@ -466,6 +462,42 @@ def admin_add_medic_turn(request, pac_id, med_id, date):
 def admin_cancel_medic_turn(request, turn_id):
     pass
 
+
+
+def admin_edit_patient(request, pac_id):
+    mi_template = get_template('Admins/GestionTurnos/patient-view.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        pass
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def admin_change_patient_password(request, pac_id):
+    mi_template = get_template('Admins/GestionTurnos/admin-change-password.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        iuser = User.objects.get(username=pac_id) 
+        if request.method == "POST":
+            pass
+
+        else: 
+            dict['iuser'] = iuser
+            dict['show_form'] = True
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
 
 
 #estadisticas pensar
