@@ -1,0 +1,30 @@
+{% extends 'Admins/GestionTurnos/user-view.html' %}
+
+{% block sub-cont %}
+    {% include "Admins/GestionTurnos/admin-patient-submenu.html" %}
+{% endblock %}
+
+<!-- sub contenido -->
+{% block view-cont %}
+<br />
+<h2>Nuevo Turno</h2>
+
+<div>
+    <h3>Selecione Medico:</h3>
+    <form action="" method="POST">
+    <label>Paciente: {{ iuser.first_name }} {{ iuser.last_name }}</label>    
+    <input type="hidden" name="patient" value="{{ iuser.username }}" />
+    <br>      
+    <label>Medico:</label>
+    <select name="medic" >
+        {% for medic in medics %}
+            <option="{{ medic.username }}">{{ medic.first_name }} {{ medic.last_name }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="siguiente" class="" />
+    </form>    
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'Admins/GestionTurnos/user-view.html' %}
+
+{% block sub-cont %}
+    {% include "Admins/GestionTurnos/admin-admin-submenu.html" %}
+{% endblock %}
+
+<!-- sub contenido -->
+{% block view-cont %}
+<br />
+<h2>Modificar Datos del Administrativo</h2>
+
+<br />
+    {% if show_form %}
+    <div class="fancy-form-white" style="width: 650px; margin: 0 auto;">
+        <form action="." method="POST" enctype="multipart/form-data">
+        <table style="margin: 0 auto; width:600px;">
+
+            {% for field in form_user %}
+            <tr>
+                <td>{{ field.label }}:</td>
+                <td>{{ field }}</td>
+            </tr>
+            {% endfor %}
+
+            {% for field in form_info %}
+            <tr>
+                <td>{{ field.label }}:</td>
+                <td>{{ field }}</td>
+            </tr>
+            {% endfor %}
+
+            <tr>
+                <td colspan="2" style="text-align: center">
+                <br />
+                <input type="submit" class="grad-button-blue" value="Actualizar"  />
+                <a href="/mis-datos/" class="grad-button-blue">Atras</a>
+                </td>
+            </tr>
+        </table>
+        </form>
+    </div>    
+    {% endif %}
+
+    <br />
+    {% if show_errors %}
+        <div class="error">
+        {% for field in form_user %}
+            {% if field.errors %}
+                <p><strong>{{ field.label }}:</strong> {{ field.value }}</p>
+                {{ field.errors }}<br />
+            {% endif %}
+        {% endfor %}
+        {% for field in form_info %}
+            {% if field.errors %}
+                <p><strong>{{ field.label }}:</strong> {{ field.value }}</p>
+                {{ field.errors }}<br />
+            {% endif %}
+        {% endfor %}
+        
+        </div>
+    {% endif %}
+
+
+{% endblock %}

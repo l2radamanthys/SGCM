@@ -17,7 +17,7 @@ import verbose
 import forms as my_forms
 from globals import *
 import HTMLTags as Tags
-
+import my_forms as globals_forms
 
 
 
@@ -465,12 +465,132 @@ def admin_cancel_medic_turn(request, turn_id):
 
 
 def admin_edit_patient(request, pac_id):
-    mi_template = get_template('Admins/GestionTurnos/patient-view.html')
+    mi_template = get_template('Admins/GestionTurnos/patient-edit.html')
     dict = generate_base_keys(request)
 
     if True:
-        pass
+        dict['show_form'] = True
+        dict['show_errors'] = False
+        user = User.objects.get(username=pac_id)
+        user_data = UserInformation.objects.get(user=user)
+        dict['iuser'] = user
 
+        form_user_data = {
+            'first_name' : user.first_name,
+            'last_name' : user.last_name,
+            'email' : user.email,
+        }
+
+        form_info_data = {
+            'type_doc': user_data.type_doc,
+            'nro_doc': user_data.nro_doc,
+            'gender': user_data.gender,
+            'phone': user_data.phone,
+            'address': user_data.address,
+            'city': user_data.city,
+            'state': user_data.state,
+            'birth_date': user_data.birth_date.strftime("%d/%m/%Y"),
+        #es paciente no interesa la matricula    
+        #    'matricula': user_data.matricula,
+        }
+
+        if request.method == 'POST':
+            form_user = globals_forms.ChangeUserDataForm(request.POST)
+            form_info = globals_forms.ChangeUserInformationForm(request.POST)
+            if form_user.is_valid() and form_info.is_valid():            
+                user.first_name = form_user.cleaned_data['first_name']
+                user.last_name = form_user.cleaned_data['last_name']
+                user.email = form_user.cleaned_data['email']
+                user.save()
+
+                user_data.type_doc = form_info.cleaned_data['type_doc']
+                user_data.nro_doc = form_info.cleaned_data['nro_doc']
+                user_data.gender = form_info.cleaned_data['gender']
+                user_data.phone = form_info.cleaned_data['phone']
+                user_data.address = form_info.cleaned_data['address']
+                user_data.city = form_info.cleaned_data['city']
+                user_data.state = form_info.cleaned_data['state']
+                user_data.birth_date = form_info.cleaned_data['birth_date']
+                user_data.save()
+            
+                return HttpResponseRedirect("/admins/mostrar/paciente/%s/" %user.username)
+            else:
+                dict['show_errors'] = True
+                dict['form_user'] = form_user
+                dict['form_info'] = form_info
+            
+        else:
+            dict['form_user'] = globals_forms.ChangeUserDataForm(initial=form_user_data)
+            dict['form_info'] = globals_forms.ChangeUserInformationForm(initial=form_info_data)
+    
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def admin_edit_admin(request, adm_id):
+    mi_template = get_template('Admins/GestionTurnos/admin-edit.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        dict['show_form'] = True
+        dict['show_errors'] = False
+        user = User.objects.get(username=adm_id)
+        user_data = UserInformation.objects.get(user=user)
+        dict['iuser'] = user
+
+        form_user_data = {
+            'first_name' : user.first_name,
+            'last_name' : user.last_name,
+            'email' : user.email,
+        }
+
+        form_info_data = {
+            'type_doc': user_data.type_doc,
+            'nro_doc': user_data.nro_doc,
+            'gender': user_data.gender,
+            'phone': user_data.phone,
+            'address': user_data.address,
+            'city': user_data.city,
+            'state': user_data.state,
+            'birth_date': user_data.birth_date.strftime("%d/%m/%Y"),
+        #es paciente no interesa la matricula    
+        #    'matricula': user_data.matricula,
+        }
+
+        if request.method == 'POST':
+            form_user = globals_forms.ChangeUserDataForm(request.POST)
+            form_info = globals_forms.ChangeUserInformationForm(request.POST)
+            if form_user.is_valid() and form_info.is_valid():            
+                user.first_name = form_user.cleaned_data['first_name']
+                user.last_name = form_user.cleaned_data['last_name']
+                user.email = form_user.cleaned_data['email']
+                user.save()
+
+                user_data.type_doc = form_info.cleaned_data['type_doc']
+                user_data.nro_doc = form_info.cleaned_data['nro_doc']
+                user_data.gender = form_info.cleaned_data['gender']
+                user_data.phone = form_info.cleaned_data['phone']
+                user_data.address = form_info.cleaned_data['address']
+                user_data.city = form_info.cleaned_data['city']
+                user_data.state = form_info.cleaned_data['state']
+                user_data.birth_date = form_info.cleaned_data['birth_date']
+                user_data.save()
+            
+                return HttpResponseRedirect("/admins/mostrar/administrativo/%s/" %user.username)
+            else:
+                dict['show_errors'] = True
+                dict['form_user'] = form_user
+                dict['form_info'] = form_info
+            
+        else:
+            dict['form_user'] = globals_forms.ChangeUserDataForm(initial=form_user_data)
+            dict['form_info'] = globals_forms.ChangeUserInformationForm(initial=form_info_data)
+    
     else:
         path = request.META['PATH_INFO']
         return HttpResponseRedirect("/restricted-access%s" %path)
@@ -502,6 +622,25 @@ def admin_change_patient_password(request, pac_id):
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
 
+
+
+def admin_patient_turn_set_medic(request, pac_id):
+    mi_template = get_template('Admins/GestionTurnos/patient-turn-medic-select.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        iuser = User.objects.get(username=pac_id) 
+        dict['iuser'] = iuser
+        
+        if request.method == "POST":
+            pass
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
 
 #estadisticas pensar
 #def admin_show_

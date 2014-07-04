@@ -66,13 +66,16 @@ urlpatterns = patterns('',
     (r'^admins/registrar/administrativo/$', gt_admins_views.admin_add_admin),
     (r'^admins/buscar/administrativo/$', gt_admins_views.admin_search_admin),
     (r'^admins/mostrar/administrativo/(.+)/$', gt_admins_views.admin_show_admin),
+    (r'^admins/modificar/administrativo/(.+)/$', gt_admins_views.admin_edit_admin),
 
 
     (r'^admins/buscar/paciente/$', gt_admins_views.admin_search_patient),
-    (r'^admins/modificar/paciente/$', gt_admins_views.admin_edit_patient),
-
     (r'^admins/mostrar/paciente/(.+)/$', gt_admins_views.admin_show_patient),
+    (r'^admins/modificar/paciente/(.+)/$', gt_admins_views.admin_edit_patient),
     (r'^admins/modificar/user-password/(.+)/$', gt_admins_views.admin_change_patient_password),
+
+    #asignar turno
+    (r'^admins/selecionar-medico/turno-paciente/(.+)/$', gt_admins_views.admin_patient_turn_set_medic),
 
 
     #expecialidades
