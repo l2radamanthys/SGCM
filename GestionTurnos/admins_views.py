@@ -449,8 +449,6 @@ def admin_select_medic_for_patient(request, pac_id):
 
 
 
-def admin_select_date_medic_turn(request, pac_id, med_id, date):
-    pass
 
 
 
@@ -631,7 +629,8 @@ def admin_patient_turn_set_medic(request, pac_id):
     if True:
         iuser = User.objects.get(username=pac_id) 
         dict['iuser'] = iuser
-        
+        dict['medics'] = User.objects.filter(groups__name="Medico") 
+
         if request.method == "POST":
             pass
 
@@ -642,5 +641,21 @@ def admin_patient_turn_set_medic(request, pac_id):
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
 
+
+def admin_select_date_medic_turn(request, pac_id, med_id, month=None, year=None):
+    mi_template = get_template('Admins/GestionTurnos/new-turn-date-select.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        dict['med_id'] = med_id
+        dict['pac_id'] = pac_id
+        dict['date'] = str(month) + " " + str(year)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
 #estadisticas pensar
-#def admin_show_

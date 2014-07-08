@@ -1125,6 +1125,7 @@ def medical_prescription_pdf(request, id_pm):
     #return HttpResponse(html_cont)
 
 
+
 def medic_new_turn_day_select(request, pac_id, month=None, year=None):
     """
         vista del medico para selecionar un nuevo turno paciente
