@@ -1,6 +1,82 @@
+{% extends 'Admins/GestionTurnos/patient-view.html' %}
 
-Medico {{ med_id }}
-<br>
-Paciente {{ pac_id }}
-<br>
-Fecha {{ date }}
+{% block ext_style %}
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/table-style.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/calendar-style.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+{% endblock %}
+
+{% block view-cont %}
+    <br />
+    <div  style="padding-left:10px;" >
+        <h2>Asignar Turno</h2>
+        <br />
+        <p style="font-size:14px; margin-left: 10px;">Medico: {{ medic.user.first_name }} {{ medic.user.last_name }}</p>
+        <p style="font-size:14px; margin-left: 10px;">Paciente: {{ patient.first_name }} {{ patient.last_name }}</p>
+    </div>
+
+    <br />
+    <div style="width: 650px; margin: 0 auto; text-align: right;">
+        <a href="/medicos/mostrar/{{ medic.user.id }}/" class="grad-button-blue">Atras</a>
+    </div>
+    <br />
+    
+    <div class="fancy-form-white" style="text-align: left; width: 650px; margin: 0 auto;">
+    <br />
+    <p>Selecione la fecha del turno que desea solicitar del calendario:</p>
+    <br />
+    <br />
+<div style="width: 500px; margin: 0 auto;">
+    <div style="float: left; width: 250px; text-align: center;">
+    <a href="/admins/seleccionar-dia/turno/{{ patient.username }}/{{ medic.user.username }}/{{ prev_month }}/{{ year }}/" style="text-decoration: None;"><img src="/media/images/minus-icon.png">&nbsp;</a>
+    {{ name_month }}
+    <a href="/admins/seleccionar-dia/turno/{{ patient.username }}/{{ medic.user.username }}/{{ next_month }}/{{ year }}/" style="text-decoration: None;">&nbsp;<img src="/media/images/plus-icon.png" /></a>
+    </div>
+    <div style="width: 250px; margin-left:250px; text-align: center;">
+    <a href="/admins/seleccionar-dia/turno/{{ patient.username }}/{{ medic.user.username }}/{{ month }}/{{ prev_year }}/" style="text-decoration: None;"><img src="/media/images/minus-icon.png">&nbsp;</a>
+    {{ year }}
+    <a href="/admins/seleccionar-dia/turno/{{ patient.username }}/{{ medic.user.username }}/{{ month }}/{{ next_year }}/" style="text-decoration: None;">&nbsp;<img src="/media/images/plus-icon.png" /></a>
+    </div>
+    </div>
+
+<br />
+<table class="calendar" style="margin: 0 auto;">
+	<tr>
+		<th>Lunes</th>
+		<th>Martes</th>
+		<th>Miercoles</th>
+		<th>Jueves</th>
+		<th>Viernes</th>
+		<th>Sabado</th>
+		<th>Domingo</th>
+	</tr>
+
+	{% for week in wekends %}
+		<tr>
+		{% for day in week %}
+			{% if day.day %}
+                {% if day.type == 1 %}
+                    <td class="calendar-blank"><a href="/admins/agregar/turno/{{ patient.username }}/{{ medic.user.username }}/{{ day.day }}/{{ month }}/{{ year }}/">{{ day.day }}</a></td>
+                {% else %}{% if day.type == 2 %}
+                    <td class="calendar-cancel">{{ day.day }}</td>
+                {% else %}{% if day.type == 3 %}
+                    <td class="calendar-over">{{ day.day }}</td>
+                {% else %} 
+                   <td class="calendar-null">{{ day.day }}</td>
+                    
+                {% endif %}{% endif %}{% endif %}
+            {% else %}
+				<td class="calendar-no-day"></td>
+			{% endif %}
+		{% endfor %}
+		</tr>
+	{% endfor %}
+</table>
+<br />
+<h3>Informacion </h3><br />
+<p> <span class="calendar-blank"> &nbsp;&nbsp;&nbsp;</span>&nbsp; Dias Disponibles</p><br />
+<p> <span class="calendar-null"> &nbsp;&nbsp;&nbsp;</span>&nbsp; Dias Donde no se Asigna Turno</p><br />
+<p> <span class="calendar-over"> &nbsp;&nbsp;&nbsp;</span>&nbsp; Turnos Completos </p><br />
+<p> <span class="calendar-cancel"> &nbsp;&nbsp;&nbsp;</span>&nbsp; Dias Cancelados o No Disponibles</p><br />
+
+{% endblock %}
