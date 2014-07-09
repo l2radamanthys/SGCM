@@ -695,7 +695,9 @@ def admin_select_date_medic_turn(request, pac_id, med_id, month=None, year=None)
             dict['prev_year'] = t_year
         ## fin correcion fechas
 
-        dict['patient'] = User.objects.get(username=pac_id)
+        patient = User.objects.get(username=pac_id)
+        dict['patient'] = patient
+        dict['iuser'] = patient
         medic = UserInformation.objects.get(user__username=med_id)
         dict['medic'] = medic
 
@@ -755,13 +757,14 @@ def admin_select_date_medic_turn(request, pac_id, med_id, month=None, year=None)
 
 
 def admin_new_turn(request, pac_id, med_id, day, month, year):
-    mi_template = get_template('Medics/GestionTurnos/new-turn.html')
+    mi_template = get_template('Admins/GestionTurnos/new-turn.html')
     dict = generate_base_keys(request)
 
     if True:
         medic = UserInformation.objects.get(user__username=med_id)
-        patient = User.objects.get(id=pac_id) 
+        patient = User.objects.get(username=pac_id) 
         dict['patient'] = patient 
+        dict['iuser'] = patient
         dict['pac_username'] = patient.username
         dict['medic'] = medic
 

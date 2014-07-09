@@ -7,10 +7,8 @@
     <br />
     <div  style="padding-left:10px;" >
         <h2>Registrar Turno</h2>
-        <p style="font-size:14px; margin-left: 10px;">Medico: {{ medic.user.first_name }} {{ medic.user.last_name }}</p>
-        <p style="font-size:14px; margin-left: 10px;">Paciente: {{ patient.first_name }} {{ patient.last_name }}</p>
     </div>
-
+    
     <br />
     <div style="width: 650px; margin: 0 auto; text-align: right;">
         <a href="/medicos/turnos/selecionar-dia/{{ patient.id }}/" class="grad-button-blue">Atras</a>
@@ -18,10 +16,10 @@
     <br />
 
     {% if show_form %}
-        <p class="alert" style="width:450px;"><strong>Atencion:</strong><br /><br />
+        <!--p class="alert" style="width:450px;"><strong>Atencion:</strong><br /><br />
         Por fabor confirme los datos antes de enviar la solicitud de turno, recuerde que al enviar esta solicitud, usted se compromete
         a asistir en la fecha que usted acordo y el horario proporcionado.</p>
-        <br />
+        <br /-->
 
         <div class="fancy-form-white" style="text-align: left; width: 450px; margin: 0 auto;">
             <h2>Confirmacion de Datos de Solicitud Turno</h2>

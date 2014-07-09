@@ -8,23 +8,27 @@
 {% block view-cont %}
 <br />
 <h2>Nuevo Turno</h2>
-
-<div>
-    <h3>Selecione Medico:</h3>
+<br />
+<br />
+<div class="fancy-form-white" style="width:300px; margin: 0 auto;">
     <form action="" method="POST">
     <label>Paciente: {{ iuser.first_name }} {{ iuser.last_name }}</label>    
     <input type="hidden" name="patient" value="{{ iuser.username }}" />
     <br>      
-    <label>Medico:</label>
+    <label>Seleccione Medico:</label>
+    <br>
     <select name="medic" >
         {% for medic in medics %}
             <option value="{{ medic.username }}">{{ medic.first_name }} {{ medic.last_name }}</option>
         {% endfor %}
     </select>
-    <input type="submit" value="siguiente" class="" />
+    <br><br> 
+    <p style="text-align:center">
+        <input type="submit" value="Siguiente" class="grad-button-blue" />
+    </p> 
     </form>    
 </div>
 
-
-
 {% endblock %}
+
+

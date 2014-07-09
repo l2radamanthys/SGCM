@@ -78,6 +78,7 @@ urlpatterns = patterns('',
     (r'^admins/selecionar-medico/turno-paciente/(.+)/$', gt_admins_views.admin_patient_turn_set_medic),
     (r'^admins/selecionar-dia/turno/(\w+)/(\w+)/$', gt_admins_views.admin_select_date_medic_turn),
     (r'^admins/selecionar-dia/turno/(\w+)/(\w+)/(\d{1,2})/(\d{4})/$', gt_admins_views.admin_select_date_medic_turn),
+    (r'^admins/agregar/turno/(\w+)/(\w+)/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_admins_views.admin_new_turn),
 
     #expecialidades
     (r'^admins/listado/expecialidad-medica/$', gt_admins_views.admin_list_expecialities),
