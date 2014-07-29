@@ -1,15 +1,7 @@
 {% extends 'Admins/GestionTurnos/user-view.html' %}
 
 {% block sub-cont %}
-<h4> Opciones</h4>
-<br />
-<ul>
-    <li><a href="" title="">Modificar Datos</a></li>
-    <li><a href="" title="">Cambiar Contraseña</a></li>
-    <li><a href="" title="">Turnos Solicitados</a></li>
-    <li><a href="/admins/agregar/medico/expecialidad/{{ iuser.username }}/" title="">Agregar Expecialidad</a></li>
-</ul>
-
+    {% include "Admins/GestionTurnos/admin-medic-submenu.html" %}
 {% endblock %}
 
 <!-- sub contenido -->
@@ -37,7 +29,7 @@
            <td>{{ exp.speciality.name }}</td>
            <td>
                 <!-- <a href="/admins/modificar/" title="">Modificar</a> -->
-                <a href="/admins/borrar/expecialidad-medica/{{ iuser.id.id }}/{{ exp.speciality.id }}/" title="">Quitar</a>
+                <a href="/admins/borrar/expecialidad-del-medico/{{ exp.user.username }}/{{ exp.id }}/" title="">Quitar</a>
            </td>
         </tr>
     {% endfor %}

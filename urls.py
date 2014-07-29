@@ -73,6 +73,8 @@ urlpatterns = patterns('',
     (r'^admins/mostrar/paciente/(.+)/$', gt_admins_views.admin_show_patient),
     (r'^admins/modificar/paciente/(.+)/$', gt_admins_views.admin_edit_patient),
     (r'^admins/modificar/user-password/(.+)/$', gt_admins_views.admin_change_patient_password),
+    (r'^admins/modificar/medic-password/(.+)/$', gt_admins_views.admin_change_medic_password),
+    (r'^admins/modificar/admin-password/(.+)/$', gt_admins_views.admin_change_admin_password),
 
     #asignar turno
     (r'^admins/selecionar-medico/turno-paciente/(.+)/$', gt_admins_views.admin_patient_turn_set_medic),
@@ -86,6 +88,8 @@ urlpatterns = patterns('',
     (r'^admins/listado/expecialidad-medica/$', gt_admins_views.admin_list_expecialities),
     (r'^admins/mostrar/expecialidad-medica/(\d{1,2})/$', gt_admins_views.admin_show_expeciality),
     (r'^admins/registrar/expecialidad-medica/$', gt_admins_views.admin_add_expeciality),
+    #quita una expecialidad asignada a un medico
+    (r'^admins/borrar/expecialidad-del-medico/(\w+)/(\d+)/$', gt_admins_views.admin_delete_medic_expeciality),
     #####
 
     (r'^pacientes/buscar/$', gt_medics_views.patients_search),

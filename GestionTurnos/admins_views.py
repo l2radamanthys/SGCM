@@ -639,7 +639,7 @@ def admin_edit_admin(request, adm_id):
 
 
 def admin_change_patient_password(request, pac_id):
-    mi_template = get_template('Admins/GestionTurnos/admin-change-password.html')
+    mi_template = get_template('Admins/GestionTurnos/patient-change-password.html')
     dict = generate_base_keys(request)
 
     if True:
@@ -905,4 +905,70 @@ def admin_new_turn(request, pac_id, med_id, day, month, year):
 
 
 
+def admin_delete_medic_expeciality(request, med_id, exp_id):
+    """
+        Esto no tiene vista especifica por que directamente o borrara la 
+        expecialidad o levantara un error
+    """
+    if have_acess(request, ['admin']):
+        try:
+            expmed = MedicalSpecialityFor.objects.get(user__username=med_id, id=int(exp_id))
+            expmed.delete()
+            return HttpResponseRedirect("/admins/mostrar/medico/%s/" %med_id)
+
+        except:
+            path = request.META['PATH_INFO']
+            return HttpResponseRedirect("/restricted-access%s" %path)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+
+
+def admin_change_medic_password(request, med_id):
+    mi_template = get_template('Admins/GestionTurnos/medic-change-password.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        iuser = User.objects.get(username=med_id) 
+        dict['iuser'] = iuser
+        
+        if request.method == "POST":
+            pswd = get_value(request, 'password')
+            iuser.set_password(pswd)
+            iuser.save()
+
+        else: 
+            dict['show_form'] = True
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def admin_change_admin_password(request, adm_id):
+    mi_template = get_template('Admins/GestionTurnos/admin-change-password.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        iuser = User.objects.get(username=adm_id) 
+        dict['iuser'] = iuser
+        
+        if request.method == "POST":
+            pswd = get_value(request, 'password')
+            iuser.set_password(pswd)
+            iuser.save()
+
+        else: 
+            dict['show_form'] = True
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
 #estadisticas pensar
