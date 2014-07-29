@@ -1,11 +1,13 @@
 *.ini
 *.pyc
 *.pyw
+#vim copia de seguridad
+*.swp
 #
 Thumbs.db
 media/upload/files
 media/upload/images
-
+media/data
 
 #latex configuracion
 *.aux
