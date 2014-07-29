@@ -444,8 +444,61 @@ def admin_show_patient(request, pac_id):
 
 
 
-def admin_cancel_medic_turn(request, turn_id):
-    pass
+def admin_update_medic_turn(request, turn_id):
+    mi_template = get_template('Admins/GestionTurnos/turn-edit.html')
+    dict = generate_base_keys(request)
+    
+    if have_acess(request, ['admin']):
+        turn = Turn.objects.get(id=int(turn_id))
+        dict['turn'] = turn
+        iuser = turn.patient 
+        dict['iuser'] = iuser
+
+        if request.method == 'POST':
+            form = myforms.TurnEditForm(request.POST)
+            if form.is_valid():
+                turn.status = form.cleaned_data['status']
+                turn.observation = form.cleaned_data['observation']
+                turn.save()
+
+                dict['show_form'] = False
+                dict['turn_id'] = turn.id
+
+            else:
+                dict['form'] = form 
+                dict['show_form'] = True
+
+        else:
+            fdata = {'observation': turn.observation, 'status': turn.status}
+            dict['form'] = myforms.TurnEditForm(fdata)
+            dict['show_form'] = True
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
+
+def admin_show_medic_turn(request, turn_id):
+    mi_template = get_template('Admins/GestionTurnos/show-turn.html')
+    dict = generate_base_keys(request)
+    
+    if have_acess(request, ['admin']):
+        turn = Turn.objects.get(id=int(turn_id))
+        dict['turn'] = turn
+        iuser = turn.patient 
+        dict['iuser'] = iuser
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
 
 
 

@@ -14,7 +14,7 @@ import HTMLTags as Tags
 import my_forms
 from utils import *
 from globals import *
-
+import cron
 
 
 def index(request):
@@ -25,6 +25,11 @@ def index(request):
     """
     mi_template = get_template('index.html')
     dict = generate_base_keys(request)
+
+    #modo manual de actualizar el estado de los turnos el cronjobs tiene 
+    #problemas -.-
+    task = cron.UpdateTurnStatus()
+    task.job() 
 
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)

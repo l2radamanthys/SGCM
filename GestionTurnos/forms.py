@@ -311,7 +311,6 @@ class RegAdminInformationForm(forms.ModelForm):
             'address',
             'city',
             'state',
-
         )
 
         widgets = {
@@ -330,5 +329,17 @@ class MedicalSpecialtiesForm(forms.ModelForm):
             'description' : forms.Textarea(attrs={'cols':'52', 'rows':'5'}),
         }
 
+
 class MedicalSpecialtyForForm(forms.Form):
       expecialidad = forms.ModelChoiceField(MedicalSpecialties.objects.all())
+
+
+class TurnEditForm(forms.ModelForm):
+    class Meta:
+        model = Turn
+        fields = ('observation', 'status')
+        widgets = {
+            'observation' : forms.Textarea(attrs={'cols':'52', 'rows':'5'}),
+        }
+
+

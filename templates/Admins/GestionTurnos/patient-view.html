@@ -31,8 +31,8 @@
             <td>{{ turn.medic.last_name }}, {{ turn.medic.first_name }}</td>
             <td>{{ turn.get_status_display }}</td>
             <td>
-                <a href="" title="">Mostrar</a>
-                <a href="" title="">Modificar</a>                
+                <a href="/admins/mostrar/turno/{{ turn.id }}/" title="">Mostrar</a>
+                <a href="/admins/actualizar/turno/{{ turn.id }}/" title="">Modificar</a>
             </td>
         </tr>            
         {% endfor %}
