@@ -1,3 +1,19 @@
+revision 16-7-2014
+
+-general
+	- informacion expecialidad
+
+-admin 
+	- paciente 
+		- mostrar turno
+		- modificar turno
+	- medico
+		- modificar datos
+		- turnos solicitados
+		- cambiar contraseña
+		- quitar expecialidad
+
+-----------------------------------------------------
 paciente
 	- mostrar detalle turno  [OK]
 	- imprimir comprobante turno [OK]

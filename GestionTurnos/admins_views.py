@@ -393,10 +393,6 @@ def admin_add_patient(request):
 
 
 
-def admin_edit_patient_info(request, pac_id):
-    pass
-
-
 def admin_search_patient(request):
     mi_template = get_template('Admins/GestionTurnos/buscar-usuarios.html')
     dict = generate_base_keys(request)
@@ -427,6 +423,7 @@ def admin_search_patient(request):
     return HttpResponse(html_cont)
 
 
+
 def admin_show_patient(request, pac_id):
     mi_template = get_template('Admins/GestionTurnos/patient-view.html')
     dict = generate_base_keys(request)
@@ -444,18 +441,6 @@ def admin_show_patient(request, pac_id):
 
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
-
-
-def admin_select_medic_for_patient(request, pac_id):
-    pass
-
-
-
-
-
-
-def admin_add_medic_turn(request, pac_id, med_id, date):
-    pass
 
 
 

@@ -14,6 +14,16 @@
 <a href="/mensajes/enviados/" class="grad-button-blue">Enviados</a>
 <br />
 <br />
+  
+{% if show_error %}
+<br />
+<p class="alert"> 
+    {{ custom_error }}
+</p>
+<br />
+<br />  
+{% endif %}
+
 {% if show_form %}
     <div class="fancy-form-white" style="margin: 0 auto; width: 500px;">
         <form action="" method="POST">

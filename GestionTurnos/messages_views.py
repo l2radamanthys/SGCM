@@ -16,6 +16,8 @@ from utils import *
 from globals import *
 from GestionTurnos.models import *
 from GestionTurnos.forms import MessageSendForm, MessageReSendForm
+import HTMLTags as Tags
+
 
 
 def send_message(request):
@@ -46,7 +48,7 @@ def send_message(request):
                 except User.DoesNotExist:
                     #el usuario destinatario no existe por lo que lanzo una exepcion
                     #personalizada que en realidad es un mensaje de error
-                    dict['custom_error'] = Tags.custom_tag(content='Error Destinatario inexistente..!')
+                    dict['custom_error'] = 'Error Destinatario inexistente..! "%s"' %to_username
                     dict['show_error'] = True
                     dict['form'] = form
 
@@ -166,10 +168,12 @@ def read(request, msj_id):
     """
         Muestra un Mensaje en Particular
     """
+    print msj_id, request.user.username
     mi_template = get_template('Messages/mostrar.html')
     dict = generate_base_keys(request)
     if request.user.is_authenticated():
-        msj = Message.objects.get(to_user=request.user, id=int(msj_id))
+        #msj = Message.objects.get(to_user=request.user, id=int(msj_id))
+        msj = Message.objects.get(id=int(msj_id))
         dict['message'] = msj
         msj.read = True
         msj.save()

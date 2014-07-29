@@ -27,8 +27,8 @@
 {% if message %}
     <br />
     <div style="font-size:12px;background: #EEE; padding: 10px;width:840px;">
-        <p><strong>De:</strong> {{ message.from_user.get_full_name }} <a href="">@{{ message.from_user }}</a></p>
-        <p><strong>Para:</strong> {{ message.to_user.get_full_name }} <a href="">@{{ message.to_user }}</a></p>
+        <p><strong>De:</strong> {{ message.from_user.get_full_name }} <strong>@{{ message.from_user }}</strong></p>
+        <p><strong>Para:</strong> {{ message.to_user.get_full_name }} <strong>@{{ message.to_user }}</strong></p>
         <p><strong>Asunto:</strong> {{ message.issue }}</p>
         <br />
         <pre style="background: #FFF;padding: 10px; width:800px; min-height: 200px">{{ message.content }}</pre>
