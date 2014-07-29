@@ -1,0 +1,53 @@
+{% extends 'Admins/GestionTurnos/user-view.html' %}
+
+{% block sub-cont %}
+    {% include "Admins/GestionTurnos/admin-medic-submenu.html" %}
+{% endblock %}
+
+<!-- sub contenido -->
+{% block view-cont %}
+<br />
+<h2>Modificar Estado del Turno</h2>
+<br />
+    {% if show_form %}
+    <div class="fancy-form-white" style="width: 650px; margin: 0 auto;">
+        <form action="." method="POST" enctype="multipart/form-data">
+        <table style="margin: 0 auto; width:600px;">
+            <tr>
+                <td>Medico:</td>
+                <td>{{ turn.medic.first_name }} {{ turn.medic.last_name }}</td>
+            </tr>
+            <tr><td colspan="2"><br /></td></tr>  
+            <tr>
+            <td>Paciente:</td>
+                <td>{{ turn.patient.first_name }} {{ turn.patient.last_name }}</td>
+            </tr>
+            <tr><td colspan="2"><br /></td></tr>  
+            {% for field in form %}
+            <tr>
+                <td>{{ field.label }}:</td>
+                <td>{{ field }}</td>
+            </tr>
+            {% endfor %}
+
+            <tr>
+                <td colspan="2" style="text-align: center">
+                <br />
+                <input type="submit" class="grad-button-blue" value="Actualizar"  />
+                </td>
+            </tr>
+        </table>
+        </form>
+    </div>    
+    {% else %}
+
+    <br />
+        <div class="info">
+            <p>El Estado del Turno fue Actualizado correctamente.</p>
+            <a href="/admins/mostrar/turno/{{ turn_id }}/">Mostrar</a>
+        </div>
+    {% endif %}
+
+
+
+{% endblock %}

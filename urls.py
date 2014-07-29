@@ -81,8 +81,11 @@ urlpatterns = patterns('',
     (r'^admins/selecionar-dia/turno/(\w+)/(\w+)/$', gt_admins_views.admin_select_date_medic_turn),
     (r'^admins/selecionar-dia/turno/(\w+)/(\w+)/(\d{1,2})/(\d{4})/$', gt_admins_views.admin_select_date_medic_turn),
     (r'^admins/agregar/turno/(\w+)/(\w+)/(\d{1,2})/(\d{1,2})/(\d{4})/$', gt_admins_views.admin_new_turn),
-    (r'^admins/actualizar/turno/(\d+)/$', gt_admins_views.admin_update_medic_turn),
-    (r'^admins/mostrar/turno/(\d+)/$', gt_admins_views.admin_show_medic_turn),
+    (r'^admins/actualizar/turno-paciente/(\d+)/$', gt_admins_views.admin_update_patient_turn),
+    (r'^admins/actualizar/turno-medico/(\d+)/$', gt_admins_views.admin_update_medic_turn),
+    (r'^admins/mostrar/turno-paciente/(\d+)/$', gt_admins_views.admin_show_patient_turn),
+    (r'^admins/mostrar/turno-medico/(\d+)/$', gt_admins_views.admin_show_medic_turn),
+    (r'^admins/listado/turno-medico/(\w+)/$', gt_admins_views.admin_show_medic_turn_list),
 
     #expecialidades
     (r'^admins/listado/expecialidad-medica/$', gt_admins_views.admin_list_expecialities),

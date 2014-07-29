@@ -1,0 +1,36 @@
+{% extends 'Admins/GestionTurnos/user-view.html' %}
+
+{% block sub-cont %}
+    {% include "Admins/GestionTurnos/admin-medic-submenu.html" %}
+{% endblock %}
+
+<!-- sub contenido -->
+{% block view-cont %}
+<br />
+<h2>Turnos Solicitados</h2>
+<p style="padding-left: 10px;"><strong>Medico:</strong> {{ iuser.first_name }} {{ iuser.last_name }}</p>   
+<br /> 
+
+<table class="tbl-round-light" style="width:650px; margin: 0 auto;">
+    <tr>
+        <th>Fecha</th>
+        <th>Paciente</th>
+        <th>Estado</th>
+        <th>Opciones</th>
+    </tr>
+    {% for turn in turns %}
+    <tr>
+        <td>{{ turn.day.date|date:"d/m/Y" }} - {{ turn.start }}</td>
+        <td>{{ turn.patient.last_name }}, {{ turn.patient.first_name }}</td>
+        <td>{{ turn.get_status_display }}</td>
+        <td style="text-align:center">
+            <a href="/admins/mostrar/turno-medico/{{ turn.id }}/" title="">Mostrar</a>
+            <a href="/admins/actualizar/turno-medico/{{ turn.id }}/" title="">Modificar</a>
+        </td>
+    </tr>            
+    {% endfor %}
+    </table>
+    
+
+
+{% endblock %}
