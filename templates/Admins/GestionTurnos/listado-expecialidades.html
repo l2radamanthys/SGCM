@@ -16,16 +16,20 @@
     <table class="tbl-round-light" style="width:400px; margin: 0 auto;">
         <tr>
             <th>Nombre</th>
-            <th style="width: 120px">Opciones</th>
+            <th style="width: 60px">Opciones</th>
         </tr>
     {% for exp in expecialidades %}
         <tr>
            <td>{{ exp.name }}</td>
-           <td>
+           <td style="text-align:center">
                 <!-- <a href="/admins/modificar/" title="">Modificar</a> -->
-                <a href="/admins/mostrar/expecialidad-medica/{{ exp.id }}/" title="">Mostrar</a>
-                &nbsp;|&nbsp;
-                <a href="/admins/borrar/expecialidad-medica/{{ exp.id }}/" title="">borrar</a>
+                <a href="/admins/mostrar/expecialidad-medica/{{ exp.id }}/" title="">
+                    <img src="/media/images/page_find.gif" title="Mostrar">
+                </a>
+               
+                <a href="/admins/borrar/expecialidad-medica/{{ exp.id }}/" title="">
+                    <img src="/media/images/page_delete.gif" title="Borrar">
+                </a>
            </td>
         </tr>
     {% endfor %}
