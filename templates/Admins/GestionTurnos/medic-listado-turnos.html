@@ -24,8 +24,12 @@
         <td>{{ turn.patient.last_name }}, {{ turn.patient.first_name }}</td>
         <td>{{ turn.get_status_display }}</td>
         <td style="text-align:center">
-            <a href="/admins/mostrar/turno-medico/{{ turn.id }}/" title="">Mostrar</a>
-            <a href="/admins/actualizar/turno-medico/{{ turn.id }}/" title="">Modificar</a>
+            <a href="/admins/mostrar/turno-medico/{{ turn.id }}/" title="">
+                <img src="/media/images/page_find.gif">
+            </a>
+            <a href="/admins/actualizar/turno-medico/{{ turn.id }}/" title="">
+                <img src="/media/images/page_edit.gif">
+            </a>
         </td>
     </tr>            
     {% endfor %}

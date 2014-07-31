@@ -14,13 +14,13 @@ from GestionTurnos.models import *
 import GestionTurnos.forms as myforms
 from utils import *
 import verbose
-import calendar 
+import calendar
 import datetime
 import forms as my_forms
 from globals import *
 import HTMLTags as Tags
 import my_forms as globals_forms
-
+import reports
 
 
 def admin_add_medic(request):
@@ -447,11 +447,11 @@ def admin_show_patient(request, pac_id):
 def admin_update_patient_turn(request, turn_id):
     mi_template = get_template('Admins/GestionTurnos/turn-edit.html')
     dict = generate_base_keys(request)
-    
+
     if have_acess(request, ['admin']):
         turn = Turn.objects.get(id=int(turn_id))
         dict['turn'] = turn
-        iuser = turn.patient 
+        iuser = turn.patient
         dict['iuser'] = iuser
 
         if request.method == 'POST':
@@ -465,7 +465,7 @@ def admin_update_patient_turn(request, turn_id):
                 dict['turn_id'] = turn.id
 
             else:
-                dict['form'] = form 
+                dict['form'] = form
                 dict['show_form'] = True
 
         else:
@@ -485,11 +485,11 @@ def admin_update_patient_turn(request, turn_id):
 def admin_update_medic_turn(request, turn_id):
     mi_template = get_template('Admins/GestionTurnos/turn-edit-medic.html')
     dict = generate_base_keys(request)
-    
+
     if have_acess(request, ['admin']):
         turn = Turn.objects.get(id=int(turn_id))
         dict['turn'] = turn
-        iuser = turn.patient 
+        iuser = turn.patient
         dict['iuser'] = iuser
 
         if request.method == 'POST':
@@ -503,7 +503,7 @@ def admin_update_medic_turn(request, turn_id):
                 dict['turn_id'] = turn.id
 
             else:
-                dict['form'] = form 
+                dict['form'] = form
                 dict['show_form'] = True
 
         else:
@@ -520,18 +520,18 @@ def admin_update_medic_turn(request, turn_id):
 
 
 
-def admin_show_patient_turn(request, turn_id):
-    mi_template = get_template('Admins/GestionTurnos/show-turn-patient.html')
+#def admin_show_patient_turn(request, turn_id):
+#    mi_template = get_template('Admins/GestionTurnos/show-turn-patient.html')
 
 
 def admin_show_patient_turn(request, turn_id):
     mi_template = get_template('Admins/GestionTurnos/show-turn-patient.html')
     dict = generate_base_keys(request)
-    
+
     if have_acess(request, ['admin']):
         turn = Turn.objects.get(id=int(turn_id))
         dict['turn'] = turn
-        iuser = turn.patient 
+        iuser = turn.patient
         dict['iuser'] = iuser
 
     else:
@@ -545,11 +545,11 @@ def admin_show_patient_turn(request, turn_id):
 def admin_show_medic_turn(request, turn_id):
     mi_template = get_template('Admins/GestionTurnos/show-turn-medic.html')
     dict = generate_base_keys(request)
-    
+
     if have_acess(request, ['admin']):
         turn = Turn.objects.get(id=int(turn_id))
         dict['turn'] = turn
-        iuser = turn.patient 
+        iuser = turn.patient
         dict['iuser'] = iuser
 
     else:
@@ -588,14 +588,14 @@ def admin_edit_patient(request, pac_id):
             'city': user_data.city,
             'state': user_data.state,
             'birth_date': user_data.birth_date.strftime("%d/%m/%Y"),
-        #es paciente no interesa la matricula    
+        #es paciente no interesa la matricula
         #    'matricula': user_data.matricula,
         }
 
         if request.method == 'POST':
             form_user = globals_forms.ChangeUserDataForm(request.POST)
             form_info = globals_forms.ChangeUserInformationForm(request.POST)
-            if form_user.is_valid() and form_info.is_valid():            
+            if form_user.is_valid() and form_info.is_valid():
                 user.first_name = form_user.cleaned_data['first_name']
                 user.last_name = form_user.cleaned_data['last_name']
                 user.email = form_user.cleaned_data['email']
@@ -610,17 +610,17 @@ def admin_edit_patient(request, pac_id):
                 user_data.state = form_info.cleaned_data['state']
                 user_data.birth_date = form_info.cleaned_data['birth_date']
                 user_data.save()
-            
+
                 return HttpResponseRedirect("/admins/mostrar/paciente/%s/" %user.username)
             else:
                 dict['show_errors'] = True
                 dict['form_user'] = form_user
                 dict['form_info'] = form_info
-            
+
         else:
             dict['form_user'] = globals_forms.ChangeUserDataForm(initial=form_user_data)
             dict['form_info'] = globals_forms.ChangeUserInformationForm(initial=form_info_data)
-    
+
     else:
         path = request.META['PATH_INFO']
         return HttpResponseRedirect("/restricted-access%s" %path)
@@ -656,14 +656,14 @@ def admin_edit_admin(request, adm_id):
             'city': user_data.city,
             'state': user_data.state,
             'birth_date': user_data.birth_date.strftime("%d/%m/%Y"),
-        #es paciente no interesa la matricula    
+        #es paciente no interesa la matricula
         #    'matricula': user_data.matricula,
         }
 
         if request.method == 'POST':
             form_user = globals_forms.ChangeUserDataForm(request.POST)
             form_info = globals_forms.ChangeUserInformationForm(request.POST)
-            if form_user.is_valid() and form_info.is_valid():            
+            if form_user.is_valid() and form_info.is_valid():
                 user.first_name = form_user.cleaned_data['first_name']
                 user.last_name = form_user.cleaned_data['last_name']
                 user.email = form_user.cleaned_data['email']
@@ -678,17 +678,17 @@ def admin_edit_admin(request, adm_id):
                 user_data.state = form_info.cleaned_data['state']
                 user_data.birth_date = form_info.cleaned_data['birth_date']
                 user_data.save()
-            
+
                 return HttpResponseRedirect("/admins/mostrar/administrativo/%s/" %user.username)
             else:
                 dict['show_errors'] = True
                 dict['form_user'] = form_user
                 dict['form_info'] = form_info
-            
+
         else:
             dict['form_user'] = globals_forms.ChangeUserDataForm(initial=form_user_data)
             dict['form_info'] = globals_forms.ChangeUserInformationForm(initial=form_info_data)
-    
+
     else:
         path = request.META['PATH_INFO']
         return HttpResponseRedirect("/restricted-access%s" %path)
@@ -703,15 +703,15 @@ def admin_change_patient_password(request, pac_id):
     dict = generate_base_keys(request)
 
     if True:
-        iuser = User.objects.get(username=pac_id) 
+        iuser = User.objects.get(username=pac_id)
         dict['iuser'] = iuser
-        
+
         if request.method == "POST":
             pswd = get_value(request, 'password')
             iuser.set_password(pswd)
             iuser.save()
 
-        else: 
+        else:
             dict['show_form'] = True
     else:
         path = request.META['PATH_INFO']
@@ -727,9 +727,9 @@ def admin_patient_turn_set_medic(request, pac_id):
     dict = generate_base_keys(request)
 
     if True:
-        iuser = User.objects.get(username=pac_id) 
+        iuser = User.objects.get(username=pac_id)
         dict['iuser'] = iuser
-        dict['medics'] = User.objects.filter(groups__name="Medico") 
+        dict['medics'] = User.objects.filter(groups__name="Medico")
 
         if request.method == "POST":
             _url = "/admins/selecionar-dia/turno/%s/%s/" %(iuser.username, get_value(request, 'medic'))
@@ -765,7 +765,7 @@ def admin_select_date_medic_turn(request, pac_id, med_id, month=None, year=None)
         dict['month'] = month
         dict['name_month'] = MONTHS[month-1]
         dict['year'] = year
-        
+
         cal = calendar.Calendar()
         wekends = cal.monthdayscalendar(year, month)
 
@@ -860,8 +860,8 @@ def admin_new_turn(request, pac_id, med_id, day, month, year):
 
     if True:
         medic = UserInformation.objects.get(user__username=med_id)
-        patient = User.objects.get(username=pac_id) 
-        dict['patient'] = patient 
+        patient = User.objects.get(username=pac_id)
+        dict['patient'] = patient
         dict['iuser'] = patient
         dict['pac_username'] = patient.username
         dict['medic'] = medic
@@ -967,7 +967,7 @@ def admin_new_turn(request, pac_id, med_id, day, month, year):
 
 def admin_delete_medic_expeciality(request, med_id, exp_id):
     """
-        Esto no tiene vista especifica por que directamente o borrara la 
+        Esto no tiene vista especifica por que directamente o borrara la
         expecialidad o levantara un error
     """
     if have_acess(request, ['admin']):
@@ -991,15 +991,15 @@ def admin_change_medic_password(request, med_id):
     dict = generate_base_keys(request)
 
     if True:
-        iuser = User.objects.get(username=med_id) 
+        iuser = User.objects.get(username=med_id)
         dict['iuser'] = iuser
-        
+
         if request.method == "POST":
             pswd = get_value(request, 'password')
             iuser.set_password(pswd)
             iuser.save()
 
-        else: 
+        else:
             dict['show_form'] = True
     else:
         path = request.META['PATH_INFO']
@@ -1015,15 +1015,15 @@ def admin_change_admin_password(request, adm_id):
     dict = generate_base_keys(request)
 
     if True:
-        iuser = User.objects.get(username=adm_id) 
+        iuser = User.objects.get(username=adm_id)
         dict['iuser'] = iuser
-        
+
         if request.method == "POST":
             pswd = get_value(request, 'password')
             iuser.set_password(pswd)
             iuser.save()
 
-        else: 
+        else:
             dict['show_form'] = True
     else:
         path = request.META['PATH_INFO']
@@ -1040,7 +1040,7 @@ def admin_show_medic_turn_list(request, med_id):
 
     if True:
         dict['turns'] = Turn.objects.filter(medic__username=med_id)
-        iuser = User.objects.get(username=med_id) 
+        iuser = User.objects.get(username=med_id)
         dict['iuser'] = iuser
 
     else:
@@ -1050,6 +1050,28 @@ def admin_show_medic_turn_list(request, med_id):
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
 
+
+def turn_pdf(request, turn_id):
+    """
+    """
+    #mi_template = get_template('Patients/GestionTurnos/show-turn-detail.html')
+    #dict = generate_base_keys(request)
+    if have_acess(request, ['medic', 'patient']):
+        try:
+            turn = Turn.objects.get(id=turn_id)
+
+        except:
+            path = request.META['PATH_INFO']
+            return HttpResponseRedirect("/restricted-access%s" %path)
+
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="turno.pdf"'
+        reports.generate_turn(response, turn)
+        return response
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
 
 
 #estadisticas pensar

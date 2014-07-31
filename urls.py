@@ -62,12 +62,10 @@ urlpatterns = patterns('',
     (r'^admins/mostrar/medico/(.+)/$', gt_admins_views.admin_show_medic),
     (r'^admins/agregar/medico/expecialidad/(.+)/$', gt_admins_views.admin_add_medic_expeciality),
 
-
     (r'^admins/registrar/administrativo/$', gt_admins_views.admin_add_admin),
     (r'^admins/buscar/administrativo/$', gt_admins_views.admin_search_admin),
     (r'^admins/mostrar/administrativo/(.+)/$', gt_admins_views.admin_show_admin),
     (r'^admins/modificar/administrativo/(.+)/$', gt_admins_views.admin_edit_admin),
-
 
     (r'^admins/buscar/paciente/$', gt_admins_views.admin_search_patient),
     (r'^admins/mostrar/paciente/(.+)/$', gt_admins_views.admin_show_patient),
@@ -86,6 +84,7 @@ urlpatterns = patterns('',
     (r'^admins/mostrar/turno-paciente/(\d+)/$', gt_admins_views.admin_show_patient_turn),
     (r'^admins/mostrar/turno-medico/(\d+)/$', gt_admins_views.admin_show_medic_turn),
     (r'^admins/listado/turno-medico/(\w+)/$', gt_admins_views.admin_show_medic_turn_list),
+    (r'^admins/turnos/imprimir/(\d{1,2})/$',  gt_admins_views.turn_pdf), #imprimir comprobante turno
 
     #expecialidades
     (r'^admins/listado/expecialidad-medica/$', gt_admins_views.admin_list_expecialities),

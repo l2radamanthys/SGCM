@@ -11,12 +11,13 @@
 <br />
 <br />
 <div class="fancy-form-white" style="width:300px; margin: 0 auto;">
+    <br /><br />
     <form action="" method="POST">
-    <label>Paciente: {{ iuser.first_name }} {{ iuser.last_name }}</label>    
+    <label><strong>Paciente:</strong> {{ iuser.first_name }} {{ iuser.last_name }}</label>    
     <input type="hidden" name="patient" value="{{ iuser.username }}" />
     <br>      
-    <label>Seleccione Medico:</label>
-    <br>
+    <label style="display:inline"><strong>Seleccione Medico:</strong></label>
+    
     <select name="medic" >
         {% for medic in medics %}
             <option value="{{ medic.username }}">{{ medic.first_name }} {{ medic.last_name }}</option>
