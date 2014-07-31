@@ -1,14 +1,13 @@
 {% extends 'Admins/GestionTurnos/user-view.html' %}
 
 {% block sub-cont %}
-    {% include "Admins/GestionTurnos/admin-admin-submenu.html" %}
+    {% include "Admins/GestionTurnos/admin-medic-submenu.html" %}
 {% endblock %}
 
 <!-- sub contenido -->
 {% block view-cont %}
 <br />
-<h2>Modificar Datos del Administrativo</h2>
-
+<h2>Modificar Datos del Paciente</h2>
 <br />
     {% if show_form %}
     <div class="fancy-form-white" style="width: 650px; margin: 0 auto;">
@@ -33,7 +32,7 @@
                 <td colspan="2" style="text-align: center">
                 <br />
                 <input type="submit" class="grad-button-blue" value="Actualizar"  />
-                <a href="/admins/mostrar/administrativo/{{ iuser.username }}/" class="grad-button-blue">Atras</a>
+                <a href="/admins/mostrar/medico/{{ iuser.username }}/" class="grad-button-blue">Atras</a>
                 </td>
             </tr>
         </table>
@@ -55,10 +54,8 @@
                 <p><strong>{{ field.label }}:</strong> {{ field.value }}</p>
                 {{ field.errors }}<br />
             {% endif %}
-        {% endfor %}
-        
+        {% endfor %}  
         </div>
     {% endif %}
-
 
 {% endblock %}

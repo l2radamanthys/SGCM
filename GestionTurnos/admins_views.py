@@ -132,7 +132,7 @@ def admin_show_medic(request, med_id):
         iuser = User.objects.get(username=med_id)
         dict['expecialidades'] = MedicalSpecialityFor.objects.filter(user=iuser)
         dict['iuser'] = iuser
-        #dict['iuser_lbl'] = iuser.
+        dict['is_medic'] = True
         dict['info'] = UserInformation.objects.get(user=iuser)
 
 
@@ -165,6 +165,7 @@ def admin_add_medic_expeciality(request, med_id, exp_id=None):
         dict['show_errors'] = False
         med = User.objects.get(username=med_id)
         dict['med'] = med
+        dict['iuser'] = med
 
         if request.method == 'POST':
             form = my_forms.MedicalSpecialtyForForm(request.POST)
@@ -1074,4 +1075,74 @@ def turn_pdf(request, turn_id):
         return HttpResponseRedirect("/restricted-access%s" %path)
 
 
-#estadisticas pensar
+
+def admin_edit_medic(request, med_id):
+    """
+        Administrativo, modificar datos del medico
+    """
+    mi_template = get_template('Admins/GestionTurnos/medic-edit.html')
+    dict = generate_base_keys(request)
+
+    if True:
+        dict['show_form'] = True
+        dict['show_errors'] = False
+        user = User.objects.get(username=med_id)
+        user_data = UserInformation.objects.get(user=user)
+        dict['iuser'] = user
+
+        form_user_data = {
+            'first_name' : user.first_name,
+            'last_name' : user.last_name,
+            'email' : user.email,
+        }
+
+        form_info_data = {
+            'type_doc': user_data.type_doc,
+            'nro_doc': user_data.nro_doc,
+            'gender': user_data.gender,
+            'phone': user_data.phone,
+            'address': user_data.address,
+            'city': user_data.city,
+            'state': user_data.state,
+            'birth_date': user_data.birth_date.strftime("%d/%m/%Y"),
+            'matricula': user_data.matricula,
+        }
+
+        if request.method == 'POST':
+            form_user = globals_forms.ChangeUserDataForm(request.POST)
+            form_info = globals_forms.ChangeMedicInformationForm(request.POST)
+            if form_user.is_valid() and form_info.is_valid():
+                user.first_name = form_user.cleaned_data['first_name']
+                user.last_name = form_user.cleaned_data['last_name']
+                user.email = form_user.cleaned_data['email']
+                user.save()
+
+                user_data.type_doc = form_info.cleaned_data['type_doc']
+                user_data.nro_doc = form_info.cleaned_data['nro_doc']
+                user_data.gender = form_info.cleaned_data['gender']
+                user_data.phone = form_info.cleaned_data['phone']
+                user_data.address = form_info.cleaned_data['address']
+                user_data.city = form_info.cleaned_data['city']
+                user_data.state = form_info.cleaned_data['state']
+                user_data.birth_date = form_info.cleaned_data['birth_date']
+                user_data.matricula = form_info.cleaned_data['matricula']
+                user_data.save()
+
+                return HttpResponseRedirect("/admins/mostrar/medico/%s/" %user.username)
+            else:
+                dict['show_errors'] = True
+                dict['form_user'] = form_user
+                dict['form_info'] = form_info
+
+        else:
+            dict['form_user'] = globals_forms.ChangeUserDataForm(initial=form_user_data)
+            dict['form_info'] = globals_forms.ChangeMedicInformationForm(initial=form_info_data)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+    html_cont = mi_template.render(Context(dict))
+    return HttpResponse(html_cont)
+
+
