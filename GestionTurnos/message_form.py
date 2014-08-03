@@ -8,7 +8,7 @@ from globals import *
 
 
 class MessageToMedic(form.Form):
-    to_user = 
+    to_user = None
 
     issue = forms.CharField(
         label="Asunto:",

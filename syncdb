@@ -2,5 +2,5 @@
 
 #levanta el servidor Django por el puerto 8080
 
-python manage.py  syncdb
+python manage.py syncdb
 

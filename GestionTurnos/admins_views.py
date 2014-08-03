@@ -7,13 +7,13 @@ from django.contrib import auth #para login
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Group as DjangoGroup
 
-#from django.contrib.auth.models import Group, Permission
+from django.contrib.auth.models import Group, Permission
 from django.contrib.contenttypes.models import ContentType
 
 from GestionTurnos.models import *
 import GestionTurnos.forms as myforms
 from utils import *
-import verbose
+#import verbose
 import calendar
 import datetime
 import forms as my_forms
