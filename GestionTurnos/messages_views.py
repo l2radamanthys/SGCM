@@ -146,7 +146,7 @@ def received(request):
 
 def sent(request):
     """
-        Muestra el listado de todos los mensajes recividos del usuario
+        Muestra el listado de todos los mensajes enviados del usuario
     """
     mi_template = get_template('Messages/enviados.html')
     dict = generate_base_keys(request)
@@ -175,8 +175,9 @@ def read(request, msj_id):
         #msj = Message.objects.get(to_user=request.user, id=int(msj_id))
         msj = Message.objects.get(id=int(msj_id))
         dict['message'] = msj
-        msj.read = True
-        msj.save()
+        if msj.read != True:
+            msj.read = True
+            msj.save()
 
     else:
         path = request.META['PATH_INFO']
