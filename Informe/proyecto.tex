@@ -47,9 +47,20 @@ Aqui un diagrama con todos los modelos que componen el modulo Usuarios.
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.7]{resourse/auth.png}
-    \caption{Modelo Historia Clinica Ministerio de Salud de La Nacion Pag 2}
+    \caption{Diagrama con modelos que conponen el modulo Usuarios}
     \label{fig:07}
 \end{figure}
+
+Si lo expresaramos mediante la notacion UML para Diagramas de Clases 
+tendriamos lo siguiente.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{resourse/uml-users.png}
+    \caption{Diagrama con modelos que conponen el modulo Usuarios}
+    \label{fig:07}
+\end{figure}
+
 
 El unico modelo que fue necesario agregar es UserInformation el resto vienen
 con Django. En Resumen aunque se podria haber desarrollado Un Modulo desde
@@ -57,6 +68,21 @@ con Django. En Resumen aunque se podria haber desarrollado Un Modulo desde
  sentido.
 
 \section{Modulo Gestion de Turnos}
+
+Dejando de lado el modulo Usuarios que nos provee Django el sistema desarrollado 
+se divide esencialmente en 2 partes o modulos, aqui explicare como se diseño e
+implemento el Modulo Gestion de Turnos, que a mi consideracion fue el que mayor
+reto aporto a la hora de pensar un solucion para poder implementarlo.
+
+El modulo se encarga de implementar las siguientes funciones
+
+.Administracion de los datos de todos los Usuarios
+.Asignacion de Turnos
+.Mensajeria Interna
+
+
+
+
 
 \section{Modulo Historia Clinica}
 
