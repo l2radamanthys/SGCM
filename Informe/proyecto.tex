@@ -61,7 +61,6 @@ tendriamos lo siguiente.
     \label{fig:07}
 \end{figure}
 
-
 El unico modelo que fue necesario agregar es UserInformation el resto vienen
 con Django. En Resumen aunque se podria haber desarrollado Un Modulo desde
  cero que gestione las sessiones de usuarios hubiese generado trabajo extra sin
@@ -82,9 +81,111 @@ El modulo se encarga de implementar las siguientes funciones
 
 
 
-
-
 \section{Modulo Historia Clinica}
+
+Este modulo del sistema tiene como tarea manejar y recolectar toda informacion 
+referente a las historia clinica de los pacientes.
+
+\subsection{¿Que es una Historia Clinica?}
+
+Antes de entrar en todo lo referente sobre el desarrollo del correspondiente modulo
+tomo un momento para explicar concretamente a que no referimos cuando hablamos de 
+la misma por lo que aqui tenemos la siguiente definicion:
+
+La historia clínica es un documento médico-legal que surge del contacto entre el 
+profesional de la salud (médico, podólogo, psicólogo, asistente social, enfermero, 
+kinesiólogo, odontólogo, etc.) y el paciente donde se recoge la información necesaria 
+para la correcta atención de los pacientes. La historia clínica es un documento 
+válido desde el punto de vista clínico y legal, que recoge información de tipo 
+asistencial, preventivo y social.
+
+La Historia Clinica se origina con el primer episodio de enfermedad o control de salud en el que se 
+atiende al paciente, ya sea en el hospital o en el centro de atención primaria, o
+en un consultorio médico. La historia clínica está incluida dentro del campo de la 
+semiología clínica \footnote{La Semiologia Clinica es el cuerpo del conocimiento
+que se ocupa de la identificacion de las diversas manifestaciones patologicas 
+\cite{SemiClin}}.
+
+\subsection{La Historia Clinica en la Ley Argentina}
+
+La documentación médica comprendida en lo que comúnmente se denomina ‘historia 
+clínica’ no se encontraba regida por leyes especificas en la Argentina hasta
+el 19 de noviembre del 2009 donde se promulga la Ley 26.529 \cite{LeyHC}.
+
+En el capítulo primero de la ley sen enumeran los derechos de los pacientes, 
+en el artículo 2, inciso a. Renueva el derecho a la intimidad y la confidencialidad, 
+donde se hace hincapié sobre la responsabilidad de preservar la intimidad y 
+confidencialidad de toda la documentación médica concerniente a los pacientes, 
+particularmente el inciso ``d" del mismo artículo:
+
+``El paciente tiene derecho a que toda persona que participe en la elaboración 
+o manipulación de la documentación clínica, o bien tenga acceso al contenido de 
+la misma, guarde la debida reserva, salvo expresa disposición en contrario 
+emanada de autoridad judicial competente o autorización del propio paciente"
+
+Garantiza además el respeto por la autonomía del paciente y el derecho a recibir 
+la información necesaria para su salud, incluyendo el derecho a negarse a ser 
+informado.
+
+El capítulo III reza sobre el Consentimiento Informado, que tendré el agrado de 
+comentar en otro artículo. Pero vayamos a lo que nos concierne hoy, la historia
+clínica.
+
+La ley define a la Historia Clínica como el documento “obligatorio, cronológico,
+foliado y completo en el que consta toda actuación realizada al paciente por
+profesionales y auxiliares de la salud.”[ii] Define que la historia clínica es 
+propiedad del paciente, siendo este el titular de la misma. Siempre que un paciente 
+solicite la historia clínica, la institución competente debe entregarle una copia
+autenticada en 48 (cuarenta y ocho) horas. Si no es entregada en ese plazo, el
+paciente está autorizado a interponer un recurso de Habeas data, juzgado de por 
+medio. 
+
+Entre los datos que han de consignarse en forma obligatoria esta la fecha de 
+inicio y confección de la historia clínica, datos identificatorios del paciente
+y su núcleo familiar, datos del profesional interviniente y su especialidad, 
+registros claros y precisos de los actos realizados por profesionales y auxiliares
+intervinientes, antecedentes genéticos, fisiológicos y patológicos si los hubiere,
+y todo acto médico realizado o indicado.
+
+Incluye en la historia clínica a todos los documentos que hagan referencia a 
+información de salud del paciente, añadiendo los consentimientos informados, 
+hojas de indicaciones, hojas de enfermería, estudios complementarios, 
+incluyendo las “prácticas realizadas, rechazadas o abandonadas.”[iv] 
+Esto último es interesante: si el paciente abandona o rechaza un tratamiento 
+propuesto, es responsabilidad del médico consignarlo, que a fin de cuentas es el
+beneficiario de que aquello quede asentado desde el punto de vista médico-legal.
+
+Autoriza a reclamar una copia de la historia clínica al paciente y su representante 
+legal, al cónyuge o conviviente de hecho (sin importar el sexo), y a los herederos 
+forzosos. Lo que no queda claro del art. 19 inciso b es si los cónyuges y 
+convivientes requieren o no la autorización del paciente.
+
+Se añade esta ley al capítulo 11 del Código de Ética de la Asociación Médica 
+Argentina, del año 2001. En ella se explaya en forma más extensa y detallada sobre
+la confección. Particular interés debiéramos prestarle al art. 168:
+
+“la historia clínica ha de ser un instrumento objetivo y comprensible por terceros,
+y no solo por quienes escriben en ella.” A su vez, el art. 171 especifica que 
+“debe ser legible, no debe tener tachaduras, no se debe escribir sobre lo ya 
+escrito, no debe ser borrada, no se debe dejar espacios en blanco y ante una
+equivocación debe escribirse ERROR y aclarar lo que sea necesario. No se debe añadir
+nada entre renglones.”
+
+
+\subsection{Funcionalidades}
+
+Las funcionalidades que se implementan en correspondiente modulos son solo
+basicas y comprenden la documentacion practicas mas comunes dentro del area de la 
+medicina, esto no implica que solo valla a servir para eso unicamente, por su 
+extructura el modulo contempla la posibilidad de agregar nuevos componentes para 
+estudios especificos que sean requeridos y que no hayan sido contemplados en el 
+actual sistema.
+
+
+
+
+
+
 
 \section{Elecci\'on de la metodolog\'ia de Programaci\'on}
 
