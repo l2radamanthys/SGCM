@@ -1,4 +1,4 @@
-.info, .success, .alert, .error{
+.info, .success, .alert, .error, .ok{
 	font-size: 11px;
     border: 1px solid;
     margin: 0 auto;
@@ -10,7 +10,7 @@
     background-position: 10px center;
 }
 
-.info li, .success li, .alert li, .error li{
+.info li, .success li, .alert li, .error li, .ok li{
 	list-style-type: None;
 }
 
@@ -21,6 +21,13 @@
 }
 
 .success {
+    color: #4F8A10;
+    background-color: #DFF2BF;
+    background-image:url('/media/images/exito.png');
+}
+
+/* se mantiene esta vista por cuestion de compatibilidad */
+.ok { 
     color: #4F8A10;
     background-color: #DFF2BF;
     background-image:url('/media/images/exito.png');

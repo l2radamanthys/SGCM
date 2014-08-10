@@ -92,8 +92,8 @@ def patient_register(request):
                     msg.send()
                     #mensaje de confirmacion de creacion de usuario
                     dict['show_form'] = False
-                    dict['custon_message'] = Tags.html_message("Paciente Registrado %s Correctamente.."  %(form.cleaned_data['first_name']), type="ok")
-                    dict['query'] =  "user ok"
+                    dict['custon_message'] = Tags.html_message("Paciente Registrado %s Correctamente.."  %(form.cleaned_data['first_name']), type="success")
+                    #dict['query'] =  "user ok"
             else:
                 dict['show_form'] = True #mostrar form de registro
                 dict['show_errors'] = True
