@@ -1,10 +1,10 @@
-\chapter{Elección de la Tecnología}
+\chapter{Elecci\'on de la Tecnolog\'{\i}a}
 
-\section{¿Por que Web y no Desktop?}
+\section{?`Por que Web y no Desktop?}
 
 Una aplicacion Desktop (tambien llamada de Escritorio) es aquella que requiere
 ser instalada en el Ordenador (PC) del Usuario, y que es ejecutada directamente
-por el sistema operativo, ya sea Microsoft Windows, GNU/Linux, Mac OS, etc.
+por el sistema operativo, ya sea Microsoft Windows, GNU/Linux, Mac OS, etc.\\[0.1cm]
 
 Algunos Ejemplos de Estas Aplicaciones:
 
@@ -50,6 +50,7 @@ Por lo cual brinda una serie de ventajas tales como:
     \item No hay problemas de incompatibilidad de Version de software ya que los usuarios trabajan 
         con la misma version.
 \end{itemize}
+
 En resumen el Sistema por sus caracteristicas podria haberse implementado como un sistema
 Deskop pero se ubiesen perdido las caracteristicas deseadas del mismo.
 
@@ -57,37 +58,42 @@ Deskop pero se ubiesen perdido las caracteristicas deseadas del mismo.
 
 \section{Apache}
 
-El servidor HTTP Apache es un servidor web HTTP de código abierto, para plataformas
+El servidor HTTP Apache es un servidor web HTTP de c\'odigo abierto, para plataformas
 Unix (BSD, GNU/Linux, etc.), Microsoft Windows, Macintosh y otras, que implementa
-el protocolo HTTP/1.12 y la noción de sitio virtual. Cuando comenzó su desarrollo en 1995 se basó inicialmente
-en código del popular NCSA HTTPd 1.3, pero más tarde fue reescrito por completo. Su nombre se
-debe a que Behelendorf quería que tuviese la connotación de algo que es firme
-y enérgico pero no agresivo, y la tribu Apache fue la última en rendirse al que pronto se
-convertiría en gobierno de EEUU, y en esos momentos la preocupación de su grupo era que
-llegasen las empresas y "civilizasen" el paisaje que habían creado los primeros ingenieros de internet.
-Además Apache consistía solamente en un conjunto de parches a aplicar al servidor de NCSA.
-En inglés, a patchy server (un servidor "parcheado") suena igual que Apache Server. 
+el protocolo HTTP/1.12 y la noci\'on de sitio virtual. Cuando comenz\'a su desarrollo en 
+1995 se bas\'a inicialmente en c\'odigo del popular NCSA HTTPd 1.3, pero m\'as tarde fue 
+reescrito por completo. Su nombre se debe a que Behelendorf quer\'{\i}a que tuviese la 
+connotaci\'on de algo que es firme y en\'ergico pero no agresivo, y la tribu Apache fue
+la \'ultima en rendirse al que pronto se convertir\'{\i}a en gobierno de EEUU, y en esos
+momentos la preocupaci\'on de su grupo era que llegasen las empresas y ``civilizasen" 
+el paisaje que hab\'{\i}an creado los primeros ingenieros de internet.\\[0.1cm]
+
+Adem\'as Apache consist\'{\i}a solamente en un conjunto de parches a aplicar al servidor
+de NCSA. En ingl\'es, a patchy server (un servidor "parcheado") suena igual que 
+Apache Server. \\[0.1cm]
 
 El servidor Apache se desarrolla dentro del proyecto HTTP Server (httpd) de la
-Apache Software Foundation.
+Apache Software Foundation.\\[0.1cm]
 
-Apache presenta entre otras características altamente configurables, bases de
-datos de autenticación y negociado de contenido, pero fue criticado por la falta
-de una interfaz gráfica que ayude en su configuración.\\[0.2cm]
+
+Apache presenta entre otras caracter\'{\i}sticas altamente configurables, bases de
+datos de autenticaci\'on y negociado de contenido, pero fue criticado por la falta
+de una interfaz gr\'afica que ayude en su configuraci\'on.\\[0.2cm]
 
 \section{mod\_wsgi}
 
-mod\_wsgi es un módulo de Apache que provee una interfaz WSGI para correr
+mod\_wsgi es un m\'odulo de Apache que provee una interfaz WSGI para correr
  Web en Python sobre Apache. Y esto, es todo lo que necesitas para que tus
- archivos *.py se ejecuten por medio de un navegador Web.
+ archivos *.py se ejecuten por medio de un navegador Web.\\[0.1cm]
+ 
 
 \subsection{WSGI}
 
 WSGI es el acronomico de Web Server Gateway Interface que es una especificacion
 para una simple y universal interfaz entre una aplicacion web (en nuestro caso
 una aplicacion escrita en Django) y un servidor Web para el lenguaje de programacion
-Python. Es un estandar de Python el cual se describe con detalle en la PEP 333
-\footnote{\url{http://www.python.org/dev/peps/pep-0333/}}
+Python. Es un estandar de Python el cual se describe con detalle en la PEP 33
+\footnote{\url{http://www.python.org/dev/peps/pep-0333/}}.\\[0.1cm]
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -96,36 +102,39 @@ Python. Es un estandar de Python el cual se describe con detalle en la PEP 333
 
 PostgreSQL es un gestor de base de datos relacional que puede correr tanto bajo
 sistemas operativos Windows como en distribuciones Linux como Red Hat, Suse,
-Centos, etc.
+CentOS, etc.\\[0.1cm]
 
-Como muchos otros proyectos de código abierto, el desarrollo de PostgreSQL
+
+Como muchos otros proyectos de c\'odigo abierto, el desarrollo de PostgreSQL
 no es manejado por una empresa y/o persona, sino que es dirigido por una comunidad
 de desarrolladores que trabajan de forma desinteresada, altruista, libre y/o
 apoyados por organizaciones comerciales. Dicha comunidad es denominada
-el PGDG (PostgreSQL Global Development Group).
+el PGDG (PostgreSQL Global Development Group).\\[0.1cm]
 
-El nombre hace referencia a los orígenes del proyecto como la base de datos
-"post-Ingres", y los autores originales también desarrollaron la base de datos Ingres.
 
-El proyecto post-ingres pretendía resolver los problemas con el modelo de base
-de datos relacional que habían sido aclarados a comienzos de los años 1980. El
+El nombre hace referencia a los or\'{\i}genes del proyecto como la base de datos
+``post-Ingres", y los autores originales tambi\'en desarrollaron la base de datos 
+Ingres.
+
+El proyecto post-ingres pretend\'{\i}a resolver los problemas con el modelo de base
+de datos relacional que hab\'{\i}an sido aclarados a comienzos de los a\~nos 1980. El
 principal de estos problemas era la incapacidad del modelo relacional de
 comprender "tipos", es decir, combinaciones de datos simples que conforman una
-única unidad. Actualmente estos son llamados objetos. Se esforzaron en introducir
+\'unica unidad. Actualmente estos son llamados objetos. Se esforzaron en introducir
 la menor cantidad posible de funcionalidades para completar el soporte de tipos.
-Estas funcionalidades incluían la habilidad de definir tipos, pero también
+Estas funcionalidades inclu\'{\i}an la habilidad de definir tipos, pero tambi\'en
 la habilidad de describir relaciones - las cuales hasta ese momento eran
 ampliamente utilizadas pero mantenidas completamente por el usuario. En Postgres
-la base de datos «comprendía» las relaciones y podía obtener información de
-tablas relacionadas utilizando reglas. Postgres usó muchas ideas de Ingres
-pero no su código.
+la base de datos comprend\'{\i}a las relaciones y pod\'{\i}a obtener informaci\'on 
+de tablas relacionadas utilizando reglas. Postgres us\'a muchas ideas de Ingres
+pero no su c\'odigo.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Python}
 
 Django esta escrito puramente en Python, por lo que Obiamente Necesitaremos Instalar
-Python. Python es un lenguaje de programación interpretado cuya filosofía hace
+ Python es un lenguaje de programación interpretado cuya filosofía hace
  hincapié en una sintaxis muy limpia y que favorezca un código legible.
  
 Se trata de un lenguaje de programación multiparadigma, ya que soporta
