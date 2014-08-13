@@ -289,3 +289,16 @@ class MedicalPrescription(models.Model):
     administration_route = models.CharField('Administrar por via', max_length=1, default='O', choices=VIA_ADMINISTRACION_CHOICE)
     container_format = models.CharField('Formato de Envase',  max_length=45)
     posology = models.IntegerField('Dosificacion en mg')
+
+
+
+class Relation(models.Model):
+    """
+        Para Definir las relaciones de Parentesco entre Familiares
+    """
+    patient = models.ForeignKey(User, related_name="paciente_user")
+    kin = models.ForeignKey(User, related_name="familiar_user")
+    type_relation = models.IntegerField('Tipo Parentesco', default=0, choices=RELATIONS_CHOICES)
+
+    class Meta:
+        db_table = "Relations"

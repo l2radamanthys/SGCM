@@ -12,9 +12,14 @@ media/data
 #latex configuracion
 *.aux
 *.bak
+*.bbl
+*.blg
+*.dia~
+*.idx
+*.ilg
+*.ind
+*.lof
 *.log
 *.out
-*.lof
 *.synctex.gz
 *.toc
-*.idx

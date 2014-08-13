@@ -214,3 +214,13 @@ RESPIRATORY_RATE_CHOICE = (
     ('P', 'polipnea'),
     ('B', 'bardipnea'),
 )
+
+RELATIONS_CHOICES = (
+    (0, 'No Definida'),        
+    (1, 'Padre'),        
+    (2, 'Madre'),        
+    (3, 'Hermano/a'),        
+    (4, 'Hijo'),        
+    (5, 'Conyugue'),        
+        
+)

@@ -1472,4 +1472,58 @@ def medic_turn_reset(request, turn_id):
     else:
         path = request.META['PATH_INFO']
         return HttpResponseRedirect("/restricted-access%s" %path)
-    pass
+
+
+
+
+def medic_show_patient_family_menbers(request, patient_id):
+    mi_template = get_template('Medics/GestionTurnos/show-turn-detail.html')
+    dict = generate_base_keys(request)
+
+    if have_acess(request):
+       
+        
+        html_cont = mi_template.render(Context(dict))
+        return HttpResponse(html_cont)
+
+    else:
+        path = request.META['PATH_INFO']
+
+
+
+def medic_add_family_member(request, patient_id):
+    mi_template = get_template('Medics/GestionTurnos/show-turn-detail.html')
+    dict = generate_base_keys(request)
+
+    if have_acess(request):
+        if request.method == 'POST':
+            pass
+
+        else:
+            #especificar alguna condicion para mostrar los pacientes solamente
+            dict['patients'] = User.objects.filter() 
+            pass
+
+        html_cont = mi_template.render(Context(dict))
+        return HttpResponse(html_cont)
+
+    else:
+        path = request.META['PATH_INFO']
+
+
+
+def medic_delete_patient_family_member(request, patient_id, parent_id):
+    mi_template = get_template('Medics/GestionTurnos/show-turn-detail.html')
+    dict = generate_base_keys(request)
+
+    if have_acess(request):
+       
+        
+        html_cont = mi_template.render(Context(dict))
+        return HttpResponse(html_cont)
+
+    else:
+        path = request.META['PATH_INFO']
+
+
+
