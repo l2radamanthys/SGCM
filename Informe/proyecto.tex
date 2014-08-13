@@ -65,8 +65,68 @@ tendriamos lo siguiente.
 
 El unico modelo que fue necesario agregar es UserInformation el resto vienen
 con Django. En Resumen aunque se podria haber desarrollado Un Modulo desde
- cero que gestione las sessiones de usuarios hubiese generado trabajo extra sin
- sentido.
+cero que gestione las sessiones de usuarios hubiese generado trabajo extra sin
+sentido.
+
+\subsection{Usuarios y Permisos}
+
+El sistema contempla 4 tipos de usuarios los cuales son: 
+
+\begin{itemize}
+    \item Usuarios no registrados 
+    \item Pacientes
+    \item Medicos
+    \item Administrativos
+\end{itemize}
+
+\subsubsection{Usuarios no Registrados}
+
+Los \textbf{Usuarios no registrados} que vendria a ser cuando el usuario ingresa
+a la aplicacion y no hay ninguna session iniciadad, pueden acceder al sistema para 
+consultar informacion basica y horarios de atencion de los expecialistas que 
+forman parte de la institucion, ademas de tener la opcion de registrarse 
+como paciente.\\[0.1cm]    
+
+\subsubsection{Paciente}
+
+El rol \textbf{Paciente} corresponde a los usuarios comunes, un usuario paciente puede 
+ser creado por cualquiera de los otros roles, en caso que sea un usuario no registrado
+quien da el alta como paciente, el mismo debera confirmar el registro mediante un
+codigo de verificacion que el sistema le enviara al correo antes de poder comensar
+a usar su cuenta, en los otros casos (el usuario Paciente es registrado por un 
+medico o un Administrativo) no se requerira dicha confirmacion.\\[0.1cm]
+
+En cuanto a los privilegios del usuario Paciente, este ademas de poder consultar la 
+la informacion de los expecialistas puede solicitar un turno para ser atendido 
+a un especialista en particular, tambien realizarle una interconsulta (mediante
+el sistema interno de mensajeria) y modificar sus datos basicos, en resumen sus 
+posibles funciones son:
+
+
+\subsubsection{Medico}
+
+Los Usuarios \textbf{Medicos} los cuales son asignados por los Administrativos a 
+los Especialistas, 
+
+Dentro de los privilegios, los mismos pueden:
+
+\begin{Itemize}
+    \item Registrar Pacientes
+    \item Modificar datos de Pacientes
+    \item Enviar Mensajes a cualquier Usuario
+    \item Registrar Turnos 
+    \item Cancelar Turnos
+    \item Administrar sus Horario de Atencion
+    \item Cancelar dias de atencion
+    \item 
+\end{itemize}
+
+
+\subsubsection{Administrativo}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Modulo Gestion de Turnos}
 
@@ -81,6 +141,10 @@ El modulo se encarga de implementar las siguientes funciones
 .Asignacion de Turnos
 .Mensajeria Interna
 
+\subsection {Gestionar Datos de Usuarios}
+
+Esta funcionalidad describe, todo lo referido a la alta, baja y modificacion de 
+los datos de todos los usuarios.
 
 
 \section{Modulo Historia Clinica}
