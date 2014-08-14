@@ -1,0 +1,43 @@
+{% extends 'Medics/GestionTurnos/patient-view.html' %}
+
+{% block ext_style %}
+
+{% endblock %}
+
+{% block view-cont %}
+<div  style="padding-left:10px;" >
+    <h2>Grupo Familiar</h2>
+    <p style="font-size:14px;margin-left:10px">{{ pac.last_name  }}, {{ pac.first_name }} </p>
+</div>
+
+<div style="text-align:right; margin:20px;">
+    <a href="/pacientes/agregar/grupo-familiar/{{ pac.username }}/" title="" class="grad-button-blue">Agregar Miembro</a>
+</div>
+
+
+<table class="table" style="width:600px; margin: 0 auto;" cellspacing="0">
+
+    {% for parent in parents %}
+    <tr>
+        <td>{{ parent.kin.first_name }} {{ parent.kin.last_name }}</td>
+        <td>
+            <a href="/pacientes/show-info/{{ parent.kin.username }}/">
+                <img src="/media/images/page_find.gif" alt="Mostrar" /> 
+            </a>
+
+            &nbsp;
+
+            <a href="/pacientes/borrar/grupo-familiar/{{ parent.kin.username }}/" title="">
+                <img src="/media/images/page_delete.gif" alt="Mostrar" /> 
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+    
+
+</table>
+
+
+
+
+{% endblock %}

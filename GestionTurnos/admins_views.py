@@ -317,7 +317,6 @@ def admin_delete_admin(request):
 
 
 
-
 def admin_add_expeciality(request):
     mi_template = get_template('Admins/GestionTurnos/agregar-expecialidad.html')
     dict = generate_base_keys(request)

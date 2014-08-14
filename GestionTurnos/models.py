@@ -291,14 +291,3 @@ class MedicalPrescription(models.Model):
     posology = models.IntegerField('Dosificacion en mg')
 
 
-
-class Relation(models.Model):
-    """
-        Para Definir las relaciones de Parentesco entre Familiares
-    """
-    patient = models.ForeignKey(User, related_name="paciente_user")
-    kin = models.ForeignKey(User, related_name="familiar_user")
-    type_relation = models.IntegerField('Tipo Parentesco', default=0, choices=RELATIONS_CHOICES)
-
-    class Meta:
-        db_table = "Relations"

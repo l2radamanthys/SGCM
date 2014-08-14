@@ -1294,3 +1294,70 @@ def medic_del_patient_cardio_exam(request, exam_id):
 
     html_cont = mi_template.render(Context(dict))
     return HttpResponse(html_cont)
+
+
+
+def medic_show_patient_family_menbers(request, patient_id):
+    mi_template = get_template('Medics/HistoriaClinica/mostrar-grupo-familiar.html')
+    dict = generate_base_keys(request)
+
+    if have_acess(request):
+        _patient = User.objects.get(username=patient_id)
+        dict['pac'] = _patient
+        dict['pac_username'] = patient_id
+        dict['parents'] = Relation.objects.filter(patient=_patient, kin__groups__name='Paciente')
+        
+        html_cont = mi_template.render(Context(dict))
+        return HttpResponse(html_cont)
+
+    else:
+        path = request.META['PATH_INFO']
+
+
+
+def medic_add_patient_family_member(request, patient_id):
+    mi_template = get_template('Medics/HistoriaClinica/registrar-grupo-familiar.html')
+    dict = generate_base_keys(request)
+
+    if have_acess(request):
+        _patient = User.objects.get(username=patient_id)
+        dict['pac'] = _patient
+        dict['pac_username'] = patient_id
+        form = my_forms.RelationForm(patient=patient_id)
+        dict['show_form'] = True
+        dict['form'] = form
+
+        if request.method == 'POST':
+            dict['show_form'] = False
+            _kin = request.POST['kin']           
+            _type = request.POST['type_relation']
+
+            rel = Relation(patient=_patient, kin=User.objects.get(username=_kin), type_relation=_type)
+            rel.save()
+
+        html_cont = mi_template.render(Context(dict))
+        return HttpResponse(html_cont)
+
+    else:
+        path = request.META['PATH_INFO']
+
+
+
+def medic_delete_patient_family_member(request, patient_id, parent_id):
+    mi_template = get_template('Medics/GestionTurnos/show-turn-detail.html')
+    dict = generate_base_keys(request)
+
+    if have_acess(request):
+        patient = User.objects.get(username=patient_id)
+        dict['pac'] = patient
+        dict['pac_username'] = patient_id              
+
+        
+        html_cont = mi_template.render(Context(dict))
+        return HttpResponse(html_cont)
+
+    else:
+        path = request.META['PATH_INFO']
+
+
+

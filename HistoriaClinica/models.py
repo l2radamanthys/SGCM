@@ -291,3 +291,31 @@ class CardiovascularSystemExam(models.Model):
     posterior_tibial_pulse = models.IntegerField('Pulso Tibial posterior ')
     pedius_pulse = models.IntegerField('Pulso Pedio')
     comments = models.TextField('Observaciones')
+
+
+
+class Relation(models.Model):
+    """
+        Para Definir las relaciones de Parentesco entre Familiares
+    """
+    patient = models.ForeignKey(User, related_name="paciente_user")
+    kin = models.ForeignKey(User, verbose_name='Pariente', related_name="familiar_user")
+    type_relation = models.IntegerField('Tipo Parentesco', default=0, choices=RELATIONS_CHOICES)
+
+    class Meta:
+        db_table = "Relations"
+
+
+
+class HereditaryDisease(models.Model):
+    """
+        Enfermedades Hereditarias que padece el paciente
+    """
+    patient = models.ForeignKey(User)
+    type = models.IntegerField('Tipo', default=0, choices=HEREDITARY_DISEASES)
+    name = models.CharField('Nombre', max_length=100)
+
+    class Meta:
+        db_table = "HereditaryDiseases"
+
+

@@ -3,6 +3,7 @@
 
 
 from django import forms
+from django.contrib.auth.models import User
 
 from HistoriaClinica.models import *
 from globals import *
@@ -219,4 +220,36 @@ class ImageInfoForm(forms.ModelForm):
         widgets = {
             'title' : forms.TextInput(attrs={'class':'edt_g'}),
             'content' : forms.Textarea(attrs={'cols':'60', 'rows':'3'}),
+        }
+
+
+
+class UserModelChoiceField(forms.ModelChoiceField):
+    """
+        Redefinido un model ChoiceField para cambiar la etiqueta que tiene que
+        mostrar
+    """
+    def label_from_instance(self, obj):
+        return "%s %s" %(obj.first_name, obj.last_name)
+
+
+
+
+class RelationForm(forms.ModelForm):           
+
+    def __init__(self, patient, *args, **kwargs):
+        super(RelationForm, self).__init__(*args, **kwargs)        
+        self.fields['kin'] = UserModelChoiceField(queryset=User.objects.filter(groups__name='Paciente').exclude(username=patient), to_field_name='username')
+
+        for key in self.fields:
+            self.fields[key].required = False
+
+
+    class Meta:
+        model = Relation
+        exclude = [
+            'patient',
+        ]
+        widgets = {
+            #'kin' : forms.ModelChoiceField(queryset=User.objects.filter(groups__name='Paciente'), to_field_name=None, empty_label=None)        
         }

@@ -224,3 +224,15 @@ RELATIONS_CHOICES = (
     (5, 'Conyugue'),        
         
 )
+
+HEREDITARY_DISEASES = (
+    (0, 'No Definido'),            
+    (1, 'Monogenica Autosomica Recesiva'),            
+    (2, 'Monogenica Autosomica Dominante'),            
+    (3, 'Monogenica Ligada Cromosoma X'),            
+    (4, 'Multifactoriales'),            
+    (5, 'Oligogenica'),            
+    (6, 'Genetica'),            
+    (7, 'Mitocondrial'),            
+#    (8, ''),            
+)

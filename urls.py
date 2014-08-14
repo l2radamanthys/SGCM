@@ -218,6 +218,9 @@ urlpatterns = patterns('',
     (r'^pacientes/mostrar/examen-aparato-cardiovascular/(\d{1,2})/$', hc_medics_views.medic_show_patient_cardio_exam),
     (r'^pacientes/borrar/examen-aparato-cardiovascular/(\d{1,2})/$', hc_medics_views.medic_del_patient_cardio_exam),
 
+    #Grupo Familiar
+    (r'^pacientes/mostrar/grupo-familiar/(\w+)/$', hc_medics_views.medic_show_patient_family_menbers),
+    (r'^pacientes/agregar/grupo-familiar/(\w+)/$', hc_medics_views.medic_add_patient_family_member),
 
     ######################################################################################
     #debug views, this views only desing for testing

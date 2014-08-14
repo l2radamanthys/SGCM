@@ -1,0 +1,39 @@
+{% extends 'Medics/GestionTurnos/patient-view.html' %}
+
+{% block ext_style %}
+
+{% endblock %}
+
+{% block view-cont %}
+<div  style="padding-left:10px;" >
+    <h2>Agregar Miembro del Grupo Familiar</h2>
+    <p style="font-size:14px;margin-left:10px">{{ pac.last_name  }}, {{ pac.first_name }} </p>
+</div>
+
+<div style="text-align:right; margin:20px;">
+    <a href="/pacientes/mostrar/grupo-familiar/{{ pac.username }}/" title="" class="grad-button-blue">Atras</a>
+</div>
+
+{% autoescape off %}
+    {{ custon_message }}
+{% endautoescape %}
+
+
+{% if show_form %}
+    <div class="fancy-form-white" style="text-align: left; width: 350px; margin: 0 auto;">
+    <form action="" method="POST">
+    <table style="width: 350px; font-size: 13px;">
+        {{ form.as_table }}
+        <tr>
+            <td colspan="2" style="text-align: center">
+            <br />
+            <input type="submit" class="grad-button-blue" value="Agregar"  />
+            </td>
+        </tr>  
+    </table>
+    </form>
+    </div>
+{% endif %}
+
+
+{% endblock %}
