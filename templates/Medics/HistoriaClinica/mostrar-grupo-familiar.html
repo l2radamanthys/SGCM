@@ -15,20 +15,32 @@
 </div>
 
 
-<table class="table" style="width:600px; margin: 0 auto;" cellspacing="0">
+<table class="tbl-round-light" style="width:500px; margin: 0 auto;" cellspacing="0">
+    <tr>
+        <th>Apellido y Nombre</th>
+        <th>Parentesco</th>
+        <th>Opciones</th>
+
+    </tr>
+
 
     {% for parent in parents %}
     <tr>
-        <td>{{ parent.kin.first_name }} {{ parent.kin.last_name }}</td>
         <td>
+            {{ parent.kin.first_name }} {{ parent.kin.last_name }}
+        </td>
+
+        <td>
+            {{ parent.get_type_relation_display }}
+        </td>    
+
+        <td style="text-align:center">
             <a href="/pacientes/show-info/{{ parent.kin.username }}/">
-                <img src="/media/images/page_find.gif" alt="Mostrar" /> 
+                <img src="/media/images/page_find.gif" alt="Mostrar" />
             </a>
-
             &nbsp;
-
             <a href="/pacientes/borrar/grupo-familiar/{{ parent.kin.username }}/" title="">
-                <img src="/media/images/page_delete.gif" alt="Mostrar" /> 
+                <img src="/media/images/page_delete.gif" alt="Eliminar" />
             </a>
         </td>
     </tr>
