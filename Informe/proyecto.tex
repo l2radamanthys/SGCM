@@ -106,11 +106,10 @@ posibles funciones son:
 \subsubsection{Medico}
 
 Los Usuarios \textbf{Medicos} los cuales son asignados por los Administrativos a 
-los Especialistas, 
+los Especialistas, en cuanto a privilegios y funcionalidades dentro del sistema, 
+los mismos pueden:
 
-Dentro de los privilegios, los mismos pueden:
-
-\begin{Itemize}
+\begin{itemize}
     \item Registrar Pacientes
     \item Modificar datos de Pacientes
     \item Enviar Mensajes a cualquier Usuario
@@ -118,12 +117,48 @@ Dentro de los privilegios, los mismos pueden:
     \item Cancelar Turnos
     \item Administrar sus Horario de Atencion
     \item Cancelar dias de atencion
-    \item 
 \end{itemize}
 
+Son los unicos usuarios que tienen acceso al Modulo \textit{Historia Clinina}, en cuanto
+a privilegio sobre este modulo diremos que tiene la posibilidad de Crear,Modificar,
+Borrar (salvo casos especificos, que por su naturaleza no se permite dicha 
+modificacion.) un conjunto de Estudios, para mas detalle se recomienda consultar
+el apartado sobre tal modulo.
 
 \subsubsection{Administrativo}
 
+En cuanto a los usuarios \textbf{Administrativo} poseen los mismos permisos que 
+un usuario \textbf{Medico} exceptuando que no poseen acceso a las funcionalidades 
+del Modulo Historia Clinica, como privilegio especial pueden administrar las 
+cuentas de usuario de todos los roles incluidos en el sistema, incluido los 
+Medico y otros Administrativos.
+
+\subsubsection{Admin}
+
+Existe un rol adicional que Django crea y gestiona por aparte, el mismo queda 
+delegado para los administradores del sistemas ya que mediante el se puede acceder
+y modificar cualquier parte de la base de datos, por lo que podriamos decir que 
+es un \textbf{Super Usuario}, o usuario \textbf{Root} como para hacer analogia
+con los usuarios en entornos Unix, el mismo no forma parte del sistema desarrollado
+sino como funcionalidad adicional Django provee un panel de administracion, 
+para dicho tipo de usuario, al cual se puede acceder desde url{/admin/} por ejemplo
+si estubiesemos ejecutando en un servidor local la ruta completa seria 
+url{http://127.0.0.1/admin/}\footnote{Se puede consultar mas acerca de Django
+Admin en url{https://docs.djangoproject.com/en/dev/ref/contrib/admin/}}.\\[0.1cm]
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=1.5]{resourse/django-admin.png}
+    \caption{Vista del Panel Administracion provisto por Django}
+    \label{fig:123}
+\end{figure}  
+
+
+Dentro del sistema el usuario no posee ningun privilegio adicional, es mas para 
+compatibilizar el usuario con la funcionalidad del sistema, cuando se inicializan
+por primera ves, se crea un usuario de este tipo llamado \textbf{admin} al cual
+se le asignan privilegio de \textit{Administrativo}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
