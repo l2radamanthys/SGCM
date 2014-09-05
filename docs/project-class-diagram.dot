@@ -2023,6 +2023,63 @@ digraph name {
     </TABLE>
     >]
 
+    HistoriaClinica_models_Relation [label=<
+    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+     ><FONT FACE="Helvetica Bold" COLOR="white"
+     >Relation</FONT></TD></TR>
+    
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">id</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">AutoField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">type_relation</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">IntegerField</FONT
+        ></TD></TR>
+        
+    
+    </TABLE>
+    >]
+
+    HistoriaClinica_models_HereditaryDisease [label=<
+    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+     ><FONT FACE="Helvetica Bold" COLOR="white"
+     >HereditaryDisease</FONT></TD></TR>
+    
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">id</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">AutoField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">type</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">name</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+    
+    </TABLE>
+    >]
+
 
 
   
@@ -2241,6 +2298,22 @@ digraph name {
   
   HistoriaClinica_models_CardiovascularSystemExam -> django_contrib_auth_models_User
   [label="patient (cardiovascularsystemexam)"] [arrowhead=none, arrowtail=dot];
+  
+
+  
+  
+  HistoriaClinica_models_Relation -> django_contrib_auth_models_User
+  [label="patient (paciente_user)"] [arrowhead=none, arrowtail=dot];
+  
+  
+  HistoriaClinica_models_Relation -> django_contrib_auth_models_User
+  [label="kin (familiar_user)"] [arrowhead=none, arrowtail=dot];
+  
+
+  
+  
+  HistoriaClinica_models_HereditaryDisease -> django_contrib_auth_models_User
+  [label="patient (hereditarydisease)"] [arrowhead=none, arrowtail=dot];
   
 
 }

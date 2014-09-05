@@ -1,0 +1,1264 @@
+
+digraph name {
+  fontname = "Helvetica"
+  fontsize = 8
+
+  node [
+    fontname = "Helvetica"
+    fontsize = 8
+    shape = "plaintext"
+  ]
+  edge [
+    fontname = "Helvetica"
+    fontsize = 8
+  ]
+
+
+
+
+    HistoriaClinica_models_Image [label=<
+    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+     ><FONT FACE="Helvetica Bold" COLOR="white"
+     >Image</FONT></TD></TR>
+    
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">id</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">AutoField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">date</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">DateField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">title</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">content</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">TextField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">image</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">ImageField</FONT
+        ></TD></TR>
+        
+    
+    </TABLE>
+    >]
+
+    HistoriaClinica_models_File [label=<
+    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+     ><FONT FACE="Helvetica Bold" COLOR="white"
+     >File</FONT></TD></TR>
+    
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">id</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">AutoField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">date</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">DateField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">title</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">content</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">TextField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">archive</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">FileField</FONT
+        ></TD></TR>
+        
+    
+    </TABLE>
+    >]
+
+    HistoriaClinica_models_AntecedentesPerinatales [label=<
+    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+     ><FONT FACE="Helvetica Bold" COLOR="white"
+     >AntecedentesPerinatales</FONT></TD></TR>
+    
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">id</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">AutoField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">pregnancy_number</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">pregnancy_duration</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">controls</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">normal_birth</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">weight</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">FloatField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">size</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">FloatField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">pathologies</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">medical_care</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">coments</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">TextField</FONT
+        ></TD></TR>
+        
+    
+    </TABLE>
+    >]
+
+    HistoriaClinica_models_ToxicHabits [label=<
+    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+     ><FONT FACE="Helvetica Bold" COLOR="white"
+     >ToxicHabits</FONT></TD></TR>
+    
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">id</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">AutoField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">snuff</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">alcohol</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">drugs</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">infusions</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">observations</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">TextField</FONT
+        ></TD></TR>
+        
+    
+    </TABLE>
+    >]
+
+    HistoriaClinica_models_BasicExam [label=<
+    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+     ><FONT FACE="Helvetica Bold" COLOR="white"
+     >BasicExam</FONT></TD></TR>
+    
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">id</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">AutoField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">date</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">DateField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">body_temperature</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">FloatField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">sistolic_blood_pressure</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">diastolic_blood_pressure</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">respiratory_rate</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">pulse</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">average_weight</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">FloatField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">average_height</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">FloatField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">weight</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">FloatField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">height</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">FloatField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">bmi</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">FloatField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">general_impression</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">TextField</FONT
+        ></TD></TR>
+        
+    
+    </TABLE>
+    >]
+
+    HistoriaClinica_models_HeadExam [label=<
+    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+     ><FONT FACE="Helvetica Bold" COLOR="white"
+     >HeadExam</FONT></TD></TR>
+    
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">id</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">AutoField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">date</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">DateField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">form</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">scalp</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">skull</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">fontanelles_and_sutures</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">facie</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">eyelids</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">conjunctive</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">eyeball_movement</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">vision</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">vision_p1</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">vision_p2</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">vision_p3</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">nose</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">nostril</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">lips</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">teeth</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">language</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">oropharyngeal_mucosa</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">tonsils</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">ears</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">ear_canal</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">eardrums</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">hearing</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">observations</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">TextField</FONT
+        ></TD></TR>
+        
+    
+    </TABLE>
+    >]
+
+    HistoriaClinica_models_NeckExam [label=<
+    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+     ><FONT FACE="Helvetica Bold" COLOR="white"
+     >NeckExam</FONT></TD></TR>
+    
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">id</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">AutoField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">date</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">DateField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">inspection</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">palpation</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">percussion</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">auscultation</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">comments</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">TextField</FONT
+        ></TD></TR>
+        
+    
+    </TABLE>
+    >]
+
+    HistoriaClinica_models_PFTSExam [label=<
+    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+     ><FONT FACE="Helvetica Bold" COLOR="white"
+     >PFTSExam</FONT></TD></TR>
+    
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">id</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">AutoField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">date</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">DateField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">aspect</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">TextField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">pilosa_distribution</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">TextField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">injuries</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">TextField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">appendages</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">TextField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">subcutaneous_tissue</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">TextField</FONT
+        ></TD></TR>
+        
+    
+    </TABLE>
+    >]
+
+    HistoriaClinica_models_OsteoArticularExam [label=<
+    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+     ><FONT FACE="Helvetica Bold" COLOR="white"
+     >OsteoArticularExam</FONT></TD></TR>
+    
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">id</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">AutoField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">date</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">DateField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">vertebra_column</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">TextField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">bone_axles</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">TextField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">joints</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">TextField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">members</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">TextField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">muscular_tropism</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">TextField</FONT
+        ></TD></TR>
+        
+    
+    </TABLE>
+    >]
+
+    HistoriaClinica_models_RespiratorySystemExam [label=<
+    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+     ><FONT FACE="Helvetica Bold" COLOR="white"
+     >RespiratorySystemExam</FONT></TD></TR>
+    
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">id</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">AutoField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">date</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">DateField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">type_chest</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">breast</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">TextField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">accessory_muscle_use</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">respiratory_rate</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">tour_freely</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">tour_vertices</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">jars_vibrations</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">sonority</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">vesicular_murmur</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">rales_moist_rales</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">roncus</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">wheezing</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">tubal_puff</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">pleural_rub</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">comments</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">TextField</FONT
+        ></TD></TR>
+        
+    
+    </TABLE>
+    >]
+
+    HistoriaClinica_models_CardiovascularSystemExam [label=<
+    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+     ><FONT FACE="Helvetica Bold" COLOR="white"
+     >CardiovascularSystemExam</FONT></TD></TR>
+    
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">id</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">AutoField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">date</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">DateField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">beats</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">shock_tip</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">R1</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">R2</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">R3</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">R4</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">puffs</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">clicks</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">carotid_pulse</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">humeral_pulse</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">radial_pulse</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">femoral_pulse</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">popliteal_pulse</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">posterior_tibial_pulse</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">pedius_pulse</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">comments</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">TextField</FONT
+        ></TD></TR>
+        
+    
+    </TABLE>
+    >]
+
+    HistoriaClinica_models_Relation [label=<
+    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+     ><FONT FACE="Helvetica Bold" COLOR="white"
+     >Relation</FONT></TD></TR>
+    
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">id</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">AutoField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">type_relation</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">IntegerField</FONT
+        ></TD></TR>
+        
+    
+    </TABLE>
+    >]
+
+    HistoriaClinica_models_HereditaryDisease [label=<
+    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+     ><FONT FACE="Helvetica Bold" COLOR="white"
+     >HereditaryDisease</FONT></TD></TR>
+    
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">id</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Helvetica Bold">AutoField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">type</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Helvetica Bold">name</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Helvetica Bold">CharField</FONT
+        ></TD></TR>
+        
+    
+    </TABLE>
+    >]
+
+
+
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Helvetica Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  HistoriaClinica_models_Image -> django_contrib_auth_models_User
+  [label="medic (medic_user0)"] [arrowhead=none, arrowtail=dot];
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Helvetica Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  HistoriaClinica_models_Image -> django_contrib_auth_models_User
+  [label="patient (patient_user0)"] [arrowhead=none, arrowtail=dot];
+  
+
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Helvetica Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  HistoriaClinica_models_File -> django_contrib_auth_models_User
+  [label="medic (medic_user1)"] [arrowhead=none, arrowtail=dot];
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Helvetica Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  HistoriaClinica_models_File -> django_contrib_auth_models_User
+  [label="patient (patient_user1)"] [arrowhead=none, arrowtail=dot];
+  
+
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Helvetica Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  HistoriaClinica_models_AntecedentesPerinatales -> django_contrib_auth_models_User
+  [label="patient (antecedentesperinatales)"] [arrowhead=none, arrowtail=dot];
+  
+
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Helvetica Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  HistoriaClinica_models_ToxicHabits -> django_contrib_auth_models_User
+  [label="patient (toxichabits)"] [arrowhead=none, arrowtail=dot];
+  
+
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Helvetica Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  HistoriaClinica_models_BasicExam -> django_contrib_auth_models_User
+  [label="patient (basicexam)"] [arrowhead=none, arrowtail=dot];
+  
+
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Helvetica Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  HistoriaClinica_models_HeadExam -> django_contrib_auth_models_User
+  [label="patient (headexam)"] [arrowhead=none, arrowtail=dot];
+  
+
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Helvetica Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  HistoriaClinica_models_NeckExam -> django_contrib_auth_models_User
+  [label="patient (neckexam)"] [arrowhead=none, arrowtail=dot];
+  
+
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Helvetica Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  HistoriaClinica_models_PFTSExam -> django_contrib_auth_models_User
+  [label="patient (pftsexam)"] [arrowhead=none, arrowtail=dot];
+  
+
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Helvetica Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  HistoriaClinica_models_OsteoArticularExam -> django_contrib_auth_models_User
+  [label="patient (osteoarticularexam)"] [arrowhead=none, arrowtail=dot];
+  
+
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Helvetica Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  HistoriaClinica_models_RespiratorySystemExam -> django_contrib_auth_models_User
+  [label="patient (respiratorysystemexam)"] [arrowhead=none, arrowtail=dot];
+  
+
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Helvetica Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  HistoriaClinica_models_CardiovascularSystemExam -> django_contrib_auth_models_User
+  [label="patient (cardiovascularsystemexam)"] [arrowhead=none, arrowtail=dot];
+  
+
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Helvetica Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  HistoriaClinica_models_Relation -> django_contrib_auth_models_User
+  [label="patient (paciente_user)"] [arrowhead=none, arrowtail=dot];
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Helvetica Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  HistoriaClinica_models_Relation -> django_contrib_auth_models_User
+  [label="kin (familiar_user)"] [arrowhead=none, arrowtail=dot];
+  
+
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Helvetica Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  HistoriaClinica_models_HereditaryDisease -> django_contrib_auth_models_User
+  [label="patient (hereditarydisease)"] [arrowhead=none, arrowtail=dot];
+  
+
+}

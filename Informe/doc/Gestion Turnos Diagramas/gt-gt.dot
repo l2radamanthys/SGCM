@@ -1,0 +1,305 @@
+
+digraph name {
+  fontname = "Open Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Open Sans"
+    fontsize = 8
+    shape = "plaintext"
+  ]
+  edge [
+    fontname = "Open Sans"
+    fontsize = 8
+  ]
+
+    
+
+    GestionTurnos_models_BusinessHours [label=<
+    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+     ><FONT FACE="Open Sans Bold" COLOR="white"
+     >BusinessHours</FONT></TD></TR>
+    
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">id</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">AutoField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">date</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">start_time</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">TimeField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">end_time</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">TimeField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">turn_duration</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">IntegerField</FONT
+        ></TD></TR>
+        
+    
+    </TABLE>
+    >]
+
+    GestionTurnos_models_DayOfAttention [label=<
+    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+     ><FONT FACE="Open Sans Bold" COLOR="white"
+     >DayOfAttention</FONT></TD></TR>
+    
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">id</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">AutoField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">date</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">DateField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">status</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">number_of_turns</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">current_end_time</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">TimeField</FONT
+        ></TD></TR>
+        
+    
+    </TABLE>
+    >]
+
+    GestionTurnos_models_Turn [label=<
+    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+     ><FONT FACE="Open Sans Bold" COLOR="white"
+     >Turn</FONT></TD></TR>
+    
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">id</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">AutoField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">start</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">TimeField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">end</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">TimeField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">status</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">observation</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">TextField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">number</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">IntegerField</FONT
+        ></TD></TR>
+        
+    
+    </TABLE>
+    >]
+
+
+    GestionTurnos_models_NonWorkingDay [label=<
+    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+     ><FONT FACE="Open Sans Bold" COLOR="white"
+     >NonWorkingDay</FONT></TD></TR>
+    
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">id</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">AutoField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">date</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">DateField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">issue</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">TextField</FONT
+        ></TD></TR>
+        
+    
+    </TABLE>
+    >]
+
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Open Sans Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Open Sans Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  GestionTurnos_models_BusinessHours -> django_contrib_auth_models_User
+  [label="user (businesshours)"] [arrowhead=none, arrowtail=dot];
+  
+  
+  GestionTurnos_models_DayOfAttention -> GestionTurnos_models_BusinessHours
+  [label="business_hour (dayofattention)"] [arrowhead=none, arrowtail=dot];
+  
+
+  
+  GestionTurnos_models_Turn -> GestionTurnos_models_DayOfAttention
+  [label="day (turn)"] [arrowhead=none, arrowtail=dot];
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Open Sans Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  GestionTurnos_models_Turn -> django_contrib_auth_models_User
+  [label="medic (medic_user2)"] [arrowhead=none, arrowtail=dot];
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Open Sans Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  GestionTurnos_models_Turn -> django_contrib_auth_models_User
+  [label="patient (patient_user2)"] [arrowhead=none, arrowtail=dot];
+  
+
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Open Sans Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Open Sans Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Open Sans Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  GestionTurnos_models_NonWorkingDay -> django_contrib_auth_models_User
+  [label="user (from)"] [arrowhead=none, arrowtail=dot];
+  
+
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Open Sans Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Open Sans Bold" COLOR="white"
+      >UserInformation</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  
+
+}
