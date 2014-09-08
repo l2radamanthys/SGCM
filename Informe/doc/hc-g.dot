@@ -14,370 +14,7 @@ digraph name {
   ]
 
 
-
-
-    GestionTurnos_models_UserInformation [label=<
-    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
-     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
-     ><FONT FACE="Open Sans Bold" COLOR="white"
-     >UserInformation</FONT></TD></TR>
-    
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT COLOR="#7B7B7B" FACE="Open Sans">id</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT COLOR="#7B7B7B" FACE="Open Sans">AutoField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">type_doc</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">CharField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">nro_doc</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">CharField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">gender</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">CharField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">phone</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">CharField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">address</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">CharField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">city</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">CharField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">state</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">CharField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">birth_date</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">DateField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">photo</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">ImageField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">matricula</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">CharField</FONT
-        ></TD></TR>
-        
-    
-    </TABLE>
-    >]
-
-    GestionTurnos_models_MedicalSpecialties [label=<
-    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
-     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
-     ><FONT FACE="Open Sans Bold" COLOR="white"
-     >MedicalSpecialties</FONT></TD></TR>
-    
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT COLOR="#7B7B7B" FACE="Open Sans">id</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT COLOR="#7B7B7B" FACE="Open Sans">AutoField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">name</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">CharField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">description</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">TextField</FONT
-        ></TD></TR>
-        
-    
-    </TABLE>
-    >]
-
-    GestionTurnos_models_MedicalSpecialityFor [label=<
-    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
-     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
-     ><FONT FACE="Open Sans Bold" COLOR="white"
-     >MedicalSpecialityFor</FONT></TD></TR>
-    
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT COLOR="#7B7B7B" FACE="Open Sans">id</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT COLOR="#7B7B7B" FACE="Open Sans">AutoField</FONT
-        ></TD></TR>
-        
-    
-    </TABLE>
-    >]
-
-    GestionTurnos_models_BusinessHours [label=<
-    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
-     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
-     ><FONT FACE="Open Sans Bold" COLOR="white"
-     >BusinessHours</FONT></TD></TR>
-    
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT COLOR="#7B7B7B" FACE="Open Sans">id</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT COLOR="#7B7B7B" FACE="Open Sans">AutoField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">date</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">IntegerField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">start_time</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">TimeField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">end_time</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">TimeField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">turn_duration</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">IntegerField</FONT
-        ></TD></TR>
-        
-    
-    </TABLE>
-    >]
-
-    GestionTurnos_models_DayOfAttention [label=<
-    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
-     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
-     ><FONT FACE="Open Sans Bold" COLOR="white"
-     >DayOfAttention</FONT></TD></TR>
-    
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT COLOR="#7B7B7B" FACE="Open Sans">id</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT COLOR="#7B7B7B" FACE="Open Sans">AutoField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">date</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">DateField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">status</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">IntegerField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">number_of_turns</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">IntegerField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">current_end_time</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">TimeField</FONT
-        ></TD></TR>
-        
-    
-    </TABLE>
-    >]
-
-    GestionTurnos_models_Turn [label=<
-    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
-     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
-     ><FONT FACE="Open Sans Bold" COLOR="white"
-     >Turn</FONT></TD></TR>
-    
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT COLOR="#7B7B7B" FACE="Open Sans">id</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT COLOR="#7B7B7B" FACE="Open Sans">AutoField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">start</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">TimeField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">end</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">TimeField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">status</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">IntegerField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">observation</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">TextField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">number</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">IntegerField</FONT
-        ></TD></TR>
-        
-    
-    </TABLE>
-    >]
-
-    GestionTurnos_models_Message [label=<
-    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
-     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
-     ><FONT FACE="Open Sans Bold" COLOR="white"
-     >Message</FONT></TD></TR>
-    
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT COLOR="#7B7B7B" FACE="Open Sans">id</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT COLOR="#7B7B7B" FACE="Open Sans">AutoField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT COLOR="#7B7B7B" FACE="Open Sans">date</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT COLOR="#7B7B7B" FACE="Open Sans">DateTimeField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">issue</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">CharField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">content</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">TextField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT COLOR="#7B7B7B" FACE="Open Sans">read</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT COLOR="#7B7B7B" FACE="Open Sans">BooleanField</FONT
-        ></TD></TR>
-        
-    
-    </TABLE>
-    >]
-
-    GestionTurnos_models_NonWorkingDay [label=<
-    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
-     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
-     ><FONT FACE="Open Sans Bold" COLOR="white"
-     >NonWorkingDay</FONT></TD></TR>
-    
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT COLOR="#7B7B7B" FACE="Open Sans">id</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT COLOR="#7B7B7B" FACE="Open Sans">AutoField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">date</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">DateField</FONT
-        ></TD></TR>
-        
-        <TR><TD ALIGN="LEFT" BORDER="0"
-        ><FONT FACE="Open Sans">issue</FONT
-        ></TD>
-        <TD ALIGN="LEFT"
-        ><FONT FACE="Open Sans">TextField</FONT
-        ></TD></TR>
-        
-    
-    </TABLE>
-    >]
-
-    GestionTurnos_models_MedicalConsultation [label=<
+GestionTurnos_models_MedicalConsultation [label=<
     <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
      ><FONT FACE="Open Sans Bold" COLOR="white"
@@ -497,7 +134,327 @@ digraph name {
     </TABLE>
     >]
 
+	GestionTurnos_models_MedicalConsultation -> django_contrib_auth_models_User
+	 [label="medic (medic_user)"] [arrowhead=none, arrowtail=dot];
 
+	GestionTurnos_models_MedicalConsultation -> django_contrib_auth_models_User
+	 [label="patient (patient_user)"] [arrowhead=none, arrowtail=dot];
+
+	GestionTurnos_models_MedicalPrescription -> GestionTurnos_models_MedicalConsultation
+	 [label="med_consulation (medicalprescription)"] [arrowhead=none, arrowtail=dot];
+
+    HistoriaClinica_models_Image [label=<
+    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+     ><FONT FACE="Open Sans Bold" COLOR="white"
+     >Image</FONT></TD></TR>
+    
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">id</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">AutoField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">date</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">DateField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">title</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">content</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">TextField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">image</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">ImageField</FONT
+        ></TD></TR>
+        
+    
+    </TABLE>
+    >]
+
+    HistoriaClinica_models_File [label=<
+    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+     ><FONT FACE="Open Sans Bold" COLOR="white"
+     >File</FONT></TD></TR>
+    
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">id</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">AutoField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">date</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">DateField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">title</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">content</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">TextField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">archive</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">FileField</FONT
+        ></TD></TR>
+        
+    
+    </TABLE>
+    >]
+
+    HistoriaClinica_models_AntecedentesPerinatales [label=<
+    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+     ><FONT FACE="Open Sans Bold" COLOR="white"
+     >AntecedentesPerinatales</FONT></TD></TR>
+    
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">id</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">AutoField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">pregnancy_number</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">pregnancy_duration</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">controls</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">normal_birth</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">weight</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">FloatField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">size</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">FloatField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">pathologies</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">medical_care</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">coments</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">TextField</FONT
+        ></TD></TR>
+        
+    
+    </TABLE>
+    >]
+
+
+    HistoriaClinica_models_ToxicHabits [label=<
+    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+     ><FONT FACE="Open Sans Bold" COLOR="white"
+     >ToxicHabits</FONT></TD></TR>
+    
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">id</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">AutoField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">snuff</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">alcohol</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">drugs</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">infusions</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">observations</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">TextField</FONT
+        ></TD></TR>
+        
+    
+    </TABLE>
+    >]
+        
+
+    HistoriaClinica_models_Relation [label=<
+    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+     ><FONT FACE="Open Sans Bold" COLOR="white"
+     >Relation</FONT></TD></TR>
+    
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">id</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">AutoField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">type_relation</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">IntegerField</FONT
+        ></TD></TR>
+        
+    
+    </TABLE>
+    >]
+
+    HistoriaClinica_models_HereditaryDisease [label=<
+    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+     ><FONT FACE="Open Sans Bold" COLOR="white"
+     >HereditaryDisease</FONT></TD></TR>
+    
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">id</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">AutoField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">type</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">name</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+    
+    </TABLE>
+    >]
+
+
+
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Open Sans Bold" COLOR="white"
+	  >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  HistoriaClinica_models_Image -> django_contrib_auth_models_User
+  [label="medic (medic_user0)"] [arrowhead=none, arrowtail=dot];
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Open Sans Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  HistoriaClinica_models_Image -> django_contrib_auth_models_User
+  [label="patient (patient_user0)"] [arrowhead=none, arrowtail=dot];
+  
 
   
   
@@ -509,12 +466,8 @@ digraph name {
       </TABLE>
       >]
   
-  GestionTurnos_models_UserInformation -> django_contrib_auth_models_User
-  [label="user (userinformation)"] [arrowhead=none, arrowtail=dot];
-  
-
-  
-
+  HistoriaClinica_models_File -> django_contrib_auth_models_User
+  [label="medic (medic_user1)"] [arrowhead=none, arrowtail=dot];
   
   
   django_contrib_auth_models_User [label=<
@@ -525,12 +478,8 @@ digraph name {
       </TABLE>
       >]
   
-  GestionTurnos_models_MedicalSpecialityFor -> django_contrib_auth_models_User
-  [label="user (medicalspecialityfor)"] [arrowhead=none, arrowtail=dot];
-  
-  
-  GestionTurnos_models_MedicalSpecialityFor -> GestionTurnos_models_MedicalSpecialties
-  [label="speciality (medicalspecialityfor)"] [arrowhead=none, arrowtail=dot];
+  HistoriaClinica_models_File -> django_contrib_auth_models_User
+  [label="patient (patient_user1)"] [arrowhead=none, arrowtail=dot];
   
 
   
@@ -543,44 +492,8 @@ digraph name {
       </TABLE>
       >]
   
-  GestionTurnos_models_BusinessHours -> django_contrib_auth_models_User
-  [label="user (businesshours)"] [arrowhead=none, arrowtail=dot];
-  
-
-  
-  
-  GestionTurnos_models_DayOfAttention -> GestionTurnos_models_BusinessHours
-  [label="business_hour (dayofattention)"] [arrowhead=none, arrowtail=dot];
-  
-
-  
-  
-  GestionTurnos_models_Turn -> GestionTurnos_models_DayOfAttention
-  [label="day (turn)"] [arrowhead=none, arrowtail=dot];
-  
-  
-  django_contrib_auth_models_User [label=<
-      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
-      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
-      ><FONT FACE="Open Sans Bold" COLOR="white"
-      >User</FONT></TD></TR>
-      </TABLE>
-      >]
-  
-  GestionTurnos_models_Turn -> django_contrib_auth_models_User
-  [label="medic (medic_user2)"] [arrowhead=none, arrowtail=dot];
-  
-  
-  django_contrib_auth_models_User [label=<
-      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
-      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
-      ><FONT FACE="Open Sans Bold" COLOR="white"
-      >User</FONT></TD></TR>
-      </TABLE>
-      >]
-  
-  GestionTurnos_models_Turn -> django_contrib_auth_models_User
-  [label="patient (patient_user2)"] [arrowhead=none, arrowtail=dot];
+  HistoriaClinica_models_AntecedentesPerinatales -> django_contrib_auth_models_User
+  [label="patient (antecedentesperinatales)"] [arrowhead=none, arrowtail=dot];
   
 
   
@@ -593,20 +506,8 @@ digraph name {
       </TABLE>
       >]
   
-  GestionTurnos_models_Message -> django_contrib_auth_models_User
-  [label="from_user (from_user)"] [arrowhead=none, arrowtail=dot];
-  
-  
-  django_contrib_auth_models_User [label=<
-      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
-      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
-      ><FONT FACE="Open Sans Bold" COLOR="white"
-      >User</FONT></TD></TR>
-      </TABLE>
-      >]
-  
-  GestionTurnos_models_Message -> django_contrib_auth_models_User
-  [label="to_user (to_user)"] [arrowhead=none, arrowtail=dot];
+  HistoriaClinica_models_ToxicHabits -> django_contrib_auth_models_User
+  [label="patient (toxichabits)"] [arrowhead=none, arrowtail=dot];
   
 
   
@@ -619,8 +520,74 @@ digraph name {
       </TABLE>
       >]
   
-  GestionTurnos_models_NonWorkingDay -> django_contrib_auth_models_User
-  [label="user (from)"] [arrowhead=none, arrowtail=dot];
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Open Sans Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Open Sans Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Open Sans Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Open Sans Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Open Sans Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Open Sans Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  HistoriaClinica_models_Relation -> django_contrib_auth_models_User
+  [label="patient (paciente_user)"] [arrowhead=none, arrowtail=dot];
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Open Sans Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  HistoriaClinica_models_Relation -> django_contrib_auth_models_User
+  [label="kin (familiar_user)"] [arrowhead=none, arrowtail=dot];
   
 
   
@@ -633,26 +600,8 @@ digraph name {
       </TABLE>
       >]
   
-  GestionTurnos_models_MedicalConsultation -> django_contrib_auth_models_User
-  [label="medic (medic_user)"] [arrowhead=none, arrowtail=dot];
-  
-  
-  django_contrib_auth_models_User [label=<
-      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
-      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
-      ><FONT FACE="Open Sans Bold" COLOR="white"
-      >User</FONT></TD></TR>
-      </TABLE>
-      >]
-  
-  GestionTurnos_models_MedicalConsultation -> django_contrib_auth_models_User
-  [label="patient (patient_user)"] [arrowhead=none, arrowtail=dot];
-  
-
-  
-  
-  GestionTurnos_models_MedicalPrescription -> GestionTurnos_models_MedicalConsultation
-  [label="med_consulation (medicalprescription)"] [arrowhead=none, arrowtail=dot];
+  HistoriaClinica_models_HereditaryDisease -> django_contrib_auth_models_User
+  [label="patient (hereditarydisease)"] [arrowhead=none, arrowtail=dot];
   
 
 }
