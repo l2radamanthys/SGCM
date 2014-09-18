@@ -1,6 +1,6 @@
 \chapter{Etapas del desarrollo de Proyecto}
 
-\section{Elección del Tema}
+\section{Elecci\'on del Tema}
 
 Al momento de elegir el tema del seminario se me presento un numero de 
 problemas ya que primero no sabia que area se iba a aplicar, queria realizar 
@@ -21,36 +21,57 @@ por lo que fue mas por una moda.
 
 Se que suena repetitivo pero bueno digamos fue la parte mas dificil a la hora 
 de decidir que queria hacer, aunquen bien el tema elegido, mmm digamos que 
-salio de la galera por una interconsulta con un posible cliente que al final no 
+salio de la galera por una interconsulta con un posible cliente que al final no
 llego a mas que intercambiar un par de emails, pero fundo las bases y me 
 parecio era una buena idea, consulte un poco los seminarios anteriores aunque 
 habia temas relacionados el desarrollo no era muy extensos ni aplicado 
-exactamente al area que pretendia.
+exactamente al area que pretendia.\\[0.1cm]
 
-Habia desarrolladas aplicaciones dedicadas a la facturacion, atencion, etc. Mi 
-aplicacion trataba de juntar dos partes el seguimiento o evolucion del paciente
-lo cual se registra mediante el documento de Historia Clinica, lo que era bueno 
-por que al menos no iba a reinventar la rueda. Llegado el momentos de 
-presentar el tema a mi director de tesis me dijo que era poco, mmm supongo que 
-fue por que no supe explicarlo bien, en fin habia que agregar algo mas y en 
-esos dia tube que asistir a interconsulta medica, cuando entre en el 
+Habia desarrolladas aplicaciones dedicadas a la facturacion, atencion, etc. Con 
+el desarrollo mi aplicacion trataba de juntar dos partes el seguimiento o 
+evolucion del paciente lo cual se registra mediante el documento de Historia 
+Clinica, lo que era bueno por que al menos no iba a reinventar la rueda. Llegado 
+el momentos de presentar el tema a mi director de tesis me dijo que era poco, 
+supongo que fue por que no supe explicarlo bien, en fin habia que agregar algo 
+mas y en esos dia tube que asistir a interconsulta medica, cuando entre en el 
 consultorio note que la secretaria estaba con una hoja de calculos en MS Excel 
-registrando y comprobando los tunos para el dia, de ahi me surgio que para 
-complementar la aplicacion podria desarrollar una funcionalidad que permita 
-realizar esa tarea de un modo mas eficiente, con ello el tema y las 
-funcionalidades quedaron definidas. 
+registrando y comprobando los tunos para el dia, automaticamente me di cuenta 
+de una gran falencia, sin importar lo automatizado que estubiese el consultoria
+las tareas mas simples como la de asignar turnos se seguia realizando de una 
+manera muy poco practica, la secretaria tenia una hoja de calculo preformateada 
+con los horarios de cada dia, la cual debia duplicar para registrar un nuevo dia,
+de ahi me surgio la idea de implementar una funcionalidad que agilice dicho 
+problema y por que no brindar una platarfoma virtual para que los pacientes 
+pudiesen solicitar turnos, dejando de depender tanto de los telefono, con ello el 
+tema y las funcionalidades principales quedaron definidas. 
 
 
-\section{Análisis de Requisitos y Búsqueda de Información}
+\section{An\'alisis de Requisitos y Búsqueda de Informaci\'on}
 
-Luego de elegido el tema de
+Luego de elegido el tema llego el momento de averiguar como funcionaba todo, aunque
+esto sea un software academico queria que despues de desarrollado al menos fuera 
+util y no solo dejarlo morir apilado como un seminario mas.
+
+Sobre la parte de gestion de turno el problema era algo sencillo, ya que todo el mundo 
+alguna ves tuvo que sacar turno para ya sea ser atendido o hacer un determinado 
+tramite, la dificultad radicaba mas en que no tenia idea como modelizar un 
+problema y los datos que se deberian manejar. 
+
+En cuanto a historia clinica, hubo que visitar algunos centros medicos y especialistas
+ y solicitar informacion acerca de como ellos manejaban las historia clinicas de sus 
+ paciente, que tipo de informacion era inpresindible registrar en ella y cual podria ser 
+secundaria, fue algo tedioso digamos ya que la informacion sobre los pacientes es 
+informacion sencible y no es de libre acceso. 
+
+Ademas sumando lo que habia recabado y gracias a un amigo que me paso un par de modelos 
+que consiguio y un poco de busqueda de informacion referente en la web, logre generar un 
+panorama mas o menos concreto de lo que iba a hacer.  
+
+\section{Primera Aproximaci\'on}
+
 INCOMPLETO
 
-\section{Primera Aproximación}
-
-INCOMPLETO
-
-\section{Aproximación Final}
+\section{Aproximaci\'on Final}
 
 INCOMPLETO
 
@@ -73,7 +94,7 @@ desarrollo de nuevos modulos, su implementacion y aplicacion en casos reales.}.
 Luego de revisar los modelos en papel en su mayoria de diferentes organismos
 medicos que consulte se determino que se incluirian los siguientes estudios:
 
-\begin{Itemize}
+\begin{itemize}
     \item Habitos Toxicos.
     \item Antecedentes Perinatales \footnote{Hace Referencia a antecedentes del nacimiento}
     \item Grupo Familiar \footnote{Esto no es un Examen en si sino mas bien que sirve para 
@@ -102,7 +123,7 @@ caracteristicas que tenia pensadas} pero a medida que el desarrollo del sistema
 avanzo perdieron importancia por su aplicacion o por cuestiones de falta de 
 tiempo, aqui emnumero algunas de las funcionalidades que se descartaron:
 
-\begin{Itemize}
+\begin{itemize}
     \item Gestion de Turnos - Definir Especialidad del Medico para atencion.
     \item Gestion de Turnos - Especificar Habitacion del Consultorio para el Turno.
     \item Historia Clinica - Subir Archivos.
@@ -110,7 +131,7 @@ tiempo, aqui emnumero algunas de las funcionalidades que se descartaron:
     \item Historia Clinica - Conectar con el Sistema Vademecum.
 \end{itemize}
 
-No son todas pero son las mas importentes.
+No son todas pero considero son las mas importantes o relevantes.
 
 
 \section{Seguimiento y desarrollo del Proyecto}
@@ -119,8 +140,16 @@ El seguimiento y desarrollo del proyecto digamos no fue continuo fue mas algo
 bastante accidentado si podria decirse, y bueno hasta la fecha solo habia 
 programado pequeñas aplicaciones, enfrentaba el problema de que me topaba con 
 una metodologia diferente de lo que manejaba, a la hora de encarar lo 
-relacionado con la programacion.
+relacionado con la programacion. 
 
+Al menos a la hora de mantener el codigo agradesco haber conocido en unas charlas
+unas semanas antes la herramienta de control de versiones GIT \footnote{www.git-scm.com}
+que digamos a simple vista te permite gestionar las diferentes versiones de tu codigo
+incluso volver a versiones anteriores si fuese necesario. Este proyecto de seminario
+incluido tanto el informe del mismo como su codigo fuente se encuentran hospedados
+en un repositorio online de git en la siguiente direccion web 
+url{http://www.github.com/l2radamanthys/SGCM.git} alli si desean pueden vajar la ultima
+version del mismo.
 INCOMPLETO
 
 
