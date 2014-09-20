@@ -63,17 +63,18 @@ Aqui un diagrama con todos los modelos que componen el modulo Usuarios.
     \label{fig:07}
 \end{figure}
 
-Si lo expres\'aramos mediante la notaci\'on UML para Diagramas de Clases 
-tendr\'{\i}amos lo siguiente.
+%Si lo expres\'aramos mediante la notaci\'on UML para Diagramas de Clases 
+%tendr\'{\i}amos lo siguiente.
+%
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[scale=0.7]{resourse/uml-users.png}
+%    \caption{Diagrama con modelos que componen el modulo Usuarios}
+%    \label{fig:07}
+%\end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.7]{resourse/uml-users.png}
-    \caption{Diagrama con modelos que componen el modulo Usuarios}
-    \label{fig:07}
-\end{figure}
-
-El \'unico modelo que fue necesario agregar es UserInformation el resto vienen
+El \'unico modelo que fue necesario agregar es UserInformation que es para 
+extender la informacion que se registra en el Modelo User el resto vienen
 con Django. En Resumen aunque se podr\'{\i}a haber desarrollado Un Modulo desde
 cero que gestione las sesiones de usuarios hubiese generado trabajo extra sin
 sentido.
@@ -192,7 +193,6 @@ El modulo se encarga de implementar las siguientes funciones
 \end{itemize}
 
 
-
 \subsection{Definicion del Modelo}
 
 Aqui se muestra el diagrama de modelos que componen el modulo \textbf{Gestion 
@@ -203,12 +203,28 @@ que corresponden a un unico modelo, lo que haremos sera separar en los modelos
 especificos utilizados para gestion de turnos y el resto de los modelos 
 definidos que complementan la funcionalidad del modulo.
 
+Por Cuestiones de tamaño del diagrama y por la cantidad modelos utilizados en 
+el modulo se complicaba poder mostrarlos todo en una misma pagina por lo que 
+para mejor visualizacion e interpretacion separe el mismo en 2 partes:
 
-\begin{figure}[h]
+El primer diagrama unifica todo lo referente a la asignacion de turnos, que es lo 
+principal del modulo:
+
+\begin{figure}[H]
     \centering
-    \includegraphics[scale=0.5]{resourse/gestionturnos-class-diagram.png}
-    \caption{Vista del Panel Administracion provisto por Django}
-    \label{fig:123}
+    \includegraphics[scale=0.6]{resourse/gt-gt.png}
+    \caption{Modulo Gestion Turnos - Diagrama Modelos correspondiente a la Gestion de Turnos}
+    \label{fig:124}
+\end{figure}  
+
+En el segundo diagrama se muestra los modelos necesarios para las funcionalidades 
+adicionales.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{resourse/gt-ot.png}
+    \caption{Modulo Gestion Turnos - Modelos Adicionales}
+    \label{fig:125}
 \end{figure}  
 
 
@@ -235,15 +251,17 @@ Tengase en cuenta que es raro ver un medico con varias especializaciones Medicas
 y que el sistema fue pensado para ser utilizado en un consultorio medico, donde
 no se suele contar con equipamiento de alta complejidad.}
 
+
 \subsection{Asignaci\'on de Turnos}  
 
-Es la principal funcionalidad del modulo, que permite:
+La \textit{Asignacion de Turnos} al los pacientes es la principal funcionalidad 
+del modulo, que entre otras funcionalidades permite:
 
 \begin{itemize}
     \item Definir dias de atencion
-    \item Asignar dias en los cuales no se atendera     
+    \item Definir dias feriados o de Vacaciones     
     \item Asignar turnos
-    FALTA ESPECIFiCAR BIEN ..!
+    \item Controlar la asistencia de los pacientes.    
 \end{itemize}
 
 %\\[0.5cm]
@@ -253,6 +271,7 @@ Es la principal funcionalidad del modulo, que permite:
 Aqui se muestran los algunas consideraciones que se tubieron en cuenta a la hora de 
 dise\~nar los modelos para implementar la funcionalidad de asignacion de turnos
 propiamente dicha la cual define el nombre del modulo. 
+
 
 \subsubsection{BussinesHour(Horario De Atencion)}
 
@@ -329,6 +348,7 @@ En cuanto a sus atributos, mucho no hay que explicar y son:
     \item \textbf{number}: se refiere al numero de orden para atencion.
 \end{itemize}
 
+
 \subsubsection{Consideraciones}
 
 En cuanto a funcionamiento de la asignacion de turnos se tienen en cuenta las
@@ -354,6 +374,7 @@ pendientes, si el medico o administrador no actualizo los msmos y ya paso la
 hora del mismo tiene que enviar notificaciones correspondientes. 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Modulo Historia Cl\'{\i}nica}
 
@@ -385,22 +406,22 @@ que se ocupa de la identificaci\'on de las diversas manifestaciones patol\'ogica
 
 La documentaci\'on m\'edica comprendida en lo que com\'unmente se denomina ``historia 
 cl\'{\i}nica" la cual no se encontraba regida por leyes especificas en la Argentina hasta
-el 19 de noviembre del 2009 donde se promulga la Ley 26.529 \cite{LeyHC}.
+el 19 de noviembre del 2009 donde se promulga la Ley 26.529 \cite{LeyHC}.\\[0.1cm]
 
 En el cap\'{\i}tulo primero de la ley sen enumeran los derechos de los pacientes, 
 en el art\'{\i}culo 2, inciso ``a". Renueva el derecho a la intimidad y la confidencialidad, 
 donde se hace hincapi\'e sobre la responsabilidad de preservar la intimidad y 
 confidencialidad de toda la documentaci\'on m\'edica concerniente a los pacientes, 
-particularmente el inciso ``d" del mismo art\'{\i}culo:
+particularmente el inciso ``d" del mismo art\'{\i}culo:\\[0.1cm]
 
 ``El paciente tiene derecho a que toda persona que participe en la elaboraci\'on 
 o manipulaci\'on de la documentaci\'on cl\'{\i}nica, o bien tenga acceso al contenido de 
 la misma, guarde la debida reserva, salvo expresa disposici\'on en contrario 
-emanada de autoridad judicial competente o autorizaci\'on del propio paciente"
+emanada de autoridad judicial competente o autorizaci\'on del propio paciente".\\[0.1cm]
 
 Garantiza adem\'as el respeto por la autonom\'{\i}a del paciente y el derecho a recibir 
 la informaci\'on necesaria para su salud, incluyendo el derecho a negarse a ser 
-informado.
+informado.\\[0.1cm]
 
 El cap\'{\i}tulo III reza sobre el Consentimiento Informado, el cual est\'a basado en 
 el principio de autonom\'{\i}a, es decir, el derecho del paciente a ser reconocido 
@@ -411,9 +432,9 @@ o alucinaciones. La decisi\'on del paciente es consistente con sus valores y met
 y se mantiene estable en el tiempo si no han habido modificaciones hechas por
 el mismo sujeto. Los familiares de un paciente no est\'an en el derecho de 
 requerir al m\'edico del paciente que no se le comunique ciertos detalles o
-informaci\'on al mismo. 
+informaci\'on al mismo. \\[0.1cm]
 
-Ahora bien vallamos a lo que nos interesa:
+Ahora bien vallamos a lo que nos interesa:\\[0.1cm]
 
 La ley define a la Historia Cl\'{\i}nica como el documento ``obligatorio, cronol\'ogico,
 foliado y completo en el que consta toda actuaci\'on realizada al paciente por
@@ -422,14 +443,14 @@ propiedad del paciente, siendo este el titular de la misma. Siempre que un pacie
 solicite la historia cl\'{\i}nica, la instituci\'on competente debe entregarle una copia
 autenticada en 48 horas. Si no es entregada en ese plazo, el
 paciente est\'a autorizado a interponer un recurso de Habeas Data, juzgado de por 
-medio. 
+medio. \\[0.1cm]
 
 Entre los datos que han de consignarse en forma obligatoria esta la fecha de 
 inicio y confecci\'on de la historia cl\'{\i}nica, datos identificatorios del paciente
 y su n\'ucleo familiar, datos del profesional interviniente y su especialidad, 
 registros claros y precisos de los actos realizados por profesionales y auxiliares
 intervinientes, antecedentes gen\'eticos, fisiol\'ogicos y patol\'ogicos si los hubiere,
-y todo acto m\'edico realizado o indicado.
+y todo acto m\'edico realizado o indicado.\\[0.1cm]
 
 Incluye en la historia cl\'{\i}nica a todos los documentos que hagan referencia a 
 informaci\'on de salud del paciente, a\~nadiendo los consentimientos informados, 
@@ -437,16 +458,16 @@ hojas de indicaciones, hojas de enfermer\'{\i}a, estudios complementarios,
 incluyendo las``pr\'acticas realizadas, rechazadas o abandonadas." 
 Esto  \'ultimo es interesante: si el paciente abandona o rechaza un tratamiento 
 propuesto, es responsabilidad del m\'edico consignarlo, que a fin de cuentas es el
-beneficiario de que aquello quede asentado desde el punto de vista m\'edico-legal.
+beneficiario de que aquello quede asentado desde el punto de vista m\'edico-legal.\\[0.1cm]
 
 Autoriza a reclamar una copia de la historia cl\'{\i}nica al paciente y su representante 
 legal, al c\'onyuge o conviviente de hecho (sin importar el sexo), y a los herederos 
 forzosos. Lo que no queda claro del art. 19 inciso b es si los c\'onyuges y 
-convivientes requieren o no la autorizaci\'on del paciente.
+convivientes requieren o no la autorizaci\'on del paciente.\\[0.1cm]
 
 Se a\~nade esta ley al cap\'{\i}tulo 11 del C\'odigo de \'etica de la Asociaci\'on M\'edica 
 Argentina, del a\~no 2001. En ella se explaya en forma m\'as extensa y detallada sobre
-la confecci\'on. Particular inter\'es debi\'eramos prestarle al art. 168:
+la confecci\'on. Particular inter\'es debi\'eramos prestarle al art. 168:\\[0.1cm]
 
 ``La historia cl\'{\i}nica ha de ser un instrumento objetivo y comprensible por terceros,
 y no solo por quienes escriben en ella." A su vez, el art. 171 especifica que 
@@ -463,10 +484,44 @@ b\'asicas y comprenden la documentaci\'on practicas mas comunes dentro del area 
 medicina, esto no implica que solo valla a servir para eso \'unicamente, por su 
 extructura el modulo contempla la posibilidad de agregar nuevos componentes para 
 estudios especificos que sean requeridos y que no hayan sido contemplados en el 
-actual sistema.
+actual sistema.\\[0.1cm]
+
+
+El modulo se encarga basicamente de registrar los diferentes estudios que se le 
+practican a un paciente, adicionalmente registra informacion correspondiente a 
+las interconsultas \footnote{Consultas medicas realizadas por el paciente} y las
+observaciones del medico, asi como los medicamentos que fueron recetados por el 
+especialista.
+
+
+\subsection{Definicion de Modelos}
+
+Los modelos que componen el Modulo corresponden a los diferentes tipos de 
+Examenes de practica mas comun\footnote{Esto no es que este definido en algun 
+lado que sean solo estos, sino que mas bien son los examenes que durante el 
+analisis de diferentes modelos se presentaban mas comunmente.} en lo que 
+corresponden a Historia Clinica.\\[0.1cm]
+
+Aqui tambien por la cantidad de modelos se hace dificil poder colocarlos todos 
+en un unico diagrama dentro de la pagina por lo que tambien se separara en 
+varias partes sin romper las relaciones de los mismo, osea aunque se realize 
+una separacion de los mismos corresponden a un unico modulo por lo que tendrian 
+que verse como un todo y no como partes separadas: \\[0.1cm]
 
 
 
+%\begin{figure}[H]
+%    \centering
+%    \includegraphics[scale=0.5]{resourse/gt-gt.png}
+%    \caption{Vista del Panel Administracion provisto por Django}
+%    \label{fig:123}
+%\end{figure} 
 
-\section{Elecci\'on de la metodolog\'ia de Programaci\'on}
+FALTAN GRAFICOS DE AQUI
+
+
+\subsubsection{Consulta Medica}
+
+
+%\section{Elecci\'on de la metodolog\'ia de Programaci\'on}
 
