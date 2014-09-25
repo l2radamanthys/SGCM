@@ -1,0 +1,396 @@
+
+digraph name {
+  fontname = "Open Sans"
+  fontsize = 8
+
+  node [
+    fontname = "Open Sans"
+    fontsize = 8
+    shape = "plaintext"
+  ]
+  edge [
+    fontname = "Open Sans"
+    fontsize = 8
+  ]
+
+
+    HistoriaClinica_models_OsteoArticularExam [label=<
+    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+     ><FONT FACE="Open Sans Bold" COLOR="white"
+     >OsteoArticularExam</FONT></TD></TR>
+    
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">id</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">AutoField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">date</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">DateField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">vertebra_column</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">TextField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">bone_axles</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">TextField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">joints</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">TextField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">members</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">TextField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">muscular_tropism</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">TextField</FONT
+        ></TD></TR>
+        
+    
+    </TABLE>
+    >]
+
+    HistoriaClinica_models_RespiratorySystemExam [label=<
+    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+     ><FONT FACE="Open Sans Bold" COLOR="white"
+     >RespiratorySystemExam</FONT></TD></TR>
+    
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">id</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">AutoField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">date</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">DateField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">type_chest</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">breast</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">TextField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">accessory_muscle_use</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">respiratory_rate</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">tour_freely</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">tour_vertices</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">jars_vibrations</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">sonority</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">vesicular_murmur</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">rales_moist_rales</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">roncus</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">wheezing</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">tubal_puff</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">pleural_rub</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">comments</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">TextField</FONT
+        ></TD></TR>
+        
+    
+    </TABLE>
+    >]
+
+    HistoriaClinica_models_CardiovascularSystemExam [label=<
+    <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+     <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+     ><FONT FACE="Open Sans Bold" COLOR="white"
+     >CardiovascularSystemExam</FONT></TD></TR>
+    
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">id</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">AutoField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">date</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT COLOR="#7B7B7B" FACE="Open Sans">DateField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">beats</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">shock_tip</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">R1</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">R2</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">R3</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">R4</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">puffs</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">clicks</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">CharField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">carotid_pulse</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">humeral_pulse</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">radial_pulse</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">femoral_pulse</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">popliteal_pulse</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">posterior_tibial_pulse</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">pedius_pulse</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">IntegerField</FONT
+        ></TD></TR>
+        
+        <TR><TD ALIGN="LEFT" BORDER="0"
+        ><FONT FACE="Open Sans">comments</FONT
+        ></TD>
+        <TD ALIGN="LEFT"
+        ><FONT FACE="Open Sans">TextField</FONT
+        ></TD></TR>
+        
+    
+    </TABLE>
+    >]
+
+    
+ 
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Open Sans Bold" COLOR="white"
+	  >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  
+  HistoriaClinica_models_OsteoArticularExam -> django_contrib_auth_models_User
+  [label="patient (osteoarticularexam)"] [arrowhead=none, arrowtail=dot];
+  
+
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Open Sans Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  HistoriaClinica_models_RespiratorySystemExam -> django_contrib_auth_models_User
+  [label="patient (respiratorysystemexam)"] [arrowhead=none, arrowtail=dot];
+  
+
+  
+  
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Open Sans Bold" COLOR="white"
+      >User</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  HistoriaClinica_models_CardiovascularSystemExam -> django_contrib_auth_models_User
+  [label="patient (cardiovascularsystemexam)"] [arrowhead=none, arrowtail=dot];
+  
+
+  django_contrib_auth_models_User [label=<
+      <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
+      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
+      ><FONT FACE="Open Sans Bold" COLOR="white"
+      >UserInformation</FONT></TD></TR>
+      </TABLE>
+      >]
+  
+  
+}
