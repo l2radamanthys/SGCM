@@ -136,6 +136,8 @@ def patient_activate(request, patient_username=None, activaction_key=None):
                     key_c = user.username.encode('base64').replace('=','6')[:-1]
                     if key == key_c:
                         dict['custom_message'] = Tags.html_message('Usuario activado', 'info')
+                        user.is_active = True
+                        user.save()
                     else:
                         dict['show_form'] = True
                         dict['username'] = patient_username

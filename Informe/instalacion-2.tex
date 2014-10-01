@@ -136,7 +136,7 @@ Con todo esto echo solo tenemos que reiniciar el servidor Apache, en nuestro
  caso clic en el icono en la barra de notificaciones luego las opciones
  Apache->Service->Reiniciar Servicio. 
 
-\subsection{Configuracion del Proyecto}
+\section{Configuracion del Proyecto}
 
 Bueno Ahora solo tenemos que crear un alias en Apache \footnote{Para mayor
 informacion de como crear alias en Apache consulte
@@ -170,7 +170,6 @@ WSGIScriptAlias /sgcm "C:/Servidor/SGCM/handle.wsgi"
 </Directory>
 \end{lstlisting}
 \vspace{0.1cm}
-
 
 
 Hay un número de maneras en que una aplicación WSGI organizada por mod\_wsgi
@@ -245,6 +244,121 @@ application = django.core.handlers.wsgi.WSGIHandler()
 Con esto nuestro servidor de aplicacion ya deberia funcionar aunque como veran
 no se cargan los archivos estaticos como imagenes y hojas de estilo por lo
 que necesitamos agregarlo.
+
+
+Django no debería ser utilizado para servir archivos multimedia (imágen, audio,
+video, flash) por sí mismo; mejor deja ese trabajo al servidor web que hayas
+elegido. Recomendamos usar un servidor Web separado (es decir, uno que no está
+corriendo a la vez Django) para servir estos archivos. 
+
+Sin embargo, si no tienes opción para servir los archivos multimedia que no sea
+el mismo VirtualHost Apache que usa Django, aquí te mostramos como desactivar
+mod\_python para una parte particular del sitio agregando el siguiente
+informacion a http.conf:
+
+\begin{lstlisting}[style=consola]
+<Location "/media/">
+    SetHandler None
+</Location>
+\end{lstlisting}
+\vspace{0.1cm}
+
+Cambia \textbf{Location} a la URL raiz donde se encuentran tus archivos.
+
+Tambien puedes usar \textit{<LocationMatch>} para comparar con una expresión regular.
+Por ejemplo, esto configura Django en la raiz del sitio pero deshabilitando
+Django para el subdirectorio media y cualquier URL que termine en
+.jpg, .gif, o .png:
+
+\begin{lstlisting}[style=consola]
+<Location "/">
+    SetHandler python-program
+    PythonHandler django.core.handlers.modpython
+    SetEnv DJANGO_SETTINGS_MODULE mysite.settings
+</Location>
+
+<Location "/media/">
+    SetHandler None
+</Location>
+
+<LocationMatch "\.(jpg|gif|png)$">
+    SetHandler None
+</LocationMatch>
+\end{lstlisting}
+\vspace{0.1cm}
+
+En todos estos casos, necesitarás configurar la directiva \textbf{DocumentRoot}
+para que Apache sepa dónde encontrar tus archivos estáticos.
+
+Con esto Django estara funcionando correctamente, y podra cargar imagenes y demas
+ficheros necesarios.
+
+
+\section{Configuracion Inicial}
+
+Ahora que tenemos todo instalado y funcionando, debemos crear la configuracion
+inicial necesaria para que la aplicacion pueda funcionar ya que si intentamos
+acceder en este momento a la aplicacion nos devolvera una serie de errores, por
+faltar informacion, entre ellas que todavia no se crearon las tablas necesarias
+para soportar el modelo y los datos de los mismos.
+
+Enpecemos creando las tablas necesarias, se supone que la base de datos ya esta
+creada y su nombre agregado en el archivo \textbf{setings.py} osea suponemos
+que hicimos todos los pasos necesarios para conectar la base de datos y demas
+bueno en la ruta donde localizamos el proyecto ejecutamos el siguiente comando
+desde terminal:
+
+\begin{lstlisting}[style=consola]
+$ python manage.py syncdb
+\end{lstlisting}
+
+Esta instruccion le dice a Django que sincronize los modelos con la base de datos
+y que cree las tablas necesarias en la misma para que esto funcione, ademas
+no preguntara si deseamos crear una cuenta para el administrador debemos decir si,
+y proporcionar el nombre de la misma, el cual por requerimento el nombre del
+usuario administrador debe ser \textbf{admin}, este requerimiento es necesario
+para luego lanzar e implementar la configuracion inicial.
+
+Con las tablas creadas y el usuario admin creados, procedemos a crear la
+informacion necesaria para el funcionamiento de la aplicacion, para ello
+ejecutaremos el siguiente script:
+
+\begin{lstlisting}[style=consola]
+$ python init_app.py
+\end{lstlisting}
+
+El mismo creara toda la informacion requeridad por la aplicacion y con ello
+quedara nuestro servidor en funcionamiento, solo hara falta reiniciar Apache.
+Con esto concluye todo lo referente a configuracion del servidor.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 %%%
 
