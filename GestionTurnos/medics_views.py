@@ -738,7 +738,9 @@ def my_medic_del_nonworking_day(request, day, month, year):
     mi_template = get_template('Medics/GestionTurnos/cancelar-dia-no-laboral.html')
     dict = generate_base_keys(request)
 
-    if True:
+    if have_acess(request, ['Medico']):
+        medic = request.user
+        
         pass
 
         html_cont = mi_template.render(Context(dict))
