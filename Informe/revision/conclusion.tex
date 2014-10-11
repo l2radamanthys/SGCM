@@ -1,0 +1,94 @@
+\chapter{Conclusion y Mejoras}
+
+
+\section{Resultado}
+
+El Sistemas de Gestion de Consultorios Medico proporciona soporte para Gestion 
+de Turnso para pacientes y medicos proveyendo una nueva manera de mejorar la 
+comunicacion entre el paciente y el medico atraves de Internet, Permite 
+administrar las Historias Clinicas dejando de depender de archivos fisicos y 
+con la posibilidad de almacenar los mismos en la nube.\\[0.1cm]
+
+Considero que se alcanzaron casi todos los objectivos planteados y otros no 
+planteados en la etapa inicial.
+
+
+\subsection{Ventajas Percibidas}
+
+Las Ventajas y Desventajas en lo que respeta al sistema fueron expuestas en el 
+\textit{Capitulo IV} cuando se realizo una comparacion con el actual sistemas,
+aqui se analizan las relacionadas a las herramientas que se utilizaron en su 
+desarrollo.
+
+\begin{itemize}
+    \item La primera ventaja que encontre fue la velocidad de desarrollo 
+        comparando con otras herramientas aunque Python no es un 4GL sino un 
+        3GL la facilidad de entendiemiento de su sintaxis hace que el codigo
+        sea facilmente entendible y legible lo que permite un mantenimiento 
+        sencillo, el codigo en python se asemeja mucho a lo que hacemos cuando 
+        escribimos un algoritmo en el papel por lo que la curva de aprendizaje
+        si ya manejas algun lenguaje es minima, aprendi python en 5 dias.
+
+    \item Django y el Modelo de desarrollo MVC (Modelo Vista Controlador) 
+        aportaron otro extra a la velocidad de desarrollo del sistema ya que 
+        solo con un par de lineas era capas de crear vistas facilmente 
+        adaptables, ademas de la caracteristica de poder heredar plantillas 
+        por lo que en caso que quisiera realizar un cambio en el diseño de la 
+        plantilla solo requeria cambiar la plantilla maestra o base sin 
+        necesidad de estar modificando una por una todas las plantillas, ni 
+        hablar si el codigo hubiese estado mesclado con el HTML como ocurre 
+        aveses con PHP por ejemplo.
+
+    \item Otra caracteristica interesante de Django que me ahorro sufrimiento
+        fue la definicion de Modelos, cuando trabajas con Django no hace falta
+        conocer el motor de Base de Datos y su sintaxis, no te debes preocupar 
+        por aprender como realizar tal o cual consulta, dejas de pelear con 
+        los JOIN de SQL y demas, solo te dedicas a aprender a manejar el 
+        ObjectRelationalModel o ORM que forma parte de Django el cual es 
+        sencillo de aprender.
+
+    \item Aunque no esta relacionado en si con el desarrollo de manera explicita
+        agradesco haber conocido sitios como url{http://www.stackoverflow.com}
+        que es un sitio colaborativo donde podes hacer preguntas y/o responderlas
+        sobre cuestiones de programacion, instalaciones, errores, etc. Fue una 
+        gran ayuda ya que pude solucionar gracias a eso muchas de las 
+        dificultades y entender el problema de las mismas de manera rapida.
+
+    \item Aprender a usar un sistema de control de versiones para el codigo 
+        fuente como GIT de mi proyecto fue de gran utilidad ya que el desarrollo de esta 
+        aplicacion no fue de manera continua sino que variada durante todo el 
+        tiempo de desarrollo.
+\end{itemize}
+
+
+\subsection{Desventajas Percibidas}
+
+No todo el desarrollo fue como se esperaba, surgieron una serie de inconvenientes 
+o limitaciones relacionadas con la herramienta.
+
+\begin{itemize}
+    \item Hacer Deploy \footnote{Implementar un Servidor de Produccion con 
+        Apache, Python, Django y PosgreSQl mod\_wsgi} con la herramienta no es 
+        tan facil como cuando instalas LAMP, pierdes mucho tiempo intentando 
+        configurar el servidor, la documentacion existente sobre la misma es 
+        muy poca y normalmente incompleta.
+
+    \item En su mayoria la documentacion sobre las librerias y demas herramientas
+        se encuentra escrita en ingles, no lo consideraria en si una desventaja 
+        pero lo menciono en este apartado por mi bajo nivel en lo que respecta
+        a lectura y comprension de texto en ingles.
+\end{itemize}
+
+
+\section{Futuras Mejoras}
+
+El sistema podria evolucionar de varias maneras, al ser ul sitema diseñado 
+mediante plantillas la principal evolucion del mismo es que se podria adaptar 
+las interfaces a los navegadores de los dispositivos moviles inteligentes. \\[0.1cm]
+
+Otra mejora comun al sistema, seria que pueda integrarse con otros estudios
+como poder registrar analisis de laboratorio, odontogramas, integracion con 
+el sistema vademecun para que sea mas sencillo elaborar una receta medica, 
+y la posibilidad de importar y/o exportar la historia clinica a formatos 
+conocidos como archivos PDF para permitir ser exportado a papel.
+
