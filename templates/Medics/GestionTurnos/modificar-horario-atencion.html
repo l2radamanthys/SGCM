@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block style %}
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/fancy-forms.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="/media/css/gradient-buttons.css" />
+    <link type="text/css" rel="stylesheet" media="all" href="/media/css/messages.css" />
+{% endblock %}
+
+
+{% block contenido %}
+    <br />
+    <h2>Modificar Horarios de Atencion</h2>
+    <br />
+   
+    {% if show_form %}
+        {% include "Medics/GestionTurnos/nuevo-horario-atencion-form.html" %}
+    {% endif %}
+    
+    {% if show_errors %}
+        <div class="alert" >		
+        {% for field in form %}
+            {{ field.errors }}
+        {% endfor %}
+        
+        {% autoescape off %}
+            {{ custon_errors }}
+        {% endautoescape %}
+        </div> 
+    {% endif %}
+{% endblock %}

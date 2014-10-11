@@ -471,14 +471,40 @@ def my_medic_add_business_hours(request):
 
 def my_medic_edit_business_hours(request, bh_id):
     """
+        Modificar Horario de Atencion del Medico
     """
-    if True: #por ahora no controlo permisos
-        mi_template = get_template('Medics/GestionTurnos/nuevo-horario-atencion.html')
+    if have_acess(request, ['Medico']):
+        mi_template = get_template('Medics/GestionTurnos/modificar-horario-atencion.html')
         dict = generate_base_keys(request)
         dict['show_form'] = True
+        dict['show_errors'] = False
+        bh = BusinessHours.objects.get(id=bh_id)
+        
         if request.method == 'POST':
-            form = my_forms.BusinessHoursForm(request.POST, auto_id=False)
+            form = my_forms.BusinessHoursForm(request.POST)
+            if form.is_valid():
+                bh.date = form.cleaned_data['date']
+                bh.start_time = form.cleaned_data['start_time']
+                bh.end_time = form.cleaned_data['end_time']
+                bh.turn_duration = form.cleaned_data['turn_duration']
+                bh.save()
+                
+                return HttpResponseRedirect("/medicos/mostrar/mis-horarios-atencion/")
+            else:
+                dict['show_errors'] = True
+                dict['form'] = form
 
+        else:
+            form_data = {
+                    'date': bh.date,
+                    'start_time': bh.start_time,
+                    'end_time': bh.end_time,
+                    'turn_duration': bh.turn_duration
+            }
+            form = my_forms.BusinessHoursForm(form_data)
+            dict['form'] = form
+
+          
 
         html_cont = mi_template.render(Context(dict))
         return HttpResponse(html_cont)
