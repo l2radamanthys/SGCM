@@ -740,8 +740,15 @@ def my_medic_del_nonworking_day(request, day, month, year):
 
     if have_acess(request, ['Medico']):
         medic = request.user
-        
-        pass
+        dia = datetime.date(int(year), int(month), int(day))
+        nwd = NonWorkingDay.objects.get(user=medic, date=dia)
+        dict['nwday'] = nwd
+        if request.method == 'POST':
+            nwd.delete()
+            
+            return HttpResponseRedirect("/medicos/mostrar/dias-no-laborales/")
+        else:
+            pass
 
         html_cont = mi_template.render(Context(dict))
         return HttpResponse(html_cont)

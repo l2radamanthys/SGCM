@@ -189,8 +189,8 @@ class RespiratorySystemExamForm(forms.ModelForm):
             'date'
         ]
         widgets = {
-            'breast' : forms.Textarea(attrs={'cols':'62', 'rows':'3'}),
-            'comments' : forms.Textarea(attrs={'cols':'62', 'rows':'3'}),
+            'breast' : forms.Textarea(attrs={'cols':'45', 'rows':'3'}),
+            'comments' : forms.Textarea(attrs={'cols':'45', 'rows':'3'}),
         }
 
 
