@@ -17,7 +17,7 @@ class MessageToMedic(form.Form):
     )
     content = forms.CharField(
         label="Contenido:",
-        widget= forms.Textarea(attrs={'cols':'60'}),
+        widget= forms.Textarea(attrs={'cols':'45'}),
         required = True
     )
 

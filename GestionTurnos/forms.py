@@ -213,7 +213,7 @@ class MessageSendForm(forms.Form):
     )
     content = forms.CharField(
         label="Contenido:",
-        widget= forms.Textarea(attrs={'cols':'60'}),
+        widget= forms.Textarea(attrs={'cols':'55'}),
         required = True
     )
 
