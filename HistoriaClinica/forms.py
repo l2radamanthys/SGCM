@@ -128,7 +128,7 @@ class HeadExamForm(forms.ModelForm):
             'date',
         ]
         widgets = {
-            'observations' : forms.Textarea(attrs={'cols':'62', 'rows':'5'}),
+            'observations' : forms.Textarea(attrs={'cols':'45', 'rows':'5'}),
         }
 
 

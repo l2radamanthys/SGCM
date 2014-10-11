@@ -469,6 +469,26 @@ def my_medic_add_business_hours(request):
 
 
 
+def my_medic_edit_business_hours(request, bh_id):
+    """
+    """
+    if True: #por ahora no controlo permisos
+        mi_template = get_template('Medics/GestionTurnos/nuevo-horario-atencion.html')
+        dict = generate_base_keys(request)
+        dict['show_form'] = True
+        if request.method == 'POST':
+            form = my_forms.BusinessHoursForm(request.POST, auto_id=False)
+
+
+        html_cont = mi_template.render(Context(dict))
+        return HttpResponse(html_cont)
+
+    else:
+        path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
+
+
+
 def my_medic_del_business_hours(request, bh_id):
     """
         Elimina un horario de atencion del medico

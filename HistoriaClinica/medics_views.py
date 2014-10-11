@@ -241,7 +241,7 @@ def medic_view_patient_perinatal_antecedents(request, pac_username):
 
 def medic_edit_patient_perinatal_antecedents(request, pac_username):
     """
-
+        Modificar Antecedentes Perinatales del Paciente
     """
     mi_template = get_template('Medics/HistoriaClinica/modificar-antecedentes-perinatales.html')
     dict = generate_base_keys(request)
@@ -266,7 +266,11 @@ def medic_edit_patient_perinatal_antecedents(request, pac_username):
                 antp.medical_care = form.cleaned_data['medical_care']
                 antp.coments = form.cleaned_data['coments']
                 antp.save()
-                dict['custom_message'] = html_message('Datos Actualizados Correctamente', 'success')
+                #dict['custom_message'] = html_message('Datos Actualizados Correctamente', 'success')
+                #dict['antp'] = antp
+                #por alguna razon no se muestran bien los datos asi que al completar
+                #hare que redirija al sitio destino
+                return HttpResponseRedirect("/pacientes/mostrar/antecedentes-perinatales/%s/" %pac_username)
 
             else:
                 dict['show_errors'] = True
