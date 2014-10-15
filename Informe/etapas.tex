@@ -1,162 +1,89 @@
 \chapter{Etapas del desarrollo de Proyecto}
 
-\section{Elecci\'on del Tema}
+\section{Elección del Tema}
 
-Al momento de elegir el tema del seminario se me presento un numero de 
-problemas ya que primero no sabia que area se iba a aplicar, queria realizar 
-algo distinto, y bueno queria algo que presente un reto a nivel programacion 
-, ahora que lo pienso el haber querido esto ultimo me termino saliendo caro por
-el tiempo que termine ocupando para terminar el proyecto. 
+Al momento de elegir el tema del seminario se me presento un numero de problemas ya que primero no sabía que área se iba a aplicar, quería realizar algo distinto, y algo que presente un reto a nivel de programación, ahora que lo pienso el haber querido esto último me termino saliendo caro por el tiempo que termine ocupando para terminar el proyecto. 
 
 
-\subsection{Eleccion de Tecnologia}
+\subsection{Elección de Tecnología}
 
-Al momento de elegir no tenia casi experiencia desarrollando aplicaciones web 
-por lo que al menos ya estaba decidido que iba a ser web la aplicacion, digamos 
-fue mas una cuestion de moda, en esos dias habia empezado el boom de la web 2.0
-por lo que fue mas por una moda.
+Al momento de elegir no tenía casi experiencia desarrollando aplicaciones web por lo que al menos ya estaba decidido que iba a ser web la aplicación, digamos fue mas una cuestión de moda, en esos días había empezado el boom de la web 2.0 por lo que fue mas por una moda.
 
 
 \subsection{Eleccion del Tema y Funcionalidades}
 
-Se que suena repetitivo pero bueno digamos fue la parte mas dificil a la hora 
-de decidir que queria hacer, aunquen bien el tema elegido, mmm digamos que 
-salio de la galera por una interconsulta con un posible cliente que al final no
-llego a mas que intercambiar un par de emails, pero fundo las bases y me 
-parecio era una buena idea, consulte un poco los seminarios anteriores aunque 
-habia temas relacionados el desarrollo no era muy extensos ni aplicado 
-exactamente al area que pretendia.\\[0.1cm]
+Sé que suena repetitivo la elección del tema y las funcionalidades que se iban a desarrollar fue una de las parte más difícil del proyecto, a la hora de decidir que quería hacer, aunque bien el tema elegido salió de la por una interconsulta con un posible cliente que al final no llego a mas que intercambiar un par de emails, pero fundo las bases y me parecio era una buena idea, consulte un poco los seminarios anteriores aunque había temas relacionados el desarrollo no era muy extensos ni aplicado exactamente al área que pretendía.\\[0.1cm]
 
-Habia desarrolladas aplicaciones dedicadas a la facturacion, atencion, etc. Con 
-el desarrollo mi aplicacion trataba de juntar dos partes el seguimiento o 
-evolucion del paciente lo cual se registra mediante el documento de Historia 
-Clinica, lo que era bueno por que al menos no iba a reinventar la rueda. Llegado 
-el momentos de presentar el tema a mi director de tesis me dijo que era poco, 
-supongo que fue por que no supe explicarlo bien, en fin habia que agregar algo 
-mas y en esos dia tube que asistir a interconsulta medica, cuando entre en el 
-consultorio note que la secretaria estaba con una hoja de calculos en MS Excel 
-registrando y comprobando los tunos para el dia, automaticamente me di cuenta 
-de una gran falencia, sin importar lo automatizado que estubiese el consultoria
-las tareas mas simples como la de asignar turnos se seguia realizando de una 
-manera muy poco practica, la secretaria tenia una hoja de calculo preformateada 
-con los horarios de cada dia, la cual debia duplicar para registrar un nuevo dia,
-de ahi me surgio la idea de implementar una funcionalidad que agilice dicho 
-problema y por que no brindar una platarfoma virtual para que los pacientes 
-pudiesen solicitar turnos, dejando de depender tanto de los telefono, con ello el 
-tema y las funcionalidades principales quedaron definidas. 
+Consultando algunos seminarios de tesis de otros alumnos aplicadas al tema \footnote{Hago referencia a la administración de consultorio médico} detecte, que había desarrolladas aplicaciones dedicadas a la facturación, atención, y otras áreas. Con ello el ámbito que abarcaría el sistema \footnote{Hago referencia al sistema que se desarrollo como parte de este proyecto de tesis} trataba de juntar dos partes el seguimiento o evolución del paciente lo cual se registra mediante el documento de \textbf{Historia Clínica}, lo que era bueno porque al menos no iba a reinventar la rueda. Llegado el momentos de presentar el tema a mi director de tesis me dijo que era poco, supongo que fue porque no supe explicarlo bien, en fin había que agregar algo  mas y en esos día tuve que asistir a interconsulta medica, cuando entre en el consultorio note que la secretaria estaba con una hoja de cálculos en MS Excel registrando y comprobando los tunos para el día, automáticamente me di cuenta de una gran falencia, sin importar lo automatizado que estuviese el consultorio las tareas más simples como la de asignar turnos se seguía realizando de una manera muy poco práctica, la secretaria tenía una hoja de cálculo pre formateada con los horarios de cada día, la cual debía duplicar para registrar un nuevo día, a partir de ahí surgió la idea de implementar una funcionalidad que agilice dicho  problema y por qué no brindar una plataforma virtual para que los pacientes pudiesen solicitar turnos, dejando de depender tanto de los teléfono, con ello el tema y las funcionalidades principales quedaron definidas. 
 
 
-\section{An\'alisis de Requisitos y Búsqueda de Informaci\'on}
+\section{Análisis de Requisitos y Búsqueda de Información}
 
-Luego de elegido el tema llego el momento de averiguar como funcionaba todo, aunque
-esto sea un software academico queria que despues de desarrollado al menos fuera 
-util y no solo dejarlo morir apilado como un seminario mas.
+Luego de elegido el tema llego el momento de averiguar cómo funcionaba todo, aunque esto sea un software académico quería que después de desarrollado al menos fuera útil aunque sea como sistema de referencia y no solo dejarlo morir apilado como un seminario mas, como suele suceder. \\[0.1cm]
 
-Sobre la parte de gestion de turno el problema era algo sencillo, ya que todo el mundo 
-alguna ves tuvo que sacar turno para ya sea ser atendido o hacer un determinado 
-tramite, la dificultad radicaba mas en que no tenia idea como modelizar un 
-problema y los datos que se deberian manejar. 
+Sobre la parte de gestión de turno el problema era algo sencillo, ya que todo el mundo alguna vez tuvo que sacar turno para ya sea ser atendido o hacer un determinado trámite, la dificultad radicaba mas en que no tenía idea como modelizar un problema y los datos que se deberían manejar. \\[0.1cm]
 
-En cuanto a historia clinica, hubo que visitar algunos centros medicos y especialistas
- y solicitar informacion acerca de como ellos manejaban las historia clinicas de sus 
- paciente, que tipo de informacion era inpresindible registrar en ella y cual podria ser 
-secundaria, fue algo tedioso digamos ya que la informacion sobre los pacientes es 
-informacion sencible y no es de libre acceso. 
+En cuanto a historia clínica, hubo que visitar algunos centros médicos y especialistas  y solicitar información acerca de como ellos manejaban las historia clínicas de sus  paciente, que tipo de información era imprescindible registrar en ella y cual podría ser secundaria, fue algo tedioso digamos ya que la información sobre los pacientes es información sensible y no es de libre acceso. \\[0.1cm]
 
-Ademas sumando lo que habia recabado y gracias a un amigo que me paso un par de modelos 
-que consiguio y un poco de busqueda de informacion referente en la web, logre generar un 
-panorama mas o menos concreto de lo que iba a hacer.  
+Además sumando lo que había recabado y gracias a un amigo que me paso un par de modelos que consiguió y sumado un poco de búsqueda de información referente en la web, logre generar un panorama más o menos concreto de lo que iba a hacer, la verdad me hubiese gustado tener algún especialista afín por cada tema que consultaba sobre los diferentes estudios pero supongo eso era pedir demasiado.  
 
-%\section{Primera Aproximaci\'on}
+%\section{Primera Aproximación}
 %INCOMPLETO
 
-%\section{Aproximaci\'on Final}
+%\section{Aproximación Final}
 %INCOMPLETO
 
 \section{Funcionalidades Incluidas y Descartadas}
 
-El nombre del tema o las funcionalidades principales elegidas no dice mucho en 
-si sobre que se iba a desarrollar sobre todo en la parte de historia clinica 
-ya que esta area abarcava un gran numero de posibles estudios que podrian ser 
-incluidos en este documento los cuales algunos son muy especificos del area
-de estudio, por ejemplo un odontograma solo seria de interes para un medico
-odontologo y en si mucha relevancia no tendria al momento de tratar otras 
-enfermedades, por lo que habia que definir que estudios se deberian incluir 
-como minimo y cuales se descartarian \footnote{Al menos en esta version, tengase en cuenta que 
-esto es un software desarrollado con fines academicos aunque es factible el 
-desarrollo de nuevos modulos, su implementacion y aplicacion en casos reales.}.
+El nombre del tema o las funcionalidades principales elegidas no dice mucho en si sobre que se iba a desarrollar sobre todo en la parte de historia clínica ya que esta área abarcaba un gran número de posibles estudios que podrían ser incluidos en este documento los cuales algunos son muy específicos del área
+de estudio, por ejemplo un odontograma solo seria de interés para un medico odontólogo y en si mucha relevancia no tendría al momento de tratar otras enfermedades, por lo que había que definir que estudios se deberían incluir como mínimo y cuales se descartarían \footnote{Al menos en esta versión, téngase en cuenta que  esto es un software desarrollado con fines académicos aunque es factible el desarrollo de nuevos módulos, su implementación y aplicación en casos reales.}.
 
 
 \subsection{Funcionalidades Incluidas}
 
-Luego de revisar los modelos en papel en su mayoria de diferentes organismos
-medicos que consulte se determino que se incluirian los siguientes estudios:
+Luego de revisar los modelos en papel\footnote{Hago referencia a las historias clínicas que por lo general son almacenadas en papel normalmente en archivos pre formateados e impresos.} en su mayoría de diferentes organismos médicos que consulte se determino que se incluirían los siguientes estudios:
 
 \begin{itemize}
-    \item Habitos Toxicos.
+    \item Hábitos Tóxicos.
     \item Antecedentes Perinatales \footnote{Hace Referencia a antecedentes del nacimiento}
-    \item Grupo Familiar \footnote{Esto no es un Examen en si sino mas bien que sirve para 
-        consulta en caso del que el paciente posea enfermedades Hereditarias.}.
-    \item Almacenamiento de Imagenes Relacionadas con Diferentes Estudios.
+    \item Grupo Familiar \footnote{Esto no es un Examen en si sino mas bien que sirve para consulta en caso del que el paciente posea enfermedades Hereditarias.}.
+    \item Almacenamiento de Imágenes Relacionadas con Diferentes Estudios.
     \item Examen de Cabeza.
     \item Examen de Cuello.
     \item Examen Signos Vitales.
-    \item Examen de Piel Faneras y Tejido SubCutaneo.
+    \item Examen de Piel Faneras y Tejido Subcutáneo.
     \item Examen Osteo Articular.
     \item Examen Sistema Respiratorio.
     \item Examen del aparato Cardiovascular.
 \end{itemize}
 
-Adicionalmente tambien se registran las Interconsultas Medicas y los Medicamentos
-que fueron recetados al paciente.
-
+Adicionalmente el sistema también registran las Interconsultas Medicas y los Medicamentos que fueron recetados al paciente.
 
 \subsection{Funcionalidades no Incluidas}
 
-Si tubiese que nombrar que estudios no se implementaron no terminaria mas aqui
-hablando del modulo de Historia Clinica, en esta session mas que nada contemplo 
-funcionalidades que en un principio estaban previstas \footnote{las mismas no 
-estaban especificadas por escrito en el anteproyecto sino mas bien son 
-caracteristicas que tenia pensadas} pero a medida que el desarrollo del sistema 
-avanzo perdieron importancia por su aplicacion o por cuestiones de falta de 
-tiempo, aqui emnumero algunas de las funcionalidades que se descartaron:
+Si tuviese que nombrar que estudios no se implementaron no terminaría mas aquí hablando del modulo de Historia Clínica, en esta sesión mas que nada contemplo funcionalidades que en un principio estaban previstas \footnote{las mismas no estaban especificadas por escrito en el anteproyecto sino mas bien son características que tenia pensadas} pero a medida que el desarrollo del sistema avanzo perdieron importancia por su aplicación o por cuestiones de falta de tiempo, aquí enumeró algunas de las funcionalidades que se descartaron: \\[0.1cm]
 
 \begin{itemize}
-    \item Gestion de Turnos - Definir Especialidad del Medico para atencion.
-    \item Gestion de Turnos - Especificar Habitacion del Consultorio para el Turno.
-    \item Historia Clinica - Subir Archivos.
-    \item Historia Clinica - Analisis de Laboratorios.
-    \item Historia Clinica - Conectar con el Sistema Vademecum.
+    \item Gestión de Turnos - Definir Especialidad del Medico para atención.
+    \item Gestión de Turnos - Especificar Habitación del Consultorio para el Turno.
+    \item Historia Clínica - Subir Archivos.
+    \item Historia Clínica - Análisis de Laboratorios.
+    \item Historia Clínica - Conectar con el Sistema Vademécum.
 \end{itemize}
 
-No son todas pero considero son las mas importantes o relevantes.
+No son todas las funcionalidades que se descartaron pero considero que son las más importantes o relevantes.
 
 \section{Seguimiento y desarrollo del Proyecto}
 
-El seguimiento y desarrollo del proyecto digamos no fue continuo fue mas algo 
-bastante accidentado si podria decirse, y bueno hasta la fecha solo habia 
-programado peque\~nas aplicaciones, enfrentaba el problema de que me topaba con 
-una metodologia diferente de lo que manejaba, a la hora de encarar lo 
-relacionado con la programacion. \\[0.1cm]
+El seguimiento y desarrollo del proyecto digamos no fue continuo fue más algo bastante accidentado si podría decirse, y bueno hasta la fecha solo había programado pequeñas aplicaciones, enfrentaba el problema de que me topaba con una metodología diferente de lo que manejaba, a la hora de encarar lo relacionado con la programación. \\[0.1cm]
 
-Al menos a la hora de mantener el codigo agradesco haber conocido en unas charlas
-unas semanas antes la herramienta de control de versiones GIT \footnote{www.git-scm.com}
-que digamos a simple vista te permite gestionar las diferentes versiones de tu codigo
-incluso volver a versiones anteriores si fuese necesario. Este proyecto de seminario
-incluido tanto el informe del mismo como su codigo fuente se encuentran hospedados
-en un repositorio online de git en la siguiente direccion web 
-url{http://www.github.com/l2radamanthys/SGCM.git} alli si desean pueden vajar la ultima
-version del mismo.\\[0.1cm]
+Al menos a la hora de mantener el código agradezco haber conocido en unas charlas unas semanas antes la herramienta de control de versiones GIT \footnote{www.git-scm.com} que digamos a simple vista te permite gestionar las diferentes versiones de tu código incluso volver a versiones anteriores si fuese necesario. Este proyecto de seminario incluido tanto el informe del mismo como su código fuente se encuentran hospedados
+en un repositorio online de git en la siguiente dirección web url{http://www.github.com/l2radamanthys/SGCM.git} allí si desean pueden descargar la última versión del mismo ya que esta alojado en un repositorio publico.\\[0.1cm]
 
-En cuanto a programacion como feeback puedo decir lo siguiente: \\[0.1cm]
+En cuanto a programación como feeback puedo decir lo siguiente: \\[0.1cm]
 
-El tama\~no del sistema me supero enormemente, eso se nota mas cuando miro hacia 
-atras y considero el tiempo que me consumio estar programando, considero que 
-ubiese sido mejor encarar el sistema en un grupo de 2 o mas personas. \\[0.1cm]
+El tamaño del sistema me supero enormemente, eso se nota más cuando miro hacia atrás y considero el tiempo que me consumió estar programando, considero que hubiese sido mejor encarar el sistema en un grupo de 2 o más personas. \\[0.1cm]
 
-Mas de lo mismo, querer hacerlo todo uno desde 0 tampoco sirve, menos si no 
-planificas y quieres ponerte a programar desde el primer dia, a razon de eso 
-termine dandome cuenta a mitad de proyecto que tenia que reconstrui todo, por que 
-nunca me sente a pensar como debia extrutar la aplicacion.
+Más de lo mismo, querer hacerlo todo uno desde 0 tampoco sirve, menos si no planificas y quieres ponerte a programar desde el primer día, a razón de eso termine dándome cuenta a mitad de proyecto que tenía que reconstruí todo, porque nunca me senté a pensar como debía estructurar el sistema desarrollado, se desarrollo sobre la marcha y ahí están las consecuencias.
 
 
