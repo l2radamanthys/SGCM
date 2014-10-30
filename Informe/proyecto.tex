@@ -3,14 +3,14 @@
 
 \section{Motivación}
 
-En la actualidad existen pocos sistemas Aplicados en el ámbito de la gestión en el area de medicina y los existentes suelen ser solo para áreas especificas
+En la actualidad existen pocos sistemas aplicados en el ámbito de la gestión en el área de medicina y los existentes suelen ser solo para áreas específicas.
 
 
 \section{Descripción del Proyecto}
 
-Lo que se pretendió con este proyecto era poder desarrollar un sistema que unifique la areas de gestión y asignación de turnos y el manejo de historia clínica en un único sistema.
+Lo que se pretendió con este proyecto era poder desarrollar un sistema que unifique las áreas de gestión y asignación de turnos y el manejo de historia clínica en un único sistema.
 
-Cabe aclarar que el mismo se desarrollo con el propósito de poder ser utilizado principalmente en poli consultorios médicos ya que no plantea cuestiones tales como internaciones, traslado de pacientes, etc. como para poder ser de correcta utilidad en clínicas y hospitales. 
+Cabe aclarar que el mismo se desarrollo con el propósito de poder ser utilizado principalmente en poli-consultorios médicos ya que no plantea cuestiones tales como internaciones, traslado de pacientes, etc. como para poder ser de correcta utilidad en clínicas y hospitales. 
 
 
 \section{Arquitectura de la Aplicación}
@@ -28,7 +28,7 @@ al ser una tarea bastante común en casi todas las aplicaciones, viene incluido 
     \item Usuarios
     \item Grupos
     \item Permisos
-    \item Sessiones de Usuarios y Cookies
+    \item Sesiones de Usuarios y Cookies
 \end{itemize}
 
 Aunque en cuanto a lo que se refiere manejo de sesiones es un completo sistema solo maneja un pequeño conjunto de datos por lo que hubo que extender mediante la adición de un Modelo adicional para complementar la información de los usuarios.
@@ -40,7 +40,7 @@ Aquí un diagrama con todos los modelos que componen el modulo Usuarios el cual 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.45]{resourse/auth.png}
+    \includegraphics[scale=0.6]{resourse/auth.png}
     \caption{Diagrama con modelos que componen el modulo Usuarios}
     \label{fig:07}
 \end{figure}
@@ -64,15 +64,14 @@ Los \textbf{Usuarios no registrados} que vendría a ser cuando el usuario ingres
 
 \subsubsection{Paciente}
 
-El rol \textbf{Paciente} corresponde a los usuarios comunes, un usuario paciente puede ser creado por cualquiera de los otros roles, en caso que sea un usuario no registrado quien da el alta como paciente, el mismo deberá confirmar el registro mediante un código de verificación que el sistema le enviara al correo antes de poder comenzar a usar su cuenta, en los otros casos (el usuario Paciente es registrado por un 
-medico o un Administrativo) no se requerida dicha confirmación.\\[0.1cm]
+El rol \textbf{Paciente} corresponde a los usuarios comunes, un usuario paciente puede ser creado por cualquiera de los otros roles, en caso que sea un usuario no registrado quien da el alta como paciente, el mismo deberá confirmar el registro mediante un código de verificación que el sistema le enviara al correo antes de poder comenzar a usar su cuenta, en los otros casos (el usuario Paciente es registrado por un médico o un Administrativo) no se requerida dicha confirmación.\\[0.1cm]
 
 En cuanto a los privilegios del usuario Paciente, este además de poder consultar la  información de los especialistas puede solicitar un turno para ser atendido a un especialista en particular, también realizarle una interconsulta (mediante el sistema interno de mensajería) y modificar sus datos básicos, en resumen sus posibles funciones son:
 
 
 \subsubsection{Medico}
 
-Los Usuarios \textbf{Médicos} los cuales son asignados por los Administrativos a los Especialistas, en cuanto a privilegios y funcionalidades dentro del sistema, los mismos pueden:
+Los Usuarios \textbf{Médicos} los cuales son asignados por los administrativos a los especialistas, en cuanto a privilegios y funcionalidades dentro del sistema, los mismos pueden:
 
 \begin{itemize}
     \item Registrar Pacientes
@@ -84,7 +83,7 @@ Los Usuarios \textbf{Médicos} los cuales son asignados por los Administrativos 
     \item Cancelar días de atención
 \end{itemize}
 
-Son los únicos usuarios que tienen acceso al Modulo \textit{Historia Clínica}, en cuanto a privilegio sobre este modulo diremos que tiene la posibilidad de Crear, Modificar, Borrar (salvo casos específicos, que por su naturaleza no se permite dicha modificación.) un conjunto de Estudios, para más detalle se recomienda consultar el apartado sobre tal modulo.
+Son los únicos usuarios que tienen acceso al modulo \textit{Historia Clínica}, en cuanto a privilegio sobre este modulo diremos que tiene la posibilidad de \textbf{Crear, Modificar, Borrar}(esta última salvo casos específicos, que por su naturaleza no se permite dicha modificación.) un conjunto de estudios, para más detalle se recomienda consultar el apartado sobre tal modulo.
 
 
 \subsubsection{Administrativo}
@@ -94,26 +93,26 @@ Medico y otros Administrativos.
 
 \subsubsection{Admin}
 
-Existe un rol adicional que Django crea y gestiona por aparte, el mismo queda delegado para los administradores del sistemas ya que mediante el se puede acceder y modificar cualquier parte de la base de datos, por lo que podríamos decir que es un \textbf{Súper Usuario}, o usuario \textbf{Root} como para hacer analogía con los usuarios en entornos Unix, el mismo no forma parte del sistema desarrollado sino como funcionalidad adicional Django provee un panel de administración, para dicho tipo de usuario, al cual se puede acceder desde \url{/admin/} por ejemplo si estuviésemos ejecutando en un servidor local la ruta completa seria \url{http://127.0.0.1/admin/}\footnote{Se puede consultar mas acerca de Django
+Existe un rol adicional que Django crea y gestiona por aparte, el mismo queda delegado para los administradores del sistemas ya que mediante el se puede acceder y modificar cualquier parte de la base de datos, por lo que podríamos decir que es un \textbf{Súper Usuario}, o usuario \textbf{Root} como para hacer analogía con los usuarios en entornos Unix, el mismo no forma parte del sistema desarrollado sino como funcionalidad adicional Django provee un panel de administración, para dicho tipo de usuario, al cual se puede acceder desde \url{/admin/} por ejemplo si estuviésemos ejecutando en un servidor local la ruta completa seria \url{http://127.0.0.1/admin/}\footnote{Se puede consultar más acerca de Django
 Admin en \url{https://docs.djangoproject.com/en/dev/ref/contrib/admin/}}.\\[0.1cm]
 
 
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.5]{resourse/django-admin.png}
-    \caption{Vista del Panel Administracion provisto por Django}
+    \caption{Vista del Panel Administración provisto por Django}
     \label{fig:123}
 \end{figure}  
 
 
-Cabe aclarar que el Súper Usuario del sistema de autenticación de Django dentro del sistema en sí mismo no posee ningún privilegio adicional, es mas para compatibilizar el usuario con la funcionalidad del sistema, cuando se inicializan por primera vez, se crea un usuario de este tipo llamado \textbf{admin}\footnote{Se debe crear con ese nombre de usuario para evitar problemas en la inicialización, después se puede eliminar si se desea el usuario.} al cual se le asignan privilegio de \textit{Administrativo}.
+Cabe aclarar que el súper usuario del sistema de autenticación de Django dentro del sistema en sí mismo no posee ningún privilegio adicional, es mas para compatibilizar el usuario con la funcionalidad del sistema, cuando se inicializan por primera vez, se crea un usuario de este tipo llamado \textbf{admin}\footnote{Se debe crear con ese nombre de usuario para evitar problemas en la inicialización, después se puede eliminar si se desea el usuario.} al cual se le asignan privilegio de \textit{Administrativo}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Modulo Gestión de Turnos} 
 
-Dejando de lado el modulo Usuarios que nos provee Django el sistema desarrollado se divide esencialmente en 2 partes o módulos, aquí explicare como se diseño e implemento el Modulo Gestión de Turnos, que a mi consideración fue el que mayor reto aporto a la hora de pensar un solución para poder implementarlo.
+Dejando de lado el modulo Usuarios que nos provee Django el sistema desarrollado se divide esencialmente en 2 partes o módulos, aquí explicare como se diseño e implemento el ``Modulo Gestión de Turnos”, que a mi consideración fue el que mayor reto aporto a la hora de pensar un solución para poder implementarlo.
 
 El modulo se encarga de implementar las siguientes funciones
 
@@ -128,6 +127,26 @@ El modulo se encarga de implementar las siguientes funciones
 \subsection{Definición del Modelo}
 
 Aquí se muestra el diagrama de modelos que componen el modulo \textbf{Gestión de Turnos} \footnote{Vuelven a aparecen los modelos \textbf{User} y \textbf{UserInformation} por que casi todos los otros modelos dependen de alguna forma de ellos}, por la cantidad de modelos se mostrara en 2 diagramas, igualmente téngase en cuenta que corresponden a un único modelo, lo que haremos será separar en los modelos específicos utilizados para gestión de turnos y el resto de los modelos definidos que complementan la funcionalidad del modulo.
+
+Por Cuestiones de tamaño del diagrama y por la cantidad modelos utilizados en el modulo se complicaba poder mostrarlos todo en una misma página por lo que para mejor visualización e interpretación separe el mismo en 2 partes:
+
+El primer diagrama unifica todo lo referente a la asignación de turnos, que es lo principal del modulo:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{resourse/gt-gt.png}
+    \caption{Modulo Gestión Turnos - Diagrama Modelos correspondiente a la Gestión de Turnos}
+    \label{fig:124}
+\end{figure}  
+
+En el segundo diagrama se muestra los modelos necesarios para las funcionalidades adicionales.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{resourse/gt-ot.png}
+    \caption{Modulo Gestión Turnos - Modelos Adicionales}
+    \label{fig:125}
+\end{figure}  
 
 
 \subsection{Gestionar Datos de Usuarios}
@@ -155,27 +174,6 @@ La \textit{Asignación de Turnos} a los pacientes es la principal funcionalidad 
     \item Controlar la asistencia de los pacientes.    
 \end{itemize}
 
-Por Cuestiones de tamaño del diagrama y por la cantidad modelos utilizados en el modulo se complicaba poder mostrarlos todo en una misma página por lo que para mejor visualización e interpretación separe el mismo en 2 partes:
-
-El primer diagrama unifica todo lo referente a la asignación de turnos, que es lo principal del modulo:
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.6]{resourse/gt-gt.png}
-    \caption{Modulo Gestion Turnos - Diagrama Modelos correspondiente a la Gestión de Turnos}
-    \label{fig:124}
-\end{figure}  
-
-En el segundo diagrama se muestra los modelos necesarios para las funcionalidades adicionales.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.6]{resourse/gt-ot.png}
-    \caption{Modulo Gestión Turnos - Modelos Adicionales}
-    \label{fig:125}
-\end{figure}  
-
-
 %\\[0.5cm]
 
 \subsection{Diseño de Modelos Para la Gestión de Turnos}
@@ -200,7 +198,7 @@ En base a esto se puede calcular un dato adicional que es la cantidad de turnos 
 numero\_turnos = (hora\_fin - hora\_inicio) // turn\_duration
 \end{lstlisting}
 
-Esto devolverá un valor entero por truncamiento, que será el numero máximo de turnos que se puedan asignar.
+Esto devolverá un valor entero por truncamiento, que será el número máximo de turnos que se puedan asignar.
 
 
 \subsubsection{DayOffAttention (Días de Atención)}
@@ -299,7 +297,7 @@ Las funcionalidades que se implementan en correspondiente módulos son solo bás
 El modulo se encarga básicamente de registrar los diferentes estudios que se le practican a un paciente, adicionalmente registra información correspondiente a las interconsultas \footnote{Consultas medicas realizadas por el paciente} y las observaciones del médico, así como los medicamentos que fueron recetados por el especialista.
 
 
-\subsection{Definicion de Modelos}
+\subsection{Definición de Modelos}
 
 Los modelos que componen el Modulo corresponden a los diferentes tipos de exámenes de practica mas común \footnote{Esto no es que este definido en algún lado que sean solo estos, sino que más bien son los exámenes que durante el análisis de diferentes modelos se presentaban mas comúnmente.} en lo que 
 Corresponden a la historia clínica.\\[0.1cm]
@@ -332,7 +330,7 @@ Este Modelo almacena la información que el médico registra durante la consulta
 \begin{itemize}
     \item \textbf{date} Fecha de la consulta
     \item \textbf{issue} Motivo de la consulta
-    \item \textbf{diagnostico} Diagnostico del medico.
+    \item \textbf{diagnostico} Diagnostico del médico.
     \item \textbf{physical\_exam} Observaciones del Examen Físico \footnote{Corresponde a un examen menor o visual simple que el médico realiza al paciente}
     \item \textbf{observations} Anotaciones Adicionales. 
 \end{itemize}
@@ -344,7 +342,7 @@ Almacena información relevante sobre el medicamento prescripto en la receta mé
 \begin{itemize}
     \item \textbf{prescription\_date} Fecha que fue prescripto el medicamento
     \item \textbf{expiration\_data} Vencimiento de la receta, pasada esta fecha la  misma debe considerarse invalida.
-    \item \textbf{active\_principie} Principio Activo o nombre genérico de la monodroga que se receta.
+    \item \textbf{active\_principie} Principio Activo o nombre genérico de la mono droga que se receta.
     \item \textbf{dosage} Tamaño de la dosis
     \item \textbf{administration\_route} Modo en que se debe tomar la droga
     \item \textbf{container\_format} Formato del Envase y cantidad.
@@ -461,5 +459,6 @@ Este análisis trata de almacenar lo referente al estudio del sistema cardiovasc
     \item Pulso Pedio
     \item Observaciones Generales
 \end{itemize}
+
 
 
