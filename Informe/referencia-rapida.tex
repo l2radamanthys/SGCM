@@ -304,13 +304,96 @@ correspondiente.
 
 \section{Panel de Usuario Medicos}
 
-Corresponde al panel de funciones al que tendran acceso los usuarios ...
+Corresponde al panel de funciones al que tendran acceso los usuarios medicos 
+aunque comparte funcionalidades en comun con los otros paneles, presenta vistas
+esclusivas para el uso por parte de los medicos.
 
 \begin{itemize}
     \item \textbf{Inicio}: Ir a la pantalla de Inicio
-    \item \textbf{Cronograma}:
+    \item \textbf{Cronograma}: 
     \item \textbf{Pacientes}:
     \item \textbf{Turnos}: 
     \item \textbf{Mensajes}: Casilla de Mensajes Internos.
     \item \textbf{Opciones}: Panel de Opciones
 \end{itemize}
+
+\subsection{Cronograma}
+
+La funcionalidad de esta vista es permitir un acceso rapido a la funciones comunes,
+mostrar los mensajes sin leer, y los turnos solicitados para la fecha.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{resourse/cronograma.png}
+    \caption{Vista del Cronograma}
+    \label{fig:614}
+\end{figure}
+
+
+\subsection{Pacientes}
+
+La coleccion de vistas correspondientes a los pacientes son similares a las vistas
+que presenta el rol administrativo, como se menciono antes el medico tambien puede
+registrar nuevos pacientes, lo que diferencia a las vistas de medico correspondiente
+a esta secion es que ahora muestra un menu mas amplio de opciones en comparacion 
+a la del administrador, se habilita el submenu para administrar lo referente a la
+historia clinica del paciente.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{resourse/datos-paciente-m.png}
+    \caption{Mostrar Paciente}
+    \label{fig:615}
+\end{figure}
+
+la Primera parte corresponde al registro de informacion relevante obtenida durante
+la consultas medicas y prescripciones medicas \footnote{Lo que comunmente se 
+conoce como receta medica.} ademas de generar el comprobante para el paciente.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{resourse/consulta-medica.png}
+    \caption{Consulta Medica}
+    \label{fig:616}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.3]{resourse/receta.png}
+    \caption{Imprimir Receta o Prescripcion Medica}
+    \label{fig:617}
+\end{figure}
+
+En cuanto a los estudios clinicos que se registran en la historia clinica, por 
+lo general al seleccionarlo puede que se visualize: 
+
+
+la informacion del examen unicamente, con la opcion de modificacion si este es 
+unico, por ejemplo el caso de registro de antecedentes perinatales.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{resourse/modificar-perinatales.png}
+    \caption{Examen Unico}
+    \label{fig:618}
+\end{figure}
+
+O tambien muestre un listado con los examenes realizados donde se debera selecionar el 
+examen especifico que se desea consultar, o registrar un nuevo examen en caso 
+de requerirlo, como por ejemplo es el caso del examen fisico ya que al paciente 
+pueden realizale durante su vida varios examenes de este tipo.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{resourse/datos-paciente-m.png}
+    \caption{Listado de Examenes Fisicos}
+    \label{fig:619}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{resourse/datos-paciente-m.png}
+    \caption{Nuevo Examen Fisico}
+    \label{fig:618}
+\end{figure}
+
