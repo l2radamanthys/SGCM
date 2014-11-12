@@ -310,9 +310,9 @@ esclusivas para el uso por parte de los medicos.
 
 \begin{itemize}
     \item \textbf{Inicio}: Ir a la pantalla de Inicio
-    \item \textbf{Cronograma}: 
-    \item \textbf{Pacientes}:
-    \item \textbf{Turnos}: 
+    \item \textbf{Cronograma}: Vista con las actividades pendiente para el dia.
+    \item \textbf{Pacientes}: Administrar Usuarios Pacientes
+    \item \textbf{Turnos}: Informacion acerca del estado de los turnos del medico.
     \item \textbf{Mensajes}: Casilla de Mensajes Internos.
     \item \textbf{Opciones}: Panel de Opciones
 \end{itemize}
@@ -385,15 +385,86 @@ pueden realizale durante su vida varios examenes de este tipo.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.5]{resourse/datos-paciente-m.png}
-    \caption{Listado de Examenes Fisicos}
+    \includegraphics[scale=0.5]{resourse/listado-cardio.png}
+    \caption{Listado de Examenes Aparato Cardiobascular}
     \label{fig:619}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.5]{resourse/datos-paciente-m.png}
-    \caption{Nuevo Examen Fisico}
-    \label{fig:618}
+    \includegraphics[scale=0.5]{resourse/detalle-cardio.png}
+    \caption{Vista Muestra Datos Examen Cardiobascular}
+    \label{fig:620}
 \end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{resourse/nuevo-fisico.png}
+    \caption{Nuevo Examen Fisico}
+    \label{fig:621}
+\end{figure}
+
+
+\subsection{Turnos}
+
+\subsubsection{Registrar nuevo Turno}
+
+El procedimiento relacionado al registro de un nuevo turno es similar en todos
+los casos solo tiene pequeñas variaciones dependiendo el rol del usuario, si se
+es paciente por ejemplo se selecionara el medico al que se desea solicitar el
+turno, en caso de ser medico selecionara el paciente, y si es administrativo
+seleccionara ambos (medico y paciente), luego el sistema le mostrara un calendario
+con las posibles fechas (fig:622) donde puede solicitar un turno dependiendo
+de los dias de atencion que el medico haya estipulado.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{resourse/calendario.png}
+    \caption{Vista para Seleccion de dia de calendario para Asignar turno}
+    \label{fig:622}
+\end{figure}
+
+Luego de seleccionada la fecha entre las disponible se muestra una vista con el
+resumen de la informacion del paciente, medico, la fecha \footnote{El horario recien
+se define cuando el turno es registrado.} donde se debe confirmar el registro del
+turno, este paso es obligatorio para evitar registrar accidentalmente un turno.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{resourse/confirmacion-turno.png}
+    \caption{Vista de Confirmacion de los datos del Turno}
+    \label{fig:623}
+\end{figure}
+
+Despues de confirmado, se mostraran los datos completo del turno, asi como la
+opcion de imprimir un comprobante.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{resourse/datos-turno.png}
+    \caption{Vista muestra la informacion del Turno}
+    \label{fig:624}
+\end{figure}
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{resourse/comprobante-turno.png}
+    \caption{Ejemplo de Comprobante de turno}
+    \label{fig:625}
+\end{figure}
+
+Con esto concluye esta pequeña guia de uso del sistemas.
+
+
+
+
+
+
+
+
+
+
+
 

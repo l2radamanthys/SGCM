@@ -7,6 +7,7 @@
 
 \usepackage{amsmath, amsfonts, psfrag, fancyhdr, layout, appendix, subfig}
 \usepackage{graphicx}
+\usepackage{glossaries}
 
 \usepackage{ucs}
 \usepackage[utf8,utf8x]{inputenc} %codificacion documento
@@ -100,7 +101,6 @@
 \setcounter{secnumdepth}{3}
 \setcounter{tocdepth}{3}
 
-\makeindex
 
 %enlaces web en pdf remplazado por url
 \usepackage{hyperref}
@@ -153,6 +153,15 @@
 %FIN Definicion para Formateo Codigo
 
 \usepackage{lmodern}% http://ctan.org/pkg/lm 
+
+\makeindex
+\makeglossaries
+\input{./glosario.tex}
+
+\title{Tesis de Seminario de Computador Universitario}
+\author{Ricardo Daniel Quiroga}
+\date{\today}
+
 
 \begin{document}
 
@@ -234,7 +243,7 @@
 \include{antecedentes}
 \include{proyecto}
 \include{instalacion}
-\include{instalacion-2}
+%\include{instalacion-2}
 \include{referencia-rapida}
 \include{conclusion}
 
@@ -249,7 +258,7 @@
 %%%%%%%%%%%%%%
 %\ include{software}
 %\ include{publicaciones}
-%\include{bibliografia}
+\include{bibliografia}
 
 %%%%%%%%%%%%%
 \backmatter
@@ -262,6 +271,7 @@
 %\bibliographystyle{plain}
 %\bibliography{biblio.bib}
 
+\printglossaries
 \include{bibligrafia}
 
 \end{document}
