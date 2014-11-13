@@ -1,0 +1,19 @@
+Antecedentes Perinatales
+Aplicacion
+Baterias Incluidas
+Consulta Medica
+DER 
+Deploy
+Historia Clinica
+MVC
+NoSQL
+Prescripcion Medica
+Pythonico
+SQL
+Sistema
+Sistema
+Sistema
+Stack
+Super Usuario
+UML
+Zen de Python
