@@ -24,22 +24,22 @@ Aunque suelen ser más robustas y estables que las aplicaciones web presentan va
 \end{itemize}
 
 
-Una aplicacion web, es aquella que solo requiere ser instalada en un servidor, su ejecucion requiere unicamente disponer de un ordenador con conecion a internet y un navegador en contraparte de las desktop que requiere que se instale en cada ordenador donde se pretende usar. \\[0.1cm]
+Una aplicacion web, es aquella que solo requiere ser instalada en un servidor, su ejecución requiere unicamente disponer de un ordenador con conexión a internet y un navegador en contraparte de las desktop que requiere que se instale en cada ordenador donde se pretende usar. \\[0.1cm]
 
 
 Por lo cual brinda una serie de ventajas tales como:
 
 \begin{itemize}
-    \item Portabilidad, se ejecuta desde cualquier ordenador que posea coneccion a internet sin depender de software adicional, plataforma y/o sistema operativo. \footnote{Esta característica no es del todo cierto algunas aplicaciones requieren determinados complementos instalados en el navegador web o no soportan ciertos navegadores.}
-    \item La informacion que se maneja es multiusuario por lo que son especialmente utiles para         desarrollar aplicaciones multiusuarios basadas en compartir informacion.
+    \item Portabilidad, se ejecuta desde cualquier ordenador que posea conexión a internet sin depender de software adicional, plataforma y/o sistema operativo. \footnote{Esta característica no es del todo cierto algunas aplicaciones requieren determinados complementos instalados en el navegador web o no soportan ciertos navegadores.}
+    \item La información que se maneja es multiusuario por lo que son especialmente útiles para         desarrollar aplicaciones multiusuario basadas en compartir información.
     \item Consumen muy pocos recursos, por lo que el usuario no necesita tener un ordenador con         grandes prestaciones para trabajar con ellas.
-    \item Son faciles de actualizar y mantener.
-    \item Se pueden utilizar en miles de equipos sin limitacion y restriccion alguna.
+    \item Son fáciles de actualizar y mantener.
+    \item Se pueden utilizar en miles de equipos sin limitación y restricción alguna.
     \item Su funcionalidad es independiente del sistema operativo Instalado en el ordenador del  usuario.
-    \item No hay problemas de incompatibilidad de version de software ya que los usuarios trabajan con la misma version.
+    \item No hay problemas de incompatibilidad de versión de software ya que los usuarios trabajan con la misma versión.
 \end{itemize}
 
-En resumen el sistema por sus caracteristicas podria haberse implementado como un sistema deskop pero se ubiesen perdido las caracteristicas que deseaba para el mismo. 
+En resumen el sistema por sus características podría haberse implementado como un sistema desktop pero se hubiesen perdido las características que deseaba para el mismo. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -53,11 +53,21 @@ El servidor Apache se desarrolla dentro del proyecto HTTP Server (httpd) de la \
 
 Apache presenta entre otras características altamente configurables, bases de datos de autenticación y negociado de contenido, pero fue criticado por la falta de una interfaz gráfica que ayude en su configuración.\\[0.2cm]
 
+\subsection{¿Por qué use Apache?}
+
+Se eligió apache como servidor HTTP antes otras opciones como Nginx o ISS por cuestiones de costos beneficios
+ (Nginx funciona mejor para servir archivos estáticos, en cambio si se necesita correr aplicaciones en Servidor Apache es mejor opción),
+ posibilidad de portabilidad, viene con una función de soporte para PHP, Python, Perl y otros lenguajes. Por ejemplo, el mod\_python y mod\_php Apache Módulos
+  PHP proceso y código Perl dentro del proceso de Apache. mod\_python es más eficiente que el uso de CGI o FastCGI, ya que no tiene que cargar el intérprete de
+  Python para cada solicitud, por ser el servidor más usado está altamente documentado y es fácil conseguir soporte. 
+
 
 \section{mod\_wsgi}
 
 mod\_wsgi es un módulo de Apache que provee una interfaz WSGI para correr aplicaciones web escritas en Python sobre Apache, esto es todo lo que necesitas aplicar para que tus  archivos *.py se ejecuten por medio de un navegador Web.\\[0.1cm]
  
+Existen varias interfaces WSGI para apache, se eligió mod\_wsgi sobre el resto (como por ejemplo mod\_python) por recomendaciones de los desarrolladores de Django.
+
 
 \subsection{WSGI}
 
@@ -78,6 +88,9 @@ El proyecto post-ingres pretendía resolver los problemas con el modelo de base 
 
 Estas funcionalidades incluían la habilidad de definir tipos, pero también la habilidad de describir relaciones - las cuales hasta ese momento eran ampliamente utilizadas pero mantenidas completamente por el usuario. En Postgres la base de datos comprendía las relaciones y podía obtener información de tablas relacionadas utilizando reglas. Postgres usá muchas ideas de Ingres pero no su código. \\[0.1cm]
 
+\subsection{¿Por qué use PosgreSQL?}
+
+Porque elegí PosgreSQL como motor de bases de datos, primero que nada costos, PosgreSQL es software libre y se distribuye libremente por lo que el costo de adquirir el motor de bases de datos fue 0 \$,  otra característica es por su performance ante otros Motores como MySQL que tras varias transacciones comerciales/empresariales la han llevado de un lado a otro, finalmente ahora es propiedad de Oracle (Una Conocida Empresa que se dedica a comercializar motores de bases de datos privativos) estos hechos han llevado a MySQL a vivir un deterioro global puesto que este sistema gestor de base de datos actualmente ofrece un rendimiento excesivamente bajo en comparación incluso con motores pequeños como SQLite.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -94,9 +107,9 @@ Python es un lenguaje de programación multiparadigma. Esto significa que mas qu
 
 Python usa tipado dinamico y conteo de referencias para la administración de memoria. Una caracterí­stica importante de Python es la resolución dinamica de nombres;  es decir, lo que enlaza un método y un nombre de variable durante la ejecución  del programa (también llamado enlace dinamico de métodos). \\[0.1cm]
   
-Otro objetivo del diseí±o del lenguaje es la facilidad de extensión. Se pueden escribir nuevos módulos facilmente en C o C++. Python puede incluirse en aplicaciones que necesitan una interfaz programable. \\[0.1cm]
+Otro objetivo del diseño del lenguaje es la facilidad de extensión. Se pueden escribir nuevos módulos facilmente en C o C++. Python puede incluirse en aplicaciones que necesitan una interfaz programable. \\[0.1cm]
 
-Aunque la programación en Python podrí­a considerarse en algunas situaciones hostil a la programación funcional tradicional del Lisp, existen bastantes analogí­as entre Python y los lenguajes minimalistas de la familia Lisp como puede ser Scheme. \\[0.1cm]
+Aunque la programación en Python podría considerarse en algunas situaciones hostil a la programación funcional tradicional del Lisp, existen bastantes analogí­as entre Python y los lenguajes minimalistas de la familia Lisp como puede ser Scheme. \\[0.1cm]
 
 
 \subsection{La Filosofia detras de Python}
@@ -144,6 +157,13 @@ En la actualidad existen diversas implementaciones de Python
     \item {\bfseries Pippy} es la implementación realizada para Palm \url{pippy.sourceforge.net}
     \item {\bfseries PyPy} es una implementación de Python escrita en Python y optimizada mediante JIT \url{pypy.org}
 \end{itemize}
+
+\subsection{¿Por que elegí Python?}
+
+Antes de conocer Python programaba en C++, Java y PHP, ahora ¿porque no desarrolle usando algunos de esos lenguajes? Como dice el Actor Eugenio Derbez en parodia el Longe Moco, ¡fue horrible, fue horrible..! Son lenguajes muy conocidos pero es demasiado engorroso lograr desarrollar aplicaciones que sean escalables y de rápido desarrollo y sobre todo mantenibles con el tiempo, tienen una pésima curva de aprendizaje (excepto PHP pero por contraparte su notación es horrible y dificulta la lectura y peor que se mescla en muchos casos con el HTML), por eso usar python fue un gran salto y me pude dedicar a programar no a resolver problemas de almacenamientos de datos por ejemplo.\\
+
+Podria haber usado  un 4GL, si, pero como que estando todavía en esta época sigo considerando como si les faltara algo para ser completos..
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -381,4 +401,13 @@ Fragmento del archivo urls.py del Proyecto\\[0.1cm]
 \end{lstlisting}
 
 \vspace{0.1cm}
+
+
+\subsection{Porque Django y no otro Framework}
+
+Django no es el único framework disponible para Python existen varias alternativas grandes como TurboGears, Web2Py, Grops, Pylons, Zope2, Bottle, Flask, se puede consultar una extensa lista de alternativas disponibles en \url{https://wiki.python.org/moin/WebFrameworks}. 
+\\
+Django termino siendo el elegido por razones de que es fácil de instalar extensiones, muy buena documentación, gran aceptación como principal framework web en Python, en constante evolución, posee una comunidad de desarrolladores activa (y en español), curva de aprendizaje relativamente corta, posee un sistema de plantillas que permite usar herencia, separa el diseño de la Interfaz del resto de la programación, completa interfaz administrativa que se genera automáticamente (ósea tienes la mitad del trabajo hecho) entre otros por nombrar las características por las que me decidí usarlo, vengo de frameworks en otros lenguajes y al utilizarlo por primera vez simplemente me pareció mágicos.
+
+
 
