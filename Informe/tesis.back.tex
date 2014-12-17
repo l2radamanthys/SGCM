@@ -1,0 +1,283 @@
+\documentclass[10pt,fleqn,twoside]{book}
+\topmargin=3cm
+
+%cambiar fuente defecto
+\usepackage{helvet}
+%\renewcommand{\normalfont}{\sfdefault}
+
+\usepackage{amsmath, amsfonts, psfrag, fancyhdr, layout, appendix, subfig}
+\usepackage{graphicx}
+\usepackage{glossaries}
+
+\usepackage{ucs}
+\usepackage[utf8,utf8x]{inputenc} %codificacion documento
+\usepackage[spanish]{babel}
+\usepackage{makeidx}
+%\usepackage{ucs}
+
+%imagenes donde deben ir
+\usepackage{float}
+
+\usepackage{color}
+
+\definecolor{lightgray}{rgb}{0.83,0.83,0.83}
+\definecolor{darkgray}{gray}{0.40}
+
+%Colores predefinidos para usar con listing
+\definecolor{code_fg}{RGB}{50,50,50}
+\definecolor{code_bg}{RGB}{240, 255, 225}
+\definecolor{code_coment}{RGB}{0, 80, 0} 
+\definecolor{code_keyword}{RGB}{0, 50, 100}
+\definecolor{code_indetif}{RGB}{0, 128, 255}
+\definecolor{code_number}{RGB}{80, 80, 80}
+\definecolor{console_bg}{RGB}{0, 79, 117}
+\definecolor{console_fg}{RGB}{250, 250, 250}
+\definecolor{console_key}{RGB}{0, 79, 157}
+
+%color de los enlaces
+\definecolor{link}{RGB}{0, 79, 157}
+
+
+%This change labels of subfig
+\renewcommand{\thesubfigure}{\alph{subfigure}\arabic{subfiggroup}}
+\captionsetup[subfigure]{labelformat=simple,labelsep=colon,
+                         listofformat=subsimple}
+%\captionsetup{lofdepth=2} This is in order to list the subfigures in the LOF
+\makeatletter
+ \renewcommand{\p@subfigure}{}
+  %Esto lo agrego yo para tener subfiguras a1, b1, ... a2, b2, ... 
+  %Se reinicia cada vez que una nueva figura es convocada (como es debido).
+  \newcounter{subfiggroup}[figure] 
+\makeatother
+
+\usepackage{epsfig}
+
+%Esto genera enlaces en el PDF
+\usepackage{url}
+
+%cambiar margenes
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist
+
+
+% \usepackage{html}
+%Esto es para el conversor latex2html
+
+
+%Definición de margenes
+\usepackage[left=4.5cm,top=3cm,right=2cm,bottom=2.5cm]{geometry}
+\sloppy
+\pagestyle{empty}
+
+% Code for creating empty pages
+% No headers on empty pages before new chapter
+\makeatletter
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+    \hbox{}
+    \thispagestyle{plain}
+    \newpage
+    \if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother \clearpage{\pagestyle{plain}\cleardoublepage}
+
+% Code for creating fully-empty pages
+% Fully empty pages before command is called
+\makeatletter
+\def\clearfullypage{\clearpage\if@twoside \ifodd\c@page\else
+    \hbox{}
+    \thispagestyle{empty}
+    \newpage
+    \if@twocolumn\hbox{}\newpage\fi\fi\fi}
+\makeatother \clearpage{\pagestyle{empty}\clearfullypage}
+
+% Dutch style of paragraph formatting, i.e. no indents.
+\setlength{\parskip}{1.3ex plus 0.2ex minus 0.2ex}
+\setlength{\parindent}{0pt}
+
+
+% Double space for REVISION
+%\renewcommand{\baselinestretch}{2.0}
+
+%Print subsubsection numbers and put them in TOC
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+
+%enlaces web en pdf remplazado por url
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=link
+}
+
+
+%listings reconoce la sintaxis de varios lenguajes y permite otras configuraciones.
+\usepackage{listings}
+%listing definicion para formateo de codigo fuente
+\lstdefinestyle{Python}
+{
+    basicstyle=\small\ttfamily\color{code_fg},
+    backgroundcolor=\color{code_bg},
+    keywordstyle=\color{code_keyword}\tt, % underlined bold black keywords
+	identifierstyle=\color{code_indetif}, % color identificadores
+	commentstyle=\color{code_coment},                       % comentarios
+	stringstyle=\ttfamily,                                 % typewriter type for strings
+	showstringspaces=false,
+	frame=shadowbox,%\linewidth=3,
+	framexleftmargin=8mm,
+	rulesepcolor=\color{code_fg},
+	backgroundcolor=\color{code_bg},
+	language=Python, 
+	numbers=left, 
+	numberstyle=\color{code_number}\footnotesize\tt,		%estilo numero linea
+	tabsize=4, 						                        %tamaño tabulacion 	    
+	%showspaces=true,
+}
+
+\lstdefinestyle{HTML}
+{
+    basicstyle=\small\ttfamily\color{code_fg},
+    backgroundcolor=\color{code_bg},
+    keywordstyle=\color{code_keyword}\tt, % underlined bold black keywords
+	identifierstyle=\color{code_indetif}, % color identificadores
+}
+
+\lstdefinestyle{consola}
+{
+    basicstyle=\ttfamily\color{console_fg},
+    backgroundcolor=\color{console_bg},
+}
+
+
+%FIN Definicion para Formateo Codigo
+
+\usepackage{lmodern}% http://ctan.org/pkg/lm 
+
+\makeindex
+\makeglossaries
+\include{glosario}
+
+\title{Tesis de Seminario de Computador Universitario}
+\author{Ricardo Daniel Quiroga}
+\date{\today}
+
+
+\begin{document}
+
+
+%Cambiar Cuadros por Tablas y lista de... Debe ir después de \begin{document}
+%\renewcommand{\listtablename}{Índice de tablas} 
+%\renewcommand{\tablename}{Tabla} 
+
+
+\pagenumbering{arabic}
+
+%%%%%%%%%%%%%
+\frontmatter
+%%%%%%%%%%%%%
+%\ input{portada} %Se compila aparte y se junta con "gs".
+%gs -dNOPAUSE -sDEVICE=pdfwrite -sOUTPUTFILE=tesiscompleta.pdf -dBATCH portada.pdf tesis.pdf
+\pagestyle{empty}
+\clearfullypage
+
+
+% Define pagestyle
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\chaptermark}[1]{\markboth{ \emph{#1}}{}}
+\fancyhead[LO]{}
+\fancyhead[LO]{}
+\fancyfoot[LE,RO]{\thepage}
+
+% Redefine plain page style
+\fancypagestyle{plain}{
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[LE,RO]{\thepage}
+}
+
+% Dutch style of paragraph formatting, i.e. no indents.
+\setlength{\parskip}{1.3ex plus 0.2ex minus 0.2ex}
+
+
+% Remove parskip for toc
+\setlength{\parskip}{0ex plus 0.5ex minus 0.2ex}
+
+
+%Portada
+\include{portada}
+\include{dedicatoria}
+
+\tableofcontents %Indice
+\listoffigures %listado de figuras
+%\listoftables
+
+%\cleardoublepage
+%\ include{resumen} 
+%\cleardoublepage
+%\ include{resumenen} 
+% Adjustments headers
+\fancyhead[RO]{\leftmark}
+
+%%%%%%%%%%%%%
+\mainmatter
+%%%%%%%%%%%%%
+
+
+% Adjustments headers
+\fancyhead[RO]{\leftmark}
+\fancyhead[EL]{\emph{Capítulo \thechapter}}
+%\setcounter{page}{3}
+%\ include{file} busca el archivo file.tex en el directorio actual y se lo tomo como si el contenido de
+%file.tex estuviera en vez del comando \include pero insertando una pagina en blanco antes y después del 
+%contenido de file.tex por lo que el al escribir file.tex hay que hacer de cuentas que se esta dentro de 
+%\begin{document} del documento principal, en este caso este archivo es el principal. \input es un comando 
+%similar pero no agrega las paginas en blanco  
+%elimine algunos \include por que no aportan nada, el que quedo tiene algunos ejemplos de uso de fancyvrb y listings
+%el espacio que queda en \ include es solo para que Texmaker no reconozca el include y lo muestre en la estructura del archivo.
+
+\include{introduccion}
+\include{tecnologia}
+\include{etapas}
+\include{antecedentes}
+\include{proyecto}
+\include{instalacion}
+%\include{instalacion-2}
+\include{referencia-rapida}
+\include{conclusion}
+
+%\part*{\addcontentsline{toc}{part}{Apéndices}Apéndices}
+
+% Adjustments headers
+%\fancyhead[RO]{\leftmark}
+%\fancyhead[EL]{\emph{Apéndice \thechapter}}
+
+%%%%%%%%%%%%%
+%\appendix
+%%%%%%%%%%%%%%
+%\ include{software}
+%\ include{publicaciones}
+\printglossaries
+\include{bibliografia}
+
+%%%%%%%%%%%%%
+\backmatter
+%%%%%%%%%%%%%
+% Adjustments headers
+\fancyhead[RO]{\leftmark}
+\fancyhead[EL]{}
+\addcontentsline{toc}{chapter}{Bibliografía}
+%\bibliographystyle{unsrt}
+%\bibliographystyle{plain}
+%\bibliography{biblio.bib}
+
+
+\include{bibligrafia}
+
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "tesis"
+%%% End: 

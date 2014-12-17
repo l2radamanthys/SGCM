@@ -213,7 +213,7 @@ class MessageSendForm(forms.Form):
     )
     content = forms.CharField(
         label="Contenido:",
-        widget= forms.Textarea(attrs={'cols':'55'}),
+        widget= forms.Textarea(),
         required = True
     )
 
@@ -326,7 +326,7 @@ class MedicalSpecialtiesForm(forms.ModelForm):
         fields = ('name', 'description')
         widgets = {
             'name' : forms.TextInput(attrs={'class':'edt_l',}),
-            'description' : forms.Textarea(attrs={'cols':'52', 'rows':'5'}),
+            'description' : forms.Textarea(attrs={'rows':'5'}),
         }
 
 
@@ -339,7 +339,7 @@ class TurnEditForm(forms.ModelForm):
         model = Turn
         fields = ('observation', 'status')
         widgets = {
-            'observation' : forms.Textarea(attrs={'cols':'52', 'rows':'5'}),
+            'observation' : forms.Textarea(attrs={ 'rows':'5'}),
         }
 
 

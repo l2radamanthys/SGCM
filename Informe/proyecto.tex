@@ -36,14 +36,14 @@ Aunque en cuanto a lo que se refiere manejo de sesiones es un completo sistema s
 
 \subsection{Modelos}
 
-Aquí un diagrama con todos los modelos que componen el modulo Usuarios el cual está integrado en parte con el modulo Gestión de Turnos. Los Diagramas utilizados no corresponden a ninguna notación en particular solo sirven para mostrar la interacción en las diferentes clases, por lo que los modelos quizás se aproximen mas a una notación de Diagramas de clases en UML\footnote{UML o Proceso Unificado de Desarrollo de Software es una metodología de desarrollo que proporciona diferentes herramientas una de ellas es el diagrama de clases.} que la típica definición del DER \footnote{El DER o Diagrama Entidad Relacional el cual se usa para mostrar la interacción y cardinalidad entre las tablas de una base de datos.} aunque internamente se trabaje con un motor SQL (podrías usar un motor de bases de datos NoSQL)  y no con clases el uso de un determinado motor de base de datos será transparente para el usuario no se necesitara modificar más que la configuración de la aplicación el resto seguirá como si nunca lo hubieses notado. \footnote{A lo sumo elegiremos entre uno y otro motor de bases de datos por una cuestión de performance más que nada.}
-
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.6]{resourse/auth.png}
     \caption{Diagrama con modelos que componen el modulo Usuarios}
     \label{fig:07}
 \end{figure}
+
+Aquí un diagrama con todos los modelos que componen el modulo Usuarios el cual está integrado en parte con el modulo Gestión de Turnos. Los Diagramas utilizados no corresponden a ninguna notación en particular solo sirven para mostrar la interacción en las diferentes clases, por lo que los modelos quizás se aproximen mas a una notación de Diagramas de clases en UML\footnote{UML o Proceso Unificado de Desarrollo de Software es una metodología de desarrollo que proporciona diferentes herramientas una de ellas es el diagrama de clases.} que la típica definición del DER \footnote{El DER o Diagrama Entidad Relacional el cual se usa para mostrar la interacción y cardinalidad entre las tablas de una base de datos.} aunque internamente se trabaje con un motor SQL (podrías usar un motor de bases de datos NoSQL)  y no con clases el uso de un determinado motor de base de datos será transparente para el usuario no se necesitara modificar más que la configuración de la aplicación el resto seguirá como si nunca lo hubieses notado. \footnote{A lo sumo elegiremos entre uno y otro motor de bases de datos por una cuestión de performance más que nada.}
 
 El único modelo que fue necesario agregar es \textbf{UserInformation} que es para extender la información que se registra en el modelo \textbf{User} el resto vienen con Django. En Resumen aunque se podría haber desarrollado Un Modulo desde cero que gestione las sesiones de usuarios hubiese generado trabajo extra sin sentido.
 
@@ -396,7 +396,7 @@ El Modelo \textbf{BasicExam} refleja la información correspondiente a un examen
 
 \subsubsection{HeadExam (Examen de Cabeza)}
 
-Un xxamen más especializado de la cabeza,  en el que se analiza conjuntamente boca, ojos, nariz, forma del cráneo y oídos.
+Un examen más especializado de la cabeza,  en el que se analiza conjuntamente boca, ojos, nariz, forma del cráneo y oídos.
 
 
 \subsubsection{NeckExam (Examen de cuello)}
