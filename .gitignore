@@ -7,7 +7,6 @@
 Thumbs.db
 media/upload/files
 media/upload/images
-media/data
 
 #latex configuracion
 *.aux
