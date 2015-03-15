@@ -73,7 +73,9 @@ def patient_register(request):
                     ## generacion y envio del mail de activacion de usuario
                     subject = "Confirmacion Registro Paciente"
                     to_email = user.email
-                    from_email = "registro-usuario@sgcm.com"
+                    #from_email = "registro-usuario@sgcm.com"
+                    from settings import EMAIL_HOST_USER
+                    from_email = EMAIL_HOST_USER
                     mdict ={
                         'username': user.username,
                         'first_name': user.first_name,

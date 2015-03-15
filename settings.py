@@ -171,8 +171,8 @@ LOGGING = {
 
 
 #configuracion de la cuenta de email de GMAIl
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'smtp.sgcm@gmail.com'
-EMAIL_HOST_PASSWORD = 'sgcm2013'
+EMAIL_HOST = 'smtp.mail.yahoo.com'
+EMAIL_HOST_USER = 'sgcm.smtp@yahoo.com'
+EMAIL_HOST_PASSWORD = 'hola1234'
 EMAIL_PORT = '587'
 EMAIL_USE_TLS = True

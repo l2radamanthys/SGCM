@@ -3,10 +3,10 @@
 *.pyw
 #vim copia de seguridad
 *.swp
-#
+# Windows
 Thumbs.db
-media/upload/files
-media/upload/images
+#media/upload/files
+#media/upload/images
 
 #latex configuracion
 *.aux
