@@ -8,10 +8,10 @@
     <div  style="padding-left:10px;" >
         <h2>Registrar Turno</h2>
     </div>
-    
+
     <br />
     <div style="width: 650px; margin: 0 auto; text-align: right;">
-        <a href="/medicos/turnos/selecionar-dia/{{ patient.id }}/" class="grad-button-blue">Atras</a>
+        <a href="/admins/mostrar/paciente/{{ patient.username }}/" class="grad-button-blue">Atras</a>
     </div>
     <br />
 
@@ -35,12 +35,12 @@
                     <td class="tbl-label">Medico:</td>
                     <td>{{ medic.user.first_name }} {{ medic.user.last_name }}</td>
                 </tr>
-                
+
                 <tr>
                     <td class="tbl-label">Paciente:</td>
                     <td>{{ patient.first_name }} {{ patient.last_name }}</td>
                 </tr>
-                  
+
 
                 <tr>
                     <td colspan="2">
@@ -57,7 +57,7 @@
         </div>
     {% else %}
         <br />
-        
+
         {% if not_errors  %}
         <div class="fancy-form-white" style="text-align: left; width: 450px; margin: 0 auto;">
             <table>
@@ -107,5 +107,5 @@
         <p class="error" style="width:450px;"><strong>Error:</strong><br /><br />
         {{ errors }}</p>
     {% endif %}
-    
+
 {% endblock %}
