@@ -1325,43 +1325,58 @@ def medic_add_patient_family_member(request, patient_id):
 
     if have_acess(request):
         _patient = User.objects.get(username=patient_id)
-        dict['pac'] = _patient
-        dict['pac_username'] = patient_id
-        form = my_forms.RelationForm(patient=patient_id)
-        dict['show_form'] = True
-        dict['form'] = form
-
         if request.method == 'POST':
             dict['show_form'] = False
-            _kin = request.POST['kin']           
+            _kin = request.POST['kin']
             _type = request.POST['type_relation']
+            if len(Relation.objects.filter(patient=_patient, kin__username=_kin)) == 0:
+                rel = Relation(patient=_patient, kin=User.objects.get(username=_kin), type_relation=_type)
+                rel.save()
+                return HttpResponseRedirect("/pacientes/mostrar/grupo-familiar/{}/".format(_patient.username))
 
-            rel = Relation(patient=_patient, kin=User.objects.get(username=_kin), type_relation=_type)
-            rel.save()
+            else:
+                dict['pac'] = _patient
+                dict['pac_username'] = patient_id
+                form = my_forms.RelationForm(patient=patient_id)
+                dict['show_form'] = True
+                dict['form'] = form
+                dict['custom_message'] = html_message('Error Pariente ya registrado', 'error')
 
-        html_cont = mi_template.render(Context(dict))
-        return HttpResponse(html_cont)
+                html_cont = mi_template.render(Context(dict))
+                return HttpResponse(html_cont)
+
+
+        else:
+            dict['pac'] = _patient
+            dict['pac_username'] = patient_id
+            form = my_forms.RelationForm(patient=patient_id)
+            dict['show_form'] = True
+            dict['form'] = form
+
+            html_cont = mi_template.render(Context(dict))
+            return HttpResponse(html_cont)
 
     else:
         path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
 
 
 
-def medic_delete_patient_family_member(request, patient_id, parent_id):
-    mi_template = get_template('Medics/GestionTurnos/show-turn-detail.html')
-    dict = generate_base_keys(request)
-
+def medic_delete_patient_family_member(request, _id):
     if have_acess(request):
-        patient = User.objects.get(username=patient_id)
-        dict['pac'] = patient
-        dict['pac_username'] = patient_id              
+        try:
+            relation = Relation.objects.get(id=_id)
+            name = relation.patient.username
+            relation.delete()            
+            return HttpResponseRedirect("/pacientes/mostrar/grupo-familiar/{}/".format(name))
 
-        
-        html_cont = mi_template.render(Context(dict))
-        return HttpResponse(html_cont)
+        except:
+            path = request.META['PATH_INFO']
+            return HttpResponseRedirect("/restricted-access%s" %path)
 
     else:
         path = request.META['PATH_INFO']
+        return HttpResponseRedirect("/restricted-access%s" %path)
 
 
 

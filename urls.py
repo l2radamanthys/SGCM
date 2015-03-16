@@ -222,6 +222,7 @@ urlpatterns = patterns('',
     #Grupo Familiar
     (r'^pacientes/mostrar/grupo-familiar/(\w+)/$', hc_medics_views.medic_show_patient_family_menbers),
     (r'^pacientes/agregar/grupo-familiar/(\w+)/$', hc_medics_views.medic_add_patient_family_member),
+    (r'^pacientes/borrar/grupo-familiar/(\d+)/$', hc_medics_views.medic_delete_patient_family_member),
 
     ######################################################################################
     #debug views, this views only desing for testing

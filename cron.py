@@ -24,10 +24,11 @@ class UpdateTurnStatus(Job):
         date = datetime.date.today()
         hour = datetime.time(t.hour, t.minute)
         #dias pasados
-        turns = Turn.objects.filter(day__date__lte=date, status=0)
+        turns = Turn.objects.filter(day__date__lt=date, status=0)
         for turn in turns:
             turn.status = 4
             turn.save()
+
         #hasta hoy
         turns = Turn.objects.filter(day__date=date, status=0, start__lte=hour)
         for turn in turns:

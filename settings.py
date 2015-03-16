@@ -174,5 +174,6 @@ LOGGING = {
 EMAIL_HOST = 'smtp.mail.yahoo.com'
 EMAIL_HOST_USER = 'sgcm.smtp@yahoo.com'
 EMAIL_HOST_PASSWORD = 'hola1234'
-EMAIL_PORT = '587'
+#EMAIL_PORT = '587'
+EMAIL_PORT = '465'
 EMAIL_USE_TLS = True

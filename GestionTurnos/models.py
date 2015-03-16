@@ -226,6 +226,10 @@ class Turn(models.Model):
         db_table = "Turns"
 
 
+    def __unicode__(self):
+        return "{} {} Paciente: {} Medico: {}".format(self.day.date ,self.start , self.patient, self.medic)
+
+
 class Message(models.Model):
     """
         Clase Para Manejar mensajes entre usuarios

@@ -48,10 +48,10 @@
         <tr>
             <td>{{ turn.patient.first_name }} {{ turn.patient.last_name }}</td>
             <td style="width:100px">{{ turn.get_status_display }}</td>
-            <td style="width:100px"><a>Mostrar</a></td>
-        </tr>    
-        {% endfor %}    
+            <td style="width:100px"><a href="/medicos/turnos/mostrar/{{ turn.id }}/">Mostrar</a></td>
+        </tr>
+        {% endfor %}
     </table>
 {% endif %}
-        
+
 {% endblock %}

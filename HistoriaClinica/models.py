@@ -310,6 +310,7 @@ class Relation(models.Model):
 class HereditaryDisease(models.Model):
     """
         Enfermedades Hereditarias que padece el paciente
+        --No implementado
     """
     patient = models.ForeignKey(User)
     type = models.IntegerField('Tipo', default=0, choices=HEREDITARY_DISEASES)

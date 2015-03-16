@@ -170,15 +170,20 @@ def admin_add_medic_expeciality(request, med_id, exp_id=None):
         if request.method == 'POST':
             form = my_forms.MedicalSpecialtyForForm(request.POST)
             if form.is_valid():
-                print form.cleaned_data['expecialidad']
-                expf =  MedicalSpecialityFor(
-                    user=med,
-                    speciality = MedicalSpecialties.objects.get(id=get_value(request,'expecialidad'))
-                )
-                expf.save()
+                esp = form.cleaned_data['expecialidad']
+                if len(MedicalSpecialityFor.objects.filter(user=med, speciality=esp)) == 0:
+
+                    expf =  MedicalSpecialityFor(
+                        user=med,
+                        speciality = MedicalSpecialties.objects.get(id=get_value(request,'expecialidad'))
+                    )
+                    expf.save()
+                    return HttpResponseRedirect("/admins/mostrar/medico/%s/" %med.username)
+                else:
                 #dict['show_form'] = False
-                #dict['show_errors'] = False
-                return HttpResponseRedirect("/admins/mostrar/medico/%s/" %med.username)
+                    dict['form'] = form
+                    dict['custom_message'] = Tags.html_message("Error especialidad <strong>{}</strong> ya registrada..".format(esp), type="error")
+                    #dict['show_errors'] = True
             else:
                 dict['form'] = form
                 dict['show_errors'] = True

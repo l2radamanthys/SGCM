@@ -32,20 +32,20 @@
 
         <td>
             {{ parent.get_type_relation_display }}
-        </td>    
+        </td>
 
         <td style="text-align:center">
             <a href="/pacientes/show-info/{{ parent.kin.username }}/">
                 <img src="/media/images/page_find.gif" alt="Mostrar" />
             </a>
             &nbsp;
-            <a href="/pacientes/borrar/grupo-familiar/{{ parent.kin.username }}/" title="">
+            <a href="/pacientes/borrar/grupo-familiar/{{ parent.id }}/" title="">
                 <img src="/media/images/page_delete.gif" alt="Eliminar" />
             </a>
         </td>
     </tr>
     {% endfor %}
-    
+
 
 </table>
 

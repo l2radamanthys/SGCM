@@ -71,34 +71,39 @@ def patient_register(request):
                     )
 
                     ## generacion y envio del mail de activacion de usuario
-                    subject = "Confirmacion Registro Paciente"
-                    to_email = user.email
-                    #from_email = "registro-usuario@sgcm.com"
-                    from settings import EMAIL_HOST_USER
-                    from_email = EMAIL_HOST_USER
-                    mdict ={
-                        'username': user.username,
-                        'first_name': user.first_name,
-                        'last_name': user.last_name,
-                        #'activaction_key': urllib.quote_plus(user.username.encode('base64')).replace('%','?'),
-                        'activaction_key': user.username.encode('base64').replace('=','6'),
-                        'page_url': SITE_URL,
-                    }
-                    #version HTML
-                    html_content = render_to_string('Mail/registrar-paciente.html', mdict)
-                    #version en formato texto plano
-                    text_content = strip_tags(html_content)
-                    #envio el mail
-                    msg = EmailMultiAlternatives(subject, text_content, from_email, [to_email])
-                    msg.attach_alternative(html_content, "text/html")
-                    msg.send()
-                    #mensaje de confirmacion de creacion de usuario
+                    if False:
+                        subject = "Confirmacion Registro Paciente"
+                        to_email = user.email
+                        #from_email = "registro-usuario@sgcm.com"
+                        from settings import EMAIL_HOST_USER
+                        from_email = EMAIL_HOST_USER
+                        mdict ={
+                            'username': user.username,
+                            'first_name': user.first_name,
+                            'last_name': user.last_name,
+                            #'activaction_key': urllib.quote_plus(user.username.encode('base64')).replace('%','?'),
+                            'activaction_key': user.username.encode('base64').replace('=','6'),
+                            'page_url': SITE_URL,
+                        }
+                        #version HTML
+                        html_content = render_to_string('Mail/registrar-paciente.html', mdict)
+                        #version en formato texto plano
+                        text_content = strip_tags(html_content)
+                        #envio el mail
+                        msg = EmailMultiAlternatives(subject, text_content, from_email, [to_email])
+                        msg.attach_alternative(html_content, "text/html")
+                        msg.send()
+                        #mensaje de confirmacion de creacion de usuario
+                    else:
+                        user.is_active = True #el usuario deve ser activado mediante una confirmacion que se envia al mail
+                        user.save()
                     dict['show_form'] = False
                     dict['custon_message'] = Tags.html_message("Paciente Registrado %s Correctamente.."  %(form.cleaned_data['first_name']), type="success")
                     #dict['query'] =  "user ok"
             else:
                 dict['show_form'] = True #mostrar form de registro
                 dict['show_errors'] = True
+                dict['form_errors'] = True
                 dict['form'] = form
 
         else:

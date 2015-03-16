@@ -20,15 +20,15 @@
 <br /><br />
 <table class="tbl-round-light" style="width: 700px;">
 <tr>
-    <th style="width: 200px;">De:</th>
-    <th colspan="2">Asunto</th>
+    <th style="width: 200px;">Destinatario:</th>
+    <th colspan="2">Asunto:</th>
 </tr>
 
 {% if not_empty %}
     {% for msj in messages %}
         {% if msj.read %}
             <tr  style="background-color: #E6F2FF">
-                <td> {{ msj.from_user.first_name }}, {{ msj.from_user.last_name }}</td>
+                <td> {{ msj.to_user.get_full_name }}</td>
                 <td> {{ msj.issue }}</td>
                 <td style="width:110px; text-align: center;">
                     <a href="/mensajes/mostrar/{{ msj.id }}/" title="">Mostrar</a> |

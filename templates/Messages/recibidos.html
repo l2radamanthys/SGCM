@@ -28,7 +28,7 @@
     {% for msj in messages %}
         {% if msj.read %}
             <tr>
-                <td> {{ msj.to_user.first_name }}, {{ msj.to_user.last_name }}</td>
+                <td> {{ msj.from_user.first_name }}, {{ msj.from_user.last_name }}</td>
                 <td> {{ msj.issue }}</td>
                 <td style="width:110px; text-align: center;">
                     <a href="/mensajes/mostrar/{{ msj.id }}/" title="">Mostrar</a> |

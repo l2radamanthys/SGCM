@@ -15,10 +15,10 @@
 
     <br />
     <div style="width: 650px; margin: 0 auto; text-align: right;">
-        <a href="/medicos/mostrar/{{ medic.user.id }}/" class="grad-button-blue">Atras</a>
+        <a href="/pacientes/show-info/{{ patient.username }}/" class="grad-button-blue">Atras</a>
     </div>
     <br />
-    
+
     <div class="fancy-form-white" style="text-align: left; width: 650px; margin: 0 auto;">
     <br />
     <p>Selecione la fecha del turno que desea solicitar del calendario:</p>
@@ -59,9 +59,9 @@
                     <td class="calendar-cancel">{{ day.day }}</td>
                 {% else %}{% if day.type == 3 %}
                     <td class="calendar-over">{{ day.day }}</td>
-                {% else %} 
+                {% else %}
                    <td class="calendar-null">{{ day.day }}</td>
-                    
+
                 {% endif %}{% endif %}{% endif %}
             {% else %}
 				<td class="calendar-no-day"></td>
